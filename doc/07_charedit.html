@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+  <title>Char Editor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="map">
+  <a href="index.html">Home</a><br />
+  <a href="01_config.html">Configuration</a><br />
+  <a href="02_im_export.html">Im- / Export</a><br />
+  <a href="03_transfer.html">Item Transfer, Stash</a><br />
+  <a href="04_transfer_char.html">Item Transfer, Char</a><br />
+  <a href="05_craft.html">Crafting Items</a><br />
+  <a href="06_collection.html">Item Collection</a><br />
+  <a href="07_charedit.html">Character Editor</a><br />
+  <a href="08_masteryinfo.html">Mastery Info</a><br />
+  <a href="09_acknowledge.html">Acknowledgements</a><br />
+  <a href="10_faq.html">FAQ</a><br />
+  <a href="11_versions.html">Versions</a><br />
+</div>
+
+<h1 class="centered">
+<br />
+<a name="_TITLE">Char Editor</a>
+<br /><br />
+</h1>     
+      
+<p class="centered">
+<strong>Edit character</strong>
+<br /><br />
+GD Stash allows limited changes to the character.
+<br /><br />
+<img src="image/CharEdit.png">
+<br /><br />
+After selecting a character from the drop-down list, its data is displayed. Most of the data should be self-explanatory.
+<br /><br />
+When changing the XP and pressing &lt;return&gt;, the level will get calculated and the available attribute and skill points
+will be adjusted accordingly.
+<br/>
+When changing the level and pressing &lt;return&gt;, the XP will get calculated (minimum needed for the level) and the available
+attribute and skill points will be adjusted accordingly.
+<br /><br />
+The buttons next to the attributes Physique, Cunning and Spirit can be used to increase and decrease the attributes. By using
+the buttons, the available Attribute Points as well as Health and Energy are adjusted.
+<br /><br />
+These buttons can only be used as long as the conditions allow for the attribute to be changed (attribute points are available when
+increasing, the attribute does not drop below the minimum when decreasing).
+<br /><br />
+The buttons to the right of the mastery points (<img src="image/btn_cancel.png">) can be used to completely reset the mastery.
+The skill points of the mastery and all of its skills are then refunded.
+<br /><br />
+All values can also be manually changed, in this case there is no check for consistency.
+<br /><br />
+In addition to the character attributes, the rift gates, shrines, faction reputations and devotion skill levels can be edited.
+<br /><br />
+<img src="image/CharEdit_Factions.png">
+<br /><br />
+When changing the faction reputation, do <strong>not</strong> contradict your quest choices. If e.g. you sided with Kymon's Chosen,
+do <strong>not</strong> set a positive reputation for the Order of Death's Vigil.
+<br />
+Your choice concerning these factions is stored in some quest files which are not changed by the tool, so this would result
+in an inconsistent state with unknown consequences in game.
+<br /><br />
+Also, some stats Grim Dawn tracks for achievements are displayed, but cannot be edited.
+<br /><br />
+<img src="image/CharEdit_Achievements.png">
+<br /><br />
+Rift gates and shrines can be activated and inactivated.
+<br /><br />
+<img src="image/CharEdit_RiftsShrines.png">
+<br /><br />
+The skills of the mastery can be increased by clicking on them, just as in Grim Dawn.
+<br />
+By right-clicking, the skill is being decreased.
+<br />
+When hovering over a skill, its description is displayed on the right side.
+<br /><br />
+<img src="image/CharEdit_Mastery1.png">
+<br /><br />
+After the changes have been made, the character needs to be saved.
+<br /><br />
+If 'Reload' is pressed, all unsaved changes to the character are lost. In addition to reloading the currently selected character,
+the list of available characters is also refreshed, so any characters that have been created in Grim Dawn in the meantime are now
+also available for selection.
+<br /><br />
+<strong>The reminder to save changed characters only is shown if the char's inventory has changed, not if its attributes have changed.
+To save the changes, you have to press the 'Save' button on this screen, as only then are the changed values passed to the char.</strong>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+  <title>Item Transfer, Stash</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="map">
+  <a href="index.html">Home</a><br />
+  <a href="01_config.html">Configuration</a><br />
+  <a href="02_im_export.html">Im- / Export</a><br />
+  <a href="03_transfer.html">Item Transfer, Stash</a><br />
+  <a href="04_transfer_char.html">Item Transfer, Char</a><br />
+  <a href="05_craft.html">Crafting Items</a><br />
+  <a href="06_collection.html">Item Collection</a><br />
+  <a href="07_charedit.html">Character Editor</a><br />
+  <a href="08_masteryinfo.html">Mastery Info</a><br />
+  <a href="09_acknowledge.html">Acknowledgements</a><br />
+  <a href="10_faq.html">FAQ</a><br />
+  <a href="11_versions.html">Versions</a><br />
+</div>
+
+<h1 class="centered">
+<br />
+<a name="_TITLE">Item Transfer, Stash</a>
+<br /><br />
+</h1>     
+      
+<p class="centered">
+<strong>Transfer items from the shared stash to GD Stash</strong>
+<br /><br />
+On the right side of the 'Stash Transfer' page, the stash is shown. You can switch between different shared stashes.
+<br /><br />
+The expansion 'Ashes of Malmouth' makes a backup of the vanilla stashes as transfer.bst and transfer.bsh. When you
+disable the expansion to play multiplayer with someone who does not have the expansion, the game will uses these
+stashes instead of the regular transfer.gst and transfer.gsh.
+<br /><br />
+The tool shows these vanilla stashes in red, when you have the expansion.
+<br /><br />
+<img src="image/Transfer_SelStash.png">
+<br /><br />
+The selected shared stash is displayed.
+<br /><br />
+<img src="image/Transfer_Stash.png">
+<br /><br />
+The 'Reload' button is not needed to switch between different stashes. It can be used to undo any changes that have
+not been saved yet or to reload the stash after it has changed in Grim Dawn however.
+<br /><br />
+After you select an item, its details are shown in the middle of the screen.
+<br /><br />
+<img src="image/Transfer_StashItem.png">
+<br /><br />
+Of particular note is the following information, it lists the number of similar items already stored in the GD Stash database.
+<br /><br />
+<img src="image/Transfer_SimilarInfo.png">
+<br />
+</p>
+<table border="3" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      # Item
+    </td>
+    <td class="left" valign="top">
+	  The number of identical items (i.e. the exact same item) stored in the GD Stash database with the same prefix and
+	  suffix as the selected item.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      # Type
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      The number of items of the same <strong>type</strong> (e.g. 1H sword) as the selected item stored in the GD Stash
+	  database with the same prefix and suffix.
+      <br/><br/>
+      For unique items, this is only used if the item has affixes, in that case it is the number of identical items in
+	  the database (with any affix combination).
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      # Prefix
+    </td>
+    <td class="left" valign="top">
+	  The number of identical items stored in the GD Stash database with the same prefix as the selected item.
+      <br/><br/>
+	  The background is light green if the prefix is rare and light yellow if it is magical.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Level Prefix
+    </td>
+    <td class="left" valign="top">
+	  The required level of the item prefix.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      # Suffix
+    </td>
+    <td class="left" valign="top">
+	  The number of identical items stored in the GD Stash database with the same suffix as the selected item.
+      <br/><br/>
+	  The background is light green if the suffix is rare and light yellow if it is magical.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Level Suffix
+    </td>
+    <td class="left" valign="top">
+	  The required level of the item suffix.
+    </td>
+  </tr>
+</table>
+<p class="centered">
+<img src="image/Transfer_ItemButtons.png">
+<br /><br />
+By pressing 'Copy item to DB', the item is imported to the GD Stash database. By pressing 'Move item to DB' the item is
+imported to the GD Stash database and removed from the shared stash. As the shared stash has changed in the second case,
+that change needs to be saved. 'Delete item from stash' removes the selected item from the shared stash <strong>without
+placing it in the GD Stash database</strong>.
+<br /><br />
+'Copy entire page to DB', 'Move entire page to DB' and 'Delete entire page' perform the same operation on all items of
+the currently selected shared stash page.
+<br /><br />
+<img src="image/Transfer_SaveStash.png">
+<br /></br>
+If the stash has changed, it needs to be saved to apply the changes to the shared stash in Grim Dawn.
+</br>
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Transfer item to shared stash</strong>
+<br /><br />
+To transfer an item from the GD Stash database to the shared stash, it has to first be searched in the database.
+<br /><br />
+<img src="image/Transfer_Search.png">
+<br /><br />
+Depending on the search criteria, a list of items is returned from the GD Stash database. The search automatically 
+onsiders whether to search for softcore or hardcore items, based on the settings and the stash currently selected
+in the Transfer page.
+<br /><br />
+The criteria can be combined with OR or with AND.
+<table border="3" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      <img src="image/Craft_Bool_Or.png">
+    </td>
+    <td class="left" valign="centered">
+	  The selection criteria are combined by OR, any item that meets <strong>one or more</strong> of the criteria is selected.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      <img src="image/Craft_Bool_And.png">
+    </td>
+    <td class="left" valign="centered">
+	  The selection criteria are combined by AND, any item that meets <strong>all</strong> of the criteria is selected.
+    </td>
+  </tr>
+</table>
+</p>
+<p class="centered">
+<img src="image/Transfer_SearchResult.png">
+<br /><br />
+An item is selected by either clicking on any of its columns or by hovering over its image. The latter allows for
+a convenient browsing of all returned items.
+<br /><br />
+The stats of the selected item are displayed in the center of the screen. These are the base stats of the item
+as stored in the Grim Dawn database.arz, they are not adjusted based on the seed of the item as the logic behind
+that is currently unknown.
+<br /><br />
+<img src="image/Transfer_DBItem.png">
+<br /><br />
+By clicking on an empty area in the shared stash, the item is added to the stash. To remove the item from the
+GD Stash database (and thereby moving it to the transfer stash, rather than copying it), press the button
+<br /><br />
+<img src="image/Transfer_DeleteDB.png">
+<br />
+</p>
+
+</body>
+</html>

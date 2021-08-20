@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="derby">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/derby.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/exp4j-0.4.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ini4j-0.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JTattoo-1.6.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lz4-java-1.7.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

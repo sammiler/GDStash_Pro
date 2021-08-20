@@ -1,0 +1,150 @@
+body {
+  padding-left     : 11em      ; /* space for navigation bar */
+  font-family      : serif     ;
+  font-size        : medium    ;
+  font-style       : normal    ;
+  font-weight      : normal    ;
+  color            : black     ;
+  text-align       : left
+}
+h1.centered {
+  font-family      : serif     ;
+  font-size        : x-large   ;
+  font-style       : normal    ;
+  font-weight      : bold      ;
+  color            : black     ;
+  text-align       : center    ;
+  border           : 1px solid black;
+  background-color : #DDDDDD
+}
+h1 {
+  font-family      : serif     ;
+  font-size        : x-large   ;
+  font-style       : normal    ;
+  font-weight      : bold      ;
+  color            : black     ;
+  text-align       : left      ;
+  border           : 1px solid black;
+  background-color : #DDDDDD
+}
+h2 {
+  font-family      : serif     ;
+  font-size        : large     ;
+  font-style       : normal    ;
+  font-weight      : bold      ;
+  color            : black     ;
+  text-align       : left      ;
+  border           : 1px solid black;
+  background-color : #DDDDDD
+}
+h3 {
+  font-family      : serif     ;
+  font-size        : large     ;
+  font-style       : normal    ;
+  font-weight      : normal    ;
+  color            : black     ;
+  text-align       : left      ;
+  border           : 1px solid black;
+  background-color : #DDDDDD
+}
+h4 {
+  font-family      : serif     ;
+  font-size        : medium    ;
+  font-style       : normal    ;
+  font-weight      : bold      ;
+  color            : black     ;
+  text-align       : left      ;
+  border           : 1px solid black;
+  background-color : #DDDDDD
+}
+h5 {
+  font-family      : serif     ;
+  font-size        : medium    ;
+  font-style       : normal    ;
+  font-weight      : normal    ;
+  color            : black     ;
+  text-align       : left      ;
+  border           : 1px solid black;
+  background-color : #DDDDDD
+}
+a:link {
+  color            : blue
+}
+a:visited {
+  color            : navy
+}
+a:hover {
+  color            : teal
+}
+a:active {
+  color            : aqua
+}
+p {
+  text-align       : left
+}
+p.border {
+  text-align       : center;
+  border           : 1px solid black
+}
+p.centered {
+  text-align       : center
+}
+table.license {
+  background-color : #FFFFCC
+}
+thead {
+  font-weight      : bold      ;
+  background-color : #DDDDDD
+}
+td.centered {
+  text-align       : center
+}
+div.centered {
+  text-align       : center
+}
+td.left {
+  text-align       : left
+}
+div.left {
+  text-align       : left
+}
+body>div.map { /* hack for IE as it does not understand position fixed (or child selectors for that matter) */
+ position          : fixed
+}
+div.map {
+  position         : absolute       ;
+  width            : 9em            ;
+  top              : 1em            ;
+  left             : 1em            ;
+  bottom           : auto           ;
+  right            : auto           ;
+  border           : 3px solid black;
+  background-color : #DDDDDD
+}
+strong {
+  font-weight      : bold    
+}
+warn {
+  font-weight      : bold    ;
+  color            : red     
+}
+code {
+  font-family      : monospace ;
+  color            : black     ;
+  white-space      : pre
+}
+code.comment {
+  font-family      : monospace ;
+  color            : green     ;
+  white-space      : pre
+}
+code.keyword {
+  font-family      : monospace ;
+  color            : blue      ;
+  white-space      : pre
+}
+samp {
+  font-family      : monospace ;
+  color            : black     ;
+  white-space      : pre
+}

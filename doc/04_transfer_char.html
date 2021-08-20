@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+  <title>Item Transfer, Char</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="map">
+  <a href="index.html">Home</a><br />
+  <a href="01_config.html">Configuration</a><br />
+  <a href="02_im_export.html">Im- / Export</a><br />
+  <a href="03_transfer.html">Item Transfer, Stash</a><br />
+  <a href="04_transfer_char.html">Item Transfer, Char</a><br />
+  <a href="05_craft.html">Crafting Items</a><br />
+  <a href="06_collection.html">Item Collection</a><br />
+  <a href="07_charedit.html">Character Editor</a><br />
+  <a href="08_masteryinfo.html">Mastery Info</a><br />
+  <a href="09_acknowledge.html">Acknowledgements</a><br />
+  <a href="10_faq.html">FAQ</a><br />
+  <a href="11_versions.html">Versions</a><br />
+</div>
+
+<h1 class="centered">
+<br />
+<a name="_TITLE">Item Transfer, Char</a>
+<br /><br />
+</h1>     
+      
+<p class="centered">
+<strong>Transfer items from a character to GD Stash</strong>
+<br /><br />
+On the right side of the 'Char Transfer' page, the character is shown. You can switch between different characters.
+<br /><br />
+<img src="image/CharTrans_Stash.png">
+<br /><br />
+The 'Reload' button is not needed to switch between characters. It can be used to undo any changes to the currently
+selected character that have not been saved yet or to reload the character after it has changed in Grim Dawn.
+<br /><br />
+After you select an item, its details are shown in the middle of the screen.
+<br /><br />
+<img src="image/CharTrans_CharItem.png">
+<br /><br />
+Of particular note is the following information, it lists the number of similar items already stored in the GD Stash database.
+<br /><br />
+<img src="image/Transfer_SimilarInfo.png">
+<br />
+</p>
+<table border="3" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      # Item
+    </td>
+    <td class="left" valign="top">
+	  The number of identical items (i.e. the exact same item) stored in the GD Stash database with the same prefix and
+	  suffix as the selected item.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      # Type
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      The number of items of the same <strong>type</strong> (e.g. 1H sword) as the selected item stored in the GD Stash
+	  database with the same prefix and suffix.
+      <br/><br/>
+      For unique items, this is only used if the item has affixes, in that case it is the number of identical items in
+	  the database (with any affix combination).
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      # Prefix
+    </td>
+    <td class="left" valign="top">
+	  The number of identical items stored in the GD Stash database with the same prefix as the selected item.
+      <br/><br/>
+	  The background is light green if the prefix is rare and light yellow if it is magical.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Level Prefix
+    </td>
+    <td class="left" valign="top">
+	  The required level of the item prefix.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      # Suffix
+    </td>
+    <td class="left" valign="top">
+	  The number of identical items stored in the GD Stash database with the same suffix as the selected item.
+      <br/><br/>
+	  The background is light green if the suffix is rare and light yellow if it is magical.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Level Suffix
+    </td>
+    <td class="left" valign="top">
+	  The required level of the item suffix.
+    </td>
+  </tr>
+</table>
+<p class="centered">
+<img src="image/CharTrans_ItemButtons.png">
+<br /><br />
+By pressing 'Copy item to DB', the item is imported to the GD Stash database. By pressing 'Move item to DB' the item is
+imported to the GD Stash database and removed from the character. As the character has changed in the second case, that
+change needs to be saved. 'Delete item from char' removes the selected item from the character <strong>without placing
+it in the GD Stash database</strong>.
+<br /><br />
+'Copy entire page to DB', 'Move entire page to DB' and 'Delete entire page' perform the same operation on all items of
+the currently selected character page.
+<br /><br />
+<img src="image/CharTrans_SaveChar.png">
+<br /></br>
+If the character has changed, it needs to be saved to apply the changes to the character in Grim Dawn.
+</br>
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Equipped items</strong>
+<br /><br />
+<img src="image/CharTrans_Equipment.png">
+<br /><br />
+Equipped items (red rectangle above) are treated differently from items in the stash / inventory / bags. You can neither
+equip items nor remove these items in GD Stash.
+<br /><br />
+This is done because there are dependencies to other parts of the save file (item skills) and there are certain restrictions
+as to which item a char can equip (stat requirements, dual-wielding).
+<br /><br />
+A consequence of this is that these items cannot be moved to the GD Stash database or deleted from the char.
+<br /><br />
+<img src="image/CharTrans_EquipButtons.png">
+<br /><br />
+If the entire page is being moved to the database, the equipped items are instead <strong>copied</strong> to the database.
+If the entire page is deleted, these items are skipped.
+<br />
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Transfer item to character</strong>
+<br /><br />
+To transfer an item from the GD Stash database to the character, it has to first be searched in the database.
+<br /><br />
+<img src="image/Transfer_Search.png">
+<br /><br />
+Depending on the search criteria, a list of items is returned from the GD Stash database. The search automatically considers
+whether to search for softcore or hardcore items and which soulbound items to include in the search, based on the settings
+and the currently selected character.
+<br /><br />
+The criteria can be combined with OR or with AND.
+<table border="3" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      <img src="image/Craft_Bool_Or.png">
+    </td>
+    <td class="left" valign="centered">
+	  The selection criteria are combined by OR, any item that meets <strong>one or more</strong> of the criteria is selected.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      <img src="image/Craft_Bool_And.png">
+    </td>
+    <td class="left" valign="centered">
+	  The selection criteria are combined by AND, any item that meets <strong>all</strong> of the criteria is selected.
+    </td>
+  </tr>
+</table>
+</p>
+<p class="centered">
+<img src="image/Transfer_SearchResult.png">
+<br /><br />
+An item is selected by either clicking on any of its columns or by hovering over its image. The latter allows for a
+convenient browsing of all returned items.
+<br /><br />
+The stats of the selected item are displayed in the center of the screen. These are the base stats of the item as stored
+in the Grim Dawn database.arz, they are not adjusted based on the seed of the item as the logic behind that is currently
+unknown.
+<br /><br />
+<img src="image/CharTrans_DBItem.png">
+<br /><br />
+By clicking on an empty area in the character, the item is added to the character. To remove the item from the GD Stash
+database (and thereby moving it to the character, rather than copying it), press the button
+<br /><br />
+<img src="image/CharTrans_DeleteDB.png">
+<br />
+</p>
+
+</body>
+</html>

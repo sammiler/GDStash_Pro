@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+  <title>Im- / Export</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="map">
+  <a href="index.html">Home</a><br />
+  <a href="01_config.html">Configuration</a><br />
+  <a href="02_im_export.html">Im- / Export</a><br />
+  <a href="03_transfer.html">Item Transfer, Stash</a><br />
+  <a href="04_transfer_char.html">Item Transfer, Char</a><br />
+  <a href="05_craft.html">Crafting Items</a><br />
+  <a href="06_collection.html">Item Collection</a><br />
+  <a href="07_charedit.html">Character Editor</a><br />
+  <a href="08_masteryinfo.html">Mastery Info</a><br />
+  <a href="09_acknowledge.html">Acknowledgements</a><br />
+  <a href="10_faq.html">FAQ</a><br />
+  <a href="11_versions.html">Versions</a><br />
+</div>
+
+<h1 class="centered">
+<br />
+<a name="_TITLE">Im- / Export</a>
+<br /><br />
+</h1>     
+      
+<p class="centered">
+<strong>Import items</strong>
+<br /><br />
+After GD Stash has been set up, you can import your items into it. If you used the popular method of storing items
+in multiple shared stash files to allow for a larger storage, you can import all stashes at once by specifying the
+import directory. GD Stash will then load any shared stash found in this directory and its subdirectories.
+In addition, GD Stash will load the items of each character found in the import directory.
+All items that have been found will then be displayed and can be selected for import.
+<br /><br />
+<img src="image/MassImport_Dir.png">
+<br /><br />
+Once the import directory has been specified, the shared stashes and characters can be imported as follows.
+<br /><br />
+Press the 'Load items from dir' button.
+<br /><br />
+<img src="image/MassImport_LoadItems.png">
+<br /><br />
+The items in the shared stashes and characters are then displayed in the table below the button row.
+<br /><br />
+The 'Valid' column indicates whether the item is valid according to the settings you specified on the configuration
+page with respect to affix combinations and completion bonuses.
+<br /><br />
+<img src="image/MassImport_Table.png">
+<br /><br />
+With the selection buttons you can then mark the items for import. Alternatively you can manually flag the items
+you want to import.
+<br /><br />
+<img src="image/MassImport_SelectButtons.png">
+<br /><br />
+To import the flagged item, press
+<br /><br />
+<img src="image/MassImport_Import.png">
+<br /><br />
+After the items have been imported, a summary is shown
+<br /><br />
+<img src="image/MassImport_Messages.png">
+<br /><br />
+If the summary shows items already in the stash, that means the same item was in more than one transfer file
+(or the file had already been imported). An item is being identified as being identical, when it is the same
+base item, has the same affixes, the same component and augment attached and the same seed value.
+<br />
+</p>
+
+<br />
+<hr size="4" color="DDDDDD">
+<br />
+
+<p class="centered">
+Instead of loading the items from the stash and character files of a dir, items can alos be imported from a
+file. GD Stash has its own format (.gds) to allow easy backups of the collected items and also supports the
+import of items from Item Assistant (.ias).
+<br /><br />
+<img src="image/MassImport_GDS_IAS.png">
+<br /><br />
+Once a file has been selected, its content is loaded and displayed in the table. The items are then marked
+for import and imported as described above.
+<br />
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Export items</strong>
+<br /><br />
+The content of the GD Stash database can be exported so it is more easily backed up. Instead of backing up
+the entire database (most of which consists of the content of Grim Dawn's database.arz and Items.arc),
+the items stored in it can be exported into one relatively small file. The file uses the extension .gds
+<br /><br />
+<img src="image/MassImport_Export.png">
+<br />
+</p>
+
+<br />
+<hr size="4" color="DDDDDD">
+<br />
+
+<p class="centered">
+Instead of exporting all items, items can also be searched.
+<br /><br />
+<img src="image/MassImport_Search.png">
+<br /><br />
+The items matching the criteria are shown in the table and can be selected for export. The selection contains both softcore and hardcore items
+and the soulbound items of all characters, regardless of the configuration settings (unlike the search on the transfer pages).
+<br /><br />
+If the table contains no items <strong>or</strong> no items from the table have been selected, all items stored in GD Stash will be exported.
+</p>
+
+<br />
+<hr size="4" color="DDDDDD">
+<br />
+
+<p class="centered">
+The file can also be imported into GD Stash again.
+<br /><br />
+<img src="image/MassImport_LoadDB.png">
+<br />
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Copy collected items to the clipboard</strong>
+<br /><br />
+If you trade items by posting them on forums, you can export your collected items here. You can either export
+all unique or legendary items only.
+<br /><br />
+As different forums might use different tags, you can adjust the format by editing the tags in HTMLTags.properties.
+<br /><br />
+<img src="image/MassImport_CopyClipboard.png">
+<br /><br />
+If the table contains items <strong>and</strong> items from the table have been selected, the unique or legendary
+items from that selection are copied to the clipboard.
+<br /><br />
+If the table contains no items <strong>or</strong> no items from the table have been selected, all 
+unique or legendary items stored in GD Stash will be copied to the clipboard.
+<br />
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Enable all blueprints</strong>
+<br /><br />
+To make all blueprints available in game, press
+<br /><br />
+<img src="image/MassImport_Blueprints.png">
+<br />
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Export collected items as illusions</strong>
+<br /><br />
+This requires the expansion 'Ashes of Malmouth'. If you want to add your collected items to the illusionist, use the
+'Add collected illusions' button. If you want to add <strong>all</strong> Grim Dawn items to the illusions, press
+'Add all illusions'.
+<br /><br />
+<img src="image/MassImport_Illusions.png">
+<br />
+</p>
+
+</body>
+</html>

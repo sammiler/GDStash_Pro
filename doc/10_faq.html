@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+  <title>FAQ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="map">
+  <a href="index.html">Home</a><br />
+  <a href="01_config.html">Configuration</a><br />
+  <a href="02_im_export.html">Im- / Export</a><br />
+  <a href="03_transfer.html">Item Transfer, Stash</a><br />
+  <a href="04_transfer_char.html">Item Transfer, Char</a><br />
+  <a href="05_craft.html">Crafting Items</a><br />
+  <a href="06_collection.html">Item Collection</a><br />
+  <a href="07_charedit.html">Character Editor</a><br />
+  <a href="08_masteryinfo.html">Mastery Info</a><br />
+  <a href="09_acknowledge.html">Acknowledgements</a><br />
+  <a href="10_faq.html">FAQ</a><br />
+  <a href="11_versions.html">Versions</a><br />
+</div>
+
+<h1 class="centered">
+<br />
+<a name="_TITLE">FAQ</a>
+<br /><br />
+</h1>     
+      
+<p class="left">
+<div id='HeapSize'></div>
+<strong>I get a 'Java Heap Space' error. What should I do ?</strong>
+<br /><br />
+
+Increase the heap size by using the .exe file to start GD Stash.
+</br /><br />
+If you still have the problem, make sure you actually have enough free RAM, 1.5 GB should be sufficient.
+</br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<strong>GD Stash says the GD Save Dir is wrong, but I am sure it is the correct one. What can I do ?</strong>
+<br /><br />
+
+The tool checks for the existence of a transfer.gst or transfer.gsh file (SC or HC stash). If neither exists,
+the dir is not accepted. To create one, talk to the smuggler in Devil's Crossing.
+<br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<div id='SteamCloud'></div>
+<strong>Does this tool work with Steam cloud save files ?</strong>
+<br /><br />
+
+No, only with local save files.
+</br></br>
+You can store items from the local files of the cloud saves in GD Stash, but I have not found a reliable way to get them
+back into the game (which is not to say that it never works, only that it is not reliable). While GD Stash does always
+correctly store them in the local file, Grim Dawn frequently ignores that file and uses the data from the cloud instead,
+ignoring the change and overwriting it with the cloud data again.
+<br/><br/>
+<strong>Do not edit your char files while Grim Dawn is running, especially changing char names, when using cloud save.
+I have heard of a char corruption due to this (outside of the player.gdc file that GD Stash modifies) because of this.</strong>
+<br /><br />
+Renaming a character also changes the directory it is stored in, as char name and dir name have to match. This is most likely
+the cause of the corruption.
+<br /><br />
+<warn>If you use Grim Internals, do not start Grim Dawn via Grim Internals after you changed save files with GD Stash. Doing so
+will wipe your stash. Start Grim Dawn via Steam instead.</warn>
+<br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<strong>Can I edit the shared stash while I am playing in game ?</strong>
+<br /><br />
+
+Yes, provided the shared stash is <strong>not</strong> open in game and you are <strong>not</strong> using Steam cloud save.
+<br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<strong>Can I edit a character I am currently playing in game ?</strong>
+<br /><br />
+
+No, never change a character that is currently loaded in game.
+<br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<strong>How do I back up my items ?</strong>
+<br /><br />
+
+The GD Stash database is stored in C:\Users\&lt;username&gt;\GDStash. You can either back up that directory (about 100 MB of
+which ia Grim Dawn data) or use the Im-/Export page to store only the collected items in a file (without the Grim Dawn data).
+<br /><br />
+
+By pressing
+
+<br /><br />
+<img src="image/MassImport_Export.png">
+<br /><br />
+ 
+the items get exported to a file. <strong>Note that only items of the current database are exported. If you play different
+mods you need to export the items of each mod seperately.</strong>
+<br /><br />
+
+You can import the file again by pressing
+
+<br /><br />
+<img src="image/MassImport_LoadDB.png">
+<br /><br />
+
+This only loads the items into an overview table, the actual import to the GD Stash database is done by
+selecting the items to import and pressing
+ 
+<br /><br />
+<img src="image/MassImport_Import.png">
+<br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<strong>After importing the DB, I get a list of messages. What should I do ?</strong>
+<br /><br />
+
+Unless that list contains error messages, ignore it. The below are typical messages everyone importing
+the GD data will get, as they are due to the data.
+
+<br /><br />
+<img src="image/Config_DBImport.png">
+<br /><br />
+ 
+The warning messages are inconsistencies in Grim Dawn's data but of no consequence (only for items that do not drop).
+<br /><br />
+
+If you use a localization zip and get a lot of 'missing tag' warnings, please check if the localization file is
+for the current Grim Dawn version and use a newer one if necessary / available.
+<br /><br />
+
+If you use a mod, the warnings you are getting are similarily due to the mod data.
+
+<br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<strong>While editing my shared stash, it got corrupted. What can I do ?</strong>
+<br /><br />
+
+The tool always creates a backup of the previous stash first. transfer.t00 for SC, transfer.h00 for HC.
+By renaming that file back to .gst / .gsh you can recover it.<br /><br />
+The tool also keeps older versions with ascending numbers (.t00, .t01, .t02, ...) so if you did multiple edits
+before you noticed the corruption, try the older files.
+<br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<strong>While editing my character, it got corrupted. What can I do ?</strong>
+<br /><br />
+
+The tool always creates a backup of the previous character first. player.g00.
+By renaming that file back to .gdc you can recover it.<br /><br />
+The tool also keeps older versions with ascending numbers (.g00, .g01, .g02, ...) so if you did multiple edits
+before you noticed the corruption, try the older files.
+<br />
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<strong>You added support for Spears and Staffs from the Grim Quest mod. My mod also has new item types, will you add them ?</strong>
+<br /><br />
+
+The short answer is no.
+<br /><br />
+ 
+I added the Grim Quest items because Grim Dawn is the spiritual successor to Titan Quest.
+Being its spiritual successor, Grim Dawn actually still had some unused tags for these item types, which I am now using
+to support them.</br>
+No other item type has such unused tags, so no other item type has this kind of support within Grim Dawn itself, so it
+cannot be supported like that in GD Stash either.
+<br /><br />
+
+</p>
+
+</body>
+</html>

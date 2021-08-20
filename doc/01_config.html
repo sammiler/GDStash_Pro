@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+  <title>Configuration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="map">
+  <a href="index.html">Home</a><br />
+  <a href="01_config.html">Configuration</a><br />
+  <a href="02_im_export.html">Im- / Export</a><br />
+  <a href="03_transfer.html">Item Transfer, Stash</a><br />
+  <a href="04_transfer_char.html">Item Transfer, Char</a><br />
+  <a href="05_craft.html">Crafting Items</a><br />
+  <a href="06_collection.html">Item Collection</a><br />
+  <a href="07_charedit.html">Character Editor</a><br />
+  <a href="08_masteryinfo.html">Mastery Info</a><br />
+  <a href="09_acknowledge.html">Acknowledgements</a><br />
+  <a href="10_faq.html">FAQ</a><br />
+  <a href="11_versions.html">Versions</a><br />
+</div>
+
+<h1 class="centered">
+<br />
+<a name="_TITLE">Configuration</a>
+<br /><br />
+</h1>     
+      
+<p class="centered">
+<strong>Prerequisites</strong>
+<br /><br />
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank"><img src="image/Java_Logo_133x68.png"></a>
+<br /><br />
+GD Stash is a Java application. In order to run it, you need to have a Java Virtual Machine (JVM) installed.
+You can download one below
+<br /><br />
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank"><img src="image/getjavasoftware-180x150.png"></a>
+<br /><br />
+If you use a 64 bit Windows, download the 64 bit Java Virtual Machine.<br />
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Installation</strong>
+<br /><br />
+No installation is required, simply extract the zip file to a directory of your choice and double-click the .jar file
+to execute it.
+<br />
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Upgrading</strong>
+<br /><br />
+Place the zip file of the new version in the directory you installed GD Stash in and extract it there, 
+<strong>overwriting</strong> the existing files.
+<br /><br />
+If your unzip tool does not 'like' overwriting files, delete the content of the directory. Your items are
+stored in a separate directory in your user-directory (usually C:\Users\&lt;username&gt;\GDStash), so your
+items are save when doing this.
+<br /><br />
+If the database format has changed in the new version of GD Stash (or it has additional configuration options),
+a popup will be shown when you run the program (see below). When the configuration has changed, review the options
+and save it again, even if you keep the default settings. When the database format has changed, simply import
+it again (after having updated the configuration, in case both changed).
+</p>
+
+<br />
+<hr size="8" color="DDDDDD">
+<br />
+
+<p class="centered">
+<strong>Configuration</strong>
+<br /><br />
+When starting GD Stash for the first time, it will remind you to configure GD Stash and import the Grim Dawn data.
+<br /><br />
+<img src="image/Config_Import.png">
+<br /><br />
+
+It will take you right to the configuration page, which consists of several parts.<br /><br />
+The directories<br /><br />
+
+<img src="image/Config_Screen_Dirs.png">
+<br /><br />
+</p>
+
+<table border="3" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Grim Dawn installation directory
+    </td>
+    <td class="left" valign="top">
+	  The directory Grim Dawn is installed in.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Grim Dawn save game directory
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      The directory Grim Dawn saves its savefiles (the shared stashes, e.g transfer.gst) in.
+	  <br /><br />
+	  The tool will confirm the directory by checking for the shared stash (file transfer.gst or transfer.gsh).
+	  If neither is found it will not accept the directoy. The file is created the first time you talk to the
+	  smuggler in Devil's Crossing, so make sure you have done that / the file exists if the tool does not accept
+	  your save directory.
+	  </br></br>
+	  Depending on whether you use Steam cloud saving or not, the location will differ.
+	  </br></br>
+	  If you are using <strong>local</strong> saves, the files are in 
+	  <p class="border">
+	  C:\Users\&lt;username&gt;\Documents\My Games\Grim Dawn\save</p>
+	  If you do use Steam cloud saving (<strong>not recommended</strong>), the files are in 
+	  <p class="border">
+	  C:\Program Files (x86)\Steam\userdata\&lt;folder of numbers&gt;\219990\remote\save</p>
+	  <warn>If you use Steam Cloud saving, do not edit any files while running Grim Dawn and wait a few seconds
+	  between closing GD and editing the files in GD Stash.</warn><br/>
+	  Based on feedback I received, this seems to avoid most of the potential pitfalls of cloud saving (I do not
+	  use cloud saves).
+	  <br/><br/>
+	  <warn>If you use Grim Internals and Steam Cloud saving, do not start Grim Dawn via Grim Internals after having edited
+	  any files with GD Stash. Start Grim Dawn via Steam instead.</warn><br/>
+	  From what I have heard, starting Grim Dawn via Grim Internals will completely wipe the stash in this case.
+	  <br/><br/>
+	  You can always store items in GD Stash while playing Grim Dawn with cloud save enabled, but do not change
+	  the Grim Dawn files (stash or char) while playing.
+	  <br /><br />
+	  <strong>See the <a href="09_faq.html#SteamCloud" target="_blank">FAQ</a> for more details.</strong>
+	</td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Grim Dawn Localization file
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      The .zip file of the community translation you want to use. If you specify no localization file, the Grim Dawn
+	  texts are being used.<br/>
+	  The localization file is used during the database import only.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Selected mod
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      Specifies which mod you are using.</br></br>
+	  <strong>Each mod needs to have its database imported. For each mod a separate database is being created to avoid
+	  conflicts between mods.</strong>
+	  </br></br>
+	  This also means each mod has a separate collection of items. An item stored under one mod can be placed in the shared 
+	  stash of a different mod, the tool does not prevent this.</br>
+	  If you then however load that stash in that mod and the item is not supported by that mod, Grim Dawn will silently
+	  remove it and you lose the item (unless you copied it, rather than transferred it), so be careful when placing items
+	  of one mod in the stash of another.
+	  </br></br>
+	  The same is true for characters you play in a mod, except that the character does not 'belong' to any mod (the shared
+	  stash stores the info which mod it is from in the file, a char does not).
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Total Conversion mod
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      When a mod is flagged as being Total Conversion, only its database will be imported, not also Grim Dawn's.<br/><br/>
+	  Make sure to only use it if the mod does not use any Grim Dawn data (items, affixes, etc.).
+    </td>
+  </tr>
+</table>
+<br />
+
+<p class="centered">
+The UI settings.<br /><br />
+
+<img src="image/Config_Screen_UI.png"><br /><br />
+</p>
+
+<table border="3" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Language
+    </td>
+    <td class="left" valign="top">
+	  The language used in the UI, can be changed on the fly.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Look & Feel
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      The Java Look & Feel used by the UI. Which looks are available depends on the OS. GD Stash defaults to
+	  'Metal' which should be available on all platforms.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Minimize to System Tray
+    </td>
+    <td class="left" valign="top">
+	  When closing the program while the flag is set, the program instead minimizes to the system tray.<br /><br />
+      <img src="image/Config_SysTray.png"><br /><br />
+	  To then actually close the program, select 'Exit' from the menu.<br /><br />
+      <img src="image/Config_SysTray_Menu.png"><br /><br />
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Font size
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      The font size used in the UI, can be changed on the fly.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Graphic scale
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      The percentage images are scaled to, images here are the items in the stash. Icons are not scaled, instead
+	  different sizes are used based on the font size.
+    </td>
+  </tr>
+</table>
+<br />
+
+<p class="centered">
+The GD Stash settings<br /><br />
+By default all settings are set so only items that could be created in Grim Dawn can be created by crafting in GD Stash.<br /><br />
+
+<img src="image/Config_Screen_Restrictions.png"><br /><br />
+</p>
+
+<table border="3" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Allow item & char editing
+    </td>
+    <td class="left" valign="top">
+	  When this flag is <strong>not</strong> set, the Crafting and Char Editor screens are hidden.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Transfer items between SC and HC
+    </td>
+    <td class="left" valign="top">
+	  Whether items may be transferred between softcore and hardcore stashes.<br /><br />
+	  Any item stored in GD Stash retains the information whether it is a softcore or hardcore item, based on
+	  whether it was imported from a softcore or hardcore stash or character. If this flag is <strong>not</strong>
+	  set, the item search on the Transfer page will only return items that are either softcore or hardcore,
+	  depending on the selected transfer stash / character.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Transfer soulbound items between chars
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      Whether soulbound items may be transferred between characters.<br /><br />
+	  Any soulbound item stored in GD Stash retains the information of which character the item belongs to.
+	  If this flag is <strong>not</strong> set, the item search on the Transfer page will not show any
+	  soulbound items while the Char Transfer will only return soulbound items that are bound to the
+	  currently selected character. All items that are not soulbound and match the search criteria are
+	  also shown.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Allow all completion bonuses
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      If the flag is set, any relic can have any completion bonus when crafting one, not just the ones
+	  allowed for the relic by Grim Dawn.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Allow blacksmith bonus on all items
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      If the flag is set, a blacksmith bonus can be selected for any item while crafting, even items that
+	  cannot be created by a blacksmith (e.g. most epics or legendaries, all monster infrequents)
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Affix Combinations
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      When crafting an item, certain items are restricted to certain affixes only, e.g. 1-handed weapons have
+	  different (weaker) affixes than 2-handed weapons. In addition, some items can only have a prefix <strong>or</strong>
+	  a suffix, not both.<br /><br />
+	  'Valid combinations only' only allows affixes and affix combinations while crafting that are allowed by
+	  Grim Dawn.<br />
+	  'All combinations of valid affixes' allows prefix and suffix combinations that Grim Dawn would not allow,
+	  but only affixes that are valid for the specific item.<br />
+	  'No restrictions' allows all affixes on an item, even ones that Grim Dawn does not allow, it also allows
+	  all affix combinations.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Transfer from DB to stash
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+	  This option determines whether an item stored in GD Stash's database is being copied to the shared stash / char
+	  inventory or moved.
+	  </br></br>
+	  In the latter case the item is being <strong>deleted</strong> from the database at the same time. While this
+	  ensures that there really is only one version of the item, it also means that you could lose the item if you
+	  load it into a mod where that item does not exist.
+    </td>
+  </tr>
+</table>
+<br />
+
+<p class="centered">
+Save configuration and import the Grim Dawn database<br /><br />
+
+<img src="image/Config_Screen_Import.png"><br /><br />
+</p>
+
+<table border="3" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Save settings
+    </td>
+    <td class="left" valign="top">
+	  Saves the configuration.
+    </td>
+  </tr>
+  <tr>
+    <td valign="centered" align="left" border="0" cellspacing="0">
+      Import database
+    </td>
+    <td valign="left" align="left" border="0" cellspacing="0">
+      Imports the Grim Dawn database.arz into the GD Stash database. This is required to use GD Stash.
+	  <br /><br />
+	  If during the import you get an error about heap size (some people do), start the JVM with an increased heap size.
+	  <br /><br />
+      <strong>See the <a href="09_faq.html#HeapSize" target="_blank">FAQ</a> for more details.</strong>
+	  </br>
+    </td>
+  </tr>
+</table>
+<br />
+
+</body>
+</html>

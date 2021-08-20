@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="untitled104:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/untitled104_jar</output-path>
+    <root id="archive" name="untitled104.jar">
+      <element id="module-output" name="untitled104" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/derby.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/exp4j-0.4.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/ini4j-0.5.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/JTattoo-1.6.13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/lz4-java-1.7.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,208 @@
+package org.gdstash.util;
+
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.StringWriter;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
+
+/**
+ * Utility to read the log.ctrl control file in the log directory of a
+ * Derby database. This is based on the 10.8 version of
+ * LogToFile.readControlFile().
+ * 
+ * https://issues.apache.org/jira/browse/DERBY-5195
+ */
+public  class   DerbyControlFileReader
+{
+    ////////////////////////////////////////////////////////////////////////
+    //
+    //  CONSTANTS
+    //
+    ////////////////////////////////////////////////////////////////////////
+
+    private static  final   String  USAGE =
+        "Usage:\n" +
+        "\n" +
+        "    java ControlFileReader $controlFileName\n";
+    
+	private static final byte IS_BETA_FLAG = 0x1;
+    private static final byte IS_DURABILITY_TESTMODE_NO_SYNC_FLAG = 0x2;
+    
+    ////////////////////////////////////////////////////////////////////////
+    //
+    //  STATE
+    //
+    ////////////////////////////////////////////////////////////////////////
+    
+    ////////////////////////////////////////////////////////////////////////
+    //
+    //  ENTRY POINT
+    //
+    ////////////////////////////////////////////////////////////////////////
+    
+    public  static  void    main( String... args )  throws Exception
+    {
+        if ( (args == null) || (args.length != 1) ) { usage(); }
+
+        String  controlFileName = args[ 0 ];
+        ControlFile controlFile = new ControlFile( new File( controlFileName ) );
+
+        controlFile.printMe( System.out );
+    }
+    private static  void    usage()
+    {
+        System.out.println( USAGE );
+        System.exit( 1 );
+    }
+    
+    ////////////////////////////////////////////////////////////////////////
+    //
+    //  NESTED CLASSES
+    //
+    ////////////////////////////////////////////////////////////////////////
+
+    public  static  final   class   ControlFile
+    {
+        private static  final   int MINIMUM_FILE_LENGTH = 16;
+        private static  final   int CHECKSUM_LENGTH = 8;
+        
+        private long        _fileLength;
+
+        private int         _formatableID;
+        private int         _obsoleteVersion;
+        private long        _logCounter;
+        private int         _majorVersion;
+        private int         _minorVersion;
+        private int         _subversionRevision;
+        private byte        _flags;
+        private Long    _checksum;
+        
+        public  ControlFile( File file )    throws Exception
+        {
+            _fileLength = file.length();
+            if ( _fileLength < MINIMUM_FILE_LENGTH )
+            {
+                throw new Exception( "Control file is corrupted. It only contains " + _fileLength + " bytes." );
+            }
+            
+            FileInputStream fis = new FileInputStream( file );
+            DataInputStream dais = new DataInputStream( fis );
+
+            readFile( dais );
+            dais.close();
+            fis.close();
+        }
+
+        private void    readFile( DataInputStream dais ) throws Exception
+        {
+            _formatableID = dais.readInt();
+            _obsoleteVersion = dais.readInt();
+            _logCounter = dais.readLong();
+            _majorVersion = dais.readInt();
+            _minorVersion = dais.readInt();
+            _subversionRevision = dais.readInt();
+            _flags = dais.readByte();
+            
+            if ( _fileLength > MINIMUM_FILE_LENGTH ) { _checksum = new Long( dais.readLong() ); }
+        }
+
+        public  void    printMe( PrintStream printStream )  throws Exception
+        {
+            StringWriter    writer = new StringWriter();
+            StreamResult    result = new StreamResult( writer );
+            DOMSource   source = new DOMSource( toXML() );
+
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            transformer.transform( source, result );
+
+            printStream.println( writer.toString() );
+        }
+        
+        public Document    toXML() throws Exception
+        {
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+            Element     top = doc.createElement( "controlFile" );
+
+            doc.appendChild( top );
+            top.appendChild( createIntElement( doc, "formatableID", _formatableID ) );
+            top.appendChild( createIntElement( doc, "obsoleteVersion", _obsoleteVersion ) );
+            top.appendChild( formatLogCounter( doc, _logCounter ) );
+            top.appendChild( createIntElement( doc, "majorVersion", _majorVersion ) );
+            top.appendChild( createIntElement( doc, "minorVersion", _minorVersion ) );
+            top.appendChild( createIntElement( doc, "subversionRevision", _subversionRevision ) );
+            top.appendChild( formatFlags( doc, _flags ) );
+
+            if ( _checksum != null )
+            {
+                top.appendChild( createLongElement( doc, "checksum", _checksum.longValue() ) );
+            }
+
+            return doc;
+        }
+        private Element formatLogCounter( Document doc, long logCounter )
+            throws Exception
+        {
+            Element result = doc.createElement( "logCounter" );
+            int     logFileNumber = (int) (logCounter >>> 32);
+            int     position = (int) (0xFFFFFFFF & logCounter);
+
+            result.appendChild( createIntElement( doc, "logFileNumber", logFileNumber ) );
+            result.appendChild( createIntElement( doc, "position", position ) );
+
+            return result;
+        }
+        private Element formatFlags( Document doc, byte value )
+            throws Exception
+        {
+            Element result = doc.createElement( "flags" );
+            String  flag = "flag";
+
+            result.setAttribute( "flags", Integer.toHexString( 0xFF & ((int) value) ) );
+ 
+            if ( (value & IS_BETA_FLAG) != 0 )
+            {
+                result.appendChild( createTextElement( doc, flag, "IS_BETA_FLAG" ) );
+            }
+            if ( (value & IS_DURABILITY_TESTMODE_NO_SYNC_FLAG) != 0 )
+            {
+                result.appendChild( createTextElement( doc, flag, "IS_DURABILITY_TESTMODE_NO_SYNC_FLAG" ) );
+            }
+           
+            return result;
+        }
+        private Element createLongElement( Document doc, String tag, long value )
+            throws Exception
+        {
+            return createTextElement( doc, tag, Long.toString( value ) );
+        }
+        private Element createIntElement( Document doc, String tag, int value )
+            throws Exception
+        {
+            return createTextElement( doc, tag, Integer.toString( value ) );
+        }
+        private Element createTextElement( Document doc, String tag, String text )
+            throws Exception
+        {
+            Element retval = doc.createElement(tag);
+            Text textNode = doc.createTextNode(text);
+
+            retval.appendChild(textNode);
+
+            return retval;
+        }        
+    }
+}
