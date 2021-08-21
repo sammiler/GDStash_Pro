@@ -426,7 +426,9 @@
 /*  426 */       if (this.strings[i] == null || 
 /*  427 */         !fileName.equalsIgnoreCase(this.strings[i].getFileName())) {
 /*      */         i++; continue;
-/*  429 */       }  index = i;
+/*  429 */       }
+                    index = i;
+                    break;
 /*      */     } 
 /*      */ 
 /*      */ 

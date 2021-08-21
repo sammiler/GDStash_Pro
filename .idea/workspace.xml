@@ -10,662 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6f45bd-70de-4453-ab0c-3d3d23cc19b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/untitled104_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/description.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/derby.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/project-template.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GDStash_Pro.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GrimDawn_Chinese.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GrimDawn_English.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GrimDawn_French.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GrimDawn_German.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GrimDawn_Polski.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GrimDawn_Russian.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HTMLTags.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Messages_Chinese.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Messages_English.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Messages_French.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Messages_German.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Messages_Polski.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Messages_Russian.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI_Chinese.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI_English.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI_French.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI_German.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI_Polski.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI_Russian.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/01_config.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/02_im_export.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/03_transfer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/04_transfer_char.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/05_craft.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/06_collection.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/07_charedit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/08_masteryinfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/09_acknowledge.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/10_faq.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/11_versions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Apache_157x64.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharEdit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharEdit_Achievements.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharEdit_Factions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharEdit_Mastery1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharEdit_Mastery2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharEdit_RiftsShrines.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharTrans_CharItem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharTrans_DBItem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharTrans_DeleteDB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharTrans_EquipButtons.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharTrans_Equipment.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharTrans_ItemButtons.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharTrans_SaveChar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CharTrans_Stash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CollectSet_Result.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CollectTab_Item.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/CollectTab_Set.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Collect_Buttons.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Collect_Result.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Config_DBImport.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Config_Import.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Config_Screen_Dirs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Config_Screen_Import.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Config_Screen_Restrictions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Config_Screen_UI.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Config_SysTray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Config_SysTray_Menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Craft_Bool_And.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Craft_Bool_Or.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Craft_Filter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Craft_FilterResult.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Craft_Item.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Craft_Search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Craft_SearchResult.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Crate_Logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/ExcelsiorJET_180x60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/GDStash_Banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/GDStash_Logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Home_100x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Java_Logo_133x68.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Java_Logo_266x135.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/LGPL_192x64.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/LGPL_v3_CC_190x64.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MIT_116x64.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_Blueprints.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_CopyClipboard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_Dir.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_Export.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_GDS_IAS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_Illusions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_Import.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_LoadDB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_LoadItems.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_Messages.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_Search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_SelectButtons.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MassImport_Table.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/MasteryInfo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/ModDB_150x66.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/NexusMods_198x68.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_DBItem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_DeleteDB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_ItemButtons.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_SaveStash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_Search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_SearchResult.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_SelStash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_SimilarInfo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_Stash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/Transfer_StashItem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/btn_cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/copyright_50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/image/getjavasoftware-180x150.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GDS_Logo.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GDS_Logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GDStash_Banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GDStash_Load_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GDStash_Load_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GDStash_Load_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GDStash_Load_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GDStash_Progress_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GD_CharBag_Tiles.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GD_CharInventory_Tiles.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GD_CharStash_Tiles.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GD_Char_BG.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GD_Char_Equipment_Tiles.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/GD_SharedStash_Tiles.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/bool_and_sel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/bool_and_unsel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/bool_or_sel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/bool_or_unsel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_dir.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_filter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_minus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_ok.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_question.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_reload.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_save.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/btn_trash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/cfg_arz_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/cfg_db_imp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/cfg_devotion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/cfg_save.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/cfg_texconv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/cfg_transmute_add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/cfg_transmute_full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/coll_all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/coll_found.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/coll_miss.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/db_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/item_copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/item_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/item_move.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_formula.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_gds_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_gds_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_ias_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_item_export.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_item_imp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_item_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_legend_export.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_none.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mass_valid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/mastery_reset.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/msg_error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/msg_info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/msg_success.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/msg_warn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/page_copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/page_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/page_move.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_char_data.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_char_edit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_char_portal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_char_trans.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_collect.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_collect_set.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_config.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_file_import.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_mastery_info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_stash_craft.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/tab_stash_trans.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/16/trans_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/bool_and_sel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/bool_and_unsel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/bool_or_sel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/bool_or_unsel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_dir.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_filter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_minus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_ok.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_question.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_reload.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_save.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/btn_trash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/cfg_arz_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/cfg_db_imp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/cfg_devotion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/cfg_save.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/cfg_texconv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/cfg_transmute_add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/cfg_transmute_full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/coll_all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/coll_found.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/coll_miss.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/db_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/item_copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/item_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/item_move.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_formula.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_gds_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_gds_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_ias_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_item_export.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_item_imp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_item_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_legend_export.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_none.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mass_valid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/mastery_reset.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/msg_error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/msg_info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/msg_success.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/msg_warn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/page_copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/page_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/page_move.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_char_data.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_char_edit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_char_portal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_char_trans.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_collect.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_collect_set.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_config.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_file_import.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_mastery_info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_stash_craft.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/tab_stash_trans.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/24/trans_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/bool_and_sel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/bool_and_unsel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/bool_or_sel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/bool_or_unsel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_dir.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_filter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_minus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_ok.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_question.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_reload.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_save.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/btn_trash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/cfg_arz_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/cfg_db_imp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/cfg_devotion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/cfg_save.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/cfg_texconv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/cfg_transmute_add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/cfg_transmute_full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/coll_all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/coll_found.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/coll_miss.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/db_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/item_copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/item_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/item_move.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_all.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_formula.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_gds_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_gds_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_ias_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_item_export.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_item_imp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_item_load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_legend_export.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_none.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mass_valid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/mastery_reset.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/msg_error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/msg_info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/msg_success.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/msg_warn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/page_copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/page_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/page_move.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_char_data.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_char_edit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_char_portal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_char_trans.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_collect.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_config.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_file_import.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_mastery_info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_sollect_set.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_stash_craft.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/tab_stash_trans.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/32/trans_exp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/48/msg_error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/48/msg_info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/48/msg_success.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/icons/48/msg_warn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/skills_buttonborder01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/skills_buttonborderround01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_Bottom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_BottomLeft.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_BottomRight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_Center.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_CenterLeft.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_CenterRight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_Noise.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_Top.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_TopLeft.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image/tiles/Tile_TopRight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/JTattoo-1.6.13.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/derby.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/exp4j-0.4.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ini4j-0.5.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/lz4-java-1.7.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log4j2.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDChar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharBio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharCrucible.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharEquippedContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharFaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharFactionList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInventorySack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharItemSkill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharMarkerList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharNoteList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharRespawnList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharShrineList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkillList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkillMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStashPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSummary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharTeleportList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharTutorialList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUID.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUISettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUISlot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBAffix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBAffixSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBBitmap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBClassTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBClassTableButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellationAffinity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellationStar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineLevel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineMasteryTier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEnginePlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEnginePlayerMasteries.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineSkillMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineSkillMasterAlloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineTagText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBFaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBFactionReputation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBFormula.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBFormulaSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBItemCraft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBItemSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBItemSetAlloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableAffixSetAlloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableItemAlloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableSetAlloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableAlloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableSetAlloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBPet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBPetBio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBPetSkill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBShrine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillBonus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillBonusLevel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillDependency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillExperience.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillModifier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillSpawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillTreeAlloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBStashItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBStat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBStatBonusRace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBViewItemSkill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/GDDBData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/GDDBUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/ItemClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/ItemCriteriaCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/ItemSlots.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/ParameterSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/SelectionCriteria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/StatCriteriaCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/AbstractItemCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/CriteriaCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/ItemIDItemCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/ItemIDItemSetCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDItemCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDItemSetCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDPrefixCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDSuffixCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/description/AffixComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/description/BonusDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/description/BonusInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/description/BonusInfoSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/description/DetailComposer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/description/ItemComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/description/TagInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/description/TagInfoHashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCFilePart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCFileString.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCFileToC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZDecompress.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZFormulaSetPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZString.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/DDSHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/DDSLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/DDSPixelFormat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/DDSReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDAbstractBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDByteBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDByteBuffer.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDFileSize.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDMappedByteBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDParseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDRandomAccessBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/IniConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/file/TEXHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/formula/GDFormulaEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/formula/GDFormulaList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDAbstractContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDItemContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDRandomUniform.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDStash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDStashPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDTransmute.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDTransmuteType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/item/ItemInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTaskList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTokenList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/trade/GDTradeList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionSetPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionTabbedPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCraftPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDFilterDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDFlexDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDHelpActionListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemCraftPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemImportTablePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoSimilarPaneAlt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoSimilarTablePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemNameTablePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDLogDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDLogoDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDMassImportPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDMasteryInfoPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDProgressDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDSplashScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDStashFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDTabbedPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDTabbedSearchDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDTransferPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDUIFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDUISearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDUITransfer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharAttributePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDataOverviewPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDataPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDevotionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharEditPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharEditTabbedPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharFactionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharInventoryPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharMasteryImagePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharMasteryPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharPointPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRespawnPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct1Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct2Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct3Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct4Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct5Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct6Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftNShrinePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftNShrineTabbedPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftShrineTabbedPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct1Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct2Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct3Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct4Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct5Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct6Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrinePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharStatAchievementPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharStatEditPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDUIMasterySupport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct1Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct2Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct3Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct4Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct5Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct6Pane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftNShrinePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/BorderListCellRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/ComparisonResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/EscapeDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/FieldListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/FontChooserDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/FontSamplePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/SelectionListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/TextFieldList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixRarityPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixSelectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArmorClassPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArmorTypePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArtifactRarityPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribFlatPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribPercPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribSelectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/CharLenDocFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageClassPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageConversionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageCrowdControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageDoTPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFlatPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFlatPercPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFullSelectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageSelectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageSpecialPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/HexLenDocFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/IntLenDocFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemFullSelectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemNamePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemRarityPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSelectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSetPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSetSelectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSkillPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemTypePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/LevelSelPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/MiscTypePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SelectAndOrPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SkillBonusPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SkillModifierPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SlotSelectionPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SoulboundPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/StatReqPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/StatSelPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/StrLenDocFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/WeaponTypePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDCharStashPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDContainerMapPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDContainerPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDEquippedContainerPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDPrivateStashPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDSharedStashPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIInventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIMultiContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionRow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionRow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionSorter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameRow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameSorter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionRow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionSorter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarRow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarTableHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportRow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportSorter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustablePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustableTabbedPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustableUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/CollapsiblePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBoxModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBoxRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractRiftPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractShrinePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractUpdateCharPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDCharInfoList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDStashInfoList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/VerticalButtonUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/WideComboBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/DerbyAttribute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/DerbyControlFileReader.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/DerbyLogFileReader.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/FileVersionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDImagePool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDMsgFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDMsgLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/textcolor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/untitled104.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -674,6 +21,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1wyHdqgbBSCTLvGL2R1D2EA4gHf" />
   <component name="ProjectLevelVcsManager">
@@ -746,13 +101,14 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15332031" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../Program Files/Java/jre1.8.0_301" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="org.gdstash.ui.GDStashFrame" />
       <module name="untitled104" />
       <RunnerSettings RunnerId="Run" />
@@ -785,6 +141,11 @@
       <workItem from="1629445835599" duration="70000" />
       <workItem from="1629446008891" duration="1093000" />
       <workItem from="1629447146261" duration="795000" />
+      <workItem from="1629448066767" duration="46000" />
+      <workItem from="1629463833151" duration="662000" />
+      <workItem from="1629464513746" duration="347000" />
+      <workItem from="1629466544379" duration="11360000" />
+      <workItem from="1629520014450" duration="291000" />
     </task>
     <servers />
   </component>
@@ -802,5 +163,56 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
+          <line>857</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
+          <line>196</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
+          <line>2456</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
+          <line>279</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java</url>
+          <line>888</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java</url>
+          <line>765</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.gdstash.file.ARCDecompress" memberName="strings" />
+        <PinnedItemInfo parentTag="org.gdstash.file.GDRandomAccessBuffer" memberName="file" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="list.list" />
+        <watch expression="((GDRandomAccessBuffer)buffer).file" custom="org.gdstash.file.GDRandomAccessBuffer" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GDStash_Pro$Main.ic" NAME="Main Coverage Results" MODIFIED="1629473617874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
