@@ -1,8 +1,10 @@
 /*     */ package org.gdstash.ui.character;
-/*     */ import java.awt.Component;
-/*     */ import java.awt.Font;
-/*     */ import java.awt.event.ActionListener;
-/*     */ import java.util.List;
+/*     */ import java.awt.*;
+/*     */
+/*     */ import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+/*     */ import java.util.LinkedList;
+import java.util.List;
 /*     */ import javax.swing.BorderFactory;
 /*     */ import javax.swing.GroupLayout;
 /*     */ import javax.swing.JCheckBox;
@@ -13,7 +15,8 @@
 /*     */ import org.gdstash.character.GDCharTeleportList;
 /*     */ import org.gdstash.character.GDCharUID;
 /*     */ import org.gdstash.ui.GDStashFrame;
-/*     */ import org.gdstash.util.GDMsgFormatter;
+/*     */ import org.gdstash.ui.util.GDAbstractRiftPane;
+import org.gdstash.util.GDMsgFormatter;
 /*     */ 
 /*     */ public class RoTRiftAct6Pane extends GDAbstractRiftPane {
 /*     */   private JCheckBox cbShatteredConclave;

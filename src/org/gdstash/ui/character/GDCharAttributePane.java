@@ -1,6 +1,8 @@
 /*     */ package org.gdstash.ui.character;
-/*     */ import java.awt.Component;
-/*     */ import java.awt.Font;
+/*     */ import java.awt.*;
+/*     */
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /*     */ import javax.swing.BorderFactory;
 /*     */ import javax.swing.GroupLayout;
 /*     */ import javax.swing.JButton;
@@ -10,12 +12,14 @@
 /*     */ import javax.swing.JTextField;
 /*     */ import javax.swing.UIManager;
 /*     */ import javax.swing.border.Border;
-/*     */ import javax.swing.text.AbstractDocument;
+/*     */ import javax.swing.border.TitledBorder;
+import javax.swing.text.AbstractDocument;
 /*     */ import javax.swing.text.DocumentFilter;
 /*     */ import org.gdstash.character.GDChar;
 /*     */ import org.gdstash.ui.GDStashFrame;
 /*     */ import org.gdstash.ui.select.IntLenDocFilter;
-/*     */ import org.gdstash.util.GDImagePool;
+/*     */ import org.gdstash.ui.util.AdjustablePanel;
+import org.gdstash.util.GDImagePool;
 /*     */ import org.gdstash.util.GDMsgFormatter;
 /*     */ 
 /*     */ public class GDCharAttributePane extends AdjustablePanel {

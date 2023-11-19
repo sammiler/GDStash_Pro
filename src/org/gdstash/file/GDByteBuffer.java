@@ -119,7 +119,7 @@
 /*     */ 
 /*     */     
 /* 121 */     int listPos = 0;
-/* 122 */     Iterator<byte> iter = this.list.iterator();
+/* 122 */     Iterator<byte[]> iter = this.list.iterator();
 /* 123 */     while (iter.hasNext()) {
 /* 124 */       byte[] bytes = (byte[])iter.next();
 /*     */       

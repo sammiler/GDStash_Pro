@@ -1,30 +1,42 @@
 /*     */ package org.gdstash.ui;
 /*     */ 
-/*     */ import java.awt.Component;
-/*     */ import java.awt.Font;
+/*     */ import java.awt.*;
+/*     */
 /*     */ import java.awt.event.ActionEvent;
 /*     */ import java.awt.event.ActionListener;
-/*     */ import java.awt.image.BufferedImage;
-/*     */ import java.util.List;
-/*     */ import javax.swing.BorderFactory;
-/*     */ import javax.swing.GroupLayout;
-/*     */ import javax.swing.JButton;
-/*     */ import javax.swing.JLabel;
-/*     */ import javax.swing.JPanel;
-/*     */ import javax.swing.JScrollPane;
-/*     */ import javax.swing.JTable;
-/*     */ import javax.swing.JTextField;
-/*     */ import javax.swing.UIManager;
+/*     */ import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+/*     */ import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+/*     */ import javax.swing.*;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
 /*     */ import org.gdstash.db.DBItem;
-/*     */ import org.gdstash.db.SelectionCriteria;
+/*     */ import org.gdstash.db.DBStashItem;
+import org.gdstash.db.SelectionCriteria;
 /*     */ import org.gdstash.item.GDItem;
-/*     */ import org.gdstash.ui.table.GDItemCollectionSorter;
+/*     */ import org.gdstash.ui.select.ItemSelectionPane;
+import org.gdstash.ui.table.GDItemCollectionSorter;
 /*     */ import org.gdstash.ui.table.GDItemCollectionTableModel;
 /*     */ import org.gdstash.ui.table.GDItemInfo;
-/*     */ import org.gdstash.util.GDImagePool;
+/*     */ import org.gdstash.ui.util.AdjustablePanel;
+import org.gdstash.util.GDImagePool;
 /*     */ import org.gdstash.util.GDMsgFormatter;
-/*     */ 
+import org.gdstash.util.GDMsgLogger;
+
+/*     */
 /*     */ public class GDCollectionPane extends AdjustablePanel {
 /*     */   private GDStashFrame frame;
 /*     */   private List<GDItemInfo> data;

@@ -1,8 +1,9 @@
 /*     */ package org.gdstash.item;
 /*     */ import java.util.LinkedList;
 /*     */ import java.util.List;
-/*     */ import org.gdstash.db.DBStat;
-/*     */ 
+/*     */ import org.gdstash.db.*;
+
+/*     */
 /*     */ public class ItemInfo {
 /*     */   public List<DBStat> itemStats;
 /*     */   public List<DBStat> petStats;

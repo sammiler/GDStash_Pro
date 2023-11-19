@@ -1,31 +1,50 @@
 /*      */ package org.gdstash.ui;
-/*      */ import java.awt.Component;
-/*      */ import java.awt.Font;
+/*      */ import java.awt.*;
+/*      */
 /*      */ import java.awt.event.ActionEvent;
 /*      */ import java.awt.event.ActionListener;
 /*      */ import java.beans.PropertyChangeEvent;
-/*      */ import java.io.File;
-/*      */ import java.util.List;
-/*      */ import javax.swing.ComboBoxModel;
-/*      */ import javax.swing.DefaultComboBoxModel;
-/*      */ import javax.swing.GroupLayout;
-/*      */ import javax.swing.JButton;
-/*      */ import javax.swing.JCheckBox;
-/*      */ import javax.swing.JComboBox;
-/*      */ import javax.swing.JFileChooser;
-/*      */ import javax.swing.JLabel;
-/*      */ import javax.swing.JPanel;
-/*      */ import javax.swing.JRadioButton;
-/*      */ import javax.swing.UIManager;
+/*      */ import java.beans.PropertyChangeListener;
+import java.io.File;
+/*      */ import java.io.IOException;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+/*      */ import javax.swing.*;
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */ import javax.swing.border.Border;
-/*      */ import org.gdstash.db.DBConfig;
-/*      */ import org.gdstash.file.ARCDecompress;
+import javax.swing.border.TitledBorder;
+import javax.swing.text.AbstractDocument;
+/*      */ import org.gdstash.db.*;
+/*      */
+import org.gdstash.file.ARCDecompress;
 /*      */ import org.gdstash.file.ARCList;
-/*      */ import org.gdstash.util.GDConstants;
-/*      */ import org.gdstash.util.GDImagePool;
-/*      */ import org.gdstash.util.GDMsgFormatter;
-/*      */ import org.gdstash.util.GDMsgLogger;
-/*      */ 
+/*      */ import org.gdstash.file.ARZDecompress;
+import org.gdstash.ui.character.GDCharMasteryImagePane;
+import org.gdstash.ui.character.GDCharMasteryPane;
+import org.gdstash.ui.select.ItemSetPane;
+import org.gdstash.ui.select.ItemSkillPane;
+import org.gdstash.ui.select.SkillBonusPane;
+import org.gdstash.ui.select.SkillModifierPane;
+import org.gdstash.ui.util.AdjustablePanel;
+import org.gdstash.ui.util.GDCharInfoList;
+import org.gdstash.ui.util.GDStashInfoList;
+import org.gdstash.util.*;
+import org.gdstash.ui.select.StrLenDocFilter;
+/*      */
+/*      */
+/*      */
+
+/*      */
 /*      */ public class GDConfigPane extends AdjustablePanel {
 /*      */   private GDStashFrame frame;
 /*      */   private TitledBorder brdGeneral;
@@ -353,7 +372,7 @@
 /*      */       
 /*  354 */       GDConfigPane.this.setCursor(Cursor.getDefaultCursor());
 /*      */       
-/*  356 */       GDMsgLogger.showSevereLog((Component)GDConfigPane.this, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_DB_IMPORT"), GDLog.MessageType.Success, 
+/*  356 */       GDMsgLogger.showSevereLog((Component)GDConfigPane.this, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_DB_IMPORT"), GDLog.MessageType.Success,
 /*  357 */           GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_DB_IMPORT"), true, false);
 /*      */     }
 /*      */   }
@@ -533,7 +552,7 @@
 /*      */         
 /*      */         }
 /*  535 */         catch (IOException iOException) {}
-/*      */       } 
+        /*      */       }
 /*      */       
 /*  538 */       GDMsgLogger.showLog((Component)GDConfigPane.this, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERRORS"));
 /*      */     } }
@@ -696,7 +715,7 @@
 /*      */           } 
 /*      */         } 
 /*  698 */       } catch (Exception ex) {
-/*  699 */         GDConfigPane.this.frame; GDConfigPane.this.cbLookNFeel.setSelectedItem(GDStashFrame.iniConfig.sectUI.lookNFeel);
+/*  699 */          GDConfigPane.this.cbLookNFeel.setSelectedItem(GDStashFrame.iniConfig.sectUI.lookNFeel);
 /*      */       } 
 /*      */       
 /*  702 */       GDMsgLogger.showLog((Component)GDConfigPane.this, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERRORS"));
@@ -1444,8 +1463,8 @@
 /*      */     }
 /* 1445 */     catch (SQLException ex) {
 /* 1446 */       exists = false;
-/*      */     } 
-/*      */     
+/*      */     }
+    /*      */
 /* 1449 */     if (!exists) {
 /* 1450 */       GDMsgLogger.clear();
 /*      */       

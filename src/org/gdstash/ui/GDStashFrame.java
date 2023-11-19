@@ -1,14 +1,14 @@
 /*      */ package org.gdstash.ui;
-/*      */ import java.awt.Component;
-/*      */ import java.awt.Container;
-/*      */ import java.awt.Font;
-/*      */ import java.awt.Frame;
-/*      */ import java.awt.Image;
-/*      */ import java.awt.MenuItem;
-/*      */ import java.awt.PopupMenu;
-/*      */ import java.awt.SystemTray;
-/*      */ import java.awt.TrayIcon;
-/*      */ import java.awt.Window;
+/*      */ import java.awt.*;
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */ import java.awt.event.ActionEvent;
 /*      */ import java.awt.event.ActionListener;
 /*      */ import java.awt.event.ComponentAdapter;
@@ -19,18 +19,19 @@
 /*      */ import java.io.BufferedReader;
 /*      */ import java.io.File;
 /*      */ import java.io.IOException;
-/*      */ import java.sql.SQLException;
+/*      */ import java.io.InputStreamReader;
+import java.sql.SQLException;
 /*      */ import java.util.Collections;
 /*      */ import java.util.Comparator;
 /*      */ import java.util.Enumeration;
 /*      */ import java.util.LinkedList;
 /*      */ import java.util.List;
-/*      */ import javax.swing.AbstractButton;
-/*      */ import javax.swing.DefaultComboBoxModel;
-/*      */ import javax.swing.JButton;
-/*      */ import javax.swing.JFrame;
-/*      */ import javax.swing.JOptionPane;
-/*      */ import javax.swing.UIManager;
+/*      */ import javax.swing.*;
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */ import org.gdstash.db.DBAffix;
 /*      */ import org.gdstash.db.DBAffixSet;
 /*      */ import org.gdstash.db.DBConfig;
@@ -40,7 +41,8 @@
 /*      */ import org.gdstash.db.DBEngineSkillMaster;
 /*      */ import org.gdstash.db.GDDBData;
 /*      */ import org.gdstash.db.GDDBUtil;
-/*      */ import org.gdstash.file.ARZDecompress;
+/*      */ import org.gdstash.file.ARCList;
+import org.gdstash.file.ARZDecompress;
 /*      */ import org.gdstash.file.IniConfig;
 /*      */ import org.gdstash.ui.character.GDCharEditPane;
 /*      */ import org.gdstash.ui.character.GDCharInventoryPane;
@@ -48,12 +50,13 @@
 /*      */ import org.gdstash.ui.character.GDCharMasteryPane;
 /*      */ import org.gdstash.ui.util.GDCharInfoList;
 /*      */ import org.gdstash.ui.util.GDStashInfoList;
-/*      */ import org.gdstash.util.GDConstants;
-/*      */ import org.gdstash.util.GDImagePool;
-/*      */ import org.gdstash.util.GDLog;
-/*      */ import org.gdstash.util.GDMsgFormatter;
-/*      */ import org.gdstash.util.GDMsgLogger;
-/*      */ 
+/*      */ import org.gdstash.util.*;
+/*      */
+/*      */
+/*      */
+/*      */
+
+/*      */
 /*      */ public class GDStashFrame extends JFrame {
 /*      */   public static final boolean canSave = true;
 /*      */   public static final boolean showRNGNumbers = false;

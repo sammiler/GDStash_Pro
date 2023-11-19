@@ -1,6 +1,6 @@
 /*     */ package org.gdstash.ui.select;
-/*     */ import java.awt.Component;
-/*     */ import java.awt.Font;
+/*     */ import java.awt.*;
+/*     */
 /*     */ import java.awt.event.ActionEvent;
 /*     */ import java.awt.event.ActionListener;
 /*     */ import javax.swing.BorderFactory;
@@ -13,7 +13,8 @@
 /*     */ import org.gdstash.db.SelectionCriteria;
 /*     */ import org.gdstash.ui.GDStashFrame;
 /*     */ import org.gdstash.ui.GDTabbedSearchDialog;
-/*     */ import org.gdstash.util.GDMsgFormatter;
+/*     */ import org.gdstash.ui.util.AdjustablePanel;
+import org.gdstash.util.GDMsgFormatter;
 /*     */ 
 /*     */ public class ItemTypePane extends AdjustablePanel {
 /*     */   public static final int SEL_NONE = 0;

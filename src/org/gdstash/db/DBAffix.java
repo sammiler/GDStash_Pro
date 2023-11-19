@@ -1,10 +1,24 @@
 /*      */ package org.gdstash.db;
-/*      */ import java.sql.Connection;
-/*      */ import java.sql.PreparedStatement;
-/*      */ import java.util.List;
-/*      */ import org.gdstash.description.DetailComposer;
-/*      */ import org.gdstash.util.GDMsgFormatter;
-/*      */ 
+/*      */ import java.sql.*;
+/*      */
+/*      */
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+/*      */ import org.gdstash.description.BonusDetail;
+import org.gdstash.description.DetailComposer;
+/*      */ import org.gdstash.file.ARCDecompress;
+import org.gdstash.file.ARZDecompress;
+import org.gdstash.file.ARZRecord;
+import org.gdstash.ui.GDStashFrame;
+import org.gdstash.util.GDColor;
+import org.gdstash.util.GDConstants;
+import org.gdstash.util.GDMsgFormatter;
+import org.gdstash.util.GDMsgLogger;
+
+/*      */
 /*      */ public class DBAffix implements Comparable<DBAffix> {
 /*      */   public static final String TABLE_NAME = "GD_AFFIX";
 /*      */   public static final String FIELD_ID = "AFFIX_ID";

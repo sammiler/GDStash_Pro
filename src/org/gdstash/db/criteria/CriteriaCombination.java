@@ -1,4 +1,12 @@
-/*    */ package org.gdstash.db.criteria;public interface CriteriaCombination extends Cloneable { SelectionCriteria getCriteria(); String determineLevel1Statement(Soulbound paramSoulbound, SC_HC paramSC_HC, boolean paramBoolean, String paramString); List<CriteriaCombination> createLevel1Combinations(CriteriaCombination paramCriteriaCombination); int fillLevel1Statement(PreparedStatement paramPreparedStatement) throws SQLException; String determineLevel1Parameters();
+/*    */ package org.gdstash.db.criteria;
+
+import org.gdstash.db.SelectionCriteria;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+public interface CriteriaCombination extends Cloneable { SelectionCriteria getCriteria(); String determineLevel1Statement(Soulbound paramSoulbound, SC_HC paramSC_HC, boolean paramBoolean, String paramString); List<CriteriaCombination> createLevel1Combinations(CriteriaCombination paramCriteriaCombination); int fillLevel1Statement(PreparedStatement paramPreparedStatement) throws SQLException; String determineLevel1Parameters();
 /*    */   String determineLevel2Statement(String paramString, SelectionCriteria.StatInfo paramStatInfo);
 /*    */   int fillLevel2Statement(PreparedStatement paramPreparedStatement, String paramString, int paramInt) throws SQLException;
 /*    */   void addSingleIntCombo(List<Integer> paramList, PreparedStatement paramPreparedStatement, String paramString1, String paramString2) throws SQLException, UnsupportedOperationException;

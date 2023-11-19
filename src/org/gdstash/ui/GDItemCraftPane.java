@@ -1,22 +1,35 @@
 /*     */ package org.gdstash.ui;
-/*     */ import java.awt.Component;
-/*     */ import java.awt.Dimension;
-/*     */ import java.awt.Font;
-/*     */ import java.util.LinkedList;
+/*     */ import java.awt.*;
+/*     */
+/*     */
+/*     */ import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 /*     */ import java.util.List;
-/*     */ import javax.swing.DefaultComboBoxModel;
-/*     */ import javax.swing.GroupLayout;
-/*     */ import javax.swing.JComboBox;
-/*     */ import javax.swing.JLabel;
-/*     */ import javax.swing.JPanel;
+/*     */ import javax.swing.*;
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import javax.swing.border.Border;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 /*     */ import org.gdstash.db.DBAffix;
 /*     */ import org.gdstash.db.DBAffixSet;
 /*     */ import org.gdstash.db.DBLootTable;
 /*     */ import org.gdstash.db.DBLootTableSet;
 /*     */ import org.gdstash.item.GDItem;
-/*     */ import org.gdstash.util.GDMsgFormatter;
-/*     */ 
+/*     */ import org.gdstash.ui.select.HexLenDocFilter;
+import org.gdstash.ui.select.IntLenDocFilter;
+import org.gdstash.ui.util.AdjustablePanel;
+import org.gdstash.ui.util.WideComboBox;
+import org.gdstash.util.GDConstants;
+import org.gdstash.util.GDMsgFormatter;
+import org.gdstash.util.GDMsgLogger;
+
+/*     */
 /*     */ public class GDItemCraftPane extends AdjustablePanel {
 /*     */   private JLabel lblImage;
 /*     */   private JLabel lblName;

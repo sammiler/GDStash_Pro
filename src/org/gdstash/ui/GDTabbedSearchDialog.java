@@ -1,27 +1,29 @@
 /*     */ package org.gdstash.ui;
 /*     */ 
-/*     */ import java.awt.BorderLayout;
-/*     */ import java.awt.Component;
-/*     */ import java.awt.Font;
-/*     */ import java.awt.Frame;
+/*     */ import java.awt.*;
+/*     */
+/*     */
+/*     */
 /*     */ import java.awt.event.ActionEvent;
 /*     */ import java.awt.event.ActionListener;
-/*     */ import javax.swing.GroupLayout;
-/*     */ import javax.swing.JButton;
-/*     */ import javax.swing.JPanel;
-/*     */ import javax.swing.JTabbedPane;
-/*     */ import javax.swing.UIManager;
+/*     */ import javax.swing.*;
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import org.gdstash.db.SelectionCriteria;
-/*     */ import org.gdstash.ui.select.AttribSelectionPane;
-/*     */ import org.gdstash.ui.select.DamageSelectionPane;
-/*     */ import org.gdstash.ui.select.ItemFullSelectionPane;
-/*     */ import org.gdstash.ui.select.ItemSkillPane;
-/*     */ import org.gdstash.ui.select.SkillBonusPane;
-/*     */ import org.gdstash.ui.select.SkillModifierPane;
+/*     */ import org.gdstash.ui.select.*;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import org.gdstash.util.GDImagePool;
 /*     */ import org.gdstash.util.GDLog;
 /*     */ import org.gdstash.util.GDMsgFormatter;
-/*     */ 
+import org.gdstash.util.GDMsgLogger;
+
+/*     */
 /*     */ public class GDTabbedSearchDialog extends JDialog {
 /*     */   private Component owner;
 /*     */   private JButton btnSearch;

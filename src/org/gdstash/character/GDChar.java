@@ -1,4 +1,24 @@
-/*      */ package org.gdstash.character;public class GDChar implements GDFileSize { public static final byte BYTE_VANILLA = 0; public static final byte BYTE_ASHES_OF_MALMOUTH = 1; public static final byte BYTE_FORGOTTEN_GODS = 3; public static final byte BYTE_FALSE = 0; public static final byte BYTE_TRUE = 1; public static final byte SEX_FEMALE = 0; public static final byte SEX_MALE = 1; public static final String TEXTURE_MALE = "creatures/pc/hero02.tex"; public static final byte SOFTCORE = 0; public static final byte HARDCORE = 1; public static final byte DIFFICULTY_NORMAL = 0; public static final byte DIFFICULTY_ELITE = 1; public static final byte DIFFICULTY_ULTIMATE = 2; public static final byte CRUCIBLE_ASPIRANT = 0; public static final byte CRUCIBLE_CHALLENGER = 1; public static final byte CRUCIBLE_GLADIATOR = 2; public static final int EQUIP_SLOT_HEAD = 0; public static final int EQUIP_SLOT_AMULET = 1; public static final int EQUIP_SLOT_CHEST = 2; public static final int EQUIP_SLOT_LEGS = 3; public static final int EQUIP_SLOT_FEET = 4; public static final int EQUIP_SLOT_HANDS = 5; public static final int EQUIP_SLOT_RING_RIGHT = 6;
+/*      */ package org.gdstash.character;
+
+import org.gdstash.db.*;
+import org.gdstash.file.GDFileSize;
+import org.gdstash.file.GDReader;
+import org.gdstash.file.GDWriter;
+import org.gdstash.item.GDAbstractContainer;
+import org.gdstash.item.GDItem;
+import org.gdstash.ui.character.GDCharFactionPane;
+import org.gdstash.util.FileVersionException;
+import org.gdstash.util.GDConstants;
+import org.gdstash.util.GDMsgFormatter;
+import org.gdstash.util.GDMsgLogger;
+import org.gdstash.ui.character.GDCharMasteryImagePane;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+
+public class GDChar implements GDFileSize { public static final byte BYTE_VANILLA = 0; public static final byte BYTE_ASHES_OF_MALMOUTH = 1; public static final byte BYTE_FORGOTTEN_GODS = 3; public static final byte BYTE_FALSE = 0; public static final byte BYTE_TRUE = 1; public static final byte SEX_FEMALE = 0; public static final byte SEX_MALE = 1; public static final String TEXTURE_MALE = "creatures/pc/hero02.tex"; public static final byte SOFTCORE = 0; public static final byte HARDCORE = 1; public static final byte DIFFICULTY_NORMAL = 0; public static final byte DIFFICULTY_ELITE = 1; public static final byte DIFFICULTY_ULTIMATE = 2; public static final byte CRUCIBLE_ASPIRANT = 0; public static final byte CRUCIBLE_CHALLENGER = 1; public static final byte CRUCIBLE_GLADIATOR = 2; public static final int EQUIP_SLOT_HEAD = 0; public static final int EQUIP_SLOT_AMULET = 1; public static final int EQUIP_SLOT_CHEST = 2; public static final int EQUIP_SLOT_LEGS = 3; public static final int EQUIP_SLOT_FEET = 4; public static final int EQUIP_SLOT_HANDS = 5; public static final int EQUIP_SLOT_RING_RIGHT = 6;
 /*      */   public static final int EQUIP_SLOT_RING_LEFT = 7;
 /*      */   public static final int EQUIP_SLOT_BELT = 8;
 /*      */   public static final int EQUIP_SLOT_SHOULDERS = 9;
@@ -657,8 +677,8 @@
 /*      */     }
 /*  658 */     catch (IOException ex) {
 /*  659 */       GDMsgLogger.addError(ex);
-/*      */     } 
-/*      */   }
+/*      */     }
+    /*      */   }
 /*      */   
 /*      */   public void setCharName(String charName) {
 /*  664 */     this.header.setCharName(charName);

@@ -1198,7 +1198,7 @@
 /*      */ 
 /*      */ 
 /*      */     
-/* 1201 */     int pos3 = text.indexOf(false, pos1);
+/* 1201 */     int pos3 = text.indexOf(0, pos1);
 /* 1202 */     if (pos3 != -1 && pos3 < pos2) pos2 = pos3; 
 /* 1203 */     if (pos2 == -1) pos2 = pos3; 
 /* 1204 */     if (pos2 == -1) {
