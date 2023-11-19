@@ -1,28 +1,13 @@
 /*     */ package org.gdstash.ui.stash;
-/*     */ import java.awt.*;
-/*     */ import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-/*     */ import javax.swing.*;
+/*     */ import java.awt.Font;
+/*     */ import java.io.File;
+/*     */ import javax.swing.GroupLayout;
 /*     */ import org.gdstash.character.GDChar;
-/*     */ import org.gdstash.character.GDCharInventorySack;
-import org.gdstash.item.GDAbstractContainer;
+/*     */ import org.gdstash.item.GDAbstractContainer;
 /*     */ import org.gdstash.item.GDItem;
-/*     */ import org.gdstash.item.GDItemContainer;
-import org.gdstash.ui.GDStashFrame;
-import org.gdstash.ui.GDUITransfer;
-import org.gdstash.ui.util.AdjustablePanel;
-import org.gdstash.ui.util.GDCharInfoList;
-/*     */ import org.gdstash.util.GDConstants;
-import org.gdstash.util.GDImagePool;
-import org.gdstash.util.GDMsgFormatter;
-import org.gdstash.util.GDMsgLogger;
-
-import java.io.IOException;
-import java.util.LinkedList;
-import  java.util.List;
-
-/*     */
+/*     */ import org.gdstash.ui.util.GDCharInfoList;
+/*     */ import org.gdstash.util.GDMsgFormatter;
+/*     */ 
 /*     */ public class GDCharStashPane extends AdjustablePanel implements GDUIInventory {
 /*     */   public static final int OFFSET_X_STASH_CHAR = 117;
 /*     */   public static final int OFFSET_Y_STASH_CHAR = 99;
@@ -310,112 +295,120 @@ import  java.util.List;
 /* 295 */     return panel;
 /*     */   }
 /*     */   
+/*     */   public void updateConfig() {
+/* 299 */     if (this.pnlPages != null) {
+/* 300 */       for (GDContainerMapPane page : this.pnlPages) {
+/* 301 */         page.updateConfig();
+/*     */       }
+/*     */     }
+/*     */   }
+/*     */   
 /*     */   public void initCharSelection() {
-/* 299 */     this.cbSelChar.removeAllItems();
-/* 300 */     this.cbSelChar.addItem("");
+/* 307 */     this.cbSelChar.removeAllItems();
+/* 308 */     this.cbSelChar.addItem("");
 /*     */     
-/* 302 */     for (GDCharInfoList.GDCharFileInfo info : GDCharInfoList.gdCharFileInfos) {
-/* 303 */       this.cbSelChar.addItem(info.charInfo);
+/* 310 */     for (GDCharInfoList.GDCharFileInfo info : GDCharInfoList.gdCharFileInfos) {
+/* 311 */       this.cbSelChar.addItem(info.charInfo);
 /*     */     }
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public void refreshCharSelection() {
-/* 309 */     File file = null;
+/* 317 */     File file = null;
 /*     */     
-/* 311 */     if (this.info != null) file = this.info.charFile;
+/* 319 */     if (this.info != null) file = this.info.charFile;
 /*     */     
-/* 313 */     this.cbSelChar.removeAllItems();
-/* 314 */     this.cbSelChar.addItem("");
+/* 321 */     this.cbSelChar.removeAllItems();
+/* 322 */     this.cbSelChar.addItem("");
 /*     */ 
 /*     */ 
 /*     */     
-/* 318 */     GDCharInfoList.GDCharFileInfo selInfo = null;
-/* 319 */     int idx = -1;
-/* 320 */     int i = 1;
+/* 326 */     GDCharInfoList.GDCharFileInfo selInfo = null;
+/* 327 */     int idx = -1;
+/* 328 */     int i = 1;
 /*     */     
-/* 322 */     for (GDCharInfoList.GDCharFileInfo info : GDCharInfoList.gdCharFileInfos) {
-/* 323 */       this.cbSelChar.addItem(info.charInfo);
+/* 330 */     for (GDCharInfoList.GDCharFileInfo info : GDCharInfoList.gdCharFileInfos) {
+/* 331 */       this.cbSelChar.addItem(info.charInfo);
 /*     */       
-/* 325 */       if (info.charFile.equals(file)) {
-/* 326 */         selInfo = info;
-/* 327 */         idx = i;
+/* 333 */       if (info.charFile.equals(file)) {
+/* 334 */         selInfo = info;
+/* 335 */         idx = i;
 /*     */       } 
 /*     */       
-/* 330 */       i++;
+/* 338 */       i++;
 /*     */     } 
 /*     */     
-/* 333 */     if (idx == -1) {
-/* 334 */       setChar((GDCharInfoList.GDCharFileInfo)null);
+/* 341 */     if (idx == -1) {
+/* 342 */       setChar((GDCharInfoList.GDCharFileInfo)null);
 /*     */     } else {
-/* 336 */       this.cbSelChar.setSelectedIndex(idx);
+/* 344 */       this.cbSelChar.setSelectedIndex(idx);
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   public void renameCharDir(File fDirOld, File fDirNew) {
-/* 341 */     if (this.info == null)
-/* 342 */       return;  if (this.info.charFile == null)
+/* 349 */     if (this.info == null)
+/* 350 */       return;  if (this.info.charFile == null)
 /*     */       return; 
-/* 344 */     File fDir = this.info.charFile.getParentFile();
+/* 352 */     File fDir = this.info.charFile.getParentFile();
 /*     */     
-/* 346 */     if (fDir == null)
+/* 354 */     if (fDir == null)
 /*     */       return; 
-/* 348 */     if (fDir.equals(fDirOld)) {
+/* 356 */     if (fDir.equals(fDirOld)) {
 /*     */       try {
-/* 350 */         String name = this.info.charFile.getName();
-/* 351 */         String dir = fDirNew.getCanonicalPath() + GDConstants.FILE_SEPARATOR + name;
+/* 358 */         String name = this.info.charFile.getName();
+/* 359 */         String dir = fDirNew.getCanonicalPath() + GDConstants.FILE_SEPARATOR + name;
 /*     */         
-/* 353 */         File f = new File(dir);
+/* 361 */         File f = new File(dir);
 /*     */         
-/* 355 */         this.info.charFile = f;
-/* 356 */         if (this.info.gdChar != null) this.info.gdChar.setFileDir(fDirNew);
+/* 363 */         this.info.charFile = f;
+/* 364 */         if (this.info.gdChar != null) this.info.gdChar.setFileDir(fDirNew);
 /*     */         
-/* 358 */         setChar(this.info);
+/* 366 */         setChar(this.info);
 /*     */       }
-/* 360 */       catch (IOException ex) {
-/* 361 */         GDMsgLogger.addError(ex);
+/* 368 */       catch (IOException ex) {
+/* 369 */         GDMsgLogger.addError(ex);
 /*     */       } 
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   public void setChar(GDCharInfoList.GDCharFileInfo info) {
-/* 367 */     this.info = info;
+/* 375 */     this.info = info;
 /*     */     
-/* 369 */     this.uiTransfer.setChar(info);
+/* 377 */     this.uiTransfer.setChar(info);
 /*     */     
-/* 371 */     GDChar gdc = null;
-/* 372 */     if (info != null) gdc = info.gdChar;
+/* 379 */     GDChar gdc = null;
+/* 380 */     if (info != null) gdc = info.gdChar;
 /*     */     
-/* 374 */     if (gdc == null) {
-/* 375 */       GDImagePool.buildCharStash(10, 18);
+/* 382 */     if (gdc == null) {
+/* 383 */       GDImagePool.buildCharStash(10, 18);
 /*     */     } else {
-/* 377 */       GDImagePool.buildCharStash(gdc.getStashWidth(), gdc.getStashHeight());
+/* 385 */       GDImagePool.buildCharStash(gdc.getStashWidth(), gdc.getStashHeight());
 /*     */     } 
 /*     */     
-/* 380 */     for (int i = 0; i < this.pnlPages.length; i++) {
-/* 381 */       this.pnlPages[i].setBGImage(GDImagePool.getCharStashBG());
-/* 382 */       this.pnlPages[i].revalidate();
-/* 383 */       this.pnlPages[i].repaint();
+/* 388 */     for (int i = 0; i < this.pnlPages.length; i++) {
+/* 389 */       this.pnlPages[i].setBGImage(GDImagePool.getCharStashBG());
+/* 390 */       this.pnlPages[i].revalidate();
+/* 391 */       this.pnlPages[i].repaint();
 /*     */     } 
 /*     */     
-/* 386 */     this.tabPages.revalidate();
-/* 387 */     this.tabPages.repaint();
+/* 394 */     this.tabPages.revalidate();
+/* 395 */     this.tabPages.repaint();
 /*     */     
-/* 389 */     layoutStash();
+/* 397 */     layoutStash();
 /*     */   }
 /*     */   
 /*     */   public GDContainerMapPane getCurrentPage() {
-/* 393 */     int index = this.tabPages.getSelectedIndex();
+/* 401 */     int index = this.tabPages.getSelectedIndex();
 /*     */     
-/* 395 */     return this.pnlPages[index];
+/* 403 */     return this.pnlPages[index];
 /*     */   }
 /*     */   
 /*     */   public void layoutStash() {
-/* 399 */     if (this.tabPages == null)
+/* 407 */     if (this.tabPages == null)
 /*     */       return; 
-/* 401 */     GDChar gdc = null;
+/* 409 */     GDChar gdc = null;
 /*     */     
-/* 403 */     if (this.info != null) gdc = this.info.gdChar;
+/* 411 */     if (this.info != null) gdc = this.info.gdChar;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -424,153 +417,153 @@ import  java.util.List;
 /*     */ 
 /*     */ 
 /*     */     
-/* 412 */     this.pnlPages[0].clearContainers();
+/* 420 */     this.pnlPages[0].clearContainers();
 /*     */     
-/* 414 */     if (gdc != null) {
-/* 415 */       List<GDAbstractContainer> list = gdc.getStashPages();
+/* 422 */     if (gdc != null) {
+/* 423 */       List<GDAbstractContainer> list = gdc.getStashPages();
 /*     */       
-/* 417 */       for (GDAbstractContainer page : list) {
-/* 418 */         GDContainerPane container = new GDContainerPane(3, 97, 100, this.frame, this, this.uiTransfer);
-/* 419 */         container.setContainer((GDItemContainer)page);
+/* 425 */       for (GDAbstractContainer page : list) {
+/* 426 */         GDContainerPane container = new GDContainerPane(3, 97, 100, this.frame, this, this.uiTransfer);
+/* 427 */         container.setContainer((GDItemContainer)page);
 /*     */         
-/* 421 */         this.pnlPages[0].addContainer(container);
+/* 429 */         this.pnlPages[0].addContainer(container);
 /*     */       } 
 /*     */     } 
 /*     */     
-/* 425 */     this.pnlPages[1].clearContainers();
-/* 426 */     GDUIContainer container1 = new GDEquippedContainerPane(19, 33, this.frame, this, this.uiTransfer);
+/* 433 */     this.pnlPages[1].clearContainers();
+/* 434 */     GDUIContainer container1 = new GDEquippedContainerPane(19, 33, this.frame, this, this.uiTransfer);
 /*     */     
-/* 428 */     GDUIContainer container2 = new GDContainerPane(4, 86, 485, this.frame, this, this.uiTransfer);
+/* 436 */     GDUIContainer container2 = new GDContainerPane(4, 86, 485, this.frame, this, this.uiTransfer);
 /*     */     
-/* 430 */     if (gdc != null) {
-/* 431 */       container1.setContainer((GDItemContainer)this.info.gdChar.getEquipment());
-/* 432 */       container2.setContainer((GDItemContainer)this.info.gdChar.getInventory());
+/* 438 */     if (gdc != null) {
+/* 439 */       container1.setContainer((GDItemContainer)this.info.gdChar.getEquipment());
+/* 440 */       container2.setContainer((GDItemContainer)this.info.gdChar.getInventory());
 /*     */     } 
-/* 434 */     this.pnlPages[1].addContainer(container1);
-/* 435 */     this.pnlPages[1].addContainer(container2);
+/* 442 */     this.pnlPages[1].addContainer(container1);
+/* 443 */     this.pnlPages[1].addContainer(container2);
 /*     */     
-/* 437 */     if (gdc == null) {
-/* 438 */       buildBagContainer((GDChar)null);
+/* 445 */     if (gdc == null) {
+/* 446 */       buildBagContainer((GDChar)null);
 /*     */     } else {
-/* 440 */       buildBagContainer(gdc);
+/* 448 */       buildBagContainer(gdc);
 /*     */     } 
 /*     */     
-/* 443 */     this.tabPages.removeAll();
-/* 444 */     this.tabPages.add(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "TXT_CHAR_STASH"), (Component)this.pnlPages[0]);
-/* 445 */     this.tabPages.add(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "TXT_CHAR_INVENTORY"), (Component)this.pnlPages[1]);
-/* 446 */     this.tabPages.add(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "TXT_CHAR_BAGS"), (Component)this.pnlPages[2]);
+/* 451 */     this.tabPages.removeAll();
+/* 452 */     this.tabPages.add(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "TXT_CHAR_STASH"), (Component)this.pnlPages[0]);
+/* 453 */     this.tabPages.add(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "TXT_CHAR_INVENTORY"), (Component)this.pnlPages[1]);
+/* 454 */     this.tabPages.add(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "TXT_CHAR_BAGS"), (Component)this.pnlPages[2]);
 /*     */   }
 /*     */   
 /*     */   private void buildBagContainer(GDChar gdc) {
-/* 450 */     List<GDCharInventorySack> sacks = null;
+/* 458 */     List<GDCharInventorySack> sacks = null;
 /*     */     
-/* 452 */     if (gdc == null) {
-/* 453 */       sacks = new LinkedList<>();
+/* 460 */     if (gdc == null) {
+/* 461 */       sacks = new LinkedList<>();
 /*     */     } else {
-/* 455 */       sacks = gdc.getBags();
+/* 463 */       sacks = gdc.getBags();
 /*     */     } 
 /*     */     
-/* 458 */     this.pnlPages[2].clearContainers();
+/* 466 */     this.pnlPages[2].clearContainers();
 /*     */     
-/* 460 */     int i = 0;
-/* 461 */     int x = 0;
-/* 462 */     int y = 0;
+/* 468 */     int i = 0;
+/* 469 */     int x = 0;
+/* 470 */     int y = 0;
 /*     */     
-/* 464 */     for (GDCharInventorySack sack : sacks) {
-/* 465 */       switch (i) {
+/* 472 */     for (GDCharInventorySack sack : sacks) {
+/* 473 */       switch (i) {
 /*     */         case 0:
-/* 467 */           x = 15;
-/* 468 */           y = 0;
+/* 475 */           x = 15;
+/* 476 */           y = 0;
 /*     */           break;
 /*     */         
 /*     */         case 1:
-/* 472 */           x = 287;
-/* 473 */           y = 0;
+/* 480 */           x = 287;
+/* 481 */           y = 0;
 /*     */           break;
 /*     */         
 /*     */         case 2:
-/* 477 */           x = 15;
-/* 478 */           y = 261;
+/* 485 */           x = 15;
+/* 486 */           y = 261;
 /*     */           break;
 /*     */         
 /*     */         case 3:
-/* 482 */           x = 287;
-/* 483 */           y = 261;
+/* 490 */           x = 287;
+/* 491 */           y = 261;
 /*     */           break;
 /*     */         
 /*     */         case 4:
-/* 487 */           x = 15;
-/* 488 */           y = 521;
+/* 495 */           x = 15;
+/* 496 */           y = 521;
 /*     */           break;
 /*     */       } 
 /*     */ 
 /*     */       
-/* 493 */       GDUIContainer container = new GDContainerPane(5, x, y, this.frame, this, this.uiTransfer);
-/* 494 */       container.setContainer((GDItemContainer)sack);
-/* 495 */       this.pnlPages[2].addContainer(container);
+/* 501 */       GDUIContainer container = new GDContainerPane(5, x, y, this.frame, this, this.uiTransfer);
+/* 502 */       container.setContainer((GDItemContainer)sack);
+/* 503 */       this.pnlPages[2].addContainer(container);
 /*     */       
-/* 497 */       i++;
+/* 505 */       i++;
 /*     */     } 
 /*     */     
-/* 500 */     while (i <= 4) {
-/* 501 */       switch (i) {
+/* 508 */     while (i <= 4) {
+/* 509 */       switch (i) {
 /*     */         case 0:
-/* 503 */           x = 15;
-/* 504 */           y = 0;
+/* 511 */           x = 15;
+/* 512 */           y = 0;
 /*     */           break;
 /*     */         
 /*     */         case 1:
-/* 508 */           x = 287;
-/* 509 */           y = 0;
+/* 516 */           x = 287;
+/* 517 */           y = 0;
 /*     */           break;
 /*     */         
 /*     */         case 2:
-/* 513 */           x = 15;
-/* 514 */           y = 261;
+/* 521 */           x = 15;
+/* 522 */           y = 261;
 /*     */           break;
 /*     */         
 /*     */         case 3:
-/* 518 */           x = 287;
-/* 519 */           y = 261;
+/* 526 */           x = 287;
+/* 527 */           y = 261;
 /*     */           break;
 /*     */         
 /*     */         case 4:
-/* 523 */           x = 15;
-/* 524 */           y = 521;
+/* 531 */           x = 15;
+/* 532 */           y = 521;
 /*     */           break;
 /*     */       } 
 /*     */ 
 /*     */       
-/* 529 */       GDUIContainer container = new GDContainerPane(5, x, y, this.frame, this, this.uiTransfer);
-/* 530 */       container.setContainer(null);
-/* 531 */       this.pnlPages[2].addContainer(container);
+/* 537 */       GDUIContainer container = new GDContainerPane(5, x, y, this.frame, this, this.uiTransfer);
+/* 538 */       container.setContainer(null);
+/* 539 */       this.pnlPages[2].addContainer(container);
 /*     */       
-/* 533 */       i++;
+/* 541 */       i++;
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   public void deleteSelectedItem(int action) {
-/* 538 */     if (this.selItem == null)
+/* 546 */     if (this.selItem == null)
 /*     */       return; 
-/* 540 */     this.selPage.deleteItem(this.selItem, action, true);
+/* 548 */     this.selPage.deleteItem(this.selItem, action, true);
 /*     */     
-/* 542 */     setSelectedItem((GDItem)null);
+/* 550 */     setSelectedItem((GDItem)null);
 /*     */   }
 /*     */   
 /*     */   public void moveSelectedItem(int action, int x, int y) {
-/* 546 */     if (this.selItem == null)
+/* 554 */     if (this.selItem == null)
 /*     */       return; 
-/* 548 */     GDContainerMapPane page = getCurrentPage();
-/* 549 */     GDItem clone = this.selItem.clone();
+/* 556 */     GDContainerMapPane page = getCurrentPage();
+/* 557 */     GDItem clone = this.selItem.clone();
 /*     */     
-/* 551 */     boolean success = page.addItem(clone, action, x, y);
+/* 559 */     boolean success = page.addItem(clone, action, x, y);
 /*     */     
-/* 553 */     if (success) {
-/* 554 */       success = this.selPage.deleteItem(this.selItem, action, true);
+/* 561 */     if (success) {
+/* 562 */       success = this.selPage.deleteItem(this.selItem, action, true);
 /*     */       
-/* 556 */       if (success) {
-/* 557 */         this.selItem = clone;
-/* 558 */         this.selPage = page;
+/* 564 */       if (success) {
+/* 565 */         this.selItem = clone;
+/* 566 */         this.selPage = page;
 /*     */       } 
 /*     */     } 
 /*     */   }
@@ -581,34 +574,34 @@ import  java.util.List;
 /*     */ 
 /*     */   
 /*     */   public GDItem getSelectedItem() {
-/* 569 */     return this.selItem;
+/* 577 */     return this.selItem;
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public void setSelectedItem(GDItem item) {
-/* 574 */     this.selItem = item;
+/* 582 */     this.selItem = item;
 /*     */     
-/* 576 */     if (item == null) {
-/* 577 */       this.selPage = null;
+/* 584 */     if (item == null) {
+/* 585 */       this.selPage = null;
 /*     */     } else {
-/* 579 */       this.selPage = getCurrentPage();
+/* 587 */       this.selPage = getCurrentPage();
 /*     */       
-/* 581 */       this.selPage.layoutContainers();
+/* 589 */       this.selPage.layoutContainers();
 /*     */     } 
 /*     */     
-/* 584 */     this.uiTransfer.setSelectedItem(item, 1);
+/* 592 */     this.uiTransfer.setSelectedItem(item, 1);
 /*     */   }
 /*     */   
 /*     */   public boolean addItem(GDItem item, int action, int x, int y) {
-/* 588 */     if (item == null) return false;
+/* 596 */     if (item == null) return false;
 /*     */     
-/* 590 */     GDContainerMapPane page = getCurrentPage();
-/* 591 */     return page.addItem(item.clone(), action, x, y);
+/* 598 */     GDContainerMapPane page = getCurrentPage();
+/* 599 */     return page.addItem(item.clone(), action, x, y);
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\stash\GDCharStashPane.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\stash\GDCharStashPane.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

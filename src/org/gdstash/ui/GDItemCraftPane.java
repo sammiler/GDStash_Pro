@@ -1,35 +1,22 @@
 /*     */ package org.gdstash.ui;
-/*     */ import java.awt.*;
-/*     */
-/*     */
-/*     */ import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
+/*     */ import java.awt.Component;
+/*     */ import java.awt.Dimension;
+/*     */ import java.awt.Font;
+/*     */ import java.util.LinkedList;
 /*     */ import java.util.List;
-/*     */ import javax.swing.*;
-/*     */
-/*     */
-/*     */
-/*     */
+/*     */ import javax.swing.DefaultComboBoxModel;
+/*     */ import javax.swing.GroupLayout;
+/*     */ import javax.swing.JComboBox;
+/*     */ import javax.swing.JLabel;
+/*     */ import javax.swing.JPanel;
 /*     */ import javax.swing.border.Border;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.DocumentFilter;
 /*     */ import org.gdstash.db.DBAffix;
 /*     */ import org.gdstash.db.DBAffixSet;
 /*     */ import org.gdstash.db.DBLootTable;
 /*     */ import org.gdstash.db.DBLootTableSet;
 /*     */ import org.gdstash.item.GDItem;
-/*     */ import org.gdstash.ui.select.HexLenDocFilter;
-import org.gdstash.ui.select.IntLenDocFilter;
-import org.gdstash.ui.util.AdjustablePanel;
-import org.gdstash.ui.util.WideComboBox;
-import org.gdstash.util.GDConstants;
-import org.gdstash.util.GDMsgFormatter;
-import org.gdstash.util.GDMsgLogger;
-
-/*     */
+/*     */ import org.gdstash.util.GDMsgFormatter;
+/*     */ 
 /*     */ public class GDItemCraftPane extends AdjustablePanel {
 /*     */   private JLabel lblImage;
 /*     */   private JLabel lblName;
@@ -566,271 +553,301 @@ import org.gdstash.util.GDMsgLogger;
 /*     */     
 /* 554 */     List<DBAffix> affixAll = null;
 /*     */     
-/* 556 */     if (GDStashFrame.iniConfig != null && GDStashFrame.iniConfig.sectRestrict.affixCombi == 3) {
-/*     */       
-/* 558 */       affixAll = extractAffixes(item, (List<DBAffixSet>)null);
-/*     */     } else {
-/* 560 */       this.itemLootTables = DBLootTable.getByItemID(item.getItemID());
-/* 561 */       List<DBAffixSet> affixSets = new LinkedList<>();
-/*     */       
-/* 563 */       if (!GDStashFrame.iniConfig.sectRestrict.completionAll && 
-/* 564 */         item.isArtifact() && 
-/* 565 */         item.getBonusAffixSet() != null) {
-/* 566 */         affixSets.add(item.getBonusAffixSet());
-/*     */       }
+/* 556 */     List<DBAffixSet> affixSets = new LinkedList<>();
+/* 557 */     if (item.isArtifact() && 
+/* 558 */       item.getBonusAffixSet() != null) {
+/* 559 */       affixSets.add(item.getBonusAffixSet());
+/*     */     }
 /*     */ 
-/*     */ 
+/*     */     
+/* 563 */     affixAll = extractAffixes(item, affixSets, -1);
+/*     */     
+/* 565 */     if (GDStashFrame.iniConfig == null || GDStashFrame.iniConfig.sectRestrict.affixCombi != 3) {
 /*     */       
-/* 571 */       affixAll = extractAffixes(item, affixSets);
+/* 567 */       this.itemLootTables = DBLootTable.getByItemID(item.getItemID());
 /*     */       
-/* 573 */       for (DBLootTable table : this.itemLootTables) {
-/* 574 */         DBLootTable.mixAffixes(item, affixAll, table.getAllAffixes());
+/* 569 */       for (DBLootTable table : this.itemLootTables) {
+/* 570 */         DBLootTable.mixAffixes(item, affixAll, table.getAllAffixes());
 /*     */       }
 /*     */     } 
 /*     */     
-/* 578 */     Collections.sort(affixAll, (Comparator<? super DBAffix>)new DBAffix.AffixComparator());
+/* 574 */     Collections.sort(affixAll, (Comparator<? super DBAffix>)new DBAffix.AffixComparator());
 /*     */     
-/* 580 */     this.allPrefixes.clear();
-/* 581 */     this.allSuffixes.clear();
-/* 582 */     this.filterPrefixes.clear();
-/* 583 */     this.filterSuffixes.clear();
+/* 576 */     this.allPrefixes.clear();
+/* 577 */     this.allSuffixes.clear();
+/* 578 */     this.filterPrefixes.clear();
+/* 579 */     this.filterSuffixes.clear();
 /*     */     
-/* 585 */     for (DBAffix affix : affixAll) {
-/* 586 */       if (affix == null)
+/* 581 */     for (DBAffix affix : affixAll) {
+/* 582 */       if (affix == null)
 /*     */         continue; 
-/* 588 */       if (affix.getAffixType() == 1) {
-/* 589 */         affix.resetDescription();
-/* 590 */         this.allPrefixes.add(affix);
-/* 591 */         this.filterPrefixes.add(affix);
+/* 584 */       if (affix.getAffixType() == 1) {
+/* 585 */         affix.resetDescription();
+/* 586 */         this.allPrefixes.add(affix);
+/* 587 */         this.filterPrefixes.add(affix);
 /*     */       } 
-/* 593 */       if (affix.getAffixType() == 2) {
-/* 594 */         this.allSuffixes.add(affix);
-/* 595 */         this.filterSuffixes.add(affix);
+/* 589 */       if (affix.getAffixType() == 2) {
+/* 590 */         this.allSuffixes.add(affix);
+/* 591 */         this.filterSuffixes.add(affix);
 /*     */       } 
 /*     */       
-/* 598 */       if (affix.getAffixType() != 4 || 
-/* 599 */         GDStashFrame.iniConfig.sectRestrict.completionAll) {
+/* 594 */       if (affix.getAffixType() != 4 || 
+/* 595 */         GDStashFrame.iniConfig.sectRestrict.completionAll) {
 /*     */         continue;
 /*     */       }
 /*     */       
-/* 603 */       if (item.isArtifact()) {
-/* 604 */         this.dmCompletion.addElement(affix);
+/* 599 */       if (item.isArtifact()) {
+/* 600 */         this.dmCompletion.addElement(affix);
 /*     */       }
 /*     */     } 
 /*     */ 
 /*     */     
-/* 609 */     if (item.isArtifact() && 
-/* 610 */       GDStashFrame.iniConfig.sectRestrict.completionAll) {
-/* 611 */       this.dmCompletion = GDStashFrame.getCompletion();
-/*     */     }
+/* 605 */     if (item.isArtifact()) {
+/* 606 */       if (GDStashFrame.iniConfig.sectRestrict.completionAll) {
+/* 607 */         this.dmCompletion = GDStashFrame.getCompletion();
+/*     */       }
+/*     */ 
+/*     */       
+/* 611 */       if (!item.getBonusAffixList().isEmpty()) {
+/* 612 */         for (DBAffix affix : item.getBonusAffixList()) {
+/* 613 */           boolean found = false; int i;
+/* 614 */           for (i = 0; i < this.dmCompletion.getSize(); i++) {
+/* 615 */             DBAffix dba = this.dmCompletion.getElementAt(i);
+/*     */             
+/* 617 */             if (affix.equals(dba)) {
+/* 618 */               found = true;
+/*     */               
+/*     */               break;
+/*     */             } 
+/*     */           } 
+/*     */           
+/* 624 */           if (!found) this.dmCompletion.addElement(affix);
+/*     */         
+/*     */         } 
+/*     */       }
+/*     */     } 
+/* 629 */     fillPrefixCombo();
+/* 630 */     fillSuffixCombo();
 /*     */     
-/* 614 */     fillPrefixCombo();
-/* 615 */     fillSuffixCombo();
-/*     */     
-/* 617 */     if (item.getPrefix() != null) this.dmPrefix.setSelectedItem(item.getPrefix()); 
-/* 618 */     if (item.getSuffix() != null) this.dmSuffix.setSelectedItem(item.getSuffix()); 
-/* 619 */     if (item.getModifier() != null) this.dmModifier.setSelectedItem(item.getModifier()); 
-/* 620 */     if (item.getCompletionBonus() != null) this.dmCompletion.setSelectedItem(item.getCompletionBonus()); 
+/* 632 */     if (item.getPrefix() != null) this.dmPrefix.setSelectedItem(item.getPrefix()); 
+/* 633 */     if (item.getSuffix() != null) this.dmSuffix.setSelectedItem(item.getSuffix()); 
+/* 634 */     if (item.getModifier() != null) this.dmModifier.setSelectedItem(item.getModifier()); 
+/* 635 */     if (item.getCompletionBonus() != null) this.dmCompletion.setSelectedItem(item.getCompletionBonus()); 
 /*     */   }
 /*     */   
 /*     */   private void fillPrefixCombo() {
-/* 624 */     List<DBAffix> currPrefixes = null;
+/* 639 */     List<DBAffix> currPrefixes = null;
 /*     */     
-/* 626 */     if (GDStashFrame.iniConfig != null && (GDStashFrame.iniConfig.sectRestrict.affixCombi == 3 || GDStashFrame.iniConfig.sectRestrict.affixCombi == 2)) {
+/* 641 */     if (GDStashFrame.iniConfig != null && (GDStashFrame.iniConfig.sectRestrict.affixCombi == 3 || GDStashFrame.iniConfig.sectRestrict.affixCombi == 2)) {
 /*     */ 
 /*     */       
-/* 629 */       currPrefixes = this.filterPrefixes;
+/* 644 */       currPrefixes = this.filterPrefixes;
 /*     */     } else {
-/* 631 */       currPrefixes = new LinkedList<>();
+/* 646 */       currPrefixes = new LinkedList<>();
 /*     */       
-/* 633 */       for (DBLootTable table : this.itemLootTables) {
-/* 634 */         DBLootTable.mixAffixes(this.item, currPrefixes, table.getFilterPrefixesForSuffix(this.item.getSuffix(), this.filterPrefixes));
+/* 648 */       for (DBLootTable table : this.itemLootTables) {
+/* 649 */         DBLootTable.mixAffixes(this.item, currPrefixes, table.getFilterPrefixesForSuffix(this.item.getSuffix(), this.filterPrefixes));
 /*     */       }
 /*     */     } 
 /*     */     
-/* 638 */     Collections.sort(currPrefixes, (Comparator<? super DBAffix>)new DBAffix.AffixComparator());
+/* 653 */     Collections.sort(currPrefixes, (Comparator<? super DBAffix>)new DBAffix.AffixComparator());
 /*     */ 
 /*     */     
-/* 641 */     this.skipCombo = true;
+/* 656 */     this.skipCombo = true;
 /*     */     
-/* 643 */     this.dmPrefix.setSelectedItem(null);
-/* 644 */     this.dmPrefix.removeAllElements();
-/* 645 */     this.dmPrefix.addElement(null);
+/* 658 */     this.dmPrefix.setSelectedItem(null);
+/* 659 */     this.dmPrefix.removeAllElements();
+/* 660 */     this.dmPrefix.addElement(null);
 /*     */     
-/* 647 */     boolean found = false;
-/* 648 */     DBAffix prefix = this.item.getPrefix();
+/* 662 */     boolean found = false;
+/* 663 */     DBAffix prefix = this.item.getPrefix();
 /*     */     
-/* 650 */     for (DBAffix affix : currPrefixes) {
-/* 651 */       this.dmPrefix.addElement(affix);
+/* 665 */     for (DBAffix affix : currPrefixes) {
+/* 666 */       this.dmPrefix.addElement(affix);
 /*     */       
-/* 653 */       if (prefix != null && 
-/* 654 */         prefix.getAffixID().equals(affix.getAffixID())) {
-/* 655 */         found = true;
+/* 668 */       if (prefix != null && 
+/* 669 */         prefix.getAffixID().equals(affix.getAffixID())) {
+/* 670 */         found = true;
 /*     */       }
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 661 */     if (found) {
-/* 662 */       this.dmPrefix.setSelectedItem(this.item.getPrefix());
+/* 676 */     if (found) {
+/* 677 */       this.dmPrefix.setSelectedItem(this.item.getPrefix());
 /*     */       
-/* 664 */       this.skipCombo = false;
+/* 679 */       this.skipCombo = false;
 /*     */     } else {
-/* 666 */       this.skipCombo = false;
+/* 681 */       this.skipCombo = false;
 /*     */       
-/* 668 */       this.item.setPrefix(null);
+/* 683 */       this.item.setPrefix(null);
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   private void fillSuffixCombo() {
-/* 673 */     List<DBAffix> currSuffixes = null;
+/* 688 */     List<DBAffix> currSuffixes = null;
 /*     */     
-/* 675 */     if (GDStashFrame.iniConfig != null && (GDStashFrame.iniConfig.sectRestrict.affixCombi == 3 || GDStashFrame.iniConfig.sectRestrict.affixCombi == 2)) {
+/* 690 */     if (GDStashFrame.iniConfig != null && (GDStashFrame.iniConfig.sectRestrict.affixCombi == 3 || GDStashFrame.iniConfig.sectRestrict.affixCombi == 2)) {
 /*     */ 
 /*     */       
-/* 678 */       currSuffixes = this.filterSuffixes;
+/* 693 */       currSuffixes = this.filterSuffixes;
 /*     */     } else {
-/* 680 */       currSuffixes = new LinkedList<>();
+/* 695 */       currSuffixes = new LinkedList<>();
 /*     */       
-/* 682 */       for (DBLootTable table : this.itemLootTables) {
-/* 683 */         DBLootTable.mixAffixes(this.item, currSuffixes, table.getFilterSuffixesForPrefix(this.item.getPrefix(), this.filterSuffixes));
+/* 697 */       for (DBLootTable table : this.itemLootTables) {
+/* 698 */         DBLootTable.mixAffixes(this.item, currSuffixes, table.getFilterSuffixesForPrefix(this.item.getPrefix(), this.filterSuffixes));
 /*     */       }
 /*     */     } 
 /*     */     
-/* 687 */     Collections.sort(currSuffixes, (Comparator<? super DBAffix>)new DBAffix.AffixComparator());
+/* 702 */     Collections.sort(currSuffixes, (Comparator<? super DBAffix>)new DBAffix.AffixComparator());
 /*     */ 
 /*     */     
-/* 690 */     this.skipCombo = true;
+/* 705 */     this.skipCombo = true;
 /*     */     
-/* 692 */     this.dmSuffix.setSelectedItem(null);
-/* 693 */     this.dmSuffix.removeAllElements();
-/* 694 */     this.dmSuffix.addElement(null);
+/* 707 */     this.dmSuffix.setSelectedItem(null);
+/* 708 */     this.dmSuffix.removeAllElements();
+/* 709 */     this.dmSuffix.addElement(null);
 /*     */     
-/* 696 */     boolean found = false;
-/* 697 */     DBAffix suffix = this.item.getSuffix();
+/* 711 */     boolean found = false;
+/* 712 */     DBAffix suffix = this.item.getSuffix();
 /*     */     
-/* 699 */     for (DBAffix affix : currSuffixes) {
-/* 700 */       this.dmSuffix.addElement(affix);
+/* 714 */     for (DBAffix affix : currSuffixes) {
+/* 715 */       this.dmSuffix.addElement(affix);
 /*     */       
-/* 702 */       if (suffix != null && 
-/* 703 */         suffix.getAffixID().equals(affix.getAffixID())) {
-/* 704 */         found = true;
+/* 717 */       if (suffix != null && 
+/* 718 */         suffix.getAffixID().equals(affix.getAffixID())) {
+/* 719 */         found = true;
 /*     */       }
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 710 */     if (found) {
-/* 711 */       this.dmSuffix.setSelectedItem(this.item.getSuffix());
+/* 725 */     if (found) {
+/* 726 */       this.dmSuffix.setSelectedItem(this.item.getSuffix());
 /*     */       
-/* 713 */       this.skipCombo = false;
+/* 728 */       this.skipCombo = false;
 /*     */     } else {
-/* 715 */       this.skipCombo = false;
+/* 730 */       this.skipCombo = false;
 /*     */       
-/* 717 */       this.item.setSuffix(null);
+/* 732 */       this.item.setSuffix(null);
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   public static List<DBLootTableSet> extractTableSets(List<DBLootTable> tables) {
-/* 722 */     List<DBLootTableSet> setAll = new LinkedList<>();
+/* 737 */     List<DBLootTableSet> setAll = new LinkedList<>();
 /*     */     
-/* 724 */     if (tables == null) return setAll;
+/* 739 */     if (tables == null) return setAll;
 /*     */     
-/* 726 */     for (DBLootTable table : tables) {
-/* 727 */       if (table.getAffixSetAllocList() == null)
+/* 741 */     for (DBLootTable table : tables) {
+/* 742 */       if (table.getAffixSetAllocList() == null)
 /*     */         continue; 
-/* 729 */       List<DBLootTableSet> sets = DBLootTableSet.getByTableID(table.getTableID());
+/* 744 */       List<DBLootTableSet> sets = DBLootTableSet.getByTableID(table.getTableID());
 /*     */       
-/* 731 */       if (sets == null)
+/* 746 */       if (sets == null)
 /*     */         continue; 
-/* 733 */       for (DBLootTableSet set : sets) {
-/* 734 */         if (set == null)
+/* 748 */       for (DBLootTableSet set : sets) {
+/* 749 */         if (set == null)
 /*     */           continue; 
-/* 736 */         boolean found = false;
+/* 751 */         boolean found = false;
 /*     */         
-/* 738 */         for (DBLootTableSet ts : setAll) {
-/* 739 */           if (ts.getTableSetID().equals(set.getTableSetID())) {
-/* 740 */             found = true;
+/* 753 */         for (DBLootTableSet ts : setAll) {
+/* 754 */           if (ts.getTableSetID().equals(set.getTableSetID())) {
+/* 755 */             found = true;
 /*     */             
 /*     */             break;
 /*     */           } 
 /*     */         } 
 /*     */         
-/* 746 */         if (!found) setAll.add(set);
+/* 761 */         if (!found) setAll.add(set);
 /*     */       
 /*     */       } 
 /*     */     } 
-/* 750 */     return setAll;
+/* 765 */     return setAll;
 /*     */   }
 /*     */   
 /*     */   public static List<DBAffixSet> extractAffixSets(List<DBLootTable> tables) {
-/* 754 */     List<DBAffixSet> setAll = new LinkedList<>();
+/* 769 */     List<DBAffixSet> setAll = new LinkedList<>();
 /*     */     
-/* 756 */     if (tables == null) return setAll;
+/* 771 */     if (tables == null) return setAll;
 /*     */     
-/* 758 */     for (DBLootTable table : tables) {
-/* 759 */       if (table.getAffixSetAllocList() == null)
+/* 773 */     for (DBLootTable table : tables) {
+/* 774 */       if (table.getAffixSetAllocList() == null)
 /*     */         continue; 
-/* 761 */       List<DBAffixSet> sets = DBAffixSet.getByAffixSetIDs(table.getAffixSetIDs());
+/* 776 */       List<DBAffixSet> sets = DBAffixSet.getByAffixSetIDs(table.getAffixSetIDs());
 /*     */       
-/* 763 */       if (sets == null)
+/* 778 */       if (sets == null)
 /*     */         continue; 
-/* 765 */       for (DBAffixSet set : sets) {
-/* 766 */         if (set == null)
+/* 780 */       for (DBAffixSet set : sets) {
+/* 781 */         if (set == null)
 /*     */           continue; 
-/* 768 */         boolean found = false;
+/* 783 */         boolean found = false;
 /*     */         
-/* 770 */         for (DBAffixSet as : setAll) {
-/* 771 */           if (as.getAffixSetID().equals(set.getAffixSetID())) {
-/* 772 */             found = true;
+/* 785 */         for (DBAffixSet as : setAll) {
+/* 786 */           if (as.getAffixSetID().equals(set.getAffixSetID())) {
+/* 787 */             found = true;
 /*     */             
 /*     */             break;
 /*     */           } 
 /*     */         } 
 /*     */         
-/* 778 */         if (!found) setAll.add(set);
+/* 793 */         if (!found) setAll.add(set);
 /*     */       
 /*     */       } 
 /*     */     } 
-/* 782 */     return setAll;
+/* 797 */     return setAll;
 /*     */   }
 /*     */   
-/*     */   public static List<DBAffix> extractAffixes(GDItem item, List<DBAffixSet> sets) {
-/* 786 */     List<DBAffix> affixAll = new LinkedList<>();
+/*     */   public static List<DBAffix> extractAffixes(GDItem item, List<DBAffixSet> sets, int affixType) {
+/* 801 */     List<DBAffix> affixAll = new LinkedList<>();
 /*     */ 
 /*     */ 
 /*     */     
-/* 790 */     if (GDStashFrame.iniConfig != null && 
-/* 791 */       GDStashFrame.iniConfig.sectRestrict.affixCombi == 3) {
-/* 792 */       affixAll = DBAffix.getFullAffixList();
-/*     */       
-/* 794 */       return affixAll;
-/*     */     } 
+/* 805 */     if (GDStashFrame.iniConfig != null && 
+/* 806 */       GDStashFrame.iniConfig.sectRestrict.affixCombi == 3) {
+/* 807 */       affixAll = DBAffix.getFullAffixList();
+/*     */     }
 /*     */ 
 /*     */     
-/* 798 */     if (sets == null) return affixAll;
+/* 811 */     if (sets == null) return affixAll;
 /*     */     
-/* 800 */     for (DBAffixSet set : sets) {
-/* 801 */       if (set == null || 
-/* 802 */         set.getAffixEntries() == null)
+/* 813 */     for (DBAffixSet set : sets) {
+/* 814 */       if (set == null || 
+/* 815 */         set.getAffixEntries() == null)
 /*     */         continue; 
-/* 804 */       for (DBAffixSet.DBEntry entry : set.getAffixEntries()) {
-/* 805 */         if (entry == null)
+/* 817 */       for (DBAffixSet.DBEntry entry : set.getAffixEntries()) {
+/* 818 */         if (entry == null)
 /*     */           continue; 
-/* 807 */         boolean found = false;
+/* 820 */         boolean found = false;
 /*     */         
-/* 809 */         for (DBAffix affix : affixAll) {
-/* 810 */           if (affix.getAffixID().equals(entry.getAffixID())) {
-/* 811 */             found = true;
-/*     */             
-/*     */             break;
+/* 822 */         if (affixType == 4) {
+/* 823 */           for (DBAffix affix : affixAll) {
+/* 824 */             if (affix.getAffixID().equals(entry.getAffixID())) {
+/* 825 */               found = true;
+/*     */               
+/* 827 */               affix.setAffixType(4);
+/*     */ 
+/*     */               
+/*     */               break;
+/*     */             } 
 /*     */           } 
-/*     */         } 
+/*     */         }
 /*     */         
-/* 817 */         if (!found) {
-/* 818 */           DBAffix affix = DBAffix.get(entry.getAffixID());
+/* 835 */         if (!found) {
+/* 836 */           for (DBAffix affix : affixAll) {
+/* 837 */             if (affix.getAffixID().equals(entry.getAffixID())) {
+/* 838 */               found = true;
+/*     */               
+/* 840 */               if (affixType != -1) affix.setAffixType(affixType);
+/*     */ 
+/*     */               
+/*     */               break;
+/*     */             } 
+/*     */           } 
+/*     */         }
+/* 847 */         if (!found) {
+/* 848 */           DBAffix affix = DBAffix.get(entry.getAffixID());
 /*     */           
-/* 820 */           if (affix == null) {
+/* 850 */           if (affix == null) {
 /*     */             continue;
 /*     */           }
 /*     */ 
@@ -844,130 +861,132 @@ import org.gdstash.util.GDMsgLogger;
 /*     */ 
 /*     */ 
 /*     */           
-/* 834 */           affixAll.add(affix);
+/* 864 */           if (affixType != -1) affix.setAffixType(affixType);
+/*     */           
+/* 866 */           affixAll.add(affix);
 /*     */         } 
 /*     */       } 
 /*     */     } 
 /*     */     
-/* 839 */     return affixAll;
+/* 871 */     return affixAll;
 /*     */   }
 /*     */   
 /*     */   public List<DBAffix> getPrefixes() {
-/* 843 */     return this.allPrefixes;
+/* 875 */     return this.allPrefixes;
 /*     */   }
 /*     */   
 /*     */   public void setFilteredPrefixes(List<DBAffix> prefixes) {
-/* 847 */     this.filterPrefixes = prefixes;
+/* 879 */     this.filterPrefixes = prefixes;
 /*     */ 
 /*     */     
-/* 850 */     this.skipCombo = true;
+/* 882 */     this.skipCombo = true;
 /*     */     
-/* 852 */     DBAffix prefix = (DBAffix)this.dmPrefix.getSelectedItem();
-/* 853 */     boolean found = false;
+/* 884 */     DBAffix prefix = (DBAffix)this.dmPrefix.getSelectedItem();
+/* 885 */     boolean found = false;
 /*     */     
-/* 855 */     this.dmPrefix.setSelectedItem(null);
-/* 856 */     this.dmPrefix.removeAllElements();
-/* 857 */     this.dmPrefix.addElement(null);
+/* 887 */     this.dmPrefix.setSelectedItem(null);
+/* 888 */     this.dmPrefix.removeAllElements();
+/* 889 */     this.dmPrefix.addElement(null);
 /*     */     
-/* 859 */     for (DBAffix affix : this.filterPrefixes) {
-/* 860 */       this.dmPrefix.addElement(affix);
+/* 891 */     for (DBAffix affix : this.filterPrefixes) {
+/* 892 */       this.dmPrefix.addElement(affix);
 /*     */       
-/* 862 */       if (prefix != null && 
-/* 863 */         prefix.getAffixID().equals(affix.getAffixID())) {
-/* 864 */         found = true;
+/* 894 */       if (prefix != null && 
+/* 895 */         prefix.getAffixID().equals(affix.getAffixID())) {
+/* 896 */         found = true;
 /*     */       }
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 870 */     if (found) {
-/* 871 */       this.dmPrefix.setSelectedItem(prefix);
+/* 902 */     if (found) {
+/* 903 */       this.dmPrefix.setSelectedItem(prefix);
 /*     */       
-/* 873 */       this.skipCombo = false;
+/* 905 */       this.skipCombo = false;
 /*     */     } else {
-/* 875 */       if (prefix != null) this.dmPrefix.addElement(prefix); 
-/* 876 */       this.dmPrefix.setSelectedItem(prefix);
+/* 907 */       if (prefix != null) this.dmPrefix.addElement(prefix); 
+/* 908 */       this.dmPrefix.setSelectedItem(prefix);
 /*     */       
-/* 878 */       this.skipCombo = false;
+/* 910 */       this.skipCombo = false;
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   public List<DBAffix> getSuffixes() {
-/* 883 */     return this.allSuffixes;
+/* 915 */     return this.allSuffixes;
 /*     */   }
 /*     */   
 /*     */   public void setFilteredSuffixes(List<DBAffix> suffixes) {
-/* 887 */     this.filterSuffixes = suffixes;
+/* 919 */     this.filterSuffixes = suffixes;
 /*     */ 
 /*     */     
-/* 890 */     this.skipCombo = true;
+/* 922 */     this.skipCombo = true;
 /*     */     
-/* 892 */     DBAffix suffix = (DBAffix)this.dmSuffix.getSelectedItem();
-/* 893 */     boolean found = false;
+/* 924 */     DBAffix suffix = (DBAffix)this.dmSuffix.getSelectedItem();
+/* 925 */     boolean found = false;
 /*     */     
-/* 895 */     this.dmSuffix.setSelectedItem(null);
-/* 896 */     this.dmSuffix.removeAllElements();
-/* 897 */     this.dmSuffix.addElement(null);
+/* 927 */     this.dmSuffix.setSelectedItem(null);
+/* 928 */     this.dmSuffix.removeAllElements();
+/* 929 */     this.dmSuffix.addElement(null);
 /*     */     
-/* 899 */     for (DBAffix affix : this.filterSuffixes) {
-/* 900 */       this.dmSuffix.addElement(affix);
+/* 931 */     for (DBAffix affix : this.filterSuffixes) {
+/* 932 */       this.dmSuffix.addElement(affix);
 /*     */       
-/* 902 */       if (suffix != null && 
-/* 903 */         suffix.getAffixID().equals(affix.getAffixID())) {
-/* 904 */         found = true;
+/* 934 */       if (suffix != null && 
+/* 935 */         suffix.getAffixID().equals(affix.getAffixID())) {
+/* 936 */         found = true;
 /*     */       }
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 910 */     if (found) {
-/* 911 */       this.dmSuffix.setSelectedItem(suffix);
+/* 942 */     if (found) {
+/* 943 */       this.dmSuffix.setSelectedItem(suffix);
 /*     */       
-/* 913 */       this.skipCombo = false;
+/* 945 */       this.skipCombo = false;
 /*     */     } else {
-/* 915 */       if (suffix != null) this.dmSuffix.addElement(suffix); 
-/* 916 */       this.dmSuffix.setSelectedItem(suffix);
+/* 947 */       if (suffix != null) this.dmSuffix.addElement(suffix); 
+/* 948 */       this.dmSuffix.setSelectedItem(suffix);
 /*     */       
-/* 918 */       this.skipCombo = false;
+/* 950 */       this.skipCombo = false;
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   public GDItem getItem() {
-/* 923 */     return this.item;
+/* 955 */     return this.item;
 /*     */   }
 /*     */   
 /*     */   public String getSeed() {
-/* 927 */     String s = this.ftSeed.getText();
+/* 959 */     String s = this.ftSeed.getText();
 /*     */     
-/* 929 */     if (s.length() != 8) {
-/* 930 */       s = null;
+/* 961 */     if (s.length() != 8) {
+/* 962 */       s = null;
 /*     */     } else {
-/* 932 */       s = s.toUpperCase(GDConstants.LOCALE_US);
+/* 964 */       s = s.toUpperCase(GDConstants.LOCALE_US);
 /*     */     } 
 /*     */     
-/* 935 */     return s;
+/* 967 */     return s;
 /*     */   }
 /*     */   
 /*     */   public int getCount() {
-/* 939 */     String s = this.ftCount.getText();
+/* 971 */     String s = this.ftCount.getText();
 /*     */     
-/* 941 */     if (s == null) return 0; 
-/* 942 */     if (s.isEmpty()) return 0;
+/* 973 */     if (s == null) return 0; 
+/* 974 */     if (s.isEmpty()) return 0;
 /*     */     
-/* 944 */     int i = 0;
+/* 976 */     int i = 0;
 /*     */     try {
-/* 946 */       i = Integer.parseInt(s);
+/* 978 */       i = Integer.parseInt(s);
 /*     */     }
-/* 948 */     catch (NumberFormatException ex) {
-/* 949 */       i = 0;
+/* 980 */     catch (NumberFormatException ex) {
+/* 981 */       i = 0;
 /*     */     } 
 /*     */     
-/* 952 */     return i;
+/* 984 */     return i;
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\GDItemCraftPane.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\GDItemCraftPane.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

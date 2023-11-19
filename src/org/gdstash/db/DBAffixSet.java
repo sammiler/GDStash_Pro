@@ -24,10 +24,10 @@
 /*     */ 
 /*     */ public class DBAffixSet
 /*     */ {
-/*  27 */   private static ConcurrentHashMap<String, DBAffixSet> hashBuffer = new ConcurrentHashMap<>(); public static final String TABLE_NAME = "GD_AFFIXSET"; private static final int ROW_AFFIXSET_ID = 1; private static final int ROW_INDEX = 2; private static final int ROW_LEVEL_MIN = 3; private static final int ROW_LEVEL_MAX = 4;
-/*     */   private static final int ROW_AFFIX_ID = 5;
+/*  27 */   private static ConcurrentHashMap<String, DBAffixSet> hashBuffer = new ConcurrentHashMap<>(); public static final String TABLE_NAME = "GD_AFFIXSET"; private static final int ROW_AFFIXSET_ID = 1; private static final int ROW_INDEX = 2; private static final int ROW_LEVEL_MIN = 3; private static final int ROW_LEVEL_MAX = 4; private static final int ROW_AFFIX_ID = 5;
 /*     */   protected String affixSetID;
 /*     */   protected List<DBEntry> affixes;
+/*     */   protected List<DBAffix> affixList;
 /*     */   
 /*     */   public static class DBEntry { private int index;
 /*     */     private int levelMin;
@@ -75,15 +75,18 @@
 /*     */ 
 /*     */ 
 /*     */ 
+/*     */ 
 /*     */   
 /*     */   public DBAffixSet() {
-/*  80 */     this.affixes = new LinkedList<>();
+/*  81 */     this.affixes = new LinkedList<>();
+/*  82 */     this.affixList = new LinkedList<>();
 /*     */   }
 /*     */   
 /*     */   private DBAffixSet(ARZRecord record) {
-/*  84 */     this.affixSetID = record.getFileName();
+/*  86 */     this.affixSetID = record.getFileName();
 /*     */     
-/*  86 */     this.affixes = record.getAffixSetRandomizerList();
+/*  88 */     this.affixes = record.getAffixSetRandomizerList();
+/*  89 */     this.affixList = determineAffixList();
 /*     */   }
 /*     */ 
 /*     */ 
@@ -91,11 +94,15 @@
 /*     */ 
 /*     */   
 /*     */   public String getAffixSetID() {
-/*  94 */     return this.affixSetID;
+/*  97 */     return this.affixSetID;
 /*     */   }
 /*     */   
 /*     */   public List<DBEntry> getAffixEntries() {
-/*  98 */     return this.affixes;
+/* 101 */     return this.affixes;
+/*     */   }
+/*     */   
+/*     */   public List<DBAffix> getAffixList() {
+/* 105 */     return this.affixList;
 /*     */   }
 /*     */ 
 /*     */ 
@@ -107,12 +114,12 @@
 /*     */ 
 /*     */   
 /*     */   public static void clearBuffer() {
-/* 110 */     hashBuffer.clear();
+/* 117 */     hashBuffer.clear();
 /*     */   }
 /*     */   
 /*     */   public static void createTables() throws SQLException {
-/* 114 */     String dropTable = "DROP TABLE GD_AFFIXSET";
-/* 115 */     String createTable = "CREATE TABLE GD_AFFIXSET (AFFIXSET_ID VARCHAR(256) NOT NULL, INDEX       INTEGER NOT NULL, LEVEL_MIN   INTEGER, LEVEL_MAX   INTEGER, AFFIX_ID    VARCHAR(256) NOT NULL, PRIMARY KEY (AFFIXSET_ID, INDEX))";
+/* 121 */     String dropTable = "DROP TABLE GD_AFFIXSET";
+/* 122 */     String createTable = "CREATE TABLE GD_AFFIXSET (AFFIXSET_ID VARCHAR(256) NOT NULL, INDEX       INTEGER NOT NULL, LEVEL_MIN   INTEGER, LEVEL_MAX   INTEGER, AFFIX_ID    VARCHAR(256) NOT NULL, PRIMARY KEY (AFFIXSET_ID, INDEX))";
 /*     */ 
 /*     */ 
 /*     */ 
@@ -120,279 +127,294 @@
 /*     */ 
 /*     */ 
 /*     */     
-/* 123 */     try (Connection conn = GDDBData.getConnection()) {
-/* 124 */       boolean auto = conn.getAutoCommit();
-/* 125 */       conn.setAutoCommit(false);
+/* 130 */     try (Connection conn = GDDBData.getConnection()) {
+/* 131 */       boolean auto = conn.getAutoCommit();
+/* 132 */       conn.setAutoCommit(false);
 /*     */       
-/* 127 */       try (Statement st = conn.createStatement()) {
-/* 128 */         if (GDDBUtil.tableExists(conn, "GD_AFFIXSET")) {
-/* 129 */           st.execute(dropTable);
+/* 134 */       try (Statement st = conn.createStatement()) {
+/* 135 */         if (GDDBUtil.tableExists(conn, "GD_AFFIXSET")) {
+/* 136 */           st.execute(dropTable);
 /*     */         }
-/* 131 */         st.execute(createTable);
-/* 132 */         st.close();
+/* 138 */         st.execute(createTable);
+/* 139 */         st.close();
 /*     */         
-/* 134 */         conn.commit();
+/* 141 */         conn.commit();
 /*     */       }
-/* 136 */       catch (SQLException ex) {
-/* 137 */         conn.rollback();
+/* 143 */       catch (SQLException ex) {
+/* 144 */         conn.rollback();
 /*     */         
-/* 139 */         Object[] args = { "GD_AFFIXSET" };
-/* 140 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_CREATE_TABLE", args);
+/* 146 */         Object[] args = { "GD_AFFIXSET" };
+/* 147 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_CREATE_TABLE", args);
 /*     */         
-/* 142 */         GDMsgLogger.addError(msg);
+/* 149 */         GDMsgLogger.addError(msg);
 /*     */         
-/* 144 */         throw ex;
+/* 151 */         throw ex;
 /*     */       } finally {
 /*     */         
-/* 147 */         conn.setAutoCommit(auto);
+/* 154 */         conn.setAutoCommit(auto);
 /*     */       } 
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   public static void delete(String affixSetID) throws SQLException {
-/* 153 */     String deleteEntry = "DELETE FROM GD_AFFIXSET WHERE AFFIXSET_ID = ?";
+/* 160 */     String deleteEntry = "DELETE FROM GD_AFFIXSET WHERE AFFIXSET_ID = ?";
 /*     */     
-/* 155 */     try (Connection conn = GDDBData.getConnection()) {
-/* 156 */       boolean auto = conn.getAutoCommit();
-/* 157 */       conn.setAutoCommit(false);
+/* 162 */     try (Connection conn = GDDBData.getConnection()) {
+/* 163 */       boolean auto = conn.getAutoCommit();
+/* 164 */       conn.setAutoCommit(false);
 /*     */       
-/* 159 */       try (PreparedStatement ps = conn.prepareStatement(deleteEntry)) {
-/* 160 */         ps.setString(1, affixSetID);
-/* 161 */         ps.executeUpdate();
-/* 162 */         ps.close();
+/* 166 */       try (PreparedStatement ps = conn.prepareStatement(deleteEntry)) {
+/* 167 */         ps.setString(1, affixSetID);
+/* 168 */         ps.executeUpdate();
+/* 169 */         ps.close();
 /*     */         
-/* 164 */         conn.commit();
+/* 171 */         conn.commit();
 /*     */       }
-/* 166 */       catch (SQLException ex) {
-/* 167 */         conn.rollback();
+/* 173 */       catch (SQLException ex) {
+/* 174 */         conn.rollback();
 /*     */         
-/* 169 */         Object[] args = { affixSetID, "GD_AFFIXSET" };
-/* 170 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_DEL_TABLE_BY_ID", args);
+/* 176 */         Object[] args = { affixSetID, "GD_AFFIXSET" };
+/* 177 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_DEL_TABLE_BY_ID", args);
 /*     */         
-/* 172 */         GDMsgLogger.addError(msg);
-/* 173 */         GDMsgLogger.addError(ex);
+/* 179 */         GDMsgLogger.addError(msg);
+/* 180 */         GDMsgLogger.addError(ex);
 /*     */         
-/* 175 */         throw ex;
+/* 182 */         throw ex;
 /*     */       } 
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   public static void insert(ARZRecord record) throws SQLException {
-/* 181 */     DBAffixSet entry = get(record.getFileName());
+/* 188 */     DBAffixSet entry = get(record.getFileName());
 /*     */     
-/* 183 */     if (entry != null)
+/* 190 */     if (entry != null)
 /*     */       return; 
-/* 185 */     DBAffixSet affixSet = new DBAffixSet(record);
+/* 192 */     DBAffixSet affixSet = new DBAffixSet(record);
 /*     */     
-/* 187 */     if (affixSet.affixes == null)
-/* 188 */       return;  if (affixSet.affixes.isEmpty())
+/* 194 */     if (affixSet.affixes == null)
+/* 195 */       return;  if (affixSet.affixes.isEmpty())
 /*     */       return; 
-/* 190 */     String insert = "INSERT INTO GD_AFFIXSET VALUES (?,?,?,?,?)";
+/* 197 */     String insert = "INSERT INTO GD_AFFIXSET VALUES (?,?,?,?,?)";
 /*     */     
-/* 192 */     try (Connection conn = GDDBData.getConnection()) {
-/* 193 */       boolean auto = conn.getAutoCommit();
-/* 194 */       conn.setAutoCommit(false);
+/* 199 */     try (Connection conn = GDDBData.getConnection()) {
+/* 200 */       boolean auto = conn.getAutoCommit();
+/* 201 */       conn.setAutoCommit(false);
 /*     */       
-/* 196 */       try (PreparedStatement ps = conn.prepareStatement(insert)) {
-/* 197 */         for (DBEntry dbEntry : affixSet.affixes) {
-/* 198 */           if (dbEntry.affixID != null) {
-/* 199 */             ps.setString(1, affixSet.affixSetID);
-/* 200 */             ps.setInt(2, dbEntry.index);
-/* 201 */             ps.setInt(3, dbEntry.levelMin);
-/* 202 */             ps.setInt(4, dbEntry.levelMax);
-/* 203 */             ps.setString(5, dbEntry.affixID);
+/* 203 */       try (PreparedStatement ps = conn.prepareStatement(insert)) {
+/* 204 */         for (DBEntry dbEntry : affixSet.affixes) {
+/* 205 */           if (dbEntry.affixID != null) {
+/* 206 */             ps.setString(1, affixSet.affixSetID);
+/* 207 */             ps.setInt(2, dbEntry.index);
+/* 208 */             ps.setInt(3, dbEntry.levelMin);
+/* 209 */             ps.setInt(4, dbEntry.levelMax);
+/* 210 */             ps.setString(5, dbEntry.affixID);
 /*     */             
-/* 205 */             ps.executeUpdate();
+/* 212 */             ps.executeUpdate();
 /*     */             
-/* 207 */             ps.clearParameters();
+/* 214 */             ps.clearParameters();
 /*     */           } 
 /*     */         } 
-/* 210 */         ps.close();
+/* 217 */         ps.close();
 /*     */         
-/* 212 */         conn.commit();
+/* 219 */         conn.commit();
 /*     */       }
-/* 214 */       catch (SQLException ex) {
-/* 215 */         conn.rollback();
+/* 221 */       catch (SQLException ex) {
+/* 222 */         conn.rollback();
 /*     */         
-/* 217 */         Object[] args = { record.getFileName(), "GD_AFFIXSET" };
-/* 218 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_INS_TABLE_BY_ID", args);
+/* 224 */         Object[] args = { record.getFileName(), "GD_AFFIXSET" };
+/* 225 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_INS_TABLE_BY_ID", args);
 /*     */         
-/* 220 */         GDMsgLogger.addLowError(msg);
-/* 221 */         GDMsgLogger.addLowError(ex);
+/* 227 */         GDMsgLogger.addLowError(msg);
+/* 228 */         GDMsgLogger.addLowError(ex);
 /*     */       } finally {
 /*     */         
-/* 224 */         conn.setAutoCommit(auto);
+/* 231 */         conn.setAutoCommit(auto);
 /*     */       } 
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   public static DBAffixSet get(String affixSetID) {
-/* 230 */     DBAffixSet set = null;
+/* 237 */     DBAffixSet set = null;
 /*     */     
-/* 232 */     set = hashBuffer.get(affixSetID);
+/* 239 */     set = hashBuffer.get(affixSetID);
 /*     */     
-/* 234 */     if (set == null) {
-/* 235 */       set = getDB(affixSetID);
+/* 241 */     if (set == null) {
+/* 242 */       set = getDB(affixSetID);
 /*     */       
-/* 237 */       if (set != null) hashBuffer.put(set.affixSetID, set);
+/* 244 */       if (set != null) hashBuffer.put(set.affixSetID, set);
 /*     */     
 /*     */     } 
-/* 240 */     return set;
+/* 247 */     return set;
 /*     */   }
 /*     */   
 /*     */   private static DBAffixSet getDB(String affixSetID) {
-/* 244 */     DBAffixSet set = null;
+/* 251 */     DBAffixSet set = null;
 /*     */     
-/* 246 */     String command = "SELECT * FROM GD_AFFIXSET WHERE AFFIXSET_ID = ?";
+/* 253 */     String command = "SELECT * FROM GD_AFFIXSET WHERE AFFIXSET_ID = ?";
 /*     */     
-/* 248 */     try(Connection conn = GDDBData.getConnection(); 
-/* 249 */         PreparedStatement ps = conn.prepareStatement(command)) {
-/* 250 */       ps.setString(1, affixSetID);
+/* 255 */     try(Connection conn = GDDBData.getConnection(); 
+/* 256 */         PreparedStatement ps = conn.prepareStatement(command)) {
+/* 257 */       ps.setString(1, affixSetID);
 /*     */       
-/* 252 */       try (ResultSet rs = ps.executeQuery()) {
-/* 253 */         List<DBAffixSet> list = wrap(rs);
+/* 259 */       try (ResultSet rs = ps.executeQuery()) {
+/* 260 */         List<DBAffixSet> list = wrap(rs);
 /*     */         
-/* 255 */         if (list.isEmpty()) { set = null; }
-/* 256 */         else { set = list.get(0); }
+/* 262 */         if (list.isEmpty()) { set = null; }
+/* 263 */         else { set = list.get(0); }
 /*     */         
-/* 258 */         conn.commit();
+/* 265 */         conn.commit();
 /*     */       }
-/* 260 */       catch (SQLException ex) {
-/* 261 */         throw ex;
+/* 267 */       catch (SQLException ex) {
+/* 268 */         throw ex;
 /*     */       }
 /*     */     
-/* 264 */     } catch (SQLException ex) {
-/* 265 */       Object[] args = { affixSetID, "GD_AFFIXSET" };
-/* 266 */       String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_READ_TABLE_BY_ID", args);
+/* 271 */     } catch (SQLException ex) {
+/* 272 */       Object[] args = { affixSetID, "GD_AFFIXSET" };
+/* 273 */       String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_READ_TABLE_BY_ID", args);
 /*     */       
-/* 268 */       GDMsgLogger.addError(msg);
-/* 269 */       GDMsgLogger.addError(ex);
+/* 275 */       GDMsgLogger.addError(msg);
+/* 276 */       GDMsgLogger.addError(ex);
 /*     */     } 
 /*     */     
-/* 272 */     return set;
+/* 279 */     return set;
 /*     */   }
 /*     */   
 /*     */   public static List<DBAffixSet> getByAffixSetIDs(List<String> affixSetIDs) {
-/* 276 */     List<DBAffixSet> list = new LinkedList<>();
+/* 283 */     List<DBAffixSet> list = new LinkedList<>();
 /*     */     
-/* 278 */     for (String affixSetID : affixSetIDs) {
-/* 279 */       DBAffixSet set = get(affixSetID);
-/* 280 */       if (set != null) list.add(set);
+/* 285 */     for (String affixSetID : affixSetIDs) {
+/* 286 */       DBAffixSet set = get(affixSetID);
+/* 287 */       if (set != null) list.add(set);
 /*     */     
 /*     */     } 
-/* 283 */     return list;
+/* 290 */     return list;
 /*     */   }
 /*     */   
 /*     */   public static List<DBAffixSet> getCompletionAffixes() {
-/* 287 */     List<DBAffixSet> list = null;
+/* 294 */     List<DBAffixSet> list = null;
 /*     */     
-/* 289 */     String command = "SELECT * FROM GD_AFFIXSET WHERE AFFIXSET_ID LIKE 'records/items/lootaffixes/completion%'";
+/* 296 */     String command = "SELECT * FROM GD_AFFIXSET WHERE AFFIXSET_ID LIKE 'records/items/lootaffixes/completion%'";
 /*     */     
-/* 291 */     try(Connection conn = GDDBData.getConnection(); 
-/* 292 */         PreparedStatement ps = conn.prepareStatement(command)) {
+/* 298 */     try(Connection conn = GDDBData.getConnection(); 
+/* 299 */         PreparedStatement ps = conn.prepareStatement(command)) {
 /*     */       
-/* 294 */       try (ResultSet rs = ps.executeQuery()) {
-/* 295 */         list = wrap(rs);
+/* 301 */       try (ResultSet rs = ps.executeQuery()) {
+/* 302 */         list = wrap(rs);
 /*     */         
-/* 297 */         conn.commit();
+/* 304 */         conn.commit();
 /*     */       }
-/* 299 */       catch (SQLException ex) {
-/* 300 */         throw ex;
+/* 306 */       catch (SQLException ex) {
+/* 307 */         throw ex;
 /*     */       }
 /*     */     
-/* 303 */     } catch (SQLException ex) {
-/* 304 */       GDMsgLogger.addError(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_READ_AFFIXSET_CRAFT"));
-/* 305 */       GDMsgLogger.addError(ex);
+/* 310 */     } catch (SQLException ex) {
+/* 311 */       GDMsgLogger.addError(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_READ_AFFIXSET_CRAFT"));
+/* 312 */       GDMsgLogger.addError(ex);
 /*     */     } 
 /*     */     
-/* 308 */     return list;
+/* 315 */     return list;
 /*     */   }
 /*     */   
 /*     */   public static List<DBAffixSet> getCraftingAffixes() {
-/* 312 */     List<DBAffixSet> list = null;
+/* 319 */     List<DBAffixSet> list = null;
 /*     */     
-/* 314 */     String command = "SELECT * FROM GD_AFFIXSET WHERE AFFIXSET_ID LIKE 'records/items/lootaffixes/crafting%'";
+/* 321 */     String command = "SELECT * FROM GD_AFFIXSET WHERE AFFIXSET_ID LIKE 'records/items/lootaffixes/crafting%'";
 /*     */     
-/* 316 */     try(Connection conn = GDDBData.getConnection(); 
-/* 317 */         PreparedStatement ps = conn.prepareStatement(command)) {
+/* 323 */     try(Connection conn = GDDBData.getConnection(); 
+/* 324 */         PreparedStatement ps = conn.prepareStatement(command)) {
 /*     */       
-/* 319 */       try (ResultSet rs = ps.executeQuery()) {
-/* 320 */         list = wrap(rs);
+/* 326 */       try (ResultSet rs = ps.executeQuery()) {
+/* 327 */         list = wrap(rs);
 /*     */         
-/* 322 */         conn.commit();
+/* 329 */         conn.commit();
 /*     */       }
-/* 324 */       catch (SQLException ex) {
-/* 325 */         throw ex;
+/* 331 */       catch (SQLException ex) {
+/* 332 */         throw ex;
 /*     */       }
 /*     */     
-/* 328 */     } catch (SQLException ex) {
-/* 329 */       GDMsgLogger.addError(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_READ_AFFIXSET_CRAFT"));
-/* 330 */       GDMsgLogger.addError(ex);
+/* 335 */     } catch (SQLException ex) {
+/* 336 */       GDMsgLogger.addError(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_READ_AFFIXSET_CRAFT"));
+/* 337 */       GDMsgLogger.addError(ex);
 /*     */     } 
 /*     */     
-/* 333 */     return list;
+/* 340 */     return list;
 /*     */   }
 /*     */   
 /*     */   private static List<DBAffixSet> wrap(ResultSet rs) throws SQLException {
-/* 337 */     LinkedList<DBAffixSet> list = new LinkedList<>();
-/* 338 */     boolean found = false;
+/* 344 */     LinkedList<DBAffixSet> list = new LinkedList<>();
+/* 345 */     boolean found = false;
 /*     */     
-/* 340 */     while (rs.next()) {
-/* 341 */       DBAffixSet set = null;
-/* 342 */       DBEntry entry = new DBEntry();
+/* 347 */     while (rs.next()) {
+/* 348 */       DBAffixSet set = null;
+/* 349 */       DBEntry entry = new DBEntry();
 /*     */       
-/* 344 */       String id = rs.getString(1);
+/* 351 */       String id = rs.getString(1);
 /*     */       
-/* 346 */       entry.index = rs.getInt(2);
-/* 347 */       entry.levelMin = rs.getInt(3);
-/* 348 */       entry.levelMax = rs.getInt(4);
-/* 349 */       entry.affixID = rs.getString(5);
+/* 353 */       entry.index = rs.getInt(2);
+/* 354 */       entry.levelMin = rs.getInt(3);
+/* 355 */       entry.levelMax = rs.getInt(4);
+/* 356 */       entry.affixID = rs.getString(5);
 /*     */       
-/* 351 */       found = false;
-/* 352 */       for (DBAffixSet as : list) {
-/* 353 */         if (as != null && as.affixSetID != null && as.affixSetID
+/* 358 */       found = false;
+/* 359 */       for (DBAffixSet as : list) {
+/* 360 */         if (as != null && as.affixSetID != null && as.affixSetID
 /*     */           
-/* 355 */           .equals(id)) {
-/* 356 */           found = true;
+/* 362 */           .equals(id)) {
+/* 363 */           found = true;
 /*     */           
-/* 358 */           as.affixes.add(entry);
+/* 365 */           as.affixes.add(entry);
 /*     */           
 /*     */           break;
 /*     */         } 
 /*     */       } 
 /*     */       
-/* 364 */       if (!found) {
-/* 365 */         set = new DBAffixSet();
+/* 371 */       if (!found) {
+/* 372 */         set = new DBAffixSet();
 /*     */         
-/* 367 */         set.affixSetID = id;
+/* 374 */         set.affixSetID = id;
 /*     */         
-/* 369 */         set.affixes.add(entry);
+/* 376 */         set.affixes.add(entry);
 /*     */         
-/* 371 */         list.add(set);
+/* 378 */         list.add(set);
 /*     */       } 
 /*     */     } 
 /*     */     
-/* 375 */     return list;
+/* 382 */     for (DBAffixSet as : list) {
+/* 383 */       as.affixList = as.determineAffixList();
+/*     */     }
+/*     */     
+/* 386 */     return list;
 /*     */   }
 /*     */   
 /*     */   public List<String> getAffixIDs() {
-/* 379 */     List<String> list = new LinkedList<>();
+/* 390 */     List<String> list = new LinkedList<>();
 /*     */     
-/* 381 */     if (this.affixes == null) return list;
+/* 392 */     if (this.affixes == null) return list;
 /*     */     
-/* 383 */     for (DBEntry entry : this.affixes) {
-/* 384 */       if (entry != null && entry
-/* 385 */         .affixID != null) {
-/* 386 */         list.add(entry.affixID);
+/* 394 */     for (DBEntry entry : this.affixes) {
+/* 395 */       if (entry != null && entry
+/* 396 */         .affixID != null) {
+/* 397 */         list.add(entry.affixID);
 /*     */       }
 /*     */     } 
 /*     */     
-/* 390 */     return list;
+/* 401 */     return list;
+/*     */   }
+/*     */   
+/*     */   public List<DBAffix> determineAffixList() {
+/* 405 */     List<DBAffix> list = new LinkedList<>();
+/* 406 */     List<String> ids = getAffixIDs();
+/*     */     
+/* 408 */     if (!ids.isEmpty()) {
+/* 409 */       list = DBAffix.getByAffixSetID(ids);
+/*     */     }
+/*     */     
+/* 412 */     return list;
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\db\DBAffixSet.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\db\DBAffixSet.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

@@ -70,57 +70,68 @@
 /*     */ 
 /*     */   
 /*     */   public Object getValueAt(int row, int column) {
-/*  73 */     if (this.rows == null) return null;
+/*  73 */     if (this.rows == null) return null; 
+/*  74 */     if (row < 0) return null; 
+/*  75 */     if (row >= this.rows.length) return null; 
+/*  76 */     if (this.rows[row] == null) return null;
 /*     */     
-/*  75 */     if (column == 0) return (this.rows[row]).devotion.name; 
-/*  76 */     if (column == 1) return Integer.toString((this.rows[row]).devotion.points);
+/*  78 */     if (column == 0) return (this.rows[row]).devotion.name; 
+/*  79 */     if (column == 1) return Integer.toString((this.rows[row]).devotion.points);
 /*     */     
-/*  78 */     return null;
+/*  81 */     return null;
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public boolean isCellEditable(int row, int column) {
-/*  83 */     if (column == 1) return true;
+/*  86 */     if (column == 1) return true;
 /*     */     
-/*  85 */     return false;
+/*  88 */     return false;
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public void setValueAt(Object value, int row, int column) {
-/*  90 */     if (!isCellEditable(row, column))
+/*  93 */     if (!isCellEditable(row, column))
 /*     */       return; 
-/*  92 */     if (column == 0) (this.rows[row]).devotion.name = (String)value; 
-/*  93 */     if (column == 1) (this.rows[row]).devotion.points = Integer.parseInt((String)value);
+/*  95 */     if (this.rows == null)
+/*  96 */       return;  if (row < 0)
+/*  97 */       return;  if (row >= this.rows.length)
+/*  98 */       return;  if (this.rows[row] == null)
+/*     */       return; 
+/* 100 */     if (column == 0) (this.rows[row]).devotion.name = (String)value; 
+/* 101 */     if (column == 1) (this.rows[row]).devotion.points = Integer.parseInt((String)value);
 /*     */   
 /*     */   }
 /*     */   
 /*     */   public Class getColumnClass(int column) {
-/*  98 */     return GDDevotionRow.COLUMN_CLASSES[column];
+/* 106 */     return GDDevotionRow.COLUMN_CLASSES[column];
 /*     */   }
 /*     */   
 /*     */   public GDChar.SkillInfo[] getDevotions() {
-/* 102 */     GDChar.SkillInfo[] devotions = null;
+/* 110 */     GDChar.SkillInfo[] devotions = null;
 /*     */     
-/* 104 */     if (this.rows != null && this.rows.length > 0) {
-/* 105 */       devotions = new GDChar.SkillInfo[this.rows.length];
+/* 112 */     if (this.rows != null && this.rows.length > 0) {
+/* 113 */       devotions = new GDChar.SkillInfo[this.rows.length];
 /*     */       
-/* 107 */       for (int i = 0; i < this.rows.length; i++) {
-/* 108 */         devotions[i] = (this.rows[i]).devotion;
+/* 115 */       for (int i = 0; i < this.rows.length; i++) {
+/* 116 */         devotions[i] = (this.rows[i]).devotion;
 /*     */       }
 /*     */     } 
 /*     */     
-/* 112 */     return devotions;
+/* 120 */     return devotions;
 /*     */   }
 /*     */   
 /*     */   public TableCellEditor getLevelEditor(int row) {
-/* 116 */     if (row > this.rows.length) return null;
+/* 124 */     if (this.rows == null) return null; 
+/* 125 */     if (row < 0) return null; 
+/* 126 */     if (row >= this.rows.length) return null; 
+/* 127 */     if (this.rows[row] == null) return null;
 /*     */     
-/* 118 */     return (this.rows[row]).editor;
+/* 129 */     return (this.rows[row]).editor;
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\table\GDDevotionTableModel.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\table\GDDevotionTableModel.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

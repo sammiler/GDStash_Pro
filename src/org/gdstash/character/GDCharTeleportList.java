@@ -260,49 +260,79 @@
 /* 260 */   private static final byte[] RIFTGATE_ROT_05_WORLDSTONE_KEEP = new byte[] { 47, 125, -46, 81, -58, 70, -110, -13, -79, 102, 75, -106, -123, -13, -68, Byte.MAX_VALUE };
 /*     */   
 /* 262 */   private static final byte[] RIFTGATE_ROT_06_SHATTERED_CONCLAVE = new byte[] { 28, 29, 28, 105, 11, 77, 25, 66, 10, -94, 10, -69, 126, 50, 75, 48 };
+/*     */   
+/* 264 */   private static final byte[] RIFTGATE_ROT_06_TRISTRAM = new byte[] { -3, -5, 72, -23, -110, 68, 103, 99, -90, -37, 83, -88, 93, -23, 78, -63 };
+/*     */   
+/* 266 */   private static final byte[] RIFTGATE_ROT_06_LEVEL_02 = new byte[] { -104, -97, -123, 103, 91, 77, 105, -119, 126, 97, -70, -81, -36, -68, 38, -63 };
+/*     */   
+/* 268 */   private static final byte[] RIFTGATE_ROT_06_LEVEL_04 = new byte[] { 68, -70, -37, 69, -67, 70, -26, -87, -41, Byte.MIN_VALUE, -84, -72, -48, -28, -72, 84 };
+/*     */   
+/* 270 */   private static final byte[] RIFTGATE_ROT_06_LEVEL_06 = new byte[] { 105, 107, -95, -24, 16, 78, -33, -67, 44, 1, -112, -77, -14, -99, -1, -120 };
+/*     */   
+/* 272 */   private static final byte[] RIFTGATE_ROT_06_LEVEL_08 = new byte[] { -3, 101, 81, 77, -24, 66, -29, -1, -76, 70, -80, -88, -11, -23, 63, -3 };
+/*     */   
+/* 274 */   private static final byte[] RIFTGATE_ROT_06_LEVEL_10 = new byte[] { 78, -69, 46, 123, -75, 71, -126, 45, 60, 26, -96, -89, -33, -80, 97, -96 };
+/*     */   
+/* 276 */   private static final byte[] RIFTGATE_ROT_06_LEVEL_12 = new byte[] { -52, 94, -27, -72, 91, 67, 38, 10, -39, -77, -74, -87, -89, 19, -18, -111 };
+/*     */   
+/* 278 */   private static final byte[] RIFTGATE_ROT_06_LEVEL_14 = new byte[] { 121, -71, 63, -120, -108, 64, 8, -16, 69, -126, -88, -127, -36, -80, -1, -28 };
+/*     */   
+/* 280 */   private static final byte[] RIFTGATE_ROT_06_LEVEL_16 = new byte[] { 15, 47, 16, 72, 37, 79, 69, 42, -65, 75, 33, -110, 93, 69, -71, 50 };
+/*     */   
+/* 282 */   private static final byte[] RIFTGATE_ROT_06_HORADRIM_TOMB = new byte[] { 118, -90, -121, 80, -112, 79, -109, -24, -119, 12, 119, -77, 103, 109, -93, 48 };
 /*     */ 
 /*     */   
-/* 265 */   public static final GDCharUID UID_RIFT_ROT_01_ROGUE_ENCAMPMENT = new GDCharUID(RIFTGATE_ROT_01_ROGUE_ENCAMPMENT);
-/* 266 */   public static final GDCharUID UID_RIFT_ROT_01_COLD_PLAINS = new GDCharUID(RIFTGATE_ROT_01_COLD_PLAINS);
-/* 267 */   public static final GDCharUID UID_RIFT_ROT_01_STONY_FIELD = new GDCharUID(RIFTGATE_ROT_01_STONY_FIELD);
-/* 268 */   public static final GDCharUID UID_RIFT_ROT_01_DARK_WOOD = new GDCharUID(RIFTGATE_ROT_01_DARK_WOOD);
-/* 269 */   public static final GDCharUID UID_RIFT_ROT_01_BLACK_MARSH = new GDCharUID(RIFTGATE_ROT_01_BLACK_MARSH);
-/* 270 */   public static final GDCharUID UID_RIFT_ROT_01_CLOISTER_OUTER = new GDCharUID(RIFTGATE_ROT_01_CLOISTER_OUTER);
-/* 271 */   public static final GDCharUID UID_RIFT_ROT_01_JAIL = new GDCharUID(RIFTGATE_ROT_01_JAIL);
-/* 272 */   public static final GDCharUID UID_RIFT_ROT_01_CLOISTER_INNER = new GDCharUID(RIFTGATE_ROT_01_CLOISTER_INNER);
-/* 273 */   public static final GDCharUID UID_RIFT_ROT_01_CATACOMBS = new GDCharUID(RIFTGATE_ROT_01_CATACOMBS);
-/* 274 */   public static final GDCharUID UID_RIFT_ROT_02_LUT_GHOLEIN = new GDCharUID(RIFTGATE_ROT_02_LUT_GHOLEIN);
-/* 275 */   public static final GDCharUID UID_RIFT_ROT_02_SEWERS = new GDCharUID(RIFTGATE_ROT_02_SEWERS);
-/* 276 */   public static final GDCharUID UID_RIFT_ROT_02_DRY_HILLS = new GDCharUID(RIFTGATE_ROT_02_DRY_HILLS);
-/* 277 */   public static final GDCharUID UID_RIFT_ROT_02_HALLS_DEAD = new GDCharUID(RIFTGATE_ROT_02_HALLS_DEAD);
-/* 278 */   public static final GDCharUID UID_RIFT_ROT_02_FAR_OASIS = new GDCharUID(RIFTGATE_ROT_02_FAR_OASIS);
-/* 279 */   public static final GDCharUID UID_RIFT_ROT_02_LOST_CITY = new GDCharUID(RIFTGATE_ROT_02_LOST_CITY);
-/* 280 */   public static final GDCharUID UID_RIFT_ROT_02_PALACE_CELLAR = new GDCharUID(RIFTGATE_ROT_02_PALACE_CELLAR);
-/* 281 */   public static final GDCharUID UID_RIFT_ROT_02_ARCANE_SANCTUARY = new GDCharUID(RIFTGATE_ROT_02_ARCANE_SANCTUARY);
-/* 282 */   public static final GDCharUID UID_RIFT_ROT_02_CANYON_MAGI = new GDCharUID(RIFTGATE_ROT_02_CANYON_MAGI);
-/* 283 */   public static final GDCharUID UID_RIFT_ROT_03_KURAST_DOCKS = new GDCharUID(RIFTGATE_ROT_03_KURAST_DOCKS);
-/* 284 */   public static final GDCharUID UID_RIFT_ROT_03_SPIDER_FOREST = new GDCharUID(RIFTGATE_ROT_03_SPIDER_FOREST);
-/* 285 */   public static final GDCharUID UID_RIFT_ROT_03_GREAT_MARSH = new GDCharUID(RIFTGATE_ROT_03_GREAT_MARSH);
-/* 286 */   public static final GDCharUID UID_RIFT_ROT_03_FLAYER_JUNGLE = new GDCharUID(RIFTGATE_ROT_03_FLAYER_JUNGLE);
-/* 287 */   public static final GDCharUID UID_RIFT_ROT_03_KURAST_LOWER = new GDCharUID(RIFTGATE_ROT_03_KURAST_LOWER);
-/* 288 */   public static final GDCharUID UID_RIFT_ROT_03_KURAST_BAZAAR = new GDCharUID(RIFTGATE_ROT_03_KURAST_BAZAAR);
-/* 289 */   public static final GDCharUID UID_RIFT_ROT_03_KURAST_UPPER = new GDCharUID(RIFTGATE_ROT_03_KURAST_UPPER);
-/* 290 */   public static final GDCharUID UID_RIFT_ROT_03_TRAVINCAL = new GDCharUID(RIFTGATE_ROT_03_TRAVINCAL);
-/* 291 */   public static final GDCharUID UID_RIFT_ROT_03_DURANCE_HATE = new GDCharUID(RIFTGATE_ROT_03_DURANCE_HATE);
-/* 292 */   public static final GDCharUID UID_RIFT_ROT_04_PANDEMONIUM_FORTRESS = new GDCharUID(RIFTGATE_ROT_04_PANDEMONIUM_FORTRESS);
-/* 293 */   public static final GDCharUID UID_RIFT_ROT_04_PLAINS_DESPAIR = new GDCharUID(RIFTGATE_ROT_04_PLAINS_DESPAIR);
-/* 294 */   public static final GDCharUID UID_RIFT_ROT_04_CITY_DAMNED = new GDCharUID(RIFTGATE_ROT_04_CITY_DAMNED);
-/* 295 */   public static final GDCharUID UID_RIFT_ROT_04_RIVER_FLAME = new GDCharUID(RIFTGATE_ROT_04_RIVER_FLAME);
-/* 296 */   public static final GDCharUID UID_RIFT_ROT_05_HARROGATH = new GDCharUID(RIFTGATE_ROT_05_HARROGATH);
-/* 297 */   public static final GDCharUID UID_RIFT_ROT_05_FRIGID_HIGHLANDS = new GDCharUID(RIFTGATE_ROT_05_FRIGID_HIGHLANDS);
-/* 298 */   public static final GDCharUID UID_RIFT_ROT_05_ARREAT_PLATEAU = new GDCharUID(RIFTGATE_ROT_05_ARREAT_PLATEAU);
-/* 299 */   public static final GDCharUID UID_RIFT_ROT_05_CRYSTALLINE_PASSAGE = new GDCharUID(RIFTGATE_ROT_05_CRYSTALLINE_PASSAGE);
-/* 300 */   public static final GDCharUID UID_RIFT_ROT_05_HALLS_PAIN = new GDCharUID(RIFTGATE_ROT_05_HALLS_PAIN);
-/* 301 */   public static final GDCharUID UID_RIFT_ROT_05_GLACIAL_TRAIL = new GDCharUID(RIFTGATE_ROT_05_GLACIAL_TRAIL);
-/* 302 */   public static final GDCharUID UID_RIFT_ROT_05_FROZEN_TUNDRA = new GDCharUID(RIFTGATE_ROT_05_FROZEN_TUNDRA);
-/* 303 */   public static final GDCharUID UID_RIFT_ROT_05_ANCIENTS_WAY = new GDCharUID(RIFTGATE_ROT_05_ANCIENTS_WAY);
-/* 304 */   public static final GDCharUID UID_RIFT_ROT_05_WORLDSTONE_KEEP = new GDCharUID(RIFTGATE_ROT_05_WORLDSTONE_KEEP);
-/* 305 */   public static final GDCharUID UID_RIFT_ROT_06_SHATTERED_CONCLAVE = new GDCharUID(RIFTGATE_ROT_06_SHATTERED_CONCLAVE);
+/* 285 */   public static final GDCharUID UID_RIFT_ROT_01_ROGUE_ENCAMPMENT = new GDCharUID(RIFTGATE_ROT_01_ROGUE_ENCAMPMENT);
+/* 286 */   public static final GDCharUID UID_RIFT_ROT_01_COLD_PLAINS = new GDCharUID(RIFTGATE_ROT_01_COLD_PLAINS);
+/* 287 */   public static final GDCharUID UID_RIFT_ROT_01_STONY_FIELD = new GDCharUID(RIFTGATE_ROT_01_STONY_FIELD);
+/* 288 */   public static final GDCharUID UID_RIFT_ROT_01_DARK_WOOD = new GDCharUID(RIFTGATE_ROT_01_DARK_WOOD);
+/* 289 */   public static final GDCharUID UID_RIFT_ROT_01_BLACK_MARSH = new GDCharUID(RIFTGATE_ROT_01_BLACK_MARSH);
+/* 290 */   public static final GDCharUID UID_RIFT_ROT_01_CLOISTER_OUTER = new GDCharUID(RIFTGATE_ROT_01_CLOISTER_OUTER);
+/* 291 */   public static final GDCharUID UID_RIFT_ROT_01_JAIL = new GDCharUID(RIFTGATE_ROT_01_JAIL);
+/* 292 */   public static final GDCharUID UID_RIFT_ROT_01_CLOISTER_INNER = new GDCharUID(RIFTGATE_ROT_01_CLOISTER_INNER);
+/* 293 */   public static final GDCharUID UID_RIFT_ROT_01_CATACOMBS = new GDCharUID(RIFTGATE_ROT_01_CATACOMBS);
+/* 294 */   public static final GDCharUID UID_RIFT_ROT_02_LUT_GHOLEIN = new GDCharUID(RIFTGATE_ROT_02_LUT_GHOLEIN);
+/* 295 */   public static final GDCharUID UID_RIFT_ROT_02_SEWERS = new GDCharUID(RIFTGATE_ROT_02_SEWERS);
+/* 296 */   public static final GDCharUID UID_RIFT_ROT_02_DRY_HILLS = new GDCharUID(RIFTGATE_ROT_02_DRY_HILLS);
+/* 297 */   public static final GDCharUID UID_RIFT_ROT_02_HALLS_DEAD = new GDCharUID(RIFTGATE_ROT_02_HALLS_DEAD);
+/* 298 */   public static final GDCharUID UID_RIFT_ROT_02_FAR_OASIS = new GDCharUID(RIFTGATE_ROT_02_FAR_OASIS);
+/* 299 */   public static final GDCharUID UID_RIFT_ROT_02_LOST_CITY = new GDCharUID(RIFTGATE_ROT_02_LOST_CITY);
+/* 300 */   public static final GDCharUID UID_RIFT_ROT_02_PALACE_CELLAR = new GDCharUID(RIFTGATE_ROT_02_PALACE_CELLAR);
+/* 301 */   public static final GDCharUID UID_RIFT_ROT_02_ARCANE_SANCTUARY = new GDCharUID(RIFTGATE_ROT_02_ARCANE_SANCTUARY);
+/* 302 */   public static final GDCharUID UID_RIFT_ROT_02_CANYON_MAGI = new GDCharUID(RIFTGATE_ROT_02_CANYON_MAGI);
+/* 303 */   public static final GDCharUID UID_RIFT_ROT_03_KURAST_DOCKS = new GDCharUID(RIFTGATE_ROT_03_KURAST_DOCKS);
+/* 304 */   public static final GDCharUID UID_RIFT_ROT_03_SPIDER_FOREST = new GDCharUID(RIFTGATE_ROT_03_SPIDER_FOREST);
+/* 305 */   public static final GDCharUID UID_RIFT_ROT_03_GREAT_MARSH = new GDCharUID(RIFTGATE_ROT_03_GREAT_MARSH);
+/* 306 */   public static final GDCharUID UID_RIFT_ROT_03_FLAYER_JUNGLE = new GDCharUID(RIFTGATE_ROT_03_FLAYER_JUNGLE);
+/* 307 */   public static final GDCharUID UID_RIFT_ROT_03_KURAST_LOWER = new GDCharUID(RIFTGATE_ROT_03_KURAST_LOWER);
+/* 308 */   public static final GDCharUID UID_RIFT_ROT_03_KURAST_BAZAAR = new GDCharUID(RIFTGATE_ROT_03_KURAST_BAZAAR);
+/* 309 */   public static final GDCharUID UID_RIFT_ROT_03_KURAST_UPPER = new GDCharUID(RIFTGATE_ROT_03_KURAST_UPPER);
+/* 310 */   public static final GDCharUID UID_RIFT_ROT_03_TRAVINCAL = new GDCharUID(RIFTGATE_ROT_03_TRAVINCAL);
+/* 311 */   public static final GDCharUID UID_RIFT_ROT_03_DURANCE_HATE = new GDCharUID(RIFTGATE_ROT_03_DURANCE_HATE);
+/* 312 */   public static final GDCharUID UID_RIFT_ROT_04_PANDEMONIUM_FORTRESS = new GDCharUID(RIFTGATE_ROT_04_PANDEMONIUM_FORTRESS);
+/* 313 */   public static final GDCharUID UID_RIFT_ROT_04_PLAINS_DESPAIR = new GDCharUID(RIFTGATE_ROT_04_PLAINS_DESPAIR);
+/* 314 */   public static final GDCharUID UID_RIFT_ROT_04_CITY_DAMNED = new GDCharUID(RIFTGATE_ROT_04_CITY_DAMNED);
+/* 315 */   public static final GDCharUID UID_RIFT_ROT_04_RIVER_FLAME = new GDCharUID(RIFTGATE_ROT_04_RIVER_FLAME);
+/* 316 */   public static final GDCharUID UID_RIFT_ROT_05_HARROGATH = new GDCharUID(RIFTGATE_ROT_05_HARROGATH);
+/* 317 */   public static final GDCharUID UID_RIFT_ROT_05_FRIGID_HIGHLANDS = new GDCharUID(RIFTGATE_ROT_05_FRIGID_HIGHLANDS);
+/* 318 */   public static final GDCharUID UID_RIFT_ROT_05_ARREAT_PLATEAU = new GDCharUID(RIFTGATE_ROT_05_ARREAT_PLATEAU);
+/* 319 */   public static final GDCharUID UID_RIFT_ROT_05_CRYSTALLINE_PASSAGE = new GDCharUID(RIFTGATE_ROT_05_CRYSTALLINE_PASSAGE);
+/* 320 */   public static final GDCharUID UID_RIFT_ROT_05_HALLS_PAIN = new GDCharUID(RIFTGATE_ROT_05_HALLS_PAIN);
+/* 321 */   public static final GDCharUID UID_RIFT_ROT_05_GLACIAL_TRAIL = new GDCharUID(RIFTGATE_ROT_05_GLACIAL_TRAIL);
+/* 322 */   public static final GDCharUID UID_RIFT_ROT_05_FROZEN_TUNDRA = new GDCharUID(RIFTGATE_ROT_05_FROZEN_TUNDRA);
+/* 323 */   public static final GDCharUID UID_RIFT_ROT_05_ANCIENTS_WAY = new GDCharUID(RIFTGATE_ROT_05_ANCIENTS_WAY);
+/* 324 */   public static final GDCharUID UID_RIFT_ROT_05_WORLDSTONE_KEEP = new GDCharUID(RIFTGATE_ROT_05_WORLDSTONE_KEEP);
+/* 325 */   public static final GDCharUID UID_RIFT_ROT_06_SHATTERED_CONCLAVE = new GDCharUID(RIFTGATE_ROT_06_SHATTERED_CONCLAVE);
+/* 326 */   public static final GDCharUID UID_RIFT_ROT_06_TRISTRAM = new GDCharUID(RIFTGATE_ROT_06_TRISTRAM);
+/* 327 */   public static final GDCharUID UID_RIFT_ROT_06_LEVEL_02 = new GDCharUID(RIFTGATE_ROT_06_LEVEL_02);
+/* 328 */   public static final GDCharUID UID_RIFT_ROT_06_LEVEL_04 = new GDCharUID(RIFTGATE_ROT_06_LEVEL_04);
+/* 329 */   public static final GDCharUID UID_RIFT_ROT_06_LEVEL_06 = new GDCharUID(RIFTGATE_ROT_06_LEVEL_06);
+/* 330 */   public static final GDCharUID UID_RIFT_ROT_06_LEVEL_08 = new GDCharUID(RIFTGATE_ROT_06_LEVEL_08);
+/* 331 */   public static final GDCharUID UID_RIFT_ROT_06_LEVEL_10 = new GDCharUID(RIFTGATE_ROT_06_LEVEL_10);
+/* 332 */   public static final GDCharUID UID_RIFT_ROT_06_LEVEL_12 = new GDCharUID(RIFTGATE_ROT_06_LEVEL_12);
+/* 333 */   public static final GDCharUID UID_RIFT_ROT_06_LEVEL_14 = new GDCharUID(RIFTGATE_ROT_06_LEVEL_14);
+/* 334 */   public static final GDCharUID UID_RIFT_ROT_06_LEVEL_16 = new GDCharUID(RIFTGATE_ROT_06_LEVEL_16);
+/* 335 */   public static final GDCharUID UID_RIFT_ROT_06_HORADRIM_TOMB = new GDCharUID(RIFTGATE_ROT_06_HORADRIM_TOMB);
 /*     */   
 /*     */   private static final int VERSION = 1;
 /*     */   
@@ -316,14 +346,14 @@
 /*     */   private boolean changed;
 /*     */   
 /*     */   public GDCharTeleportList(GDChar gdc) {
-/* 319 */     int size = 3;
+/* 349 */     int size = 3;
 /*     */     
-/* 321 */     this.uidLists = new ArrayList<>(size);
-/* 322 */     for (int i = 0; i < size; i++) {
-/* 323 */       this.uidLists.add(new LinkedList<>());
+/* 351 */     this.uidLists = new ArrayList<>(size);
+/* 352 */     for (int i = 0; i < size; i++) {
+/* 353 */       this.uidLists.add(new LinkedList<>());
 /*     */     }
 /*     */     
-/* 326 */     this.gdc = gdc;
+/* 356 */     this.gdc = gdc;
 /*     */   }
 /*     */ 
 /*     */ 
@@ -331,15 +361,15 @@
 /*     */ 
 /*     */   
 /*     */   public List<GDCharUID> getRiftList(int difficulty) {
-/* 334 */     List<GDCharUID> list = new LinkedList<>();
+/* 364 */     List<GDCharUID> list = new LinkedList<>();
 /*     */     
-/* 336 */     if (difficulty < 0 || difficulty > 2) return list;
+/* 366 */     if (difficulty < 0 || difficulty > 2) return list;
 /*     */     
-/* 338 */     return this.uidLists.get(difficulty);
+/* 368 */     return this.uidLists.get(difficulty);
 /*     */   }
 /*     */   
 /*     */   public boolean hasChanged() {
-/* 342 */     return this.changed;
+/* 372 */     return this.changed;
 /*     */   }
 /*     */ 
 /*     */ 
@@ -347,32 +377,32 @@
 /*     */ 
 /*     */   
 /*     */   public void setRiftList(int difficulty, List<GDCharUID> addList, List<GDCharUID> removeList) {
-/* 350 */     if (difficulty < 0 || difficulty > 2) {
+/* 380 */     if (difficulty < 0 || difficulty > 2) {
 /*     */       return;
 /*     */     }
 /*     */ 
 /*     */     
-/* 355 */     int index = difficulty;
+/* 385 */     int index = difficulty;
 /*     */     
-/* 357 */     List<GDCharUID> riftgates = this.uidLists.get(index);
-/* 358 */     List<GDCharUID> newList = new LinkedList<>();
-/* 359 */     for (GDCharUID uid : riftgates) {
-/* 360 */       if (!removeList.contains(uid)) {
-/* 361 */         newList.add(uid); continue;
+/* 387 */     List<GDCharUID> riftgates = this.uidLists.get(index);
+/* 388 */     List<GDCharUID> newList = new LinkedList<>();
+/* 389 */     for (GDCharUID uid : riftgates) {
+/* 390 */       if (!removeList.contains(uid)) {
+/* 391 */         newList.add(uid); continue;
 /*     */       } 
-/* 363 */       this.changed = true;
+/* 393 */       this.changed = true;
 /*     */     } 
 /*     */ 
 /*     */     
-/* 367 */     for (GDCharUID uid : addList) {
-/* 368 */       if (!newList.contains(uid)) {
-/* 369 */         newList.add(uid);
+/* 397 */     for (GDCharUID uid : addList) {
+/* 398 */       if (!newList.contains(uid)) {
+/* 399 */         newList.add(uid);
 /*     */         
-/* 371 */         this.changed = true;
+/* 401 */         this.changed = true;
 /*     */       } 
 /*     */     } 
 /*     */     
-/* 375 */     this.uidLists.set(index, newList);
+/* 405 */     this.uidLists.set(index, newList);
 /*     */   }
 /*     */ 
 /*     */ 
@@ -380,74 +410,74 @@
 /*     */ 
 /*     */   
 /*     */   public void read() throws IOException {
-/* 383 */     int val = 0;
+/* 413 */     int val = 0;
 /*     */     
-/* 385 */     GDReader.Block block = new GDReader.Block();
+/* 415 */     GDReader.Block block = new GDReader.Block();
 /*     */     
-/* 387 */     val = GDReader.readBlockStart(block);
-/* 388 */     if (val != 6) throw new FileVersionException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
+/* 417 */     val = GDReader.readBlockStart(block);
+/* 418 */     if (val != 6) throw new FileVersionException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
 /*     */     
-/* 390 */     this.version = GDReader.readEncInt(true);
-/* 391 */     if (this.version != 1) throw new FileVersionException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
+/* 420 */     this.version = GDReader.readEncInt(true);
+/* 421 */     if (this.version != 1) throw new FileVersionException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
 /*     */     
-/* 393 */     for (int i = 0; i < this.uidLists.size(); i++) {
-/* 394 */       GDChar.readUIDList(this.uidLists.get(i));
+/* 423 */     for (int i = 0; i < this.uidLists.size(); i++) {
+/* 424 */       GDChar.readUIDList(this.uidLists.get(i));
 /*     */     }
 /*     */ 
 /*     */     
-/* 398 */     GDReader.readBlockEnd(block);
+/* 428 */     GDReader.readBlockEnd(block);
 /*     */     
-/* 400 */     this.changed = false;
+/* 430 */     this.changed = false;
 /*     */   }
 /*     */   
 /*     */   public void write() throws IOException {
-/* 404 */     GDReader.Block block = new GDReader.Block();
-/* 405 */     GDWriter.writeBlockStart(block, 6);
+/* 434 */     GDReader.Block block = new GDReader.Block();
+/* 435 */     GDWriter.writeBlockStart(block, 6);
 /*     */     
-/* 407 */     GDWriter.writeInt(this.version);
+/* 437 */     GDWriter.writeInt(this.version);
 /*     */     
-/* 409 */     for (int i = 0; i < this.uidLists.size(); i++) {
-/* 410 */       GDChar.writeUIDList(this.uidLists.get(i));
+/* 439 */     for (int i = 0; i < this.uidLists.size(); i++) {
+/* 440 */       GDChar.writeUIDList(this.uidLists.get(i));
 /*     */     }
 /*     */ 
 /*     */     
-/* 414 */     GDWriter.writeBlockEnd(block);
+/* 444 */     GDWriter.writeBlockEnd(block);
 /*     */     
-/* 416 */     this.changed = false;
+/* 446 */     this.changed = false;
 /*     */   }
 /*     */   
 /*     */   public int getByteSize() {
-/* 420 */     int size = 0;
+/* 450 */     int size = 0;
 /*     */     
-/* 422 */     size += 4;
-/* 423 */     size += 4;
-/* 424 */     size += 4;
+/* 452 */     size += 4;
+/* 453 */     size += 4;
+/* 454 */     size += 4;
 /*     */     
-/* 426 */     for (int i = 0; i < this.uidLists.size(); i++) {
-/* 427 */       size += 4;
-/* 428 */       size += ((List)this.uidLists.get(i)).size() * GDCharUID.getByteSize();
+/* 456 */     for (int i = 0; i < this.uidLists.size(); i++) {
+/* 457 */       size += 4;
+/* 458 */       size += ((List)this.uidLists.get(i)).size() * GDCharUID.getByteSize();
 /*     */     } 
 /*     */     
-/* 431 */     size += 4;
+/* 461 */     size += 4;
 /*     */     
-/* 433 */     return size;
+/* 463 */     return size;
 /*     */   }
 /*     */   
 /*     */   public void print() {
-/* 437 */     for (int i = 0; i < this.uidLists.size(); i++) {
-/* 438 */       System.out.println("Index : " + Integer.toString(i));
+/* 467 */     for (int i = 0; i < this.uidLists.size(); i++) {
+/* 468 */       System.out.println("Index : " + Integer.toString(i));
 /*     */       
-/* 440 */       for (GDCharUID uid : this.uidLists.get(i)) {
-/* 441 */         uid.println();
+/* 470 */       for (GDCharUID uid : this.uidLists.get(i)) {
+/* 471 */         uid.println();
 /*     */       }
 /*     */       
-/* 444 */       System.out.println();
+/* 474 */       System.out.println();
 /*     */     } 
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\character\GDCharTeleportList.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\character\GDCharTeleportList.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

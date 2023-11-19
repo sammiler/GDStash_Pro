@@ -156,139 +156,157 @@
 /*     */ 
 /*     */   
 /*     */   public Object getValueAt(int row, int column) {
-/* 159 */     if (this.rows == null) return null;
+/* 159 */     if (this.rows == null) return null; 
+/* 160 */     if (row < 0) return null; 
+/* 161 */     if (row >= this.rows.length) return null; 
+/* 162 */     if (this.rows[row] == null) return null;
 /*     */     
-/* 161 */     if (column == 0) return Boolean.valueOf((this.rows[row]).selected); 
-/* 162 */     if (column == 1) return (this.rows[row]).validIcon; 
-/* 163 */     if (column == 2) return (this.rows[row]).icon; 
-/* 164 */     if (column == 3) return (this.rows[row]).name.text; 
-/* 165 */     if (column == 4) return (this.rows[row]).level.text; 
-/* 166 */     if (column == 5) return (this.rows[row]).prefix.text; 
-/* 167 */     if (column == 6) return (this.rows[row]).suffix.text; 
-/* 168 */     if (column == 7) return (this.rows[row]).modifier.text; 
-/* 169 */     if (column == 8) return (this.rows[row]).component.text; 
-/* 170 */     if (column == 9) return (this.rows[row]).bonus.text; 
-/* 171 */     if (column == 10) return (this.rows[row]).enchantment.text; 
-/* 172 */     if (column == 11) return (this.rows[row]).seed.text; 
-/* 173 */     if (column == 12) return (this.rows[row]).charName.text; 
-/* 174 */     if (column == 13) return (this.rows[row]).hcIcon;
+/* 164 */     if (column == 0) return Boolean.valueOf((this.rows[row]).selected); 
+/* 165 */     if (column == 1) return (this.rows[row]).validIcon; 
+/* 166 */     if (column == 2) return (this.rows[row]).icon; 
+/* 167 */     if (column == 3) return (this.rows[row]).name.text; 
+/* 168 */     if (column == 4) return (this.rows[row]).level.text; 
+/* 169 */     if (column == 5) return (this.rows[row]).prefix.text; 
+/* 170 */     if (column == 6) return (this.rows[row]).suffix.text; 
+/* 171 */     if (column == 7) return (this.rows[row]).modifier.text; 
+/* 172 */     if (column == 8) return (this.rows[row]).component.text; 
+/* 173 */     if (column == 9) return (this.rows[row]).bonus.text; 
+/* 174 */     if (column == 10) return (this.rows[row]).enchantment.text; 
+/* 175 */     if (column == 11) return (this.rows[row]).seed.text; 
+/* 176 */     if (column == 12) return (this.rows[row]).charName.text; 
+/* 177 */     if (column == 13) return (this.rows[row]).hcIcon;
 /*     */     
-/* 176 */     return null;
+/* 179 */     return null;
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public boolean isCellEditable(int row, int column) {
-/* 181 */     return (column == 0);
+/* 184 */     return (column == 0);
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public void setValueAt(Object value, int row, int column) {
-/* 186 */     if (!isCellEditable(row, column))
+/* 189 */     if (!isCellEditable(row, column))
 /*     */       return; 
-/* 188 */     if (column == 0) (this.rows[row]).selected = ((Boolean)value).booleanValue(); 
-/* 189 */     if (column == 1) (this.rows[row]).validIcon = (ImageIcon)value; 
-/* 190 */     if (column == 2) (this.rows[row]).icon = (ImageIcon)value; 
-/* 191 */     if (column == 3) (this.rows[row]).name.text = (String)value; 
-/* 192 */     if (column == 4) (this.rows[row]).level.text = (String)value; 
-/* 193 */     if (column == 5) (this.rows[row]).prefix.text = (String)value; 
-/* 194 */     if (column == 6) (this.rows[row]).suffix.text = (String)value; 
-/* 195 */     if (column == 7) (this.rows[row]).modifier.text = (String)value; 
-/* 196 */     if (column == 8) (this.rows[row]).component.text = (String)value; 
-/* 197 */     if (column == 9) (this.rows[row]).bonus.text = (String)value; 
-/* 198 */     if (column == 10) (this.rows[row]).enchantment.text = (String)value; 
-/* 199 */     if (column == 11) (this.rows[row]).seed.text = (String)value; 
-/* 200 */     if (column == 12) {
-/* 201 */       if (value == null) {
-/* 202 */         (this.rows[row]).charName.text = "";
+/* 191 */     if (this.rows == null)
+/* 192 */       return;  if (row < 0)
+/* 193 */       return;  if (row >= this.rows.length)
+/* 194 */       return;  if (this.rows[row] == null)
+/*     */       return; 
+/* 196 */     if (column == 0) (this.rows[row]).selected = ((Boolean)value).booleanValue(); 
+/* 197 */     if (column == 1) (this.rows[row]).validIcon = (ImageIcon)value; 
+/* 198 */     if (column == 2) (this.rows[row]).icon = (ImageIcon)value; 
+/* 199 */     if (column == 3) (this.rows[row]).name.text = (String)value; 
+/* 200 */     if (column == 4) (this.rows[row]).level.text = (String)value; 
+/* 201 */     if (column == 5) (this.rows[row]).prefix.text = (String)value; 
+/* 202 */     if (column == 6) (this.rows[row]).suffix.text = (String)value; 
+/* 203 */     if (column == 7) (this.rows[row]).modifier.text = (String)value; 
+/* 204 */     if (column == 8) (this.rows[row]).component.text = (String)value; 
+/* 205 */     if (column == 9) (this.rows[row]).bonus.text = (String)value; 
+/* 206 */     if (column == 10) (this.rows[row]).enchantment.text = (String)value; 
+/* 207 */     if (column == 11) (this.rows[row]).seed.text = (String)value; 
+/* 208 */     if (column == 12) {
+/* 209 */       if (value == null) {
+/* 210 */         (this.rows[row]).charName.text = "";
 /*     */       } else {
-/* 204 */         (this.rows[row]).charName.text = (String)value;
+/* 212 */         (this.rows[row]).charName.text = (String)value;
 /*     */       } 
 /*     */     }
-/* 207 */     if (column == 13) (this.rows[row]).hcIcon = (ImageIcon)value;
+/* 215 */     if (column == 13) (this.rows[row]).hcIcon = (ImageIcon)value;
 /*     */   
 /*     */   }
 /*     */   
 /*     */   public Class getColumnClass(int column) {
-/* 212 */     return GDMassImportRow.COLUMN_CLASSES[column];
+/* 220 */     return GDMassImportRow.COLUMN_CLASSES[column];
 /*     */   }
 /*     */   
 /*     */   public String getCellText(int row, int column) {
-/* 216 */     if (column == 3) return (this.rows[row]).name.text; 
-/* 217 */     if (column == 4) return (this.rows[row]).level.text; 
-/* 218 */     if (column == 5) return (this.rows[row]).prefix.text; 
-/* 219 */     if (column == 6) return (this.rows[row]).suffix.text; 
-/* 220 */     if (column == 7) return (this.rows[row]).modifier.text; 
-/* 221 */     if (column == 8) return (this.rows[row]).component.text; 
-/* 222 */     if (column == 9) return (this.rows[row]).bonus.text; 
-/* 223 */     if (column == 10) return (this.rows[row]).enchantment.text; 
-/* 224 */     if (column == 11) return (this.rows[row]).seed.text; 
-/* 225 */     if (column == 12) return (this.rows[row]).charName.text;
+/* 224 */     if (this.rows == null) return ""; 
+/* 225 */     if (row < 0) return ""; 
+/* 226 */     if (row >= this.rows.length) return ""; 
+/* 227 */     if (this.rows[row] == null) return "";
 /*     */     
-/* 227 */     return "";
+/* 229 */     if (column == 3) return (this.rows[row]).name.text; 
+/* 230 */     if (column == 4) return (this.rows[row]).level.text; 
+/* 231 */     if (column == 5) return (this.rows[row]).prefix.text; 
+/* 232 */     if (column == 6) return (this.rows[row]).suffix.text; 
+/* 233 */     if (column == 7) return (this.rows[row]).modifier.text; 
+/* 234 */     if (column == 8) return (this.rows[row]).component.text; 
+/* 235 */     if (column == 9) return (this.rows[row]).bonus.text; 
+/* 236 */     if (column == 10) return (this.rows[row]).enchantment.text; 
+/* 237 */     if (column == 11) return (this.rows[row]).seed.text; 
+/* 238 */     if (column == 12) return (this.rows[row]).charName.text;
+/*     */     
+/* 240 */     return "";
 /*     */   }
 /*     */   
 /*     */   public Color getCellTextColor(int row, int column) {
-/* 231 */     if (column == 3) return (this.rows[row]).name.foreground; 
-/* 232 */     if (column == 4) return (this.rows[row]).level.foreground; 
-/* 233 */     if (column == 5) return (this.rows[row]).prefix.foreground; 
-/* 234 */     if (column == 6) return (this.rows[row]).suffix.foreground; 
-/* 235 */     if (column == 7) return (this.rows[row]).modifier.foreground; 
-/* 236 */     if (column == 8) return (this.rows[row]).component.foreground; 
-/* 237 */     if (column == 9) return (this.rows[row]).bonus.foreground; 
-/* 238 */     if (column == 10) return (this.rows[row]).enchantment.foreground; 
-/* 239 */     if (column == 11) return (this.rows[row]).seed.foreground; 
-/* 240 */     if (column == 12) return (this.rows[row]).charName.foreground;
+/* 244 */     if (this.rows == null) return Color.BLACK; 
+/* 245 */     if (row < 0) return Color.BLACK; 
+/* 246 */     if (row >= this.rows.length) return Color.BLACK; 
+/* 247 */     if (this.rows[row] == null) return Color.BLACK;
 /*     */     
-/* 242 */     return Color.BLACK;
+/* 249 */     if (column == 3) return (this.rows[row]).name.foreground; 
+/* 250 */     if (column == 4) return (this.rows[row]).level.foreground; 
+/* 251 */     if (column == 5) return (this.rows[row]).prefix.foreground; 
+/* 252 */     if (column == 6) return (this.rows[row]).suffix.foreground; 
+/* 253 */     if (column == 7) return (this.rows[row]).modifier.foreground; 
+/* 254 */     if (column == 8) return (this.rows[row]).component.foreground; 
+/* 255 */     if (column == 9) return (this.rows[row]).bonus.foreground; 
+/* 256 */     if (column == 10) return (this.rows[row]).enchantment.foreground; 
+/* 257 */     if (column == 11) return (this.rows[row]).seed.foreground; 
+/* 258 */     if (column == 12) return (this.rows[row]).charName.foreground;
+/*     */     
+/* 260 */     return Color.BLACK;
 /*     */   }
 /*     */   
 /*     */   public void setSelectAll(boolean selected) {
-/* 246 */     if (this.rows == null)
+/* 264 */     if (this.rows == null)
 /*     */       return; 
-/* 248 */     for (int i = 0; i < this.rows.length; i++) {
-/* 249 */       (this.rows[i]).selected = selected;
+/* 266 */     for (int i = 0; i < this.rows.length; i++) {
+/* 267 */       (this.rows[i]).selected = selected;
 /*     */     }
 /*     */     
-/* 252 */     fireTableDataChanged();
+/* 270 */     fireTableDataChanged();
 /*     */   }
 /*     */   
 /*     */   public void selectValidOnly() {
-/* 256 */     if (this.rows == null)
+/* 274 */     if (this.rows == null)
 /*     */       return; 
-/* 258 */     for (int i = 0; i < this.rows.length; i++) {
-/* 259 */       (this.rows[i]).selected = (this.rows[i]).valid;
+/* 276 */     for (int i = 0; i < this.rows.length; i++) {
+/* 277 */       (this.rows[i]).selected = (this.rows[i]).valid;
 /*     */     }
 /*     */     
-/* 262 */     fireTableDataChanged();
+/* 280 */     fireTableDataChanged();
 /*     */   }
 /*     */   
 /*     */   public List<GDItem> getSelectedItems() {
-/* 266 */     List<GDItem> list = new LinkedList<>();
+/* 284 */     List<GDItem> list = new LinkedList<>();
 /*     */     
-/* 268 */     if (this.rows == null) return list;
+/* 286 */     if (this.rows == null) return list;
 /*     */     
-/* 270 */     for (int i = 0; i < this.rows.length; i++) {
-/* 271 */       if ((this.rows[i]).selected) {
-/* 272 */         list.add((this.rows[i]).item);
+/* 288 */     for (int i = 0; i < this.rows.length; i++) {
+/* 289 */       if ((this.rows[i]).selected) {
+/* 290 */         list.add((this.rows[i]).item);
 /*     */       }
 /*     */     } 
 /*     */     
-/* 276 */     return list;
+/* 294 */     return list;
 /*     */   }
 /*     */   
 /*     */   public void sort(Comparator<GDMassImportRow> comp) {
-/* 280 */     if (comp == null)
+/* 298 */     if (comp == null)
 /*     */       return; 
-/* 282 */     this.comparator = comp;
+/* 300 */     this.comparator = comp;
 /*     */     
-/* 284 */     if (this.rows == null)
+/* 302 */     if (this.rows == null)
 /*     */       return; 
-/* 286 */     Arrays.sort(this.rows, this.comparator);
+/* 304 */     Arrays.sort(this.rows, this.comparator);
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\table\GDMassImportTableModel.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\table\GDMassImportTableModel.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

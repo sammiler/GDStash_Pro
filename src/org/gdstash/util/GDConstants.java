@@ -57,10 +57,20 @@
 /* 57 */   public static final Charset CHARSET_STASH = Charset.forName("UTF-8");
 /* 58 */   public static final Charset CHARSET_WIDE = Charset.forName("UTF-16LE");
 /* 59 */   public static final Locale LOCALE_US = Locale.US;
+/*    */   public static final String REC_SHARED_STASH_BG = "records/ui/caravan/caravan_backgroundimage.dbr";
+/*    */   public static final String REC_SHARED_STASH_GRID = "records/ui/caravan/caravan_transferinventory.dbr";
+/*    */   public static final String REC_SHARED_STASH_WINDOW = "records/ui/caravan/caravan_transferwindow.dbr";
+/*    */   public static final String REC_CHAR_STASH_BG = "records/ui/caravan/caravan_backgroundimage.dbr";
+/*    */   public static final String REC_CHAR_STASH_GRID = "records/ui/caravan/caravan_stashinventory.dbr";
+/*    */   public static final String REC_CHAR_STASH_WINDOW = "records/ui/caravan/caravan_stashwindow.dbr";
+/*    */   public static final String REC_CHAR_INVENTORY_BG = "records/ui/character/character_windowbackgroundimage.dbr";
+/*    */   public static final String REC_CHAR_INVENTORY_GRID = "records/ui/character/characterinventory/inventory_grid0.dbr";
+/*    */   public static final String REC_CHAR_BAG_BG = "records/ui/character/characterinventory/inventory_tab1backgroundimage.dbr";
+/*    */   public static final String REC_CHAR_BAG_GRID = "records/ui/character/characterinventory/inventory_grid1.dbr";
 /*    */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\util\GDConstants.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\util\GDConstants.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

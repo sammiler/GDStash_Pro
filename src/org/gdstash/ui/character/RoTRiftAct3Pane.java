@@ -2,10 +2,8 @@
 /*     */ import java.awt.Component;
 /*     */ import java.awt.Container;
 /*     */ import java.awt.Font;
-/*     */ import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-/*     */ import java.util.LinkedList;
-import java.util.List;
+/*     */ import java.awt.event.ActionListener;
+/*     */ import java.util.List;
 /*     */ import javax.swing.BorderFactory;
 /*     */ import javax.swing.GroupLayout;
 /*     */ import javax.swing.JCheckBox;
@@ -151,7 +149,7 @@ import java.util.List;
 /* 149 */     Border lowered = BorderFactory.createEtchedBorder(1);
 /* 150 */     Border raised = BorderFactory.createEtchedBorder(0);
 /* 151 */     Border compound = BorderFactory.createCompoundBorder(raised, lowered);
-/* 152 */     TitledBorder text = BorderFactory.createTitledBorder(compound, GDMsgFormatter.getString(GDMsgFormatter.rbGD, "TXT_RIFT_ACT1"));
+/* 152 */     TitledBorder text = BorderFactory.createTitledBorder(compound, GDMsgFormatter.getString(GDMsgFormatter.rbGD, "TXT_RIFT_ACT3"));
 /* 153 */     text.setTitleFont(fntBorder);
 /*     */     
 /* 155 */     setBorder(text);
@@ -293,7 +291,7 @@ import java.util.List;
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\character\RoTRiftAct3Pane.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\character\RoTRiftAct3Pane.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

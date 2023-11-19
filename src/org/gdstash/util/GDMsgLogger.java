@@ -131,7 +131,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\util\GDMsgLogger.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\util\GDMsgLogger.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

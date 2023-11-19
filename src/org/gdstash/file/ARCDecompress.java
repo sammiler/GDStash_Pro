@@ -426,9 +426,7 @@
 /*  426 */       if (this.strings[i] == null || 
 /*  427 */         !fileName.equalsIgnoreCase(this.strings[i].getFileName())) {
 /*      */         i++; continue;
-/*  429 */       }
-                    index = i;
-                    break;
+/*  429 */       }  index = i;
 /*      */     } 
 /*      */ 
 /*      */ 
@@ -1200,7 +1198,7 @@
 /*      */ 
 /*      */ 
 /*      */     
-/* 1201 */     int pos3 = text.indexOf(0, pos1);
+/* 1201 */     int pos3 = text.indexOf(false, pos1);
 /* 1202 */     if (pos3 != -1 && pos3 < pos2) pos2 = pos3; 
 /* 1203 */     if (pos2 == -1) pos2 = pos3; 
 /* 1204 */     if (pos2 == -1) {
@@ -1261,7 +1259,7 @@
 /*      */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\file\ARCDecompress.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\file\ARCDecompress.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

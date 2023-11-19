@@ -174,256 +174,272 @@
 /* 174 */       DBConstellation.createTables();
 /* 175 */       DBSkillButton.createTable();
 /* 176 */       DBBitmap.createTable();
-/* 177 */       DBClassTable.createTables();
-/* 178 */       DBEngineGame.createTable();
-/* 179 */       DBFaction.createTable();
-/* 180 */       DBEngineSkillMaster.createTables();
-/* 181 */       DBMerchant.createTables();
-/* 182 */       DBMerchantTableSet.createTables();
-/* 183 */       DBMerchantTable.createTables();
-/* 184 */       DBEnginePlayer.createTable();
-/* 185 */       DBEngineLevel.createTable();
-/* 186 */       DBEngineTagText.createTable();
+/* 177 */       DBInventoryGrid.createTable();
+/* 178 */       DBCaravanWindow.createTable();
+/* 179 */       DBClassTable.createTables();
+/* 180 */       DBEngineGame.createTable();
+/* 181 */       DBFaction.createTable();
+/* 182 */       DBEngineSkillMaster.createTables();
+/* 183 */       DBMerchant.createTables();
+/* 184 */       DBMerchantTableSet.createTables();
+/* 185 */       DBMerchantTable.createTables();
+/* 186 */       DBEnginePlayer.createTable();
+/* 187 */       DBEngineLevel.createTable();
+/* 188 */       DBEngineTagText.createTable();
 /*     */       
-/* 188 */       success = true;
+/* 190 */       success = true;
 /*     */     }
-/* 190 */     catch (Exception ex) {
-/* 191 */       GDMsgLogger.addError(ex);
+/* 192 */     catch (Exception ex) {
+/* 193 */       GDMsgLogger.addError(ex);
 /*     */     } 
 /*     */     
-/* 194 */     return success;
+/* 196 */     return success;
 /*     */   }
 /*     */ 
 /*     */ 
 /*     */   
 /*     */   public static void clearBuffers() {
-/* 200 */     DBAffix.clearBuffer();
-/* 201 */     DBAffixSet.clearBuffer();
-/* 202 */     DBFormulaSet.clearBuffer();
-/* 203 */     DBItem.clearBuffer();
-/* 204 */     DBItemCraft.clearBuffer();
-/* 205 */     DBLootTable.clearBuffer();
-/* 206 */     DBLootTableSet.clearBuffer();
-/* 207 */     DBSkill.clearBuffer();
-/* 208 */     DBSkillTree.clearBuffer();
-/* 209 */     DBPet.clearBuffer();
-/* 210 */     DBPetBio.clearBuffer();
+/* 202 */     DBAffix.clearBuffer();
+/* 203 */     DBAffixSet.clearBuffer();
+/* 204 */     DBFormulaSet.clearBuffer();
+/* 205 */     DBItem.clearBuffer();
+/* 206 */     DBItemCraft.clearBuffer();
+/* 207 */     DBLootTable.clearBuffer();
+/* 208 */     DBLootTableSet.clearBuffer();
+/* 209 */     DBSkill.clearBuffer();
+/* 210 */     DBSkillTree.clearBuffer();
+/* 211 */     DBPet.clearBuffer();
+/* 212 */     DBPetBio.clearBuffer();
 /*     */     
-/* 212 */     DBShrine.clearBuffer();
-/* 213 */     DBEngineTagText.clearBuffer();
-/* 214 */     DBBitmap.clearBuffer();
-/* 215 */     DBClassTable.clearBuffer();
-/* 216 */     DBController.clearBuffer();
+/* 214 */     DBShrine.clearBuffer();
+/* 215 */     DBEngineTagText.clearBuffer();
+/* 216 */     DBBitmap.clearBuffer();
+/* 217 */     DBInventoryGrid.clearBuffer();
+/* 218 */     DBCaravanWindow.clearBuffer();
+/* 219 */     DBClassTable.clearBuffer();
+/* 220 */     DBController.clearBuffer();
 /*     */   }
 /*     */   
 /*     */   public static boolean insertData(ARZRecord[] records, boolean suppressTagWarning) {
-/* 220 */     boolean success = false;
+/* 224 */     boolean success = false;
 /*     */     
 /*     */     try {
-/* 223 */       insertRecords(records, suppressTagWarning);
+/* 227 */       insertRecords(records, suppressTagWarning);
 /*     */       
-/* 225 */       success = true;
+/* 229 */       success = true;
 /*     */     }
-/* 227 */     catch (Exception ex) {
-/* 228 */       GDMsgLogger.addError(ex);
+/* 231 */     catch (Exception ex) {
+/* 232 */       GDMsgLogger.addError(ex);
 /*     */     } 
 /*     */     
-/* 231 */     return success;
+/* 235 */     return success;
 /*     */   }
 /*     */   
 /*     */   private static void insertRecords(ARZRecord[] records, boolean suppressTagWarning) throws SQLException {
-/* 235 */     for (int i = 0; i < records.length; i++) {
-/* 236 */       if (records[i] == null) {
+/* 239 */     for (int i = 0; i < records.length; i++) {
+/* 240 */       if (records[i] == null) {
 /*     */         continue;
 /*     */       }
 /*     */       
 /*     */       try {
-/* 241 */         boolean processed = false;
+/* 245 */         boolean processed = false;
 /*     */         
-/* 243 */         if (records[i].isBitmap()) {
-/* 244 */           DBBitmap.insert(records[i]);
+/* 247 */         if (records[i].isBitmap()) {
+/* 248 */           DBBitmap.insert(records[i]);
 /*     */           
-/* 246 */           processed = true;
+/* 250 */           processed = true;
 /*     */         } 
 /*     */         
-/* 249 */         if (records[i].isClassTable()) {
-/* 250 */           DBClassTable.insert(records[i]);
+/* 253 */         if (records[i].isInventoryGrid()) {
+/* 254 */           DBInventoryGrid.insert(records[i]);
 /*     */           
-/* 252 */           processed = true;
+/* 256 */           processed = true;
 /*     */         } 
 /*     */         
-/* 255 */         if (records[i].isSkillMaster()) {
-/* 256 */           DBEngineSkillMaster.insert(records[i]);
+/* 259 */         if (records[i].isCaravanWindow()) {
+/* 260 */           DBCaravanWindow.insert(records[i]);
 /*     */           
-/* 258 */           processed = true;
+/* 262 */           processed = true;
 /*     */         } 
 /*     */         
-/* 261 */         if (records[i].isConstellation()) {
-/* 262 */           DBConstellation.insert(records[i]);
+/* 265 */         if (records[i].isClassTable()) {
+/* 266 */           DBClassTable.insert(records[i]);
 /*     */           
-/* 264 */           processed = true;
+/* 268 */           processed = true;
 /*     */         } 
 /*     */         
-/* 267 */         if (records[i].isSkillButton()) {
-/* 268 */           DBSkillButton.insert(records[i]);
+/* 271 */         if (records[i].isSkillMaster()) {
+/* 272 */           DBEngineSkillMaster.insert(records[i]);
 /*     */           
-/* 270 */           processed = true;
+/* 274 */           processed = true;
 /*     */         } 
 /*     */         
-/* 273 */         if (records[i].isShrine()) {
-/* 274 */           DBShrine.insert(records[i]);
+/* 277 */         if (records[i].isConstellation()) {
+/* 278 */           DBConstellation.insert(records[i]);
 /*     */           
-/* 276 */           processed = true;
-/*     */         } 
-/*     */ 
-/*     */         
-/* 280 */         if (records[i].isGameEngine()) {
-/*     */           
-/* 282 */           DBEngineGame.insert(records[i]);
-/*     */           
-/* 284 */           processed = true;
-/*     */         } 
-/*     */ 
-/*     */         
-/* 288 */         if (records[i].isFaction()) {
-/* 289 */           DBFaction.insert(records[i]);
-/*     */           
-/* 291 */           processed = true;
+/* 280 */           processed = true;
 /*     */         } 
 /*     */         
-/* 294 */         if (records[i].isMerchant()) {
-/* 295 */           DBMerchant.insert(records[i]);
+/* 283 */         if (records[i].isSkillButton()) {
+/* 284 */           DBSkillButton.insert(records[i]);
 /*     */           
-/* 297 */           processed = true;
+/* 286 */           processed = true;
 /*     */         } 
 /*     */         
-/* 300 */         if (records[i].isMerchantTableSet()) {
-/* 301 */           DBMerchantTableSet.insert(records[i]);
+/* 289 */         if (records[i].isShrine()) {
+/* 290 */           DBShrine.insert(records[i]);
 /*     */           
-/* 303 */           processed = true;
-/*     */         } 
-/*     */         
-/* 306 */         if (records[i].isMerchantTable()) {
-/* 307 */           DBMerchantTable.insert(records[i]);
-/*     */           
-/* 309 */           processed = true;
+/* 292 */           processed = true;
 /*     */         } 
 /*     */ 
 /*     */         
-/* 313 */         if (records[i].isPlayerEngine()) {
+/* 296 */         if (records[i].isGameEngine()) {
 /*     */           
-/* 315 */           DBEnginePlayer.insert(records[i]);
-/*     */ 
+/* 298 */           DBEngineGame.insert(records[i]);
 /*     */           
-/* 318 */           DBEngineLevel.insert(records[i]);
-/*     */           
-/* 320 */           processed = true;
+/* 300 */           processed = true;
 /*     */         } 
 /*     */ 
 /*     */         
-/* 324 */         if (records[i].isAffix()) {
+/* 304 */         if (records[i].isFaction()) {
+/* 305 */           DBFaction.insert(records[i]);
 /*     */           
-/* 326 */           DBAffix.insert(records[i]);
-/*     */           
-/* 328 */           processed = true;
+/* 307 */           processed = true;
 /*     */         } 
 /*     */         
-/* 331 */         if (records[i].isAffixSet()) {
+/* 310 */         if (records[i].isMerchant()) {
+/* 311 */           DBMerchant.insert(records[i]);
 /*     */           
-/* 333 */           DBAffixSet.insert(records[i]);
+/* 313 */           processed = true;
+/*     */         } 
+/*     */         
+/* 316 */         if (records[i].isMerchantTableSet()) {
+/* 317 */           DBMerchantTableSet.insert(records[i]);
 /*     */           
-/* 335 */           processed = true;
+/* 319 */           processed = true;
+/*     */         } 
+/*     */         
+/* 322 */         if (records[i].isMerchantTable()) {
+/* 323 */           DBMerchantTable.insert(records[i]);
+/*     */           
+/* 325 */           processed = true;
 /*     */         } 
 /*     */ 
 /*     */         
-/* 339 */         if (records[i].isItemSet()) {
+/* 329 */         if (records[i].isPlayerEngine()) {
 /*     */           
-/* 341 */           DBItemSet.insert(records[i]);
+/* 331 */           DBEnginePlayer.insert(records[i]);
+/*     */ 
 /*     */           
-/* 343 */           processed = true;
+/* 334 */           DBEngineLevel.insert(records[i]);
+/*     */           
+/* 336 */           processed = true;
 /*     */         } 
 /*     */ 
 /*     */         
-/* 347 */         if (records[i].isLootTable()) {
+/* 340 */         if (records[i].isAffix()) {
 /*     */           
-/* 349 */           DBLootTable.insert(records[i]);
+/* 342 */           DBAffix.insert(records[i]);
+/*     */           
+/* 344 */           processed = true;
+/*     */         } 
+/*     */         
+/* 347 */         if (records[i].isAffixSet()) {
+/*     */           
+/* 349 */           DBAffixSet.insert(records[i]);
 /*     */           
 /* 351 */           processed = true;
 /*     */         } 
+/*     */ 
 /*     */         
-/* 354 */         if (records[i].isLootTableSet()) {
+/* 355 */         if (records[i].isItemSet()) {
 /*     */           
-/* 356 */           DBLootTableSet.insert(records[i]);
+/* 357 */           DBItemSet.insert(records[i]);
 /*     */           
-/* 358 */           processed = true;
+/* 359 */           processed = true;
 /*     */         } 
 /*     */ 
 /*     */         
-/* 362 */         if (records[i].isFormulaSet()) {
+/* 363 */         if (records[i].isLootTable()) {
 /*     */           
-/* 364 */           DBFormulaSet.insert(records[i]);
+/* 365 */           DBLootTable.insert(records[i]);
 /*     */           
-/* 366 */           processed = true;
+/* 367 */           processed = true;
 /*     */         } 
 /*     */         
-/* 369 */         if (records[i].isSkillTree()) {
-/* 370 */           DBSkillTree.insert(records[i]);
+/* 370 */         if (records[i].isLootTableSet()) {
 /*     */           
-/* 372 */           processed = true;
+/* 372 */           DBLootTableSet.insert(records[i]);
+/*     */           
+/* 374 */           processed = true;
+/*     */         } 
+/*     */ 
+/*     */         
+/* 378 */         if (records[i].isFormulaSet()) {
+/*     */           
+/* 380 */           DBFormulaSet.insert(records[i]);
+/*     */           
+/* 382 */           processed = true;
 /*     */         } 
 /*     */         
-/* 375 */         if (records[i].isSkill()) {
-/* 376 */           DBSkill.insert(records[i]);
+/* 385 */         if (records[i].isSkillTree()) {
+/* 386 */           DBSkillTree.insert(records[i]);
 /*     */           
-/* 378 */           processed = true;
+/* 388 */           processed = true;
 /*     */         } 
 /*     */         
-/* 381 */         if (records[i].isPet()) {
-/* 382 */           DBPet.insert(records[i]);
+/* 391 */         if (records[i].isSkill()) {
+/* 392 */           DBSkill.insert(records[i]);
 /*     */           
-/* 384 */           processed = true;
+/* 394 */           processed = true;
 /*     */         } 
 /*     */         
-/* 387 */         if (records[i].isPetBio()) {
-/* 388 */           DBPetBio.insert(records[i]);
+/* 397 */         if (records[i].isPet()) {
+/* 398 */           DBPet.insert(records[i]);
 /*     */           
-/* 390 */           processed = true;
+/* 400 */           processed = true;
 /*     */         } 
 /*     */         
-/* 393 */         if (records[i].isController()) {
-/* 394 */           DBController.insert(records[i]);
+/* 403 */         if (records[i].isPetBio()) {
+/* 404 */           DBPetBio.insert(records[i]);
 /*     */           
-/* 396 */           processed = true;
+/* 406 */           processed = true;
 /*     */         } 
 /*     */         
-/* 399 */         if (!processed) {
+/* 409 */         if (records[i].isController()) {
+/* 410 */           DBController.insert(records[i]);
+/*     */           
+/* 412 */           processed = true;
+/*     */         } 
+/*     */         
+/* 415 */         if (!processed) {
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */           
-/* 406 */           if (records[i].getFileDescription() != null && 
-/* 407 */             records[i].getFileDescription().startsWith("BASE")) {
-/* 408 */             boolean skipItem = true;
+/* 422 */           if (records[i].getFileDescription() != null && 
+/* 423 */             records[i].getFileDescription().startsWith("BASE")) {
+/* 424 */             boolean skipItem = true;
 /*     */             
-/* 410 */             if (records[i].getFileName().startsWith("records/items/gq_")) skipItem = false; 
-/* 411 */             if (records[i].getFileName().startsWith("records/tq/items/")) skipItem = false;
+/* 426 */             if (records[i].getFileName().startsWith("records/items/gq_")) skipItem = false; 
+/* 427 */             if (records[i].getFileName().startsWith("records/tq/items/")) skipItem = false;
 /*     */             
-/* 413 */             if (records[i].getFileName().equals("records/items/gearaccessories/medals/a200_medal.dbr")) skipItem = false;
+/* 429 */             if (records[i].getFileName().equals("records/items/gearaccessories/medals/a200_medal.dbr")) skipItem = false;
 /*     */             
-/* 415 */             if (skipItem) {
+/* 431 */             if (skipItem) {
 /*     */               continue;
 /*     */             }
 /*     */           } 
 /*     */           
-/* 420 */           if (records[i].getItemName() == null) {
-/* 421 */             if (records[i].getItemNameTag() != null && 
-/* 422 */               !suppressTagWarning) {
-/* 423 */               Object[] args = { records[i].getItemNameTag(), "tags_items.txt" };
-/* 424 */               String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_TAG_NOT_FOUND", args);
+/* 436 */           if (records[i].getItemName() == null) {
+/* 437 */             if (records[i].getItemNameTag() != null && 
+/* 438 */               !suppressTagWarning) {
+/* 439 */               Object[] args = { records[i].getItemNameTag(), "tags_items.txt" };
+/* 440 */               String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_TAG_NOT_FOUND", args);
 /*     */               
-/* 426 */               GDMsgLogger.addWarning(msg);
+/* 442 */               GDMsgLogger.addWarning(msg);
 /*     */ 
 /*     */             
 /*     */             }
@@ -431,29 +447,29 @@
 /*     */ 
 /*     */           
 /*     */           }
-/* 434 */           else if (records[i].getBitmapID() != null) {
+/* 450 */           else if (records[i].getBitmapID() != null) {
 /*     */ 
 /*     */             
-/* 437 */             DBItem.insert(records[i]);
+/* 453 */             DBItem.insert(records[i]);
 /*     */           } 
 /*     */         } 
-/* 440 */       } catch (Exception ex) {
-/* 441 */         GDMsgLogger.addError(ex);
+/* 456 */       } catch (Exception ex) {
+/* 457 */         GDMsgLogger.addError(ex);
 /*     */       } 
 /*     */       continue;
 /*     */     } 
-/* 445 */     clearBuffers();
+/* 461 */     clearBuffers();
 /*     */     
-/* 447 */     if (GDMsgLogger.severeErrorsInLog()) {
-/* 448 */       throw new SQLException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_DB_IMPORT"));
+/* 463 */     if (GDMsgLogger.severeErrorsInLog()) {
+/* 464 */       throw new SQLException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_DB_IMPORT"));
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   public static boolean updateStash() {
-/* 453 */     boolean success = false;
+/* 469 */     boolean success = false;
 /*     */     
 /*     */     try {
-/* 456 */       boolean updated = false;
+/* 472 */       boolean updated = false;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -461,49 +477,49 @@
 /*     */ 
 /*     */ 
 /*     */       
-/* 464 */       if (GDDBUtil.doesExist("jdbc:derby:db;")) {
-/* 465 */         if (GDDBUtil.tableExists(getOldConnection(), "STASH_ITEM")) {
-/* 466 */           moveStash(getOldConnection(), getConnection(), "STASH_ITEM");
+/* 480 */       if (GDDBUtil.doesExist("jdbc:derby:db;")) {
+/* 481 */         if (GDDBUtil.tableExists(getOldConnection(), "STASH_ITEM")) {
+/* 482 */           moveStash(getOldConnection(), getConnection(), "STASH_ITEM");
 /*     */           
-/* 468 */           updated = true;
+/* 484 */           updated = true;
 /*     */         }
-/* 470 */         else if (GDDBUtil.tableExists(getOldConnection(), "STASH_ITEM_V2")) {
-/* 471 */           moveStash(getOldConnection(), getConnection(), "STASH_ITEM_V2");
+/* 486 */         else if (GDDBUtil.tableExists(getOldConnection(), "STASH_ITEM_V2")) {
+/* 487 */           moveStash(getOldConnection(), getConnection(), "STASH_ITEM_V2");
 /*     */           
-/* 473 */           updated = true;
+/* 489 */           updated = true;
 /*     */         }
-/* 475 */         else if (GDDBUtil.tableExists(getOldConnection(), "STASH_ITEM_V3")) {
-/* 476 */           moveStash(getOldConnection(), getConnection(), "STASH_ITEM_V3");
+/* 491 */         else if (GDDBUtil.tableExists(getOldConnection(), "STASH_ITEM_V3")) {
+/* 492 */           moveStash(getOldConnection(), getConnection(), "STASH_ITEM_V3");
 /*     */           
-/* 478 */           updated = true;
+/* 494 */           updated = true;
 /*     */         } 
 /*     */       }
 /*     */ 
 /*     */ 
 /*     */       
-/* 484 */       if (!updated) {
-/* 485 */         if (GDDBUtil.tableExists("STASH_ITEM")) {
-/* 486 */           convertStash("STASH_ITEM");
+/* 500 */       if (!updated) {
+/* 501 */         if (GDDBUtil.tableExists("STASH_ITEM")) {
+/* 502 */           convertStash("STASH_ITEM");
 /*     */         }
-/* 488 */         else if (GDDBUtil.tableExists("STASH_ITEM_V2")) {
-/* 489 */           convertStash("STASH_ITEM_V2");
+/* 504 */         else if (GDDBUtil.tableExists("STASH_ITEM_V2")) {
+/* 505 */           convertStash("STASH_ITEM_V2");
 /*     */         }
-/* 491 */         else if (GDDBUtil.tableExists("STASH_ITEM_V3")) {
-/* 492 */           convertStash("STASH_ITEM_V3");
+/* 507 */         else if (GDDBUtil.tableExists("STASH_ITEM_V3")) {
+/* 508 */           convertStash("STASH_ITEM_V3");
 /*     */         }
-/* 494 */         else if (GDDBUtil.tableExists("STASH_ITEM_V4")) {
-/* 495 */           convertStash("STASH_ITEM_V4");
+/* 510 */         else if (GDDBUtil.tableExists("STASH_ITEM_V4")) {
+/* 511 */           convertStash("STASH_ITEM_V4");
 /*     */         }
-/* 497 */         else if (GDDBUtil.tableExists("STASH_ITEM_V5")) {
-/* 498 */           convertStash("STASH_ITEM_V5");
+/* 513 */         else if (GDDBUtil.tableExists("STASH_ITEM_V5")) {
+/* 514 */           convertStash("STASH_ITEM_V5");
 /*     */         }
-/* 500 */         else if (GDDBUtil.tableExists("STASH_ITEM_V6")) {
-/* 501 */           convertStash("STASH_ITEM_V6");
+/* 516 */         else if (GDDBUtil.tableExists("STASH_ITEM_V6")) {
+/* 517 */           convertStash("STASH_ITEM_V6");
 /*     */         }
-/* 503 */         else if (GDDBUtil.tableExists("STASH_ITEM_V7")) {
-/* 504 */           convertStash("STASH_ITEM_V7");
+/* 519 */         else if (GDDBUtil.tableExists("STASH_ITEM_V7")) {
+/* 520 */           convertStash("STASH_ITEM_V7");
 /*     */         } else {
-/* 506 */           updateDependent();
+/* 522 */           updateDependent();
 /*     */         } 
 /*     */       }
 /*     */ 
@@ -513,64 +529,64 @@
 /*     */ 
 /*     */ 
 /*     */       
-/* 516 */       success = !GDMsgLogger.severeErrorsInLog();
+/* 532 */       success = !GDMsgLogger.severeErrorsInLog();
 /*     */     }
-/* 518 */     catch (SQLException ex) {
-/* 519 */       GDMsgLogger.addError(ex);
+/* 534 */     catch (SQLException ex) {
+/* 535 */       GDMsgLogger.addError(ex);
 /*     */     }
-/* 521 */     catch (Exception ex) {
-/* 522 */       GDMsgLogger.addError(ex);
+/* 537 */     catch (Exception ex) {
+/* 538 */       GDMsgLogger.addError(ex);
 /*     */     } 
 /*     */     
-/* 525 */     return success;
+/* 541 */     return success;
 /*     */   }
 /*     */   
 /*     */   private static void updateDependent() throws SQLException {
-/* 529 */     if (GDDBUtil.tableExists("STASH_ITEM_V8")) {
-/* 530 */       List<DBStashItem> items = DBStashItem.getAll();
+/* 545 */     if (GDDBUtil.tableExists("STASH_ITEM_V8")) {
+/* 546 */       List<DBStashItem> items = DBStashItem.getAll();
 /*     */       
-/* 532 */       DBStashItem.updateDependentFields(items);
+/* 548 */       DBStashItem.updateDependentFields(items);
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   private static void convertStash(String tableName) throws SQLException {
-/* 537 */     if (GDDBUtil.tableExists(tableName)) {
-/* 538 */       List<DBStashItem> items = DBStashItem.getAllOld(getConnection(), tableName);
+/* 553 */     if (GDDBUtil.tableExists(tableName)) {
+/* 554 */       List<DBStashItem> items = DBStashItem.getAllOld(getConnection(), tableName);
 /*     */       
-/* 540 */       DBStashItem.convertStash(tableName, items);
+/* 556 */       DBStashItem.convertStash(tableName, items);
 /*     */       
-/* 542 */       DBStashItem.dropOldStash(getConnection(), tableName);
+/* 558 */       DBStashItem.dropOldStash(getConnection(), tableName);
 /*     */     } 
 /*     */   }
 /*     */   
 /*     */   private static void moveStash(Connection connOld, Connection connNew, String tableName) throws SQLException {
-/* 547 */     if (GDDBUtil.tableExists(connOld, tableName)) {
-/* 548 */       List<DBStashItem> items = DBStashItem.getAllOld(connOld, tableName);
+/* 563 */     if (GDDBUtil.tableExists(connOld, tableName)) {
+/* 564 */       List<DBStashItem> items = DBStashItem.getAllOld(connOld, tableName);
 /*     */       
-/* 550 */       DBStashItem.moveStash(connOld, connNew, tableName, items);
+/* 566 */       DBStashItem.moveStash(connOld, connNew, tableName, items);
 /*     */       
-/* 552 */       DBStashItem.dropOldStash(connOld, tableName);
+/* 568 */       DBStashItem.dropOldStash(connOld, tableName);
 /*     */     } 
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public static void updateDB() {
-/* 558 */     DBEngineGame.reset();
-/* 559 */     DBEnginePlayer.reset();
-/* 560 */     DBEngineLevel.reset();
-/* 561 */     DBEngineSkillMaster.reset();
+/* 574 */     DBEngineGame.reset();
+/* 575 */     DBEnginePlayer.reset();
+/* 576 */     DBEngineLevel.reset();
+/* 577 */     DBEngineSkillMaster.reset();
 /*     */     
-/* 563 */     DBSkill.updateDB();
-/* 564 */     DBSkill.clearBuffer();
+/* 579 */     DBSkill.updateDB();
+/* 580 */     DBSkill.clearBuffer();
 /*     */ 
 /*     */     
-/* 567 */     DBSkillBonus.updateDB();
-/* 568 */     DBSkillModifier.updateDB();
+/* 583 */     DBSkillBonus.updateDB();
+/* 584 */     DBSkillModifier.updateDB();
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\db\GDDBData.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\db\GDDBData.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

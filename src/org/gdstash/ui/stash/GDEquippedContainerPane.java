@@ -496,56 +496,59 @@
 /*     */   }
 /*     */ 
 /*     */ 
+/*     */   
+/*     */   public void updateConfig() {}
+/*     */ 
 /*     */ 
 /*     */   
 /*     */   public Dimension getPreferredSize() {
-/* 502 */     BufferedImage image = getBackgroundImage();
+/* 505 */     BufferedImage image = getBackgroundImage();
 /*     */     
-/* 504 */     int w = image.getWidth() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
-/* 505 */     int h = image.getHeight() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
+/* 507 */     int w = image.getWidth() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
+/* 508 */     int h = image.getHeight() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
 /*     */     
-/* 507 */     return new Dimension(w, h);
+/* 510 */     return new Dimension(w, h);
 /*     */   }
 /*     */   
 /*     */   public Dimension getMaximumSize() {
-/* 511 */     return getPreferredSize();
+/* 514 */     return getPreferredSize();
 /*     */   }
 /*     */   
 /*     */   public int getPreferredWidth() {
-/* 515 */     return (int)getPreferredSize().getWidth();
+/* 518 */     return (int)getPreferredSize().getWidth();
 /*     */   }
 /*     */   
 /*     */   public int getPreferredHeight() {
-/* 519 */     return (int)getPreferredSize().getHeight();
+/* 522 */     return (int)getPreferredSize().getHeight();
 /*     */   }
 /*     */   
 /*     */   public void layoutPage() {
-/* 523 */     if (this.uiTransfer == null) {
-/* 524 */       this.mouseRect = null;
-/*     */     }
-/* 526 */     else if (this.uiTransfer.getSelectedItem() == null) {
+/* 526 */     if (this.uiTransfer == null) {
 /* 527 */       this.mouseRect = null;
+/*     */     }
+/* 529 */     else if (this.uiTransfer.getSelectedItem() == null) {
+/* 530 */       this.mouseRect = null;
 /*     */     } 
 /*     */ 
 /*     */     
-/* 531 */     BufferedImage image = drawGraphics();
+/* 534 */     BufferedImage image = drawGraphics();
 /*     */     
-/* 533 */     if (GDStashFrame.iniConfig.sectUI.graphicScale != 100) {
-/* 534 */       int w = image.getWidth() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
-/* 535 */       int h = image.getHeight() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
-/* 536 */       image = DDSLoader.getScaledImage(image, w, h);
+/* 536 */     if (GDStashFrame.iniConfig.sectUI.graphicScale != 100) {
+/* 537 */       int w = image.getWidth() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
+/* 538 */       int h = image.getHeight() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
+/* 539 */       image = DDSLoader.getScaledImage(image, w, h);
 /*     */     } 
 /*     */     
-/* 539 */     setIcon(new ImageIcon(image));
+/* 542 */     setIcon(new ImageIcon(image));
 /*     */   }
 /*     */   
 /*     */   private boolean isBlocked() {
-/* 543 */     return true;
+/* 546 */     return true;
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\stash\GDEquippedContainerPane.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\stash\GDEquippedContainerPane.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

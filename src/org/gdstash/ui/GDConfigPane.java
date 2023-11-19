@@ -1,46 +1,31 @@
 /*      */ package org.gdstash.ui;
-/*      */ import java.awt.*;
-/*      */
+/*      */ import java.awt.Component;
+/*      */ import java.awt.Font;
 /*      */ import java.awt.event.ActionEvent;
 /*      */ import java.awt.event.ActionListener;
 /*      */ import java.beans.PropertyChangeEvent;
-/*      */ import java.beans.PropertyChangeListener;
-import java.io.File;
-/*      */ import java.io.IOException;
-import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
-/*      */ import javax.swing.*;
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
+/*      */ import java.io.File;
+/*      */ import java.util.List;
+/*      */ import javax.swing.ComboBoxModel;
+/*      */ import javax.swing.DefaultComboBoxModel;
+/*      */ import javax.swing.GroupLayout;
+/*      */ import javax.swing.JButton;
+/*      */ import javax.swing.JCheckBox;
+/*      */ import javax.swing.JComboBox;
+/*      */ import javax.swing.JFileChooser;
+/*      */ import javax.swing.JLabel;
+/*      */ import javax.swing.JPanel;
+/*      */ import javax.swing.JRadioButton;
+/*      */ import javax.swing.UIManager;
 /*      */ import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
-import javax.swing.text.AbstractDocument;
-/*      */ import org.gdstash.db.*;
-/*      */
-import org.gdstash.file.ARCDecompress;
+/*      */ import org.gdstash.db.DBConfig;
+/*      */ import org.gdstash.file.ARCDecompress;
 /*      */ import org.gdstash.file.ARCList;
-/*      */ import org.gdstash.file.ARZDecompress;
-import org.gdstash.ui.character.GDCharMasteryImagePane;
-import org.gdstash.ui.character.GDCharMasteryPane;
-import org.gdstash.ui.select.*;
-import org.gdstash.ui.util.AdjustablePanel;
-import org.gdstash.ui.util.GDCharInfoList;
-import org.gdstash.ui.util.GDStashInfoList;
-import org.gdstash.util.*;
-/*      */
-/*      */
-/*      */
-
-/*      */
+/*      */ import org.gdstash.util.GDConstants;
+/*      */ import org.gdstash.util.GDImagePool;
+/*      */ import org.gdstash.util.GDMsgFormatter;
+/*      */ import org.gdstash.util.GDMsgLogger;
+/*      */ 
 /*      */ public class GDConfigPane extends AdjustablePanel {
 /*      */   private GDStashFrame frame;
 /*      */   private TitledBorder brdGeneral;
@@ -186,7 +171,7 @@ import org.gdstash.util.*;
 /*  171 */         if (success) {
 /*  172 */           DBEngineTagText.collectTags(GDStashFrame.arcList);
 /*      */           
-/*  174 */           success = (success && DBConfig.setItemNameOrder("1.0.8", "1.6.0g", order));
+/*  174 */           success = (success && DBConfig.setItemNameOrder("1.0.8", "1.7.4", order));
 /*      */           
 /*  176 */           if (success) success = DBEngineTagText.storeTags();
 /*      */         
@@ -296,8 +281,8 @@ import org.gdstash.util.*;
 /*      */           
 /*  282 */           setProgress(100);
 /*      */           
-/*  284 */           success = (success && DBConfig.setGDDBInit("1.0.8", "1.6.0g", success));
-/*  285 */           success = (success && DBConfig.setVersions("1.0.8", "1.6.0g"));
+/*  284 */           success = (success && DBConfig.setGDDBInit("1.0.8", "1.7.4", success));
+/*  285 */           success = (success && DBConfig.setVersions("1.0.8", "1.7.4"));
 /*      */         } 
 /*      */         
 /*  288 */         if (success) {
@@ -368,7 +353,7 @@ import org.gdstash.util.*;
 /*      */       
 /*  354 */       GDConfigPane.this.setCursor(Cursor.getDefaultCursor());
 /*      */       
-/*  356 */       GDMsgLogger.showSevereLog((Component)GDConfigPane.this, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_DB_IMPORT"), GDLog.MessageType.Success,
+/*  356 */       GDMsgLogger.showSevereLog((Component)GDConfigPane.this, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_DB_IMPORT"), GDLog.MessageType.Success, 
 /*  357 */           GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_DB_IMPORT"), true, false);
 /*      */     }
 /*      */   }
@@ -711,8 +696,7 @@ import org.gdstash.util.*;
 /*      */           } 
 /*      */         } 
 /*  698 */       } catch (Exception ex) {
-/*  699 */         //GDConfigPane.this.frame;
-                   GDConfigPane.this.cbLookNFeel.setSelectedItem(GDStashFrame.iniConfig.sectUI.lookNFeel);
+/*  699 */         GDConfigPane.this.frame; GDConfigPane.this.cbLookNFeel.setSelectedItem(GDStashFrame.iniConfig.sectUI.lookNFeel);
 /*      */       } 
 /*      */       
 /*  702 */       GDMsgLogger.showLog((Component)GDConfigPane.this, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERRORS"));
@@ -862,13 +846,13 @@ import org.gdstash.util.*;
 /*  846 */         dbConfig.gdLocal = (String)GDConfigPane.this.cbGDLocal.getSelectedItem();
 /*  847 */         dbConfig.modStandalone = GDConfigPane.this.cbModStandalone.isSelected();
 /*      */         
-/*  849 */         success = DBConfig.setConfigData("1.0.8", "1.6.0g", dbConfig);
+/*  849 */         success = DBConfig.setConfigData("1.0.8", "1.7.4", dbConfig);
 /*      */         
 /*  851 */         if (success) {
 /*  852 */           GDStashFrame.dbConfig = dbConfig;
 /*      */           
-/*  854 */           success = (success && DBConfig.setConfigInit("1.0.8", "1.6.0g", success));
-/*  855 */           success = (success && DBConfig.setVersions("1.0.8", "1.6.0g"));
+/*  854 */           success = (success && DBConfig.setConfigInit("1.0.8", "1.7.4", success));
+/*  855 */           success = (success && DBConfig.setVersions("1.0.8", "1.7.4"));
 /*      */         } 
 /*      */         
 /*  858 */         GDStashFrame.iniConfig.sectDir.gdPath = GDConfigPane.this.strGD;
@@ -2207,241 +2191,241 @@ import org.gdstash.util.*;
 /*      */     
 /* 2192 */     if (this.strGD == null || this.strGD.equals("")) return model;
 /*      */     
-/* 2194 */     File dir = new File(this.strGD + GDConstants.FILE_SEPARATOR + "localization");
+/* 2194 */     File locDir = new File(this.strGD + GDConstants.FILE_SEPARATOR + "localization");
 /*      */     
-/* 2196 */     if (!dir.exists()) return model; 
-/* 2197 */     if (!dir.isDirectory()) return model;
+/* 2196 */     File arcDir = new File(this.strGD + GDConstants.FILE_SEPARATOR + "resources");
 /*      */     
-/* 2199 */     String[] files = dir.list(); int i;
-/* 2200 */     for (i = 0; i < files.length; i++) {
-/* 2201 */       if (files[i].endsWith(".zip"))
-/*      */       {
-/* 2203 */         model.addElement(files[i]);
-/*      */       }
+/* 2198 */     if (arcDir.exists() && arcDir.isDirectory()) {
+/* 2199 */       String[] files = arcDir.list(); int i;
+/* 2200 */       for (i = 0; i < files.length; i++) {
+/* 2201 */         if (files[i].endsWith(".arc") && 
+/* 2202 */           files[i].startsWith("Text_"))
+/*      */         {
+/* 2204 */           model.addElement(files[i]);
+/*      */         }
+/*      */       } 
 /*      */     } 
-/* 2206 */     if (GDStashFrame.dbConfig.gdLocal != null) {
-/* 2207 */       model.setSelectedItem(GDStashFrame.dbConfig.gdLocal);
+/* 2208 */     if (locDir.exists() && locDir.isDirectory()) {
+/* 2209 */       String[] files = locDir.list(); int i;
+/* 2210 */       for (i = 0; i < files.length; i++) {
+/* 2211 */         if (files[i].endsWith(".zip"))
+/*      */         {
+/* 2213 */           model.addElement(files[i]);
+/*      */         }
+/*      */       } 
+/*      */     } 
+/* 2217 */     if (GDStashFrame.dbConfig.gdLocal != null) {
+/* 2218 */       model.setSelectedItem(GDStashFrame.dbConfig.gdLocal);
 /*      */     }
 /*      */     
-/* 2210 */     return model;
+/* 2221 */     return model;
 /*      */   }
 /*      */   
 /*      */   private ComboBoxModel<String> buildLanguageModel() {
-/* 2214 */     DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+/* 2225 */     DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 /*      */     
-/* 2216 */     String defLang = "English";
-/* 2217 */     model.addElement(defLang);
+/* 2227 */     String defLang = "English";
+/* 2228 */     model.addElement(defLang);
 /*      */     
-/* 2219 */     File dir = new File(GDConstants.USER_DIR);
+/* 2230 */     File dir = new File(GDConstants.USER_DIR);
 /*      */     
-/* 2221 */     if (!dir.exists()) return model; 
-/* 2222 */     if (!dir.isDirectory()) return model;
+/* 2232 */     if (!dir.exists()) return model; 
+/* 2233 */     if (!dir.isDirectory()) return model;
 /*      */     
-/* 2224 */     String[] files = dir.list(); int i;
-/* 2225 */     for (i = 0; i < files.length; i++) {
-/* 2226 */       if (files[i].startsWith("UI") && 
-/* 2227 */         files[i].endsWith(".properties")) {
+/* 2235 */     String[] files = dir.list(); int i;
+/* 2236 */     for (i = 0; i < files.length; i++) {
+/* 2237 */       if (files[i].startsWith("UI") && 
+/* 2238 */         files[i].endsWith(".properties")) {
 /*      */         
-/* 2229 */         int pos1 = files[i].indexOf("_");
-/* 2230 */         if (pos1 != -1) {
+/* 2240 */         int pos1 = files[i].indexOf("_");
+/* 2241 */         if (pos1 != -1) {
 /*      */           
-/* 2232 */           int pos2 = files[i].indexOf(".properties");
-/* 2233 */           if (pos2 != -1)
+/* 2243 */           int pos2 = files[i].indexOf(".properties");
+/* 2244 */           if (pos2 != -1)
 /*      */           
-/* 2235 */           { String lang = files[i].substring(pos1 + 1, pos2);
+/* 2246 */           { String lang = files[i].substring(pos1 + 1, pos2);
 /*      */             
-/* 2237 */             if (!lang.equals(defLang)) model.addElement(lang);  } 
+/* 2248 */             if (!lang.equals(defLang)) model.addElement(lang);  } 
 /*      */         } 
 /*      */       } 
-/* 2240 */     }  if (GDStashFrame.iniConfig.sectUI.language != null) {
-/* 2241 */       String locale = GDStashFrame.iniConfig.sectUI.language;
+/* 2251 */     }  if (GDStashFrame.iniConfig.sectUI.language != null) {
+/* 2252 */       String locale = GDStashFrame.iniConfig.sectUI.language;
 /*      */       
-/* 2243 */       model.setSelectedItem(locale);
+/* 2254 */       model.setSelectedItem(locale);
 /*      */     } else {
-/* 2245 */       model.setSelectedItem(defLang);
+/* 2256 */       model.setSelectedItem(defLang);
 /*      */     } 
 /*      */     
-/* 2248 */     return model;
+/* 2259 */     return model;
 /*      */   }
 /*      */   
 /*      */   private boolean isCorrectDirs() {
-/* 2252 */     return (isCorrectInstallDir(this.strGD) && isCorrectSaveDir(this.strSave));
+/* 2263 */     return (isCorrectInstallDir(this.strGD) && isCorrectSaveDir(this.strSave));
 /*      */   }
 /*      */   
 /*      */   private boolean isCorrectInstallDir(String dir) {
-/* 2256 */     String s = dir + GDConstants.FILE_SEPARATOR + "database" + GDConstants.FILE_SEPARATOR + "database.arz";
-/* 2257 */     File f = new File(s);
+/* 2267 */     String s = dir + GDConstants.FILE_SEPARATOR + "database" + GDConstants.FILE_SEPARATOR + "database.arz";
+/* 2268 */     File f = new File(s);
 /*      */     
-/* 2259 */     if (!f.exists()) return false;
+/* 2270 */     if (!f.exists()) return false;
 /*      */     
-/* 2261 */     return true;
+/* 2272 */     return true;
 /*      */   }
 /*      */   
 /*      */   private boolean isCorrectSaveDir(String dir) {
-/* 2265 */     String s1 = dir + GDConstants.FILE_SEPARATOR + "transfer.gst";
-/* 2266 */     String s2 = dir + GDConstants.FILE_SEPARATOR + "transfer.gsh";
-/* 2267 */     File f1 = new File(s1);
-/* 2268 */     File f2 = new File(s2);
+/* 2276 */     String s1 = dir + GDConstants.FILE_SEPARATOR + "transfer.gst";
+/* 2277 */     String s2 = dir + GDConstants.FILE_SEPARATOR + "transfer.gsh";
+/* 2278 */     File f1 = new File(s1);
+/* 2279 */     File f2 = new File(s2);
 /*      */     
-/* 2270 */     if (f1.exists() || f2.exists()) return true;
+/* 2281 */     if (f1.exists() || f2.exists()) return true;
 /*      */     
-/* 2272 */     String s = dir.substring(dir.length() - 4);
+/* 2283 */     String s = dir.substring(dir.length() - 4);
 /*      */     
-/* 2274 */     if (!s.equals("save")) return false;
+/* 2285 */     if (!s.equals("save")) return false;
 /*      */     
-/* 2276 */     String s3 = dir + GDConstants.FILE_SEPARATOR + "main";
-/* 2277 */     String s4 = dir + GDConstants.FILE_SEPARATOR + "user";
-/* 2278 */     File f3 = new File(s3);
-/* 2279 */     File f4 = new File(s4);
+/* 2287 */     String s3 = dir + GDConstants.FILE_SEPARATOR + "main";
+/* 2288 */     String s4 = dir + GDConstants.FILE_SEPARATOR + "user";
+/* 2289 */     File f3 = new File(s3);
+/* 2290 */     File f4 = new File(s4);
 /*      */     
-/* 2281 */     if (f3.exists() && f3.isDirectory()) return true; 
-/* 2282 */     if (f4.exists() && f4.isDirectory()) return true;
+/* 2292 */     if (f3.exists() && f3.isDirectory()) return true; 
+/* 2293 */     if (f4.exists() && f4.isDirectory()) return true;
 /*      */     
-/* 2284 */     return false;
+/* 2295 */     return false;
 /*      */   }
 /*      */   
 /*      */   public String getSaveDir() {
-/* 2288 */     if (!isCorrectSaveDir(this.strSave)) return null;
+/* 2299 */     if (!isCorrectSaveDir(this.strSave)) return null;
 /*      */     
-/* 2290 */     return this.strSave;
+/* 2301 */     return this.strSave;
 /*      */   }
 /*      */   
 /*      */   public String getSelectedMod() {
-/* 2294 */     String mod = (String)this.cbMod.getSelectedItem();
+/* 2305 */     String mod = (String)this.cbMod.getSelectedItem();
 /*      */     
-/* 2296 */     if (mod == null) return null; 
-/* 2297 */     if (mod.length() == 0) return null;
+/* 2307 */     if (mod == null) return null; 
+/* 2308 */     if (mod.length() == 0) return null;
 /*      */     
-/* 2299 */     return mod;
+/* 2310 */     return mod;
 /*      */   }
 /*      */   
 /*      */   private String getModDatabase() {
-/* 2303 */     String mod = (String)this.cbMod.getSelectedItem();
+/* 2314 */     String mod = (String)this.cbMod.getSelectedItem();
 /*      */     
-/* 2305 */     if (mod == null) return null; 
-/* 2306 */     if (mod.length() == 0) return null;
+/* 2316 */     if (mod == null) return null; 
+/* 2317 */     if (mod.length() == 0) return null;
 /*      */     
-/* 2308 */     String db = null;
+/* 2319 */     String db = null;
 /*      */     
-/* 2310 */     String dir = this.strGD + GDConstants.FILE_SEPARATOR + "mods" + GDConstants.FILE_SEPARATOR + mod + GDConstants.FILE_SEPARATOR + "database";
+/* 2321 */     String dir = this.strGD + GDConstants.FILE_SEPARATOR + "mods" + GDConstants.FILE_SEPARATOR + mod + GDConstants.FILE_SEPARATOR + "database";
 /*      */     
-/* 2312 */     File file = new File(dir);
-/* 2313 */     if (file.isDirectory()) {
-/* 2314 */       File[] files = file.listFiles();
+/* 2323 */     File file = new File(dir);
+/* 2324 */     if (file.isDirectory()) {
+/* 2325 */       File[] files = file.listFiles();
 /*      */       int i;
-/* 2316 */       for (i = 0; i < files.length; i++) {
+/* 2327 */       for (i = 0; i < files.length; i++) {
 /*      */         try {
-/* 2318 */           String s = files[i].getCanonicalPath();
-/* 2319 */           if (s.toUpperCase(GDConstants.LOCALE_US).endsWith(".ARZ")) {
-/* 2320 */             db = s;
+/* 2329 */           String s = files[i].getCanonicalPath();
+/* 2330 */           if (s.toUpperCase(GDConstants.LOCALE_US).endsWith(".ARZ")) {
+/* 2331 */             db = s;
 /*      */ 
 /*      */             
 /*      */             break;
 /*      */           } 
-/* 2325 */         } catch (IOException iOException) {}
+/* 2336 */         } catch (IOException iOException) {}
 /*      */       } 
 /*      */     } 
 /*      */     
-/* 2329 */     return db;
+/* 2340 */     return db;
 /*      */   }
 /*      */   
 /*      */   private List<ARCList.ARCFile> getImportARCFileList() {
-/* 2333 */     List<ARCList.ARCFile> arcs = new LinkedList<>();
-/* 2334 */     ARCList.ARCFile arcFile = null;
+/* 2344 */     List<ARCList.ARCFile> arcs = new LinkedList<>();
+/* 2345 */     ARCList.ARCFile arcFile = null;
 /*      */     
-/* 2336 */     String fn = null;
+/* 2347 */     String fn = null;
 /*      */ 
 /*      */     
-/* 2339 */     if (GDStashFrame.expansionForgottenGods) {
-/* 2340 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
-/* 2341 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
-/* 2342 */       arcs.add(arcFile);
+/* 2350 */     if (GDStashFrame.expansionForgottenGods) {
+/* 2351 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
+/* 2352 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
+/* 2353 */       arcs.add(arcFile);
 /*      */     } 
 /*      */ 
 /*      */     
-/* 2346 */     if (GDStashFrame.expansionAshesOfMalmouth) {
-/* 2347 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
-/* 2348 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
-/* 2349 */       arcs.add(arcFile);
+/* 2357 */     if (GDStashFrame.expansionAshesOfMalmouth) {
+/* 2358 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
+/* 2359 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
+/* 2360 */       arcs.add(arcFile);
 /*      */     } 
 /*      */     
-/* 2352 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
-/* 2353 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
-/* 2354 */     arcs.add(arcFile);
+/* 2363 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
+/* 2364 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
+/* 2365 */     arcs.add(arcFile);
 /*      */     
-/* 2356 */     if (GDStashFrame.expansionForgottenGods) {
-/* 2357 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
-/* 2358 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
-/* 2359 */       arcs.add(arcFile);
+/* 2367 */     if (GDStashFrame.expansionForgottenGods) {
+/* 2368 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
+/* 2369 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
+/* 2370 */       arcs.add(arcFile);
 /*      */     } 
 /*      */     
-/* 2362 */     if (GDStashFrame.expansionAshesOfMalmouth) {
-/* 2363 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
-/* 2364 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
-/* 2365 */       arcs.add(arcFile);
-/*      */     } 
-/*      */     
-/* 2368 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
-/* 2369 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
-/* 2370 */     arcs.add(arcFile);
-/*      */     
-/* 2372 */     if (GDStashFrame.expansionForgottenGods) {
-/*      */       
-/* 2374 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "System.arc";
+/* 2373 */     if (GDStashFrame.expansionAshesOfMalmouth) {
+/* 2374 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
 /* 2375 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
 /* 2376 */       arcs.add(arcFile);
 /*      */     } 
 /*      */     
-/* 2379 */     if (GDStashFrame.expansionAshesOfMalmouth) {
+/* 2379 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
+/* 2380 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
+/* 2381 */     arcs.add(arcFile);
+/*      */     
+/* 2383 */     if (GDStashFrame.expansionForgottenGods) {
 /*      */       
-/* 2381 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Level Art.arc";
-/* 2382 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
-/* 2383 */       arcs.add(arcFile);
+/* 2385 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "System.arc";
+/* 2386 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
+/* 2387 */       arcs.add(arcFile);
 /*      */     } 
 /*      */     
-/* 2386 */     if (GDStashFrame.dbConfig.gdLocal != null && 
-/* 2387 */       !GDStashFrame.dbConfig.gdLocal.equals("")) {
-/* 2388 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "localization" + GDConstants.FILE_SEPARATOR + GDStashFrame.dbConfig.gdLocal;
-/* 2389 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
-/* 2390 */       arcs.add(arcFile);
-/*      */     } else {
-/* 2392 */       if (GDStashFrame.expansionForgottenGods) {
-/* 2393 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
-/* 2394 */         arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
-/* 2395 */         arcs.add(arcFile);
-/*      */       } 
+/* 2390 */     if (GDStashFrame.expansionAshesOfMalmouth) {
 /*      */       
-/* 2398 */       if (GDStashFrame.expansionAshesOfMalmouth) {
-/* 2399 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
-/* 2400 */         arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
-/* 2401 */         arcs.add(arcFile);
-/*      */       } 
+/* 2392 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Level Art.arc";
+/* 2393 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
+/* 2394 */       arcs.add(arcFile);
+/*      */     } 
+/*      */     
+/* 2397 */     if (GDStashFrame.dbConfig.gdLocal != null && 
+/* 2398 */       !GDStashFrame.dbConfig.gdLocal.equals("")) {
 /*      */       
-/* 2404 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
+/* 2400 */       if (GDStashFrame.dbConfig.gdLocal.endsWith(".arc")) {
+/* 2401 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + GDStashFrame.dbConfig.gdLocal;
+/*      */       } else {
+/* 2403 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "localization" + GDConstants.FILE_SEPARATOR + GDStashFrame.dbConfig.gdLocal;
+/*      */       } 
 /* 2405 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
 /* 2406 */       arcs.add(arcFile);
+/*      */     } else {
+/* 2408 */       if (GDStashFrame.expansionForgottenGods) {
+/* 2409 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
+/* 2410 */         arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
+/* 2411 */         arcs.add(arcFile);
+/*      */       } 
+/*      */       
+/* 2414 */       if (GDStashFrame.expansionAshesOfMalmouth) {
+/* 2415 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
+/* 2416 */         arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
+/* 2417 */         arcs.add(arcFile);
+/*      */       } 
+/*      */       
+/* 2420 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
+/* 2421 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
+/* 2422 */       arcs.add(arcFile);
 /*      */     } 
 /*      */     
-/* 2409 */     return arcs;
+/* 2425 */     return arcs;
 /*      */   }
 /*      */   
 /*      */   private ARCList getImportTextARCList() {
-/* 2413 */     String mod = (String)this.cbMod.getSelectedItem();
-/*      */     
-/* 2415 */     String dirMod = null;
-/* 2416 */     if (mod != null && 
-/* 2417 */       !mod.isEmpty()) {
-/* 2418 */       dirMod = this.strGD + GDConstants.FILE_SEPARATOR + "mods" + GDConstants.FILE_SEPARATOR + mod + GDConstants.FILE_SEPARATOR + "resources";
-/*      */     }
-/*      */     
-/* 2421 */     List<ARCList.ARCFile> arcs = getImportARCFileList();
-/*      */     
-/* 2423 */     ARCList list = new ARCList(dirMod, arcs, ARCList.ListType.Text);
-/*      */     
-/* 2425 */     return list;
-/*      */   }
-/*      */   
-/*      */   private ARCList getImportImageARCList() {
 /* 2429 */     String mod = (String)this.cbMod.getSelectedItem();
 /*      */     
 /* 2431 */     String dirMod = null;
@@ -2452,12 +2436,12 @@ import org.gdstash.util.*;
 /*      */     
 /* 2437 */     List<ARCList.ARCFile> arcs = getImportARCFileList();
 /*      */     
-/* 2439 */     ARCList list = new ARCList(dirMod, arcs, ARCList.ListType.Image);
+/* 2439 */     ARCList list = new ARCList(dirMod, arcs, ARCList.ListType.Text);
 /*      */     
 /* 2441 */     return list;
 /*      */   }
 /*      */   
-/*      */   private ARCList getExportARCList() {
+/*      */   private ARCList getImportImageARCList() {
 /* 2445 */     String mod = (String)this.cbMod.getSelectedItem();
 /*      */     
 /* 2447 */     String dirMod = null;
@@ -2466,76 +2450,92 @@ import org.gdstash.util.*;
 /* 2450 */       dirMod = this.strGD + GDConstants.FILE_SEPARATOR + "mods" + GDConstants.FILE_SEPARATOR + mod + GDConstants.FILE_SEPARATOR + "resources";
 /*      */     }
 /*      */     
-/* 2453 */     List<ARCList.ARCFile> arcs = new LinkedList<>();
-/* 2454 */     ARCList.ARCFile arcFile = null;
+/* 2453 */     List<ARCList.ARCFile> arcs = getImportARCFileList();
 /*      */     
-/* 2456 */     String fn = null;
+/* 2455 */     ARCList list = new ARCList(dirMod, arcs, ARCList.ListType.Image);
+/*      */     
+/* 2457 */     return list;
+/*      */   }
+/*      */   
+/*      */   private ARCList getExportARCList() {
+/* 2461 */     String mod = (String)this.cbMod.getSelectedItem();
+/*      */     
+/* 2463 */     String dirMod = null;
+/* 2464 */     if (mod != null && 
+/* 2465 */       !mod.isEmpty()) {
+/* 2466 */       dirMod = this.strGD + GDConstants.FILE_SEPARATOR + "mods" + GDConstants.FILE_SEPARATOR + mod + GDConstants.FILE_SEPARATOR + "resources";
+/*      */     }
+/*      */     
+/* 2469 */     List<ARCList.ARCFile> arcs = new LinkedList<>();
+/* 2470 */     ARCList.ARCFile arcFile = null;
+/*      */     
+/* 2472 */     String fn = null;
 /*      */ 
 /*      */     
-/* 2459 */     if (GDStashFrame.expansionForgottenGods) {
-/* 2460 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
-/* 2461 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
-/* 2462 */       arcs.add(arcFile);
+/* 2475 */     if (GDStashFrame.expansionForgottenGods) {
+/* 2476 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
+/* 2477 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
+/* 2478 */       arcs.add(arcFile);
 /*      */     } 
 /*      */ 
 /*      */     
-/* 2466 */     if (GDStashFrame.expansionAshesOfMalmouth) {
-/* 2467 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
-/* 2468 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
-/* 2469 */       arcs.add(arcFile);
+/* 2482 */     if (GDStashFrame.expansionAshesOfMalmouth) {
+/* 2483 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
+/* 2484 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
+/* 2485 */       arcs.add(arcFile);
 /*      */       
-/* 2471 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
-/* 2472 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
-/* 2473 */       arcs.add(arcFile);
+/* 2487 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
+/* 2488 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
+/* 2489 */       arcs.add(arcFile);
 /*      */       
-/* 2475 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Scripts.arc";
-/* 2476 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
-/* 2477 */       arcs.add(arcFile);
+/* 2491 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Scripts.arc";
+/* 2492 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
+/* 2493 */       arcs.add(arcFile);
 /*      */     } 
 /*      */     
-/* 2480 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
-/* 2481 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
-/* 2482 */     arcs.add(arcFile);
+/* 2496 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Items.arc";
+/* 2497 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
+/* 2498 */     arcs.add(arcFile);
 /*      */     
-/* 2484 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
-/* 2485 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
-/* 2486 */     arcs.add(arcFile);
+/* 2500 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "UI.arc";
+/* 2501 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
+/* 2502 */     arcs.add(arcFile);
 /*      */     
-/* 2488 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Scripts.arc";
-/* 2489 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
-/* 2490 */     arcs.add(arcFile);
+/* 2504 */     fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Scripts.arc";
+/* 2505 */     arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
+/* 2506 */     arcs.add(arcFile);
 /*      */     
-/* 2492 */     if (GDStashFrame.dbConfig.gdLocal != null && 
-/* 2493 */       !GDStashFrame.dbConfig.gdLocal.equals("")) {
-/* 2494 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "localization" + GDConstants.FILE_SEPARATOR + GDStashFrame.dbConfig.gdLocal;
-/* 2495 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
-/* 2496 */       arcs.add(arcFile);
-/*      */     } else {
-/* 2498 */       if (GDStashFrame.expansionForgottenGods) {
-/* 2499 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
-/* 2500 */         arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
-/* 2501 */         arcs.add(arcFile);
-/*      */       } 
-/*      */       
-/* 2504 */       if (GDStashFrame.expansionAshesOfMalmouth) {
-/* 2505 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
-/* 2506 */         arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
-/* 2507 */         arcs.add(arcFile);
-/*      */       } 
-/*      */       
-/* 2510 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
+/* 2508 */     if (GDStashFrame.dbConfig.gdLocal != null && 
+/* 2509 */       !GDStashFrame.dbConfig.gdLocal.equals("")) {
+/* 2510 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "localization" + GDConstants.FILE_SEPARATOR + GDStashFrame.dbConfig.gdLocal;
 /* 2511 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
 /* 2512 */       arcs.add(arcFile);
+/*      */     } else {
+/* 2514 */       if (GDStashFrame.expansionForgottenGods) {
+/* 2515 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx2" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
+/* 2516 */         arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.FG, fn);
+/* 2517 */         arcs.add(arcFile);
+/*      */       } 
+/*      */       
+/* 2520 */       if (GDStashFrame.expansionAshesOfMalmouth) {
+/* 2521 */         fn = this.strGD + GDConstants.FILE_SEPARATOR + "gdx1" + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
+/* 2522 */         arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.AoM, fn);
+/* 2523 */         arcs.add(arcFile);
+/*      */       } 
+/*      */       
+/* 2526 */       fn = this.strGD + GDConstants.FILE_SEPARATOR + "resources" + GDConstants.FILE_SEPARATOR + "Text_EN.arc";
+/* 2527 */       arcFile = new ARCList.ARCFile(ARCDecompress.FileModule.GD, fn);
+/* 2528 */       arcs.add(arcFile);
 /*      */     } 
 /*      */     
-/* 2515 */     ARCList list = new ARCList(dirMod, arcs, ARCList.ListType.Mixed);
+/* 2531 */     ARCList list = new ARCList(dirMod, arcs, ARCList.ListType.Mixed);
 /*      */     
-/* 2517 */     return list;
+/* 2533 */     return list;
 /*      */   }
 /*      */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\GDConfigPane.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\GDConfigPane.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

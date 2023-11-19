@@ -230,7 +230,7 @@
 /* 230 */     info = new TagInfo("OFF_LIFE", 304, TagInfo.RandCategory.SCALE_JITTER);
 /* 231 */     this.map.put("offensiveLife", info);
 /*     */     
-/* 233 */     info = new TagInfo("OFF_CRITICAL", 302, TagInfo.RandCategory.SCALE_JITTER);
+/* 233 */     info = new TagInfo("OFF_CRITICAL", 302, TagInfo.RandCategory.JITTER);
 /* 234 */     this.map.put("offensiveCritDamage", info);
 /*     */ 
 /*     */ 
@@ -609,7 +609,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\description\TagInfoHashMap.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\description\TagInfoHashMap.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

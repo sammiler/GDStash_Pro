@@ -11,8 +11,338 @@
   <component name="ChangeListManager">
     <list default="true" id="9b6f45bd-70de-4453-ab0c-3d3d23cc19b8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrimDawn_Chinese.properties" beforeDir="false" afterPath="$PROJECT_DIR$/GrimDawn_Chinese.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrimDawn_English.properties" beforeDir="false" afterPath="$PROJECT_DIR$/GrimDawn_English.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrimDawn_French.properties" beforeDir="false" afterPath="$PROJECT_DIR$/GrimDawn_French.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrimDawn_German.properties" beforeDir="false" afterPath="$PROJECT_DIR$/GrimDawn_German.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrimDawn_Polski.properties" beforeDir="false" afterPath="$PROJECT_DIR$/GrimDawn_Polski.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GrimDawn_Russian.properties" beforeDir="false" afterPath="$PROJECT_DIR$/GrimDawn_Russian.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Messages_English.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Messages_English.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Messages_French.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Messages_French.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Messages_German.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Messages_German.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Messages_Polski.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Messages_Polski.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Messages_Russian.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Messages_Russian.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_English.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_English.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_French.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_French.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_German.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_German.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Polski.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_Polski.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Russian.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_Russian.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDChar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharBio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharBio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharCrucible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharCrucible.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharEquippedContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharEquippedContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharFaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharFaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharFactionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharFactionList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInventorySack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharInventorySack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharItemSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharItemSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharMarkerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharMarkerList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharNoteList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharNoteList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharRespawnList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharRespawnList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharShrineList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharShrineList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkillList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkillList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkillMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSkillMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStashPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStashPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharSummary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharTeleportList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharTeleportList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharTutorialList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharTutorialList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUISettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUISettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUISlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDCharUISlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBAffix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBAffix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBAffixSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBAffixSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBBitmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBBitmap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBClassTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBClassTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBClassTableButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBClassTableButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellationAffinity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellationAffinity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellationStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBConstellationStar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineMasteryTier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineMasteryTier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBEnginePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEnginePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBEnginePlayerMasteries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEnginePlayerMasteries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineSkillMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineSkillMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineSkillMasterAlloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineSkillMasterAlloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineTagText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBEngineTagText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBFaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBFaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBFactionReputation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBFactionReputation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBFormula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBFormula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBFormulaSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBFormulaSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBItemCraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBItemCraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBItemSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBItemSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBItemSetAlloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBItemSetAlloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableAffixSetAlloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableAffixSetAlloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableItemAlloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableItemAlloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableSetAlloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBLootTableSetAlloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableAlloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableAlloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableSetAlloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBMerchantTableSetAlloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBPet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBPetBio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBPetBio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBPetSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBPetSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBShrine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBShrine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillBonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillBonusLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillBonusLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillDependency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillDependency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillExperience.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillExperience.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillModifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillModifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillSpawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillSpawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillTreeAlloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkillTreeAlloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBStashItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBStashItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBStat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBStatBonusRace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBStatBonusRace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBViewItemSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBViewItemSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/GDDBData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/GDDBData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/GDDBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/GDDBUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/ItemClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/ItemClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/ItemCriteriaCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/ItemCriteriaCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/ItemSlots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/ItemSlots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/ParameterSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/ParameterSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/SelectionCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/SelectionCriteria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/StatCriteriaCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/StatCriteriaCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/AbstractItemCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/AbstractItemCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/CriteriaCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/CriteriaCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/ItemIDItemCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/ItemIDItemCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/ItemIDItemSetCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/ItemIDItemSetCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDItemCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDItemCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDItemSetCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDItemSetCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDPrefixCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDPrefixCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDSuffixCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/StashIDSuffixCombination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/description/AffixComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/description/AffixComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/description/BonusDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/description/BonusDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/description/BonusInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/description/BonusInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/description/BonusInfoSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/description/BonusInfoSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/description/DetailComposer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/description/DetailComposer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/description/ItemComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/description/ItemComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/description/TagInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/description/TagInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/description/TagInfoHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/description/TagInfoHashMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARCFilePart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCFilePart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARCFileString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCFileString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARCFileToC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCFileToC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARCHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARCList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARZDecompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZDecompress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARZFormulaSetPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZFormulaSetPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARZHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARZRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARZString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARZString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/DDSHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/DDSHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/DDSLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/DDSLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/DDSPixelFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/DDSPixelFormat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/DDSReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/DDSReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDAbstractBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDAbstractBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDByteBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDByteBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDFileSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDFileSize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDMappedByteBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDMappedByteBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDParseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDParseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDRandomAccessBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDRandomAccessBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/IniConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/IniConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/TEXHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/TEXHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/formula/GDFormulaEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/formula/GDFormulaEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/formula/GDFormulaList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/formula/GDFormulaList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDAbstractContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDAbstractContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDItemContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDItemContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDRandomUniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDRandomUniform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDStash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDStash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDStashPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDStashPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDTransmute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDTransmute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDTransmuteType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDTransmuteType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/ItemInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/ItemInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTaskList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTokenList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/quest/GDQuestTokenList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/trade/GDTradeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/trade/GDTradeList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionSetPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionSetPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionTabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionTabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDCraftPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCraftPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDFilterDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDFilterDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDFlexDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDFlexDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDHelpActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDHelpActionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemCraftPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemCraftPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemImportTablePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemImportTablePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoSimilarPaneAlt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoSimilarPaneAlt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoSimilarTablePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemInfoSimilarTablePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemNameTablePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemNameTablePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDLogDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDLogDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDLogoDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDLogoDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDMassImportPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDMassImportPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDMasteryInfoPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDMasteryInfoPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDProgressDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDProgressDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDSplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDSplashScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDStashFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDStashFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDTabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDTabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDTabbedSearchDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDTabbedSearchDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDTransferPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDTransferPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDUIFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDUIFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDUISearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDUISearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDUITransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDUITransfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharAttributePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharAttributePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDataOverviewPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDataOverviewPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDataPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDataPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDevotionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDevotionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharEditPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharEditPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharEditTabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharEditTabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharFactionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharFactionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharInventoryPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharInventoryPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharMasteryImagePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharMasteryImagePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharMasteryPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharMasteryPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharPointPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharPointPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRespawnPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRespawnPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct1Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct1Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct2Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct2Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct3Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct3Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct4Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct4Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct5Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct5Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct6Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct6Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftNShrinePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftNShrinePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftNShrineTabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftNShrineTabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftShrineTabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftShrineTabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct1Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct1Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct2Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct2Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct3Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct3Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct4Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct4Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct5Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct5Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct6Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct6Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrinePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrinePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharStatAchievementPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharStatAchievementPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharStatEditPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharStatEditPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDUIMasterySupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDUIMasterySupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct1Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct1Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct2Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct2Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct3Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct3Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct4Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct4Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct5Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct5Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct6Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct6Pane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftNShrinePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftNShrinePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/font/BorderListCellRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/BorderListCellRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/font/ComparisonResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/ComparisonResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/font/EscapeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/EscapeDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/font/FieldListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/FieldListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/font/FontChooserDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/FontChooserDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/font/FontSamplePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/FontSamplePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/font/SelectionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/SelectionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/font/TextFieldList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/font/TextFieldList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixRarityPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixRarityPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixSelectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AffixSelectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArmorClassPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArmorClassPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArmorTypePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArmorTypePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArtifactRarityPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ArtifactRarityPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribFlatPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribFlatPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribPercPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribPercPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribSelectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/AttribSelectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/CharLenDocFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/CharLenDocFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageClassPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageClassPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageConversionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageConversionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageCrowdControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageCrowdControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageDoTPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageDoTPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFlatPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFlatPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFlatPercPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFlatPercPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFullSelectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageFullSelectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageSelectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageSelectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageSpecialPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/DamageSpecialPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/HexLenDocFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/HexLenDocFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/IntLenDocFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/IntLenDocFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemFullSelectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemFullSelectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemNamePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemNamePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemRarityPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemRarityPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSelectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSelectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSetPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSetPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSetSelectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSetSelectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSkillPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemSkillPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemTypePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemTypePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/LevelSelPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/LevelSelPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/MiscTypePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/MiscTypePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/SelectAndOrPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SelectAndOrPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/SkillBonusPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SkillBonusPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/SkillModifierPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SkillModifierPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/SlotSelectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SlotSelectionPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/SoulboundPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/SoulboundPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/StatReqPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/StatReqPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/StatSelPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/StatSelPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/StrLenDocFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/StrLenDocFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/WeaponTypePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/WeaponTypePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDCharStashPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDCharStashPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDContainerMapPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDContainerMapPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDContainerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDContainerPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDEquippedContainerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDEquippedContainerPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDPrivateStashPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDPrivateStashPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDSharedStashPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDSharedStashPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIMultiContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDUIMultiContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDDevotionTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionSorter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemCollectionTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameSorter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemNameTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionSorter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetCollectionTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarTableHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarTableHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSimilarTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportSorter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDMassImportTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustablePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustablePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustableTabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustableTabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustableUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/AdjustableUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/CollapsiblePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/CollapsiblePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBoxModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBoxModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBoxRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/EnabledComboBoxRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractRiftPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractRiftPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractShrinePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractShrinePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractUpdateCharPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDAbstractUpdateCharPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDCharInfoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDCharInfoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDStashInfoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/GDStashInfoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/VerticalButtonUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/VerticalButtonUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/util/WideComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/util/WideComboBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/util/FileVersionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/util/FileVersionException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/util/GDColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/util/GDConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/util/GDImagePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDImagePool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/util/GDLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/util/GDMsgFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDMsgFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/gdstash/util/GDMsgLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/util/GDMsgLogger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +360,12 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="1wyHdqgbBSCTLvGL2R1D2EA4gHf" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -93,18 +429,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../game/GDStash_Pro" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15332031" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/sammiler/Downloads/GDStash_Pro",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
@@ -146,6 +483,7 @@
       <workItem from="1629464513746" duration="347000" />
       <workItem from="1629466544379" duration="11360000" />
       <workItem from="1629520014450" duration="291000" />
+      <workItem from="1700363320958" duration="208000" />
     </task>
     <servers />
   </component>
@@ -162,29 +500,28 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
-          <line>857</line>
+          <line>860</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
-          <line>196</line>
+          <line>199</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
-          <line>2456</line>
+          <line>2459</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
-          <line>279</line>
+          <line>282</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint type="java-line">

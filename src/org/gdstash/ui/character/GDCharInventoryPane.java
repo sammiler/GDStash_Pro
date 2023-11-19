@@ -1,35 +1,29 @@
 /*      */ package org.gdstash.ui.character;
 /*      */ 
-/*      */ import java.awt.*;
-/*      */
-/*      */
-/*      */
-/*      */
+/*      */ import java.awt.BorderLayout;
+/*      */ import java.awt.Component;
+/*      */ import java.awt.Dimension;
+/*      */ import java.awt.Font;
+/*      */ import java.awt.Frame;
 /*      */ import java.awt.event.ActionEvent;
 /*      */ import java.awt.event.ActionListener;
 /*      */ import java.io.File;
-/*      */ import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-/*      */ import javax.swing.*;
-/*      */
-/*      */
-/*      */
+/*      */ import java.util.List;
+/*      */ import javax.swing.GroupLayout;
+/*      */ import javax.swing.JButton;
+/*      */ import javax.swing.JPanel;
+/*      */ import javax.swing.JScrollPane;
 /*      */ import org.gdstash.db.DBStashItem;
-/*      */ import org.gdstash.db.DBStat;
-import org.gdstash.db.SelectionCriteria;
-/*      */ import org.gdstash.db.criteria.CriteriaCombination;
-import org.gdstash.item.GDItem;
-/*      */ import org.gdstash.ui.*;
-/*      */
-/*      */
-/*      */
+/*      */ import org.gdstash.db.SelectionCriteria;
+/*      */ import org.gdstash.item.GDItem;
+/*      */ import org.gdstash.ui.GDItemInfoPane;
+/*      */ import org.gdstash.ui.GDItemNameTablePane;
+/*      */ import org.gdstash.ui.GDStashFrame;
+/*      */ import org.gdstash.ui.GDTabbedSearchDialog;
 /*      */ import org.gdstash.ui.stash.GDCharStashPane;
 /*      */ import org.gdstash.ui.stash.GDContainerMapPane;
-/*      */ import org.gdstash.ui.util.AdjustablePanel;
-import org.gdstash.ui.util.GDCharInfoList;
-/*      */ import org.gdstash.ui.util.GDStashInfoList;
-import org.gdstash.util.GDImagePool;
+/*      */ import org.gdstash.ui.util.GDCharInfoList;
+/*      */ import org.gdstash.util.GDImagePool;
 /*      */ import org.gdstash.util.GDLog;
 /*      */ import org.gdstash.util.GDMsgFormatter;
 /*      */ import org.gdstash.util.GDMsgLogger;
@@ -209,45 +203,18 @@ import org.gdstash.util.GDImagePool;
 /*      */       }
 /*      */       
 /*  205 */       GDMsgLogger.showLog((Component)GDCharInventoryPane.this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_CHAR_SAVE"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_CHAR_SAVE"), true);
-/*      */     }
-/*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
+/*      */     } }
 /*      */   
-/*      */   private class SearchItemsListener
-/*      */     implements ActionListener
-/*      */   {
+/*      */   private class SearchItemsListener implements ActionListener {
 /*      */     private SearchItemsListener() {}
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
 /*      */     
 /*      */     public void actionPerformed(ActionEvent e) {
-/*  239 */       if (GDCharInventoryPane.this.dlgSearch == null) {
-/*  240 */         GDCharInventoryPane.this.dlgSearch = new GDTabbedSearchDialog((Frame)GDCharInventoryPane.this.frame, GDCharInventoryPane.this, GDTabbedSearchDialog.Mode.TRANSFER);
+/*  212 */       if (GDCharInventoryPane.this.dlgSearch == null) {
+/*  213 */         GDCharInventoryPane.this.dlgSearch = new GDTabbedSearchDialog((Frame)GDCharInventoryPane.this.frame, GDCharInventoryPane.this, GDTabbedSearchDialog.Mode.TRANSFER);
 /*      */       }
 /*      */ 
 /*      */       
-/*  244 */       GDCharInventoryPane.this.dlgSearch.setVisible(true);
+/*  217 */       GDCharInventoryPane.this.dlgSearch.setVisible(true);
 /*      */     }
 /*      */   }
 /*      */ 
@@ -281,153 +248,153 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */   
 /*      */   public GDCharInventoryPane(GDStashFrame frame) {
-/*  278 */     this.frame = frame;
+/*  251 */     this.frame = frame;
 /*      */     
-/*  280 */     this.strSave = GDStashFrame.iniConfig.sectDir.savePath;
-/*  281 */     this.selItem = null;
-/*  282 */     this.location = 0;
+/*  253 */     this.strSave = GDStashFrame.iniConfig.sectDir.savePath;
+/*  254 */     this.selItem = null;
+/*  255 */     this.location = 0;
 /*      */     
-/*  284 */     this.dlgSearch = null;
+/*  257 */     this.dlgSearch = null;
 /*      */     
-/*  286 */     adjustUI();
+/*  259 */     adjustUI();
 /*      */     
-/*  288 */     this.pnlMain = buildMainPanel();
+/*  261 */     this.pnlMain = buildMainPanel();
 /*      */ 
 /*      */ 
 /*      */     
-/*  292 */     GroupLayout layout = null;
-/*  293 */     GroupLayout.SequentialGroup hGroup = null;
-/*  294 */     GroupLayout.SequentialGroup vGroup = null;
+/*  265 */     GroupLayout layout = null;
+/*  266 */     GroupLayout.SequentialGroup hGroup = null;
+/*  267 */     GroupLayout.SequentialGroup vGroup = null;
 /*      */     
-/*  296 */     JScrollPane scroll = new JScrollPane(this.pnlMain);
-/*  297 */     scroll.getVerticalScrollBar().setUnitIncrement(2 * GDStashFrame.iniConfig.sectUI.fontSize);
+/*  269 */     JScrollPane scroll = new JScrollPane(this.pnlMain);
+/*  270 */     scroll.getVerticalScrollBar().setUnitIncrement(2 * GDStashFrame.iniConfig.sectUI.fontSize);
 /*      */     
-/*  299 */     layout = new GroupLayout((Container)this);
-/*  300 */     setLayout(layout);
+/*  272 */     layout = new GroupLayout((Container)this);
+/*  273 */     setLayout(layout);
 /*      */     
-/*  302 */     layout.setAutoCreateGaps(true);
+/*  275 */     layout.setAutoCreateGaps(true);
 /*      */ 
 /*      */     
-/*  305 */     layout.setAutoCreateContainerGaps(true);
+/*  278 */     layout.setAutoCreateContainerGaps(true);
 /*      */ 
 /*      */     
-/*  308 */     hGroup = layout.createSequentialGroup();
+/*  281 */     hGroup = layout.createSequentialGroup();
 /*      */ 
 /*      */     
-/*  311 */     hGroup
-/*  312 */       .addGroup(layout.createParallelGroup()
-/*  313 */         .addComponent(scroll));
-/*  314 */     layout.setHorizontalGroup(hGroup);
+/*  284 */     hGroup
+/*  285 */       .addGroup(layout.createParallelGroup()
+/*  286 */         .addComponent(scroll));
+/*  287 */     layout.setHorizontalGroup(hGroup);
 /*      */ 
 /*      */     
-/*  317 */     vGroup = layout.createSequentialGroup();
+/*  290 */     vGroup = layout.createSequentialGroup();
 /*      */ 
 /*      */     
-/*  320 */     vGroup
-/*  321 */       .addGroup(layout.createParallelGroup()
-/*  322 */         .addComponent(scroll));
-/*  323 */     layout.setVerticalGroup(vGroup);
+/*  293 */     vGroup
+/*  294 */       .addGroup(layout.createParallelGroup()
+/*  295 */         .addComponent(scroll));
+/*  296 */     layout.setVerticalGroup(vGroup);
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public void adjustUI() {
-/*  328 */     Font fntLabel = UIManager.getDefaults().getFont("Label.font");
-/*  329 */     Font fntButton = UIManager.getDefaults().getFont("Button.font");
-/*  330 */     if (fntButton == null) fntButton = fntLabel;
+/*  301 */     Font fntLabel = UIManager.getDefaults().getFont("Label.font");
+/*  302 */     Font fntButton = UIManager.getDefaults().getFont("Button.font");
+/*  303 */     if (fntButton == null) fntButton = fntLabel;
 /*      */     
-/*  332 */     fntLabel = fntLabel.deriveFont(GDStashFrame.iniConfig.sectUI.fontSize);
-/*  333 */     fntButton = fntButton.deriveFont(GDStashFrame.iniConfig.sectUI.fontSize);
+/*  305 */     fntLabel = fntLabel.deriveFont(GDStashFrame.iniConfig.sectUI.fontSize);
+/*  306 */     fntButton = fntButton.deriveFont(GDStashFrame.iniConfig.sectUI.fontSize);
 /*      */ 
 /*      */ 
 /*      */     
-/*  337 */     GDCharInfoList.adjustCharInfos(null, null);
+/*  310 */     GDCharInfoList.adjustCharInfos(null, null);
 /*      */     
-/*  339 */     if (this.btnFileSave == null) {
-/*  340 */       this.btnFileSave = new JButton();
+/*  312 */     if (this.btnFileSave == null) {
+/*  313 */       this.btnFileSave = new JButton();
 /*      */       
-/*  342 */       this.btnFileSave.setEnabled(false);
-/*  343 */       this.btnFileSave.addActionListener(new FileSaveActionListener());
+/*  315 */       this.btnFileSave.setEnabled(false);
+/*  316 */       this.btnFileSave.addActionListener(new FileSaveActionListener());
 /*      */     } 
-/*  345 */     this.btnFileSave.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_CHAR_SAVE"));
-/*  346 */     this.btnFileSave.setIcon(GDImagePool.iconBtnSave24);
-/*  347 */     this.btnFileSave.setFont(fntButton);
-/*  348 */     GDStashFrame.setMnemonic(this.btnFileSave, "MNC_CHAR_SAVE");
+/*  318 */     this.btnFileSave.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_CHAR_SAVE"));
+/*  319 */     this.btnFileSave.setIcon(GDImagePool.iconBtnSave24);
+/*  320 */     this.btnFileSave.setFont(fntButton);
+/*  321 */     GDStashFrame.setMnemonic(this.btnFileSave, "MNC_CHAR_SAVE");
 /*      */     
-/*  350 */     if (this.btnDBDel == null) {
-/*  351 */       this.btnDBDel = new JButton();
+/*  323 */     if (this.btnDBDel == null) {
+/*  324 */       this.btnDBDel = new JButton();
 /*      */       
-/*  353 */       this.btnDBDel.setEnabled(false);
-/*  354 */       this.btnDBDel.addActionListener(new DBDelActionListener());
+/*  326 */       this.btnDBDel.setEnabled(false);
+/*  327 */       this.btnDBDel.addActionListener(new DBDelActionListener());
 /*      */     } 
-/*  356 */     this.btnDBDel.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_ITEM_DEL_DB"));
-/*  357 */     this.btnDBDel.setIcon(GDImagePool.iconDBDelete24);
-/*  358 */     this.btnDBDel.setFont(fntButton);
-/*  359 */     GDStashFrame.setMnemonic(this.btnDBDel, "MNC_ITEM_DEL_DB");
+/*  329 */     this.btnDBDel.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_ITEM_DEL_DB"));
+/*  330 */     this.btnDBDel.setIcon(GDImagePool.iconDBDelete24);
+/*  331 */     this.btnDBDel.setFont(fntButton);
+/*  332 */     GDStashFrame.setMnemonic(this.btnDBDel, "MNC_ITEM_DEL_DB");
 /*      */     
-/*  361 */     if (this.btnDBCopy == null) {
-/*  362 */       this.btnDBCopy = new JButton();
+/*  334 */     if (this.btnDBCopy == null) {
+/*  335 */       this.btnDBCopy = new JButton();
 /*      */       
-/*  364 */       this.btnDBCopy.setEnabled(false);
-/*  365 */       this.btnDBCopy.addActionListener(new DBCopyActionListener());
+/*  337 */       this.btnDBCopy.setEnabled(false);
+/*  338 */       this.btnDBCopy.addActionListener(new DBCopyActionListener());
 /*      */     } 
-/*  367 */     this.btnDBCopy.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_ITEM_COPY_DB"));
-/*  368 */     this.btnDBCopy.setIcon(GDImagePool.iconItemCopy24);
-/*  369 */     this.btnDBCopy.setFont(fntButton);
-/*  370 */     GDStashFrame.setMnemonic(this.btnDBCopy, "MNC_ITEM_COPY_DB");
+/*  340 */     this.btnDBCopy.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_ITEM_COPY_DB"));
+/*  341 */     this.btnDBCopy.setIcon(GDImagePool.iconItemCopy24);
+/*  342 */     this.btnDBCopy.setFont(fntButton);
+/*  343 */     GDStashFrame.setMnemonic(this.btnDBCopy, "MNC_ITEM_COPY_DB");
 /*      */     
-/*  372 */     if (this.btnDBMove == null) {
-/*  373 */       this.btnDBMove = new JButton();
+/*  345 */     if (this.btnDBMove == null) {
+/*  346 */       this.btnDBMove = new JButton();
 /*      */       
-/*  375 */       this.btnDBMove.setEnabled(false);
-/*  376 */       this.btnDBMove.addActionListener(new DBMoveActionListener());
+/*  348 */       this.btnDBMove.setEnabled(false);
+/*  349 */       this.btnDBMove.addActionListener(new DBMoveActionListener());
 /*      */     } 
-/*  378 */     this.btnDBMove.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_ITEM_MOVE_DB"));
-/*  379 */     this.btnDBMove.setIcon(GDImagePool.iconItemMove24);
-/*  380 */     this.btnDBMove.setFont(fntButton);
-/*  381 */     GDStashFrame.setMnemonic(this.btnDBMove, "MNC_ITEM_MOVE_DB");
+/*  351 */     this.btnDBMove.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_ITEM_MOVE_DB"));
+/*  352 */     this.btnDBMove.setIcon(GDImagePool.iconItemMove24);
+/*  353 */     this.btnDBMove.setFont(fntButton);
+/*  354 */     GDStashFrame.setMnemonic(this.btnDBMove, "MNC_ITEM_MOVE_DB");
 /*      */     
-/*  383 */     if (this.btnPageCopy == null) {
-/*  384 */       this.btnPageCopy = new JButton();
+/*  356 */     if (this.btnPageCopy == null) {
+/*  357 */       this.btnPageCopy = new JButton();
 /*      */       
-/*  386 */       this.btnPageCopy.setEnabled(true);
-/*  387 */       this.btnPageCopy.addActionListener(new PageCopyActionListener());
+/*  359 */       this.btnPageCopy.setEnabled(true);
+/*  360 */       this.btnPageCopy.addActionListener(new PageCopyActionListener());
 /*      */     } 
-/*  389 */     this.btnPageCopy.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_PAGE_COPY_DB"));
-/*  390 */     this.btnPageCopy.setIcon(GDImagePool.iconPageCopy24);
-/*  391 */     this.btnPageCopy.setFont(fntButton);
+/*  362 */     this.btnPageCopy.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_PAGE_COPY_DB"));
+/*  363 */     this.btnPageCopy.setIcon(GDImagePool.iconPageCopy24);
+/*  364 */     this.btnPageCopy.setFont(fntButton);
 /*      */ 
 /*      */     
-/*  394 */     if (this.btnPageMove == null) {
-/*  395 */       this.btnPageMove = new JButton();
+/*  367 */     if (this.btnPageMove == null) {
+/*  368 */       this.btnPageMove = new JButton();
 /*      */       
-/*  397 */       this.btnPageMove.setEnabled(true);
-/*  398 */       this.btnPageMove.addActionListener(new PageMoveActionListener());
+/*  370 */       this.btnPageMove.setEnabled(true);
+/*  371 */       this.btnPageMove.addActionListener(new PageMoveActionListener());
 /*      */     } 
-/*  400 */     this.btnPageMove.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_PAGE_MOVE_DB"));
-/*  401 */     this.btnPageMove.setIcon(GDImagePool.iconPageMove24);
-/*  402 */     this.btnPageMove.setFont(fntButton);
+/*  373 */     this.btnPageMove.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_PAGE_MOVE_DB"));
+/*  374 */     this.btnPageMove.setIcon(GDImagePool.iconPageMove24);
+/*  375 */     this.btnPageMove.setFont(fntButton);
 /*      */ 
 /*      */     
-/*  405 */     if (this.btnStashDel == null) {
-/*  406 */       this.btnStashDel = new JButton();
+/*  378 */     if (this.btnStashDel == null) {
+/*  379 */       this.btnStashDel = new JButton();
 /*      */       
-/*  408 */       this.btnStashDel.setEnabled(false);
-/*  409 */       this.btnStashDel.addActionListener(new StashDelActionListener());
+/*  381 */       this.btnStashDel.setEnabled(false);
+/*  382 */       this.btnStashDel.addActionListener(new StashDelActionListener());
 /*      */     } 
-/*  411 */     this.btnStashDel.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_ITEM_DEL_CHAR"));
-/*  412 */     this.btnStashDel.setIcon(GDImagePool.iconItemDelete24);
-/*  413 */     this.btnStashDel.setFont(fntButton);
-/*  414 */     GDStashFrame.setMnemonic(this.btnStashDel, "MNC_ITEM_DEL_CHAR");
+/*  384 */     this.btnStashDel.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_ITEM_DEL_CHAR"));
+/*  385 */     this.btnStashDel.setIcon(GDImagePool.iconItemDelete24);
+/*  386 */     this.btnStashDel.setFont(fntButton);
+/*  387 */     GDStashFrame.setMnemonic(this.btnStashDel, "MNC_ITEM_DEL_CHAR");
 /*      */     
-/*  416 */     if (this.btnPageDel == null) {
-/*  417 */       this.btnPageDel = new JButton();
+/*  389 */     if (this.btnPageDel == null) {
+/*  390 */       this.btnPageDel = new JButton();
 /*      */       
-/*  419 */       this.btnPageDel.setEnabled(true);
-/*  420 */       this.btnPageDel.addActionListener(new PageDelActionListener());
+/*  392 */       this.btnPageDel.setEnabled(true);
+/*  393 */       this.btnPageDel.addActionListener(new PageDelActionListener());
 /*      */     } 
-/*  422 */     this.btnPageDel.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_PAGE_DEL"));
-/*  423 */     this.btnPageDel.setIcon(GDImagePool.iconPageDelete24);
-/*  424 */     this.btnPageDel.setFont(fntButton);
+/*  395 */     this.btnPageDel.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_PAGE_DEL"));
+/*  396 */     this.btnPageDel.setIcon(GDImagePool.iconPageDelete24);
+/*  397 */     this.btnPageDel.setFont(fntButton);
 /*      */ 
 /*      */ 
 /*      */ 
@@ -438,93 +405,93 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */ 
 /*      */     
-/*  435 */     if (this.btnSearch == null) {
-/*  436 */       this.btnSearch = new JButton();
+/*  408 */     if (this.btnSearch == null) {
+/*  409 */       this.btnSearch = new JButton();
 /*      */       
-/*  438 */       this.btnSearch.addActionListener(new SearchItemsListener());
+/*  411 */       this.btnSearch.addActionListener(new SearchItemsListener());
 /*      */     } 
-/*  440 */     this.btnSearch.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_SEARCH"));
-/*  441 */     this.btnSearch.setIcon(GDImagePool.iconBtnSearch24);
-/*  442 */     this.btnSearch.setFont(fntButton);
-/*  443 */     GDStashFrame.setMnemonic(this.btnSearch, "MNC_SEARCH_SECOND");
+/*  413 */     this.btnSearch.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_SEARCH"));
+/*  414 */     this.btnSearch.setIcon(GDImagePool.iconBtnSearch24);
+/*  415 */     this.btnSearch.setFont(fntButton);
+/*  416 */     GDStashFrame.setMnemonic(this.btnSearch, "MNC_SEARCH_SECOND");
 /*      */     
-/*  445 */     if (this.btnReload == null) {
-/*  446 */       this.btnReload = new JButton();
+/*  418 */     if (this.btnReload == null) {
+/*  419 */       this.btnReload = new JButton();
 /*      */       
-/*  448 */       this.btnReload.addActionListener(new ReloadActionListener());
+/*  421 */       this.btnReload.addActionListener(new ReloadActionListener());
 /*      */     } 
-/*  450 */     this.btnReload.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_RELOAD"));
-/*  451 */     this.btnReload.setIcon(GDImagePool.iconBtnReload24);
-/*  452 */     this.btnReload.setFont(fntButton);
-/*  453 */     GDStashFrame.setMnemonic(this.btnReload, "MNC_RELOAD");
+/*  423 */     this.btnReload.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_RELOAD"));
+/*  424 */     this.btnReload.setIcon(GDImagePool.iconBtnReload24);
+/*  425 */     this.btnReload.setFont(fntButton);
+/*  426 */     GDStashFrame.setMnemonic(this.btnReload, "MNC_RELOAD");
 /*      */     
-/*  455 */     if (this.btnHelp == null) {
-/*  456 */       this.btnHelp = new JButton();
+/*  428 */     if (this.btnHelp == null) {
+/*  429 */       this.btnHelp = new JButton();
 /*      */       
-/*  458 */       this.btnHelp.addActionListener((ActionListener)new GDHelpActionListener("04_transfer_char.html"));
+/*  431 */       this.btnHelp.addActionListener((ActionListener)new GDHelpActionListener("04_transfer_char.html"));
 /*      */     } 
-/*  460 */     this.btnHelp.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_HELP"));
-/*  461 */     this.btnHelp.setIcon(GDImagePool.iconBtnQuestion24);
-/*  462 */     this.btnHelp.setFont(fntButton);
-/*  463 */     GDStashFrame.setMnemonic(this.btnHelp, "MNC_HELP");
+/*  433 */     this.btnHelp.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_HELP"));
+/*  434 */     this.btnHelp.setIcon(GDImagePool.iconBtnQuestion24);
+/*  435 */     this.btnHelp.setFont(fntButton);
+/*  436 */     GDStashFrame.setMnemonic(this.btnHelp, "MNC_HELP");
 /*      */     
-/*  465 */     if (this.pnlInfo == null) {
-/*  466 */       this.pnlInfo = new GDItemInfoPane();
+/*  438 */     if (this.pnlInfo == null) {
+/*  439 */       this.pnlInfo = new GDItemInfoPane();
 /*      */     }
-/*  468 */     this.pnlInfo.adjustUI();
+/*  441 */     this.pnlInfo.adjustUI();
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */     
-/*  473 */     if (this.pnlTable == null) {
-/*  474 */       this.pnlTable = new GDItemNameTablePane(null, false);
-/*  475 */       this.pnlTable.addActionListener(new TableActionListener());
+/*  446 */     if (this.pnlTable == null) {
+/*  447 */       this.pnlTable = new GDItemNameTablePane(null, false);
+/*  448 */       this.pnlTable.addActionListener(new TableActionListener());
 /*      */       
-/*  477 */       this.pnlTable.setMinimumSize(new Dimension(300, 200));
-/*  478 */       this.pnlTable.setMaximumSize(new Dimension(600, 2000));
+/*  450 */       this.pnlTable.setMinimumSize(new Dimension(300, 200));
+/*  451 */       this.pnlTable.setMaximumSize(new Dimension(600, 2000));
 /*      */     } else {
-/*  480 */       this.pnlTable.adjustUI();
+/*  453 */       this.pnlTable.adjustUI();
 /*      */     } 
 /*      */     
-/*  483 */     if (this.pnlStash == null) {
-/*  484 */       this.pnlStash = new GDCharStashPane(this.frame, this);
+/*  456 */     if (this.pnlStash == null) {
+/*  457 */       this.pnlStash = new GDCharStashPane(this.frame, this);
 /*      */     } else {
-/*  486 */       this.pnlStash.adjustUI();
+/*  459 */       this.pnlStash.adjustUI();
 /*      */     } 
 /*      */     
-/*  489 */     if (this.dlgSearch != null) {
-/*  490 */       this.dlgSearch.adjustUI();
+/*  462 */     if (this.dlgSearch != null) {
+/*  463 */       this.dlgSearch.adjustUI();
 /*      */     }
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public void updateUI() {
-/*  496 */     super.updateUI();
+/*  469 */     super.updateUI();
 /*      */     
-/*  498 */     if (this.dlgSearch != null) {
-/*  499 */       SwingUtilities.updateComponentTreeUI((Component)this.dlgSearch);
+/*  471 */     if (this.dlgSearch != null) {
+/*  472 */       SwingUtilities.updateComponentTreeUI((Component)this.dlgSearch);
 /*      */     }
 /*      */   }
 /*      */   
 /*      */   public void refresh() {
-/*  504 */     if (this.pnlTable != null) this.pnlTable.refresh(); 
-/*  505 */     if (this.pnlInfo != null) this.pnlInfo.refresh(); 
-/*  506 */     if (this.pnlStash != null) this.pnlStash.refresh();
+/*  477 */     if (this.pnlTable != null) this.pnlTable.refresh(); 
+/*  478 */     if (this.pnlInfo != null) this.pnlInfo.refresh(); 
+/*  479 */     if (this.pnlStash != null) this.pnlStash.refresh();
 /*      */ 
 /*      */     
-/*  509 */     refreshCharSelection();
+/*  482 */     refreshCharSelection();
 /*      */   }
 /*      */   
 /*      */   private JPanel buildMainPanel() {
-/*  513 */     JPanel panel = new JPanel();
+/*  486 */     JPanel panel = new JPanel();
 /*      */     
-/*  515 */     GroupLayout layout = null;
-/*  516 */     GroupLayout.SequentialGroup hGroup = null;
-/*  517 */     GroupLayout.SequentialGroup vGroup = null;
+/*  488 */     GroupLayout layout = null;
+/*  489 */     GroupLayout.SequentialGroup hGroup = null;
+/*  490 */     GroupLayout.SequentialGroup vGroup = null;
 /*      */     
-/*  519 */     JPanel pnlTable = buildTablePanel();
+/*  492 */     JPanel pnlTable = buildTablePanel();
 /*      */     
-/*  521 */     JPanel pnlItemInfo = buildInfoPanel();
+/*  494 */     JPanel pnlItemInfo = buildInfoPanel();
 /*      */ 
 /*      */ 
 /*      */ 
@@ -533,44 +500,44 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */ 
-/*      */ 
-/*      */     
-/*  533 */     layout = new GroupLayout(panel);
-/*  534 */     panel.setLayout(layout);
-/*      */     
-/*  536 */     layout.setAutoCreateGaps(true);
-/*      */ 
-/*      */     
-/*  539 */     layout.setAutoCreateContainerGaps(true);
-/*      */ 
-/*      */     
-/*  542 */     hGroup = layout.createSequentialGroup();
-/*      */ 
-/*      */     
-/*  545 */     hGroup
-/*  546 */       .addGroup(layout.createParallelGroup()
-/*  547 */         .addComponent(pnlTable))
-/*  548 */       .addGroup(layout.createParallelGroup()
-/*  549 */         .addComponent(pnlItemInfo))
-/*  550 */       .addGroup(layout.createParallelGroup()
-/*  551 */         .addComponent((Component)this.pnlStash));
-/*  552 */     layout.setHorizontalGroup(hGroup);
-/*      */ 
-/*      */     
-/*  555 */     vGroup = layout.createSequentialGroup();
-/*      */ 
-/*      */     
-/*  558 */     vGroup
-/*  559 */       .addGroup(layout.createParallelGroup()
-/*  560 */         .addComponent(pnlTable)
-/*  561 */         .addComponent(pnlItemInfo)
-/*  562 */         .addComponent((Component)this.pnlStash));
-/*  563 */     layout.setVerticalGroup(vGroup);
 /*      */ 
 /*      */ 
 /*      */     
-/*  567 */     return panel;
+/*  506 */     layout = new GroupLayout(panel);
+/*  507 */     panel.setLayout(layout);
+/*      */     
+/*  509 */     layout.setAutoCreateGaps(true);
+/*      */ 
+/*      */     
+/*  512 */     layout.setAutoCreateContainerGaps(true);
+/*      */ 
+/*      */     
+/*  515 */     hGroup = layout.createSequentialGroup();
+/*      */ 
+/*      */     
+/*  518 */     hGroup
+/*  519 */       .addGroup(layout.createParallelGroup()
+/*  520 */         .addComponent(pnlTable))
+/*  521 */       .addGroup(layout.createParallelGroup()
+/*  522 */         .addComponent(pnlItemInfo))
+/*  523 */       .addGroup(layout.createParallelGroup()
+/*  524 */         .addComponent((Component)this.pnlStash));
+/*  525 */     layout.setHorizontalGroup(hGroup);
+/*      */ 
+/*      */     
+/*  528 */     vGroup = layout.createSequentialGroup();
+/*      */ 
+/*      */     
+/*  531 */     vGroup
+/*  532 */       .addGroup(layout.createParallelGroup()
+/*  533 */         .addComponent(pnlTable)
+/*  534 */         .addComponent(pnlItemInfo)
+/*  535 */         .addComponent((Component)this.pnlStash));
+/*  536 */     layout.setVerticalGroup(vGroup);
+/*      */ 
+/*      */ 
+/*      */     
+/*  540 */     return panel;
 /*      */   }
 /*      */ 
 /*      */ 
@@ -595,223 +562,224 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */   
 /*      */   private JPanel buildTablePanel() {
-/*  592 */     GroupLayout layout = null;
-/*  593 */     GroupLayout.SequentialGroup hGroup = null;
-/*  594 */     GroupLayout.SequentialGroup vGroup = null;
+/*  565 */     GroupLayout layout = null;
+/*  566 */     GroupLayout.SequentialGroup hGroup = null;
+/*  567 */     GroupLayout.SequentialGroup vGroup = null;
 /*      */ 
 /*      */ 
 /*      */     
-/*  598 */     JPanel panel = new JPanel();
+/*  571 */     JPanel panel = new JPanel();
 /*      */     
-/*  600 */     layout = new GroupLayout(panel);
-/*  601 */     panel.setLayout(layout);
+/*  573 */     layout = new GroupLayout(panel);
+/*  574 */     panel.setLayout(layout);
 /*      */     
-/*  603 */     layout.setAutoCreateGaps(true);
+/*  576 */     layout.setAutoCreateGaps(true);
 /*      */ 
 /*      */     
-/*  606 */     layout.setAutoCreateContainerGaps(true);
+/*  579 */     layout.setAutoCreateContainerGaps(true);
 /*      */ 
 /*      */     
-/*  609 */     hGroup = layout.createSequentialGroup();
+/*  582 */     hGroup = layout.createSequentialGroup();
 /*      */ 
 /*      */     
-/*  612 */     hGroup
-/*  613 */       .addGroup(layout.createParallelGroup()
-/*  614 */         .addComponent(this.btnSearch)
-/*  615 */         .addComponent((Component)this.pnlTable));
-/*  616 */     layout.setHorizontalGroup(hGroup);
+/*  585 */     hGroup
+/*  586 */       .addGroup(layout.createParallelGroup()
+/*  587 */         .addComponent(this.btnSearch)
+/*  588 */         .addComponent((Component)this.pnlTable));
+/*  589 */     layout.setHorizontalGroup(hGroup);
 /*      */ 
 /*      */     
-/*  619 */     vGroup = layout.createSequentialGroup();
+/*  592 */     vGroup = layout.createSequentialGroup();
 /*      */ 
 /*      */     
-/*  622 */     vGroup
-/*  623 */       .addGroup(layout.createParallelGroup()
-/*  624 */         .addComponent(this.btnSearch))
-/*  625 */       .addGroup(layout.createParallelGroup()
-/*  626 */         .addComponent((Component)this.pnlTable));
-/*  627 */     layout.setVerticalGroup(vGroup);
+/*  595 */     vGroup
+/*  596 */       .addGroup(layout.createParallelGroup()
+/*  597 */         .addComponent(this.btnSearch))
+/*  598 */       .addGroup(layout.createParallelGroup()
+/*  599 */         .addComponent((Component)this.pnlTable));
+/*  600 */     layout.setVerticalGroup(vGroup);
 /*      */     
-/*  629 */     layout.linkSize(0, new Component[] { this.btnSearch, (Component)this.pnlTable });
+/*  602 */     layout.linkSize(0, new Component[] { this.btnSearch, (Component)this.pnlTable });
 /*      */     
-/*  631 */     return panel;
+/*  604 */     return panel;
 /*      */   }
 /*      */   
 /*      */   private JPanel buildInfoPanel() {
-/*  635 */     GroupLayout layout = null;
-/*  636 */     GroupLayout.SequentialGroup hGroup = null;
-/*  637 */     GroupLayout.SequentialGroup vGroup = null;
+/*  608 */     GroupLayout layout = null;
+/*  609 */     GroupLayout.SequentialGroup hGroup = null;
+/*  610 */     GroupLayout.SequentialGroup vGroup = null;
 /*      */     
-/*  639 */     JPanel panel = new JPanel();
+/*  612 */     JPanel panel = new JPanel();
 /*      */     
-/*  641 */     JPanel pnlButtonFile = buildFileButtonPanel();
-/*  642 */     JPanel pnlButtonOper = buildOperationButtonPanel();
+/*  614 */     JPanel pnlButtonFile = buildFileButtonPanel();
+/*  615 */     JPanel pnlButtonOper = buildOperationButtonPanel();
 /*      */     
-/*  644 */     layout = new GroupLayout(panel);
-/*  645 */     panel.setLayout(layout);
+/*  617 */     layout = new GroupLayout(panel);
+/*  618 */     panel.setLayout(layout);
 /*      */     
-/*  647 */     layout.setAutoCreateGaps(false);
+/*  620 */     layout.setAutoCreateGaps(false);
 /*      */ 
 /*      */     
-/*  650 */     layout.setAutoCreateContainerGaps(true);
+/*  623 */     layout.setAutoCreateContainerGaps(true);
 /*      */ 
 /*      */     
-/*  653 */     hGroup = layout.createSequentialGroup();
+/*  626 */     hGroup = layout.createSequentialGroup();
 /*      */ 
 /*      */     
-/*  656 */     hGroup
-/*  657 */       .addGroup(layout.createParallelGroup()
-/*  658 */         .addComponent(pnlButtonFile)
-/*  659 */         .addComponent(pnlButtonOper)
-/*  660 */         .addComponent((Component)this.pnlInfo));
-/*  661 */     layout.setHorizontalGroup(hGroup);
+/*  629 */     hGroup
+/*  630 */       .addGroup(layout.createParallelGroup()
+/*  631 */         .addComponent(pnlButtonFile)
+/*  632 */         .addComponent(pnlButtonOper)
+/*  633 */         .addComponent((Component)this.pnlInfo));
+/*  634 */     layout.setHorizontalGroup(hGroup);
 /*      */ 
 /*      */     
-/*  664 */     vGroup = layout.createSequentialGroup();
+/*  637 */     vGroup = layout.createSequentialGroup();
 /*      */ 
 /*      */     
-/*  667 */     vGroup
-/*  668 */       .addGroup(layout.createParallelGroup()
-/*  669 */         .addComponent(pnlButtonFile))
-/*  670 */       .addGroup(layout.createParallelGroup()
-/*  671 */         .addComponent(pnlButtonOper))
-/*  672 */       .addGroup(layout.createParallelGroup()
-/*  673 */         .addComponent((Component)this.pnlInfo));
-/*  674 */     layout.setVerticalGroup(vGroup);
+/*  640 */     vGroup
+/*  641 */       .addGroup(layout.createParallelGroup()
+/*  642 */         .addComponent(pnlButtonFile))
+/*  643 */       .addGroup(layout.createParallelGroup()
+/*  644 */         .addComponent(pnlButtonOper))
+/*  645 */       .addGroup(layout.createParallelGroup()
+/*  646 */         .addComponent((Component)this.pnlInfo));
+/*  647 */     layout.setVerticalGroup(vGroup);
 /*      */     
-/*  676 */     layout.linkSize(0, new Component[] { pnlButtonFile, pnlButtonOper });
-/*  677 */     layout.linkSize(0, new Component[] { pnlButtonFile, (Component)this.pnlInfo });
+/*  649 */     layout.linkSize(0, new Component[] { pnlButtonFile, pnlButtonOper });
+/*  650 */     layout.linkSize(0, new Component[] { pnlButtonFile, (Component)this.pnlInfo });
 /*      */ 
 /*      */ 
 /*      */     
-/*  681 */     return panel;
+/*  654 */     return panel;
 /*      */   }
 /*      */   
 /*      */   private JPanel buildFileButtonPanel() {
-/*  685 */     BorderLayout layout = new BorderLayout();
+/*  658 */     BorderLayout layout = new BorderLayout();
 /*      */     
-/*  687 */     JPanel panel = new JPanel();
+/*  660 */     JPanel panel = new JPanel();
 /*      */     
-/*  689 */     panel.setLayout(layout);
+/*  662 */     panel.setLayout(layout);
 /*      */     
-/*  691 */     panel.add(this.btnFileSave, "Center");
-/*  692 */     panel.add(this.btnReload, "West");
-/*  693 */     panel.add(this.btnHelp, "East");
+/*  664 */     panel.add(this.btnFileSave, "Center");
+/*  665 */     panel.add(this.btnReload, "West");
+/*  666 */     panel.add(this.btnHelp, "East");
 /*      */     
-/*  695 */     int size = 12;
-/*  696 */     if (GDStashFrame.iniConfig != null) size = GDStashFrame.iniConfig.sectUI.fontSize; 
-/*  697 */     Dimension dimPref = new Dimension(30 * size, 2 * size);
-/*  698 */     Dimension dimMax = new Dimension(50 * size, 2 * size);
+/*  668 */     int size = 12;
+/*  669 */     if (GDStashFrame.iniConfig != null) size = GDStashFrame.iniConfig.sectUI.fontSize; 
+/*  670 */     Dimension dimPref = new Dimension(30 * size, 2 * size);
+/*  671 */     Dimension dimMax = new Dimension(50 * size, 2 * size);
 /*      */     
-/*  700 */     panel.setPreferredSize(dimPref);
-/*  701 */     panel.setMaximumSize(dimMax);
+/*  673 */     panel.setPreferredSize(dimPref);
+/*  674 */     panel.setMaximumSize(dimMax);
 /*      */     
-/*  703 */     return panel;
+/*  676 */     return panel;
 /*      */   }
 /*      */   
 /*      */   private JPanel buildOperationButtonPanel() {
-/*  707 */     GroupLayout layout = null;
-/*  708 */     GroupLayout.SequentialGroup hGroup = null;
-/*  709 */     GroupLayout.SequentialGroup vGroup = null;
+/*  680 */     GroupLayout layout = null;
+/*  681 */     GroupLayout.SequentialGroup hGroup = null;
+/*  682 */     GroupLayout.SequentialGroup vGroup = null;
 /*      */     
-/*  711 */     JPanel panel = new JPanel();
+/*  684 */     JPanel panel = new JPanel();
 /*      */     
-/*  713 */     layout = new GroupLayout(panel);
-/*  714 */     panel.setLayout(layout);
+/*  686 */     layout = new GroupLayout(panel);
+/*  687 */     panel.setLayout(layout);
 /*      */     
-/*  716 */     layout.setAutoCreateGaps(true);
+/*  689 */     layout.setAutoCreateGaps(true);
 /*      */ 
 /*      */     
-/*  719 */     layout.setAutoCreateContainerGaps(true);
+/*  692 */     layout.setAutoCreateContainerGaps(true);
 /*      */ 
 /*      */     
-/*  722 */     hGroup = layout.createSequentialGroup();
+/*  695 */     hGroup = layout.createSequentialGroup();
 /*      */ 
 /*      */     
-/*  725 */     hGroup
-/*  726 */       .addGroup(layout.createParallelGroup()
-/*  727 */         .addComponent(this.btnDBCopy)
-/*  728 */         .addComponent(this.btnDBMove)
-/*  729 */         .addComponent(this.btnStashDel)
-/*  730 */         .addComponent(this.btnDBDel))
-/*  731 */       .addGroup(layout.createParallelGroup()
-/*  732 */         .addComponent(this.btnPageCopy)
-/*  733 */         .addComponent(this.btnPageMove)
-/*  734 */         .addComponent(this.btnPageDel));
-/*  735 */     layout.setHorizontalGroup(hGroup);
+/*  698 */     hGroup
+/*  699 */       .addGroup(layout.createParallelGroup()
+/*  700 */         .addComponent(this.btnDBCopy)
+/*  701 */         .addComponent(this.btnDBMove)
+/*  702 */         .addComponent(this.btnStashDel)
+/*  703 */         .addComponent(this.btnDBDel))
+/*  704 */       .addGroup(layout.createParallelGroup()
+/*  705 */         .addComponent(this.btnPageCopy)
+/*  706 */         .addComponent(this.btnPageMove)
+/*  707 */         .addComponent(this.btnPageDel));
+/*  708 */     layout.setHorizontalGroup(hGroup);
 /*      */ 
 /*      */     
-/*  738 */     vGroup = layout.createSequentialGroup();
+/*  711 */     vGroup = layout.createSequentialGroup();
 /*      */ 
 /*      */     
-/*  741 */     vGroup
-/*  742 */       .addGroup(layout.createParallelGroup()
-/*  743 */         .addComponent(this.btnDBCopy)
-/*  744 */         .addComponent(this.btnPageCopy))
-/*  745 */       .addGroup(layout.createParallelGroup()
-/*  746 */         .addComponent(this.btnDBMove)
-/*  747 */         .addComponent(this.btnPageMove))
-/*  748 */       .addGroup(layout.createParallelGroup()
-/*  749 */         .addComponent(this.btnStashDel)
-/*  750 */         .addComponent(this.btnPageDel))
-/*  751 */       .addGroup(layout.createParallelGroup()
-/*  752 */         .addComponent(this.btnDBDel));
-/*  753 */     layout.setVerticalGroup(vGroup);
+/*  714 */     vGroup
+/*  715 */       .addGroup(layout.createParallelGroup()
+/*  716 */         .addComponent(this.btnDBCopy)
+/*  717 */         .addComponent(this.btnPageCopy))
+/*  718 */       .addGroup(layout.createParallelGroup()
+/*  719 */         .addComponent(this.btnDBMove)
+/*  720 */         .addComponent(this.btnPageMove))
+/*  721 */       .addGroup(layout.createParallelGroup()
+/*  722 */         .addComponent(this.btnStashDel)
+/*  723 */         .addComponent(this.btnPageDel))
+/*  724 */       .addGroup(layout.createParallelGroup()
+/*  725 */         .addComponent(this.btnDBDel));
+/*  726 */     layout.setVerticalGroup(vGroup);
 /*      */     
-/*  755 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnDBMove });
-/*  756 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnStashDel });
-/*  757 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnDBDel });
-/*  758 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnPageCopy });
-/*  759 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnPageMove });
-/*  760 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnPageDel });
+/*  728 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnDBMove });
+/*  729 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnStashDel });
+/*  730 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnDBDel });
+/*  731 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnPageCopy });
+/*  732 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnPageMove });
+/*  733 */     layout.linkSize(0, new Component[] { this.btnDBCopy, this.btnPageDel });
 /*      */     
-/*  762 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnDBMove });
-/*  763 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnStashDel });
-/*  764 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnDBDel });
-/*  765 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnPageCopy });
-/*  766 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnPageMove });
-/*  767 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnPageDel });
+/*  735 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnDBMove });
+/*  736 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnStashDel });
+/*  737 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnDBDel });
+/*  738 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnPageCopy });
+/*  739 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnPageMove });
+/*  740 */     layout.linkSize(1, new Component[] { this.btnDBCopy, this.btnPageDel });
 /*      */     
-/*  769 */     return panel;
+/*  742 */     return panel;
 /*      */   }
 /*      */   
 /*      */   public void checkSaveButton() {
-/*  773 */     if (this.info == null) {
-/*  774 */       this.btnFileSave.setEnabled(false);
+/*  746 */     if (this.info == null) {
+/*  747 */       this.btnFileSave.setEnabled(false);
 /*      */     }
-/*  776 */     else if (this.info.gdChar == null) {
-/*  777 */       this.btnFileSave.setEnabled(false);
+/*  749 */     else if (this.info.gdChar == null) {
+/*  750 */       this.btnFileSave.setEnabled(false);
 /*      */     } else {
-/*  779 */       this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
+/*  752 */       this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
 /*      */     } 
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public void updateConfig() {
-/*  785 */     if (this.dlgSearch != null) this.dlgSearch.updateConfig(); 
+/*  758 */     if (this.pnlStash != null) this.pnlStash.updateConfig(); 
+/*  759 */     if (this.dlgSearch != null) this.dlgSearch.updateConfig(); 
 /*      */   }
 /*      */   
 /*      */   public void initCharSelection() {
-/*  789 */     if (this.pnlStash != null) this.pnlStash.initCharSelection(); 
+/*  763 */     if (this.pnlStash != null) this.pnlStash.initCharSelection(); 
 /*      */   }
 /*      */   
 /*      */   public void refreshCharSelection() {
-/*  793 */     this.pnlStash.refreshCharSelection();
+/*  767 */     this.pnlStash.refreshCharSelection();
 /*      */   }
 /*      */   
 /*      */   public void refreshCharInfo(GDCharInfoList.GDCharFileInfo info) {
-/*  797 */     if (info == null)
-/*  798 */       return;  if (this.info == null)
+/*  771 */     if (info == null)
+/*  772 */       return;  if (this.info == null)
 /*      */       return; 
-/*  800 */     if (this.info.fileName.equals(info.fileName)) {
-/*  801 */       this.info = info;
+/*  774 */     if (this.info.fileName.equals(info.fileName)) {
+/*  775 */       this.info = info;
 /*      */       
-/*  803 */       if (this.pnlStash != null) this.pnlStash.setChar(info); 
+/*  777 */       if (this.pnlStash != null) this.pnlStash.setChar(info); 
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   public void renameCharDir(File fDirOld, File fDirNew) {
-/*  808 */     if (this.pnlStash != null) this.pnlStash.renameCharDir(fDirOld, fDirNew);
+/*  782 */     if (this.pnlStash != null) this.pnlStash.renameCharDir(fDirOld, fDirNew);
 /*      */   
 /*      */   }
 /*      */ 
@@ -820,90 +788,84 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */   
 /*      */   public void setChar(GDCharInfoList.GDCharFileInfo info) {
-/*  817 */     if (this.info == info)
+/*  791 */     if (this.info == info)
 /*      */       return; 
-/*  819 */     this.info = info;
+/*  793 */     this.info = info;
 /*      */     
-/*  821 */     if (!GDStashFrame.iniConfig.sectRestrict.transferSoulbound) this.pnlTable.setItems(null);
+/*  795 */     if (!GDStashFrame.iniConfig.sectRestrict.transferSoulbound) this.pnlTable.setItems(null);
 /*      */     
-/*  823 */     checkSaveButton();
+/*  797 */     checkSaveButton();
 /*      */   }
-
-    @Override
-    public void setStash(GDStashInfoList.GDStashFileInfo paramGDStashFileInfo) {
-
-    }
-
-    /*      */
+/*      */ 
 /*      */ 
 /*      */ 
 /*      */   
-
+/*      */   public void setStash(GDStashInfoList.GDStashFileInfo info) {}
 /*      */ 
 /*      */ 
 /*      */   
 /*      */   public int getItemLocation() {
-/*  834 */     return this.location;
+/*  808 */     return this.location;
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public GDItem getSelectedItem() {
-/*  839 */     return this.selItem;
+/*  813 */     return this.selItem;
 /*      */   }
 /*      */ 
 /*      */ 
 /*      */   
 /*      */   public void setSelectedItem(GDItem item, int location) {
-/*  845 */     if (location == 1) {
-/*  846 */       this.pnlTable.clearSelection();
+/*  819 */     if (location == 1) {
+/*  820 */       this.pnlTable.clearSelection();
 /*      */     }
 /*      */     
-/*  849 */     this.selItem = item;
-/*  850 */     this.location = location;
+/*  823 */     this.selItem = item;
+/*  824 */     this.location = location;
 /*      */     
-/*  852 */     boolean hardcore = false;
-/*  853 */     String charName = "";
+/*  826 */     boolean hardcore = false;
+/*  827 */     String charName = "";
 /*      */     
-/*  855 */     if (this.info != null && 
-/*  856 */       this.info.gdChar != null) {
-/*  857 */       hardcore = this.info.gdChar.isHardcore();
-/*  858 */       charName = this.info.gdChar.getCharName();
+/*  829 */     if (this.info != null && 
+/*  830 */       this.info.gdChar != null) {
+/*  831 */       hardcore = this.info.gdChar.isHardcore();
+/*  832 */       charName = this.info.gdChar.getCharName();
 /*      */     } 
 /*      */ 
 /*      */     
-/*  862 */     this.pnlInfo.setItemInfo(item, hardcore, charName);
+/*  836 */     this.pnlInfo.setItemInfo(item, hardcore, charName);
 /*      */     
-/*  864 */     switch (location) {
+/*  838 */     switch (location) {
 /*      */       case 1:
-/*  866 */         this.btnDBCopy.setEnabled((item != null));
-/*  867 */         this.btnDBMove.setEnabled((item != null && item.getContainerType() != 6));
-/*  868 */         this.btnStashDel.setEnabled((item != null && item.getContainerType() != 6));
-/*  869 */         this.btnDBDel.setEnabled(false);
-/*  870 */         this.btnPageCopy.setEnabled(true);
-/*  871 */         this.btnPageMove.setEnabled(true);
-/*  872 */         this.btnPageDel.setEnabled(true);
+/*  840 */         this.btnDBCopy.setEnabled((item != null));
+/*  841 */         this.btnDBMove.setEnabled((item != null && item.getContainerType() != 6));
+/*  842 */         this.btnStashDel.setEnabled((item != null && item.getContainerType() != 6));
+/*  843 */         this.btnDBDel.setEnabled(false);
+/*  844 */         this.btnPageCopy.setEnabled(true);
+/*  845 */         this.btnPageMove.setEnabled(true);
+/*  846 */         this.btnPageDel.setEnabled(true);
 /*      */         return;
 /*      */ 
 /*      */       
 /*      */       case 2:
-/*  877 */         this.btnDBCopy.setEnabled(false);
-/*  878 */         this.btnDBMove.setEnabled(false);
-/*  879 */         this.btnStashDel.setEnabled(false);
-/*  880 */         this.btnDBDel.setEnabled((item != null));
-/*  881 */         this.btnPageCopy.setEnabled(false);
-/*  882 */         this.btnPageMove.setEnabled(false);
-/*  883 */         this.btnPageDel.setEnabled(false);
+/*  851 */         this.btnDBCopy.setEnabled(false);
+/*  852 */         this.btnDBMove.setEnabled(false);
+/*  853 */         this.btnStashDel.setEnabled(false);
+/*  854 */         this.btnDBDel.setEnabled((item != null));
+/*  855 */         this.btnPageCopy.setEnabled(false);
+/*  856 */         this.btnPageMove.setEnabled(false);
+/*  857 */         this.btnPageDel.setEnabled(false);
 /*      */         return;
 /*      */     } 
 /*      */ 
 /*      */     
-/*  888 */     this.btnDBCopy.setEnabled(false);
-/*  889 */     this.btnDBMove.setEnabled(false);
-/*  890 */     this.btnStashDel.setEnabled(false);
-/*  891 */     this.btnDBDel.setEnabled(false);
-/*  892 */     this.btnPageCopy.setEnabled(true);
-/*  893 */     this.btnPageMove.setEnabled(true);
-/*  894 */     this.btnPageDel.setEnabled(true);
+/*  862 */     this.btnDBCopy.setEnabled(false);
+/*  863 */     this.btnDBMove.setEnabled(false);
+/*  864 */     this.btnStashDel.setEnabled(false);
+/*  865 */     this.btnDBDel.setEnabled(false);
+/*  866 */     this.btnPageCopy.setEnabled(true);
+/*  867 */     this.btnPageMove.setEnabled(true);
+/*  868 */     this.btnPageDel.setEnabled(true);
 /*      */   }
 /*      */ 
 /*      */ 
@@ -911,16 +873,16 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */   
 /*      */   public void transferSelectedItem(int action, int x, int y) {
-/*  902 */     switch (action) {
+/*  876 */     switch (action) {
 /*      */       
 /*      */       case 1:
-/*  905 */         if (this.location == 1) {
-/*  906 */           GDItem item = this.pnlStash.getSelectedItem();
+/*  879 */         if (this.location == 1) {
+/*  880 */           GDItem item = this.pnlStash.getSelectedItem();
 /*      */           
-/*  908 */           if (item != null) {
-/*  909 */             this.pnlStash.moveSelectedItem(1, x, y);
+/*  882 */           if (item != null) {
+/*  883 */             this.pnlStash.moveSelectedItem(1, x, y);
 /*      */             
-/*  911 */             this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
+/*  885 */             this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
 /*      */           } 
 /*      */         } 
 /*      */         break;
@@ -928,155 +890,155 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */       
 /*      */       case 2:
-/*  919 */         if (this.location == 1) {
-/*  920 */           boolean success = DBStashItem.storeItem(this.selItem);
+/*  893 */         if (this.location == 1) {
+/*  894 */           boolean success = DBStashItem.storeItem(this.selItem);
 /*      */           
-/*  922 */           if (success) setSelectedItem((GDItem)null, 0);
+/*  896 */           if (success) setSelectedItem((GDItem)null, 0);
 /*      */           
-/*  924 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_STORED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_STORED"));
+/*  898 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_STORED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_STORED"));
 /*      */         } 
 /*      */         break;
 /*      */ 
 /*      */ 
 /*      */       
 /*      */       case 3:
-/*  931 */         if (this.location == 1) {
-/*  932 */           boolean success = DBStashItem.storeItem(this.selItem);
+/*  905 */         if (this.location == 1) {
+/*  906 */           boolean success = DBStashItem.storeItem(this.selItem);
 /*      */           
-/*  934 */           if (success) {
-/*  935 */             this.pnlStash.deleteSelectedItem(3);
+/*  908 */           if (success) {
+/*  909 */             this.pnlStash.deleteSelectedItem(3);
 /*      */             
-/*  937 */             setSelectedItem((GDItem)null, 0);
+/*  911 */             setSelectedItem((GDItem)null, 0);
 /*      */             
-/*  939 */             this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
+/*  913 */             this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
 /*      */           } 
 /*      */           
-/*  942 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_STORED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_STORED"));
+/*  916 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_STORED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_STORED"));
 /*      */         } 
 /*      */         break;
 /*      */ 
 /*      */ 
 /*      */       
 /*      */       case 4:
-/*  949 */         if (this.location == 2) {
-/*  950 */           boolean success = this.pnlStash.addItem(this.selItem, 4, x, y);
+/*  923 */         if (this.location == 2) {
+/*  924 */           boolean success = this.pnlStash.addItem(this.selItem, 4, x, y);
 /*      */           
-/*  952 */           if (success && 
-/*  953 */             GDStashFrame.iniConfig.sectRestrict.dbStashMove) {
-/*  954 */             transferSelectedItem(5, x, y);
+/*  926 */           if (success && 
+/*  927 */             GDStashFrame.iniConfig.sectRestrict.dbStashMove) {
+/*  928 */             transferSelectedItem(5, x, y);
 /*      */           }
 /*      */ 
 /*      */           
-/*  958 */           this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
+/*  932 */           this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
 /*      */         } 
 /*      */         break;
 /*      */ 
 /*      */ 
 /*      */       
 /*      */       case 5:
-/*  965 */         if (this.location == 2) {
-/*  966 */           boolean success = DBStashItem.delete(this.selItem);
+/*  939 */         if (this.location == 2) {
+/*  940 */           boolean success = DBStashItem.delete(this.selItem);
 /*      */           
-/*  968 */           if (success) {
-/*  969 */             if (this.selItem.isStackable()) {
-/*  970 */               GDItem item = DBStashItem.getStack(this.selItem);
+/*  942 */           if (success) {
+/*  943 */             if (this.selItem.isStackable()) {
+/*  944 */               GDItem item = DBStashItem.getStack(this.selItem);
 /*      */               
-/*  972 */               this.pnlTable.updateItem(item);
+/*  946 */               this.pnlTable.updateItem(item);
 /*      */             } else {
-/*  974 */               this.pnlTable.deleteItem();
+/*  948 */               this.pnlTable.deleteItem();
 /*      */             } 
 /*      */             
-/*  977 */             setSelectedItem(this.pnlTable.getSelectedItem(), 2);
+/*  951 */             setSelectedItem(this.pnlTable.getSelectedItem(), 2);
 /*      */           } 
 /*      */           
-/*  980 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_DELETED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_DELETED"));
+/*  954 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_DELETED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_DELETED"));
 /*      */         } 
 /*      */         break;
 /*      */ 
 /*      */ 
 /*      */       
 /*      */       case 6:
-/*  987 */         if (this.location == 1) {
-/*  988 */           GDItem item = getSelectedItem();
+/*  961 */         if (this.location == 1) {
+/*  962 */           GDItem item = getSelectedItem();
 /*      */           
-/*  990 */           if (item == null)
+/*  964 */           if (item == null)
 /*      */             break; 
-/*  992 */           this.pnlStash.deleteSelectedItem(6);
+/*  966 */           this.pnlStash.deleteSelectedItem(6);
 /*      */           
-/*  994 */           setSelectedItem((GDItem)null, 0);
+/*  968 */           setSelectedItem((GDItem)null, 0);
 /*      */           
-/*  996 */           this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
+/*  970 */           this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
 /*      */         } 
 /*      */         break;
 /*      */ 
 /*      */ 
 /*      */       
 /*      */       case 7:
-/* 1003 */         if (this.location == 1 || this.location == 0) {
+/*  977 */         if (this.location == 1 || this.location == 0) {
 /*      */           
-/* 1005 */           GDContainerMapPane page = this.pnlStash.getCurrentPage();
+/*  979 */           GDContainerMapPane page = this.pnlStash.getCurrentPage();
 /*      */           
-/* 1007 */           if (page == null)
+/*  981 */           if (page == null)
 /*      */             return; 
-/* 1009 */           List<GDItem> items = page.getItemList(7);
+/*  983 */           List<GDItem> items = page.getItemList(7);
 /*      */           
-/* 1011 */           for (GDItem item : items) {
-/* 1012 */             DBStashItem.storeItem(item);
+/*  985 */           for (GDItem item : items) {
+/*  986 */             DBStashItem.storeItem(item);
 /*      */           }
 /*      */           
-/* 1015 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_STORED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_STORED"));
+/*  989 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_STORED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_STORED"));
 /*      */         } 
 /*      */         break;
 /*      */ 
 /*      */ 
 /*      */       
 /*      */       case 8:
-/* 1022 */         if (this.location == 1 || this.location == 0) {
+/*  996 */         if (this.location == 1 || this.location == 0) {
 /*      */           
-/* 1024 */           GDContainerMapPane page = this.pnlStash.getCurrentPage();
+/*  998 */           GDContainerMapPane page = this.pnlStash.getCurrentPage();
 /*      */           
-/* 1026 */           if (page == null)
+/* 1000 */           if (page == null)
 /*      */             return; 
-/* 1028 */           List<GDItem> items = page.getItemList(8);
+/* 1002 */           List<GDItem> items = page.getItemList(8);
 /*      */           
-/* 1030 */           for (GDItem item : items) {
-/* 1031 */             boolean success = DBStashItem.storeItem(item);
+/* 1004 */           for (GDItem item : items) {
+/* 1005 */             boolean success = DBStashItem.storeItem(item);
 /*      */             
-/* 1033 */             if (success) page.deleteItem(item, 8, false);
+/* 1007 */             if (success) page.deleteItem(item, 8, false);
 /*      */           
 /*      */           } 
-/* 1036 */           page.layoutContainers();
+/* 1010 */           page.layoutContainers();
 /*      */           
-/* 1038 */           setSelectedItem((GDItem)null, 0);
+/* 1012 */           setSelectedItem((GDItem)null, 0);
 /*      */           
-/* 1040 */           this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
+/* 1014 */           this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
 /*      */           
-/* 1042 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_STORED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_STORED"));
+/* 1016 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_STORED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_STORED"));
 /*      */         } 
 /*      */         break;
 /*      */ 
 /*      */ 
 /*      */       
 /*      */       case 9:
-/* 1049 */         if (this.location == 1 || this.location == 0) {
+/* 1023 */         if (this.location == 1 || this.location == 0) {
 /*      */           
-/* 1051 */           GDContainerMapPane page = this.pnlStash.getCurrentPage();
+/* 1025 */           GDContainerMapPane page = this.pnlStash.getCurrentPage();
 /*      */           
-/* 1053 */           if (page == null)
+/* 1027 */           if (page == null)
 /*      */             return; 
-/* 1055 */           List<GDItem> items = page.getItemList(9);
+/* 1029 */           List<GDItem> items = page.getItemList(9);
 /*      */           
-/* 1057 */           for (GDItem item : items) {
-/* 1058 */             page.deleteItem(item, 9, false);
+/* 1031 */           for (GDItem item : items) {
+/* 1032 */             page.deleteItem(item, 9, false);
 /*      */           }
 /*      */           
-/* 1061 */           page.layoutContainers();
+/* 1035 */           page.layoutContainers();
 /*      */           
-/* 1063 */           setSelectedItem((GDItem)null, 0);
+/* 1037 */           setSelectedItem((GDItem)null, 0);
 /*      */           
-/* 1065 */           this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
+/* 1039 */           this.btnFileSave.setEnabled(this.info.gdChar.hasChanged());
 /*      */           
-/* 1067 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_DELETED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_DELETED"));
+/* 1041 */           GDMsgLogger.showLog((Component)this.frame, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "SUCC_ITEM_DELETED"), GDLog.MessageType.Success, GDMsgFormatter.getString(GDMsgFormatter.rbUI, "ERR_ITEM_DELETED"));
 /*      */         } 
 /*      */         break;
 /*      */     } 
@@ -1085,7 +1047,7 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */   
 /*      */   public Frame getFrame() {
-/* 1076 */     return (Frame)this.frame;
+/* 1050 */     return (Frame)this.frame;
 /*      */   }
 /*      */ 
 /*      */ 
@@ -1094,45 +1056,45 @@ import org.gdstash.util.GDImagePool;
 /*      */ 
 /*      */   
 /*      */   public void search(SelectionCriteria criteria) {
-/* 1085 */     if (this.info == null)
-/* 1086 */       return;  if (this.info.gdChar == null)
+/* 1059 */     if (this.info == null)
+/* 1060 */       return;  if (this.info.gdChar == null)
 /*      */       return; 
-/* 1088 */     criteria.noEnemyOnly = true;
+/* 1062 */     criteria.noEnemyOnly = true;
 /*      */     
-/* 1090 */     List<GDItem> items = DBStashItem.getGDItemByCriteria(criteria, CriteriaCombination.Soulbound.SETTING, CriteriaCombination.SC_HC.SETTING, this.info.gdChar.isHardcore(), this.info.gdChar.getCharName());
+/* 1064 */     List<GDItem> items = DBStashItem.getGDItemByCriteria(criteria, CriteriaCombination.Soulbound.SETTING, CriteriaCombination.SC_HC.SETTING, this.info.gdChar.isHardcore(), this.info.gdChar.getCharName());
 /*      */     
-/* 1092 */     if (criteria.combiMode == SelectionCriteria.CombinationMode.AND) {
-/* 1093 */       List<GDItem> list = new LinkedList<>();
+/* 1066 */     if (criteria.combiMode == SelectionCriteria.CombinationMode.AND) {
+/* 1067 */       List<GDItem> list = new LinkedList<>();
 /*      */       
-/* 1095 */       for (GDItem gdi : items) {
-/* 1096 */         if (!DBStat.statsMeetCriteria(gdi.getStatList(), criteria))
+/* 1069 */       for (GDItem gdi : items) {
+/* 1070 */         if (!DBStat.statsMeetCriteria(gdi.getStatList(), criteria))
 /*      */           continue; 
-/* 1098 */         if (criteria.dmgConversionFrom != null && 
-/* 1099 */           !gdi.hasConvertIn(criteria.dmgConversionFrom)) {
+/* 1072 */         if (criteria.dmgConversionFrom != null && 
+/* 1073 */           !gdi.hasConvertIn(criteria.dmgConversionFrom)) {
 /*      */           continue;
 /*      */         }
-/* 1102 */         if (criteria.dmgConversionTo != null && 
-/* 1103 */           !gdi.hasConvertOut(criteria.dmgConversionTo)) {
+/* 1076 */         if (criteria.dmgConversionTo != null && 
+/* 1077 */           !gdi.hasConvertOut(criteria.dmgConversionTo)) {
 /*      */           continue;
 /*      */         }
-/* 1106 */         if (criteria.petBonus && 
-/* 1107 */           !gdi.hasPetBonus()) {
+/* 1080 */         if (criteria.petBonus && 
+/* 1081 */           !gdi.hasPetBonus()) {
 /*      */           continue;
 /*      */         }
-/* 1110 */         list.add(gdi);
+/* 1084 */         list.add(gdi);
 /*      */       } 
 /*      */       
-/* 1113 */       items = list;
+/* 1087 */       items = list;
 /*      */     } 
 /*      */     
-/* 1116 */     this.pnlTable.setItems(items);
+/* 1090 */     this.pnlTable.setItems(items);
 /*      */     
-/* 1118 */     GDMsgLogger.showLog((Component)this, GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_SEARCH"));
+/* 1092 */     GDMsgLogger.showLog((Component)this, GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_SEARCH"));
 /*      */   }
 /*      */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\character\GDCharInventoryPane.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\character\GDCharInventoryPane.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

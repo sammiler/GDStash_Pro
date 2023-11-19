@@ -366,7 +366,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\db\DBShrine.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\db\DBShrine.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

@@ -1,24 +1,10 @@
 /*      */ package org.gdstash.db;
-/*      */ import java.sql.*;
-/*      */
-/*      */
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-/*      */ import org.gdstash.description.BonusDetail;
-import org.gdstash.description.DetailComposer;
-/*      */ import org.gdstash.file.ARCDecompress;
-import org.gdstash.file.ARZDecompress;
-import org.gdstash.file.ARZRecord;
-import org.gdstash.ui.GDStashFrame;
-import org.gdstash.util.GDColor;
-import org.gdstash.util.GDConstants;
-import org.gdstash.util.GDMsgFormatter;
-import org.gdstash.util.GDMsgLogger;
-
-/*      */
+/*      */ import java.sql.Connection;
+/*      */ import java.sql.PreparedStatement;
+/*      */ import java.util.List;
+/*      */ import org.gdstash.description.DetailComposer;
+/*      */ import org.gdstash.util.GDMsgFormatter;
+/*      */ 
 /*      */ public class DBAffix implements Comparable<DBAffix> {
 /*      */   public static final String TABLE_NAME = "GD_AFFIX";
 /*      */   public static final String FIELD_ID = "AFFIX_ID";
@@ -472,24 +458,28 @@ import org.gdstash.util.GDMsgLogger;
 /*      */     
 /*  459 */     return this.dbController.getTriggerChance();
 /*      */   }
+/*      */   
+/*      */   public void setAffixType(int type) {
+/*  463 */     this.type = type;
+/*      */   }
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */   
 /*      */   public int getTotalAttCount() {
-/*  467 */     int total = 0;
+/*  471 */     int total = 0;
 /*      */     
-/*  469 */     for (DBStat stat : this.stats) {
-/*  470 */       if (stat.getStatMin() > 0.0F) total++; 
-/*  471 */       if (stat.getStatModifier() > 0) total++; 
-/*  472 */       if (stat.getDurationModifier() > 0) total++; 
-/*  473 */       if (stat.getMaxResist() > 0) total++;
+/*  473 */     for (DBStat stat : this.stats) {
+/*  474 */       if (stat.getStatMin() > 0.0F) total++; 
+/*  475 */       if (stat.getStatModifier() > 0) total++; 
+/*  476 */       if (stat.getDurationModifier() > 0) total++; 
+/*  477 */       if (stat.getMaxResist() > 0) total++;
 /*      */     
 /*      */     } 
-/*  476 */     if (this.statBonusRaces != null && !this.statBonusRaces.isEmpty()) total += this.statBonusRaces.size();
+/*  480 */     if (this.statBonusRaces != null && !this.statBonusRaces.isEmpty()) total += this.statBonusRaces.size();
 /*      */     
-/*  478 */     return total;
+/*  482 */     return total;
 /*      */   }
 /*      */ 
 /*      */ 
@@ -497,214 +487,214 @@ import org.gdstash.util.GDMsgLogger;
 /*      */ 
 /*      */   
 /*      */   private int getRarityInt() {
-/*  486 */     if (this.rarity == null) return -1;
+/*  490 */     if (this.rarity == null) return -1;
 /*      */     
-/*  488 */     if (this.rarity.equals("Broken")) return 1; 
-/*  489 */     if (this.rarity.equals("Magical")) return 2; 
-/*  490 */     if (this.rarity.equals("Rare")) return 3; 
-/*  491 */     if (this.rarity.equals("Epic")) return 4; 
-/*  492 */     if (this.rarity.equals("Legendary")) return 5;
+/*  492 */     if (this.rarity.equals("Broken")) return 1; 
+/*  493 */     if (this.rarity.equals("Magical")) return 2; 
+/*  494 */     if (this.rarity.equals("Rare")) return 3; 
+/*  495 */     if (this.rarity.equals("Epic")) return 4; 
+/*  496 */     if (this.rarity.equals("Legendary")) return 5;
 /*      */     
-/*  494 */     return -1;
+/*  498 */     return -1;
 /*      */   }
 /*      */   
 /*      */   public boolean matchesCriteria(SelectionCriteria criteria) {
-/*  498 */     if (criteria.isInitial()) return true;
+/*  502 */     if (criteria.isInitial()) return true;
 /*      */     
-/*  500 */     if (criteria.combiMode == SelectionCriteria.CombinationMode.OR) {
-/*  501 */       return matchesCriteriaOr(criteria);
+/*  504 */     if (criteria.combiMode == SelectionCriteria.CombinationMode.OR) {
+/*  505 */       return matchesCriteriaOr(criteria);
 /*      */     }
 /*      */     
-/*  504 */     if (criteria.combiMode == SelectionCriteria.CombinationMode.AND) {
-/*  505 */       return matchesCriteriaAnd(criteria);
+/*  508 */     if (criteria.combiMode == SelectionCriteria.CombinationMode.AND) {
+/*  509 */       return matchesCriteriaAnd(criteria);
 /*      */     }
 /*      */     
-/*  508 */     return false;
+/*  512 */     return false;
 /*      */   }
 /*      */   
 /*      */   private boolean matchesCriteriaOr(SelectionCriteria criteria) {
-/*  512 */     if (criteria.isInitial()) return true;
+/*  516 */     if (criteria.isInitial()) return true;
 /*      */     
-/*  514 */     if (criteria.levelMin > 0 && 
-/*  515 */       this.reqLevel < criteria.levelMin) return false;
-/*      */ 
-/*      */     
-/*  518 */     if (criteria.levelMax > 0 && 
-/*  519 */       this.reqLevel > criteria.levelMax) return false;
+/*  518 */     if (criteria.levelMin > 0 && 
+/*  519 */       this.reqLevel < criteria.levelMin) return false;
 /*      */ 
 /*      */     
-/*  522 */     if (!criteria.itemRarity.isEmpty() && 
-/*  523 */       !criteria.itemRarity.contains(this.rarity)) return false;
+/*  522 */     if (criteria.levelMax > 0 && 
+/*  523 */       this.reqLevel > criteria.levelMax) return false;
 /*      */ 
 /*      */     
-/*  526 */     if (criteria.dmgConversionFrom != null && 
-/*  527 */       !criteria.dmgConversionFrom.equals(this.convertIn) && 
-/*  528 */       !criteria.dmgConversionFrom.equals(this.convertIn2)) return false;
+/*  526 */     if (!criteria.itemRarity.isEmpty() && 
+/*  527 */       !criteria.itemRarity.contains(this.rarity)) return false;
 /*      */ 
 /*      */     
-/*  531 */     if (criteria.dmgConversionTo != null && 
-/*  532 */       !criteria.dmgConversionTo.equals(this.convertOut) && 
-/*  533 */       !criteria.dmgConversionTo.equals(this.convertOut2)) return false;
+/*  530 */     if (criteria.dmgConversionFrom != null && 
+/*  531 */       !criteria.dmgConversionFrom.equals(this.convertIn) && 
+/*  532 */       !criteria.dmgConversionFrom.equals(this.convertIn2)) return false;
 /*      */ 
 /*      */     
-/*  536 */     if (criteria.petBonus && (
-/*  537 */       this.dbPetAffix != null || this.dbPetSkill != null)) return true;
-/*      */ 
-/*      */ 
-/*      */ 
+/*  535 */     if (criteria.dmgConversionTo != null && 
+/*  536 */       !criteria.dmgConversionTo.equals(this.convertOut) && 
+/*  537 */       !criteria.dmgConversionTo.equals(this.convertOut2)) return false;
 /*      */ 
 /*      */     
-/*  543 */     if (criteria.statInfos == null) return true; 
-/*  544 */     if (criteria.statInfos.isEmpty()) return true;
+/*  540 */     if (criteria.petBonus && (
+/*  541 */       this.dbPetAffix != null || this.dbPetSkill != null)) return true;
+/*      */ 
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */     
-/*  549 */     if (this.stats == null) return false;
+/*  547 */     if (criteria.statInfos == null) return true; 
+/*  548 */     if (criteria.statInfos.isEmpty()) return true;
+/*      */ 
+/*      */ 
+/*      */ 
 /*      */     
-/*  551 */     for (SelectionCriteria.StatInfo info : criteria.statInfos) {
-/*  552 */       for (String statType : info.statTypes) {
-/*  553 */         for (DBStat stat : this.stats) {
-/*  554 */           if (stat.getStatType().equals(statType)) {
-/*  555 */             if (info.flat == info.percentage) {
-/*  556 */               if (info.maxResist) {
-/*  557 */                 if (info.flat) {
-/*  558 */                   if (stat.getStatMin() > 0.0F) return true; 
-/*  559 */                   if (stat.getStatModifier() > 0) return true; 
+/*  553 */     if (this.stats == null) return false;
+/*      */     
+/*  555 */     for (SelectionCriteria.StatInfo info : criteria.statInfos) {
+/*  556 */       for (String statType : info.statTypes) {
+/*  557 */         for (DBStat stat : this.stats) {
+/*  558 */           if (stat.getStatType().equals(statType)) {
+/*  559 */             if (info.flat == info.percentage) {
+/*  560 */               if (info.maxResist) {
+/*  561 */                 if (info.flat) {
+/*  562 */                   if (stat.getStatMin() > 0.0F) return true; 
+/*  563 */                   if (stat.getStatModifier() > 0) return true; 
 /*      */                 } 
-/*  561 */                 if (stat.getMaxResist() > 0) return true; 
+/*  565 */                 if (stat.getMaxResist() > 0) return true; 
 /*      */               } else {
-/*  563 */                 if (stat.getStatMin() > 0.0F) return true; 
-/*  564 */                 if (stat.getStatModifier() > 0) return true; 
+/*  567 */                 if (stat.getStatMin() > 0.0F) return true; 
+/*  568 */                 if (stat.getStatModifier() > 0) return true; 
 /*      */               } 
 /*      */             } else {
-/*  567 */               if (info.flat && 
-/*  568 */                 stat.getStatMin() > 0.0F) return true;
+/*  571 */               if (info.flat && 
+/*  572 */                 stat.getStatMin() > 0.0F) return true;
 /*      */ 
 /*      */               
-/*  571 */               if (info.percentage && 
-/*  572 */                 stat.getStatModifier() > 0) return true;
+/*  575 */               if (info.percentage && 
+/*  576 */                 stat.getStatModifier() > 0) return true;
 /*      */             
 /*      */             } 
 /*      */             
-/*  576 */             if (info.maxResist && 
-/*  577 */               stat.getMaxResist() > 0) return true;
+/*  580 */             if (info.maxResist && 
+/*  581 */               stat.getMaxResist() > 0) return true;
 /*      */           
 /*      */           } 
 /*      */         } 
 /*      */       } 
 /*      */     } 
 /*      */     
-/*  584 */     return false;
+/*  588 */     return false;
 /*      */   }
 /*      */   
 /*      */   private boolean matchesCriteriaAnd(SelectionCriteria criteria) {
-/*  588 */     if (criteria.isInitial()) return true;
+/*  592 */     if (criteria.isInitial()) return true;
 /*      */     
-/*  590 */     if (criteria.levelMin > 0 && 
-/*  591 */       this.reqLevel < criteria.levelMin) return false;
-/*      */ 
-/*      */     
-/*  594 */     if (criteria.levelMax > 0 && 
-/*  595 */       this.reqLevel > criteria.levelMax) return false;
+/*  594 */     if (criteria.levelMin > 0 && 
+/*  595 */       this.reqLevel < criteria.levelMin) return false;
 /*      */ 
 /*      */     
-/*  598 */     if (!criteria.itemRarity.isEmpty() && 
-/*  599 */       !criteria.itemRarity.contains(this.rarity)) return false;
+/*  598 */     if (criteria.levelMax > 0 && 
+/*  599 */       this.reqLevel > criteria.levelMax) return false;
 /*      */ 
 /*      */     
-/*  602 */     if (criteria.dmgConversionFrom != null && 
-/*  603 */       !criteria.dmgConversionFrom.equals(this.convertIn) && 
-/*  604 */       !criteria.dmgConversionFrom.equals(this.convertIn2)) return false;
+/*  602 */     if (!criteria.itemRarity.isEmpty() && 
+/*  603 */       !criteria.itemRarity.contains(this.rarity)) return false;
 /*      */ 
 /*      */     
-/*  607 */     if (criteria.dmgConversionTo != null && 
-/*  608 */       !criteria.dmgConversionTo.equals(this.convertOut) && 
-/*  609 */       !criteria.dmgConversionTo.equals(this.convertOut2)) return false;
+/*  606 */     if (criteria.dmgConversionFrom != null && 
+/*  607 */       !criteria.dmgConversionFrom.equals(this.convertIn) && 
+/*  608 */       !criteria.dmgConversionFrom.equals(this.convertIn2)) return false;
 /*      */ 
 /*      */     
-/*  612 */     if (criteria.petBonus && 
-/*  613 */       this.dbPetAffix == null && this.dbPetSkill == null) return false;
+/*  611 */     if (criteria.dmgConversionTo != null && 
+/*  612 */       !criteria.dmgConversionTo.equals(this.convertOut) && 
+/*  613 */       !criteria.dmgConversionTo.equals(this.convertOut2)) return false;
 /*      */ 
 /*      */     
-/*  616 */     boolean fitsAll = false;
-/*  617 */     if (criteria.statInfos == null)
-/*  618 */     { fitsAll = true; }
-/*      */     
-/*  620 */     else if (criteria.statInfos.isEmpty()) { fitsAll = true; }
-/*      */ 
-/*      */ 
-/*      */ 
+/*  616 */     if (criteria.petBonus && 
+/*  617 */       this.dbPetAffix == null && this.dbPetSkill == null) return false;
 /*      */ 
 /*      */     
-/*  626 */     if (criteria.statInfos == null) return fitsAll; 
-/*  627 */     if (criteria.statInfos.isEmpty()) return fitsAll;
+/*  620 */     boolean fitsAll = false;
+/*  621 */     if (criteria.statInfos == null)
+/*  622 */     { fitsAll = true; }
+/*      */     
+/*  624 */     else if (criteria.statInfos.isEmpty()) { fitsAll = true; }
+/*      */ 
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */     
-/*  632 */     if (this.stats == null) return false;
+/*  630 */     if (criteria.statInfos == null) return fitsAll; 
+/*  631 */     if (criteria.statInfos.isEmpty()) return fitsAll;
+/*      */ 
+/*      */ 
+/*      */ 
 /*      */     
-/*  634 */     fitsAll = true;
+/*  636 */     if (this.stats == null) return false;
 /*      */     
-/*  636 */     for (SelectionCriteria.StatInfo info : criteria.statInfos) {
-/*  637 */       boolean found = false;
+/*  638 */     fitsAll = true;
+/*      */     
+/*  640 */     for (SelectionCriteria.StatInfo info : criteria.statInfos) {
+/*  641 */       boolean found = false;
 /*      */       
-/*  639 */       for (String statType : info.statTypes) {
-/*  640 */         for (DBStat stat : this.stats) {
-/*  641 */           if (stat.getStatType().equals(statType)) {
-/*  642 */             if (info.flat == info.percentage) {
-/*  643 */               if (info.maxResist) {
-/*  644 */                 if (info.flat) {
-/*  645 */                   if (stat.getStatMin() > 0.0F) {
-/*  646 */                     found = true;
+/*  643 */       for (String statType : info.statTypes) {
+/*  644 */         for (DBStat stat : this.stats) {
+/*  645 */           if (stat.getStatType().equals(statType)) {
+/*  646 */             if (info.flat == info.percentage) {
+/*  647 */               if (info.maxResist) {
+/*  648 */                 if (info.flat) {
+/*  649 */                   if (stat.getStatMin() > 0.0F) {
+/*  650 */                     found = true;
 /*      */                     
 /*      */                     break;
 /*      */                   } 
-/*  650 */                   if (stat.getStatModifier() > 0) {
-/*  651 */                     found = true;
+/*  654 */                   if (stat.getStatModifier() > 0) {
+/*  655 */                     found = true;
 /*      */                     
 /*      */                     break;
 /*      */                   } 
 /*      */                 } 
-/*  656 */                 if (stat.getMaxResist() > 0) {
-/*  657 */                   found = true;
+/*  660 */                 if (stat.getMaxResist() > 0) {
+/*  661 */                   found = true;
 /*      */                   
 /*      */                   break;
 /*      */                 } 
 /*      */               } else {
-/*  662 */                 if (stat.getStatMin() > 0.0F) {
-/*  663 */                   found = true;
+/*  666 */                 if (stat.getStatMin() > 0.0F) {
+/*  667 */                   found = true;
 /*      */                   
 /*      */                   break;
 /*      */                 } 
-/*  667 */                 if (stat.getStatModifier() > 0) {
-/*  668 */                   found = true;
+/*  671 */                 if (stat.getStatModifier() > 0) {
+/*  672 */                   found = true;
 /*      */                   
 /*      */                   break;
 /*      */                 } 
 /*      */               } 
 /*      */             } else {
-/*  674 */               if (info.flat && 
-/*  675 */                 stat.getStatMin() > 0.0F) {
-/*  676 */                 found = true;
+/*  678 */               if (info.flat && 
+/*  679 */                 stat.getStatMin() > 0.0F) {
+/*  680 */                 found = true;
 /*      */ 
 /*      */                 
 /*      */                 break;
 /*      */               } 
 /*      */               
-/*  682 */               if (info.percentage && 
-/*  683 */                 stat.getStatModifier() > 0) {
-/*  684 */                 found = true;
+/*  686 */               if (info.percentage && 
+/*  687 */                 stat.getStatModifier() > 0) {
+/*  688 */                 found = true;
 /*      */ 
 /*      */                 
 /*      */                 break;
 /*      */               } 
 /*      */             } 
 /*      */             
-/*  691 */             if (info.maxResist && 
-/*  692 */               stat.getMaxResist() > 0) {
-/*  693 */               found = true;
+/*  695 */             if (info.maxResist && 
+/*  696 */               stat.getMaxResist() > 0) {
+/*  697 */               found = true;
 /*      */ 
 /*      */               
 /*      */               break;
@@ -712,17 +702,17 @@ import org.gdstash.util.GDMsgLogger;
 /*      */           } 
 /*      */         } 
 /*      */         
-/*  701 */         if (found)
+/*  705 */         if (found)
 /*      */           break; 
 /*      */       } 
-/*  704 */       if (!found) {
-/*  705 */         fitsAll = false;
+/*  708 */       if (!found) {
+/*  709 */         fitsAll = false;
 /*      */         
 /*      */         break;
 /*      */       } 
 /*      */     } 
 /*      */     
-/*  711 */     return fitsAll;
+/*  715 */     return fitsAll;
 /*      */   }
 /*      */ 
 /*      */ 
@@ -730,26 +720,26 @@ import org.gdstash.util.GDMsgLogger;
 /*      */ 
 /*      */   
 /*      */   private void setLootRandomName(String lootRandomName) {
-/*  719 */     String text = GDStashFrame.arcList.getTag(ARCDecompress.FileModule.All, GDConstants.TAG_TEXT_ITEMS, lootRandomName, false);
+/*  723 */     String text = GDStashFrame.arcList.getTag(ARCDecompress.FileModule.All, GDConstants.TAG_TEXT_ITEMS, lootRandomName, false);
 /*      */     
-/*  721 */     if (text != null) {
-/*  722 */       String[] genders = ARZDecompress.getGenderTexts(text);
+/*  725 */     if (text != null) {
+/*  726 */       String[] genders = ARZDecompress.getGenderTexts(text);
 /*      */       
-/*  724 */       setGenderNames(genders);
+/*  728 */       setGenderNames(genders);
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   private void setGenderNames(String[] genders) {
-/*  729 */     this.nameMS = genders[0];
-/*  730 */     this.nameFS = genders[1];
-/*  731 */     this.nameNS = genders[2];
-/*  732 */     this.nameMP = genders[3];
-/*  733 */     this.nameFP = genders[4];
-/*  734 */     this.nameNP = genders[5];
+/*  733 */     this.nameMS = genders[0];
+/*  734 */     this.nameFS = genders[1];
+/*  735 */     this.nameNS = genders[2];
+/*  736 */     this.nameMP = genders[3];
+/*  737 */     this.nameFP = genders[4];
+/*  738 */     this.nameNP = genders[5];
 /*      */   }
 /*      */   
 /*      */   private void determineAffixType(String filename) {
-/*  738 */     this.type = -1;
+/*  742 */     this.type = -1;
 /*      */ 
 /*      */ 
 /*      */ 
@@ -757,32 +747,36 @@ import org.gdstash.util.GDMsgLogger;
 /*      */ 
 /*      */ 
 /*      */     
-/*  746 */     if (filename.contains("prefix")) this.type = 1; 
-/*  747 */     if (filename.contains("suffix")) this.type = 2; 
-/*  748 */     if (filename.contains("crafting")) this.type = 3; 
-/*  749 */     if (filename.contains("completion")) this.type = 4;
-/*      */   
+/*  750 */     if (filename.contains("prefix")) this.type = 1; 
+/*  751 */     if (filename.contains("suffix")) this.type = 2; 
+/*  752 */     if (filename.contains("crafting")) {
+/*  753 */       this.type = 3;
+/*      */     }
+/*  755 */     if (filename.contains("completion")) {
+/*  756 */       this.type = 4;
+/*      */     }
 /*      */   }
+/*      */ 
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */   
 /*      */   public static void clearBuffer() {
-/*  757 */     hashBuffer.clear();
-/*  758 */     bufferComplete = false;
+/*  765 */     hashBuffer.clear();
+/*  766 */     bufferComplete = false;
 /*      */     
-/*  760 */     if (GDStashFrame.dbConfig != null)
+/*  768 */     if (GDStashFrame.dbConfig != null)
 /*      */     {
 /*      */ 
 /*      */       
-/*  764 */       fillBuffer();
+/*  772 */       fillBuffer();
 /*      */     }
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public static void createTables() throws SQLException {
-/*  770 */     String dropTable = "DROP TABLE GD_AFFIX";
-/*  771 */     String createTable = "CREATE TABLE GD_AFFIX (AFFIX_ID VARCHAR(256) NOT NULL, RARITY           VARCHAR(32), NAME_MS          VARCHAR(256), NAME_FS          VARCHAR(256), NAME_NS          VARCHAR(256), NAME_MP          VARCHAR(256), NAME_FP          VARCHAR(256), NAME_NP          VARCHAR(256), REQ_LEVEL        INTEGER, TYPE             INTEGER, CONVERT_IN       VARCHAR(16), CONVERT_OUT      VARCHAR(16), CONVERT_IN_2     VARCHAR(16), CONVERT_OUT_2    VARCHAR(16), OFFENSE_PRC      INTEGER, RETAL_PRC        INTEGER, LOOT_RAND_COST   INTEGER, PET_AFFIX_ID     VARCHAR(256), ITEM_SKILL_ID    VARCHAR(256), ITEM_SKILL_LEVEL INTEGER, CONTROLLER_ID    VARCHAR(256), RNG_PERCENT      INTEGER, PRIMARY KEY (AFFIX_ID))";
+/*  778 */     String dropTable = "DROP TABLE GD_AFFIX";
+/*  779 */     String createTable = "CREATE TABLE GD_AFFIX (AFFIX_ID VARCHAR(256) NOT NULL, RARITY           VARCHAR(32), NAME_MS          VARCHAR(256), NAME_FS          VARCHAR(256), NAME_NS          VARCHAR(256), NAME_MP          VARCHAR(256), NAME_FP          VARCHAR(256), NAME_NP          VARCHAR(256), REQ_LEVEL        INTEGER, TYPE             INTEGER, CONVERT_IN       VARCHAR(16), CONVERT_OUT      VARCHAR(16), CONVERT_IN_2     VARCHAR(16), CONVERT_OUT_2    VARCHAR(16), OFFENSE_PRC      INTEGER, RETAL_PRC        INTEGER, LOOT_RAND_COST   INTEGER, PET_AFFIX_ID     VARCHAR(256), ITEM_SKILL_ID    VARCHAR(256), ITEM_SKILL_LEVEL INTEGER, CONTROLLER_ID    VARCHAR(256), RNG_PERCENT      INTEGER, PRIMARY KEY (AFFIX_ID))";
 /*      */ 
 /*      */ 
 /*      */ 
@@ -808,366 +802,377 @@ import org.gdstash.util.GDMsgLogger;
 /*      */ 
 /*      */ 
 /*      */     
-/*  797 */     try (Connection conn = GDDBData.getConnection()) {
-/*  798 */       boolean auto = conn.getAutoCommit();
-/*  799 */       conn.setAutoCommit(false);
+/*  805 */     try (Connection conn = GDDBData.getConnection()) {
+/*  806 */       boolean auto = conn.getAutoCommit();
+/*  807 */       conn.setAutoCommit(false);
 /*      */       
-/*  801 */       try (Statement st = conn.createStatement()) {
-/*  802 */         if (GDDBUtil.tableExists(conn, "GD_AFFIX")) {
-/*  803 */           st.execute(dropTable);
+/*  809 */       try (Statement st = conn.createStatement()) {
+/*  810 */         if (GDDBUtil.tableExists(conn, "GD_AFFIX")) {
+/*  811 */           st.execute(dropTable);
 /*      */         }
-/*  805 */         if (GDDBUtil.tableExists(conn, "GD_AFFIX_CHAR")) {
-/*  806 */           st.execute("DROP TABLE GD_AFFIX_CHAR");
+/*  813 */         if (GDDBUtil.tableExists(conn, "GD_AFFIX_CHAR")) {
+/*  814 */           st.execute("DROP TABLE GD_AFFIX_CHAR");
 /*      */         }
-/*  808 */         if (GDDBUtil.tableExists(conn, "GD_AFFIX_CHARRACES")) {
-/*  809 */           st.execute("DROP TABLE GD_AFFIX_CHARRACES");
+/*  816 */         if (GDDBUtil.tableExists(conn, "GD_AFFIX_CHARRACES")) {
+/*  817 */           st.execute("DROP TABLE GD_AFFIX_CHARRACES");
 /*      */         }
-/*  811 */         if (GDDBUtil.tableExists(conn, "GD_AFFIX_DAMAGE")) {
-/*  812 */           st.execute("DROP TABLE GD_AFFIX_DAMAGE");
+/*  819 */         if (GDDBUtil.tableExists(conn, "GD_AFFIX_DAMAGE")) {
+/*  820 */           st.execute("DROP TABLE GD_AFFIX_DAMAGE");
 /*      */         }
-/*  814 */         st.execute(createTable);
-/*  815 */         st.close();
+/*  822 */         st.execute(createTable);
+/*  823 */         st.close();
 /*      */         
-/*  817 */         conn.commit();
+/*  825 */         conn.commit();
 /*      */         
-/*  819 */         DBStat.createAffixTable(conn);
-/*  820 */         DBStatBonusRace.createAffixTable(conn);
-/*  821 */         DBSkillBonus.createAffixTable(conn);
-/*  822 */         DBSkillModifier.createAffixTable(conn);
+/*  827 */         DBStat.createAffixTable(conn);
+/*  828 */         DBStatBonusRace.createAffixTable(conn);
+/*  829 */         DBSkillBonus.createAffixTable(conn);
+/*  830 */         DBSkillModifier.createAffixTable(conn);
 /*      */       }
-/*  824 */       catch (SQLException ex) {
-/*  825 */         conn.rollback();
+/*  832 */       catch (SQLException ex) {
+/*  833 */         conn.rollback();
 /*      */         
-/*  827 */         Object[] args = { "GD_AFFIX" };
-/*  828 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_CREATE_TABLE", args);
+/*  835 */         Object[] args = { "GD_AFFIX" };
+/*  836 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_CREATE_TABLE", args);
 /*      */         
-/*  830 */         GDMsgLogger.addError(msg);
+/*  838 */         GDMsgLogger.addError(msg);
 /*      */         
-/*  832 */         throw ex;
+/*  840 */         throw ex;
 /*      */       } finally {
 /*      */         
-/*  835 */         conn.setAutoCommit(auto);
+/*  843 */         conn.setAutoCommit(auto);
 /*      */       } 
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   public static void delete(String affixID) throws SQLException {
-/*  841 */     String deleteEntry = "DELETE FROM GD_AFFIX WHERE AFFIX_ID = ?";
+/*  849 */     String deleteEntry = "DELETE FROM GD_AFFIX WHERE AFFIX_ID = ?";
 /*      */     
-/*  843 */     try (Connection conn = GDDBData.getConnection()) {
-/*  844 */       boolean auto = conn.getAutoCommit();
-/*  845 */       conn.setAutoCommit(false);
+/*  851 */     try (Connection conn = GDDBData.getConnection()) {
+/*  852 */       boolean auto = conn.getAutoCommit();
+/*  853 */       conn.setAutoCommit(false);
 /*      */       
-/*  847 */       try (PreparedStatement ps = conn.prepareStatement(deleteEntry)) {
-/*  848 */         ps.setString(1, affixID);
-/*  849 */         ps.executeUpdate();
-/*  850 */         ps.close();
+/*  855 */       try (PreparedStatement ps = conn.prepareStatement(deleteEntry)) {
+/*  856 */         ps.setString(1, affixID);
+/*  857 */         ps.executeUpdate();
+/*  858 */         ps.close();
 /*      */         
-/*  852 */         DBStat.deleteAffix(conn, affixID);
-/*  853 */         DBStatBonusRace.deleteAffix(conn, affixID);
-/*  854 */         DBSkillBonus.deleteAffix(conn, affixID);
-/*  855 */         DBSkillModifier.deleteAffix(conn, affixID);
+/*  860 */         DBStat.deleteAffix(conn, affixID);
+/*  861 */         DBStatBonusRace.deleteAffix(conn, affixID);
+/*  862 */         DBSkillBonus.deleteAffix(conn, affixID);
+/*  863 */         DBSkillModifier.deleteAffix(conn, affixID);
 /*      */         
-/*  857 */         conn.commit();
+/*  865 */         conn.commit();
 /*      */       }
-/*  859 */       catch (SQLException ex) {
-/*  860 */         conn.rollback();
+/*  867 */       catch (SQLException ex) {
+/*  868 */         conn.rollback();
 /*      */         
-/*  862 */         Object[] args = { affixID, "GD_AFFIX" };
-/*  863 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_DEL_TABLE_BY_ID", args);
+/*  870 */         Object[] args = { affixID, "GD_AFFIX" };
+/*  871 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_DEL_TABLE_BY_ID", args);
 /*      */         
-/*  865 */         GDMsgLogger.addError(msg);
-/*  866 */         GDMsgLogger.addError(ex);
+/*  873 */         GDMsgLogger.addError(msg);
+/*  874 */         GDMsgLogger.addError(ex);
 /*      */         
-/*  868 */         throw ex;
+/*  876 */         throw ex;
 /*      */       } finally {
 /*      */         
-/*  871 */         conn.setAutoCommit(auto);
+/*  879 */         conn.setAutoCommit(auto);
 /*      */       }
 /*      */     
-/*  874 */     } catch (SQLException ex) {
-/*  875 */       throw ex;
+/*  882 */     } catch (SQLException ex) {
+/*  883 */       throw ex;
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   public static void insert(ARZRecord record) throws SQLException {
-/*  880 */     DBAffix entry = get(record.getFileName());
+/*  888 */     DBAffix entry = get(record.getFileName());
 /*      */     
-/*  882 */     if (entry != null)
+/*  890 */     if (entry != null)
 /*      */       return; 
-/*  884 */     DBAffix affix = new DBAffix(record);
+/*  892 */     DBAffix affix = new DBAffix(record);
 /*      */     
-/*  886 */     String insert = "INSERT INTO GD_AFFIX VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+/*  894 */     String insert = "INSERT INTO GD_AFFIX VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 /*      */     
-/*  888 */     try (Connection conn = GDDBData.getConnection()) {
-/*  889 */       boolean auto = conn.getAutoCommit();
-/*  890 */       conn.setAutoCommit(false);
+/*  896 */     try (Connection conn = GDDBData.getConnection()) {
+/*  897 */       boolean auto = conn.getAutoCommit();
+/*  898 */       conn.setAutoCommit(false);
 /*      */       
-/*  892 */       try (PreparedStatement ps = conn.prepareStatement(insert)) {
-/*  893 */         ps.setString(1, affix.affixID);
-/*  894 */         ps.setString(2, affix.rarity);
-/*  895 */         ps.setString(3, affix.nameMS);
-/*  896 */         ps.setString(4, affix.nameFS);
-/*  897 */         ps.setString(5, affix.nameNS);
-/*  898 */         ps.setString(6, affix.nameMP);
-/*  899 */         ps.setString(7, affix.nameFP);
-/*  900 */         ps.setString(8, affix.nameNP);
-/*  901 */         ps.setInt(9, affix.reqLevel);
-/*  902 */         ps.setInt(10, affix.type);
-/*  903 */         ps.setString(11, affix.convertIn);
-/*  904 */         ps.setString(12, affix.convertOut);
-/*  905 */         ps.setString(13, affix.convertIn2);
-/*  906 */         ps.setString(14, affix.convertOut2);
-/*  907 */         ps.setInt(15, affix.offensiveChance);
-/*  908 */         ps.setInt(16, affix.retaliationChance);
-/*  909 */         ps.setInt(17, affix.lootRandomCost);
-/*  910 */         ps.setString(18, affix.petAffixID);
-/*  911 */         ps.setString(19, affix.itemSkillID);
-/*  912 */         ps.setInt(20, affix.itemSkillLevel);
-/*  913 */         ps.setString(21, affix.controllerID);
-/*  914 */         ps.setInt(22, affix.jitterPercent);
+/*  900 */       try (PreparedStatement ps = conn.prepareStatement(insert)) {
+/*  901 */         ps.setString(1, affix.affixID);
+/*  902 */         ps.setString(2, affix.rarity);
+/*  903 */         ps.setString(3, affix.nameMS);
+/*  904 */         ps.setString(4, affix.nameFS);
+/*  905 */         ps.setString(5, affix.nameNS);
+/*  906 */         ps.setString(6, affix.nameMP);
+/*  907 */         ps.setString(7, affix.nameFP);
+/*  908 */         ps.setString(8, affix.nameNP);
+/*  909 */         ps.setInt(9, affix.reqLevel);
+/*  910 */         ps.setInt(10, affix.type);
+/*  911 */         ps.setString(11, affix.convertIn);
+/*  912 */         ps.setString(12, affix.convertOut);
+/*  913 */         ps.setString(13, affix.convertIn2);
+/*  914 */         ps.setString(14, affix.convertOut2);
+/*  915 */         ps.setInt(15, affix.offensiveChance);
+/*  916 */         ps.setInt(16, affix.retaliationChance);
+/*  917 */         ps.setInt(17, affix.lootRandomCost);
+/*  918 */         ps.setString(18, affix.petAffixID);
+/*  919 */         ps.setString(19, affix.itemSkillID);
+/*  920 */         ps.setInt(20, affix.itemSkillLevel);
+/*  921 */         ps.setString(21, affix.controllerID);
+/*  922 */         ps.setInt(22, affix.jitterPercent);
 /*      */         
-/*  916 */         ps.executeUpdate();
-/*  917 */         ps.close();
+/*  924 */         ps.executeUpdate();
+/*  925 */         ps.close();
 /*      */         
-/*  919 */         DBStat.insertAffix(conn, affix.affixID, affix.stats);
-/*  920 */         DBStatBonusRace.insertAffix(conn, affix.affixID, affix.statBonusRaces);
-/*  921 */         DBSkillBonus.insertAffix(conn, affix.affixID, affix.bonuses);
-/*  922 */         DBSkillModifier.insertAffix(conn, affix.affixID, affix.skillModifiers);
+/*  927 */         DBStat.insertAffix(conn, affix.affixID, affix.stats);
+/*  928 */         DBStatBonusRace.insertAffix(conn, affix.affixID, affix.statBonusRaces);
+/*  929 */         DBSkillBonus.insertAffix(conn, affix.affixID, affix.bonuses);
+/*  930 */         DBSkillModifier.insertAffix(conn, affix.affixID, affix.skillModifiers);
 /*      */         
-/*  924 */         conn.commit();
+/*  932 */         conn.commit();
 /*      */       }
-/*  926 */       catch (SQLException ex) {
-/*  927 */         conn.rollback();
+/*  934 */       catch (SQLException ex) {
+/*  935 */         conn.rollback();
 /*      */         
-/*  929 */         Object[] args = { record.getFileName(), "GD_AFFIX" };
-/*  930 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_INS_TABLE_BY_ID", args);
+/*  937 */         Object[] args = { record.getFileName(), "GD_AFFIX" };
+/*  938 */         String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_INS_TABLE_BY_ID", args);
 /*      */         
-/*  932 */         GDMsgLogger.addLowError(msg);
-/*  933 */         GDMsgLogger.addLowError(ex);
+/*  940 */         GDMsgLogger.addLowError(msg);
+/*  941 */         GDMsgLogger.addLowError(ex);
 /*      */       } finally {
 /*      */         
-/*  936 */         conn.setAutoCommit(auto);
+/*  944 */         conn.setAutoCommit(auto);
 /*      */       } 
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   public static DBAffix get(String affixID) {
-/*  942 */     DBAffix affix = null;
+/*  950 */     DBAffix affix = null;
 /*      */     
-/*  944 */     affix = hashBuffer.get(affixID);
+/*  952 */     affix = hashBuffer.get(affixID);
 /*      */     
-/*  946 */     if (bufferComplete) return affix;
+/*  954 */     if (bufferComplete) return affix;
 /*      */     
-/*  948 */     if (affix == null)
+/*  956 */     if (affix == null)
 /*      */     {
-/*  950 */       affix = getDB(affixID);
+/*  958 */       affix = getDB(affixID);
 /*      */     }
 /*      */     
-/*  953 */     return affix;
+/*  961 */     return affix;
 /*      */   }
 /*      */   
 /*      */   private static DBAffix getDB(String affixID) {
-/*  957 */     DBAffix affix = null;
+/*  965 */     DBAffix affix = null;
 /*      */     
-/*  959 */     String command = "SELECT * FROM GD_AFFIX WHERE AFFIX_ID = ?";
+/*  967 */     String command = "SELECT * FROM GD_AFFIX WHERE AFFIX_ID = ?";
 /*      */     
-/*  961 */     try(Connection conn = GDDBData.getConnection(); 
-/*  962 */         PreparedStatement ps = conn.prepareStatement(command)) {
-/*  963 */       ps.setString(1, affixID);
+/*  969 */     try(Connection conn = GDDBData.getConnection(); 
+/*  970 */         PreparedStatement ps = conn.prepareStatement(command)) {
+/*  971 */       ps.setString(1, affixID);
 /*      */       
-/*  965 */       try (ResultSet rs = ps.executeQuery()) {
-/*  966 */         List<DBAffix> list = wrap(rs);
+/*  973 */       try (ResultSet rs = ps.executeQuery()) {
+/*  974 */         List<DBAffix> list = wrap(rs);
 /*      */         
-/*  968 */         if (list.isEmpty()) {
-/*  969 */           affix = null;
+/*  976 */         if (list.isEmpty()) {
+/*  977 */           affix = null;
 /*      */         } else {
-/*  971 */           affix = list.get(0);
+/*  979 */           affix = list.get(0);
 /*      */         } 
 /*      */         
-/*  974 */         conn.commit();
+/*  982 */         conn.commit();
 /*      */       }
-/*  976 */       catch (SQLException ex) {
-/*  977 */         affix = null;
+/*  984 */       catch (SQLException ex) {
+/*  985 */         affix = null;
 /*      */         
-/*  979 */         throw ex;
+/*  987 */         throw ex;
 /*      */       }
 /*      */     
-/*  982 */     } catch (SQLException ex) {
-/*  983 */       Object[] args = { affixID, "GD_AFFIX" };
-/*  984 */       String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_READ_TABLE_BY_ID", args);
+/*  990 */     } catch (SQLException ex) {
+/*  991 */       Object[] args = { affixID, "GD_AFFIX" };
+/*  992 */       String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_READ_TABLE_BY_ID", args);
 /*      */       
-/*  986 */       GDMsgLogger.addError(msg);
-/*  987 */       GDMsgLogger.addError(ex);
+/*  994 */       GDMsgLogger.addError(msg);
+/*  995 */       GDMsgLogger.addError(ex);
 /*      */     } 
 /*      */     
-/*  990 */     return affix;
+/*  998 */     return affix;
 /*      */   }
 /*      */   
 /*      */   public static List<DBAffix> getByAffixIDs(List<String> affixIDs) {
-/*  994 */     List<DBAffix> list = new LinkedList<>();
+/* 1002 */     List<DBAffix> list = new LinkedList<>();
 /*      */     
-/*  996 */     for (String affixID : affixIDs) {
-/*  997 */       DBAffix affix = get(affixID);
-/*  998 */       if (affix != null) list.add(affix);
+/* 1004 */     for (String affixID : affixIDs) {
+/* 1005 */       DBAffix affix = get(affixID);
+/* 1006 */       if (affix != null) list.add(affix);
 /*      */     
 /*      */     } 
-/* 1001 */     return list;
+/* 1009 */     return list;
+/*      */   }
+/*      */   
+/*      */   public static List<DBAffix> getByAffixSetID(List<String> affixIDs) {
+/* 1013 */     List<DBAffix> list = new LinkedList<>();
+/*      */     
+/* 1015 */     for (String affixID : affixIDs) {
+/* 1016 */       DBAffix affix = get(affixID);
+/* 1017 */       if (affix != null) list.add(affix);
+/*      */     
+/*      */     } 
+/* 1020 */     return list;
 /*      */   }
 /*      */   
 /*      */   private static List<DBAffix> getAll() {
-/* 1005 */     List<DBAffix> list = new LinkedList<>();
+/* 1024 */     List<DBAffix> list = new LinkedList<>();
 /*      */     
-/* 1007 */     String command = "SELECT * FROM GD_AFFIX";
+/* 1026 */     String command = "SELECT * FROM GD_AFFIX";
 /*      */     
-/* 1009 */     try(Connection conn = GDDBData.getConnection(); 
-/* 1010 */         PreparedStatement ps = conn.prepareStatement(command)) {
+/* 1028 */     try(Connection conn = GDDBData.getConnection(); 
+/* 1029 */         PreparedStatement ps = conn.prepareStatement(command)) {
 /*      */       
-/* 1012 */       try (ResultSet rs = ps.executeQuery()) {
-/* 1013 */         list = wrap(rs);
+/* 1031 */       try (ResultSet rs = ps.executeQuery()) {
+/* 1032 */         list = wrap(rs);
 /*      */         
-/* 1015 */         conn.commit();
+/* 1034 */         conn.commit();
 /*      */       }
-/* 1017 */       catch (SQLException ex) {
-/* 1018 */         throw ex;
+/* 1036 */       catch (SQLException ex) {
+/* 1037 */         throw ex;
 /*      */       }
 /*      */     
-/* 1021 */     } catch (SQLException ex) {
-/* 1022 */       Object[] args = { "<all>", "GD_AFFIX" };
-/* 1023 */       String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_READ_TABLE_BY_ID", args);
+/* 1040 */     } catch (SQLException ex) {
+/* 1041 */       Object[] args = { "<all>", "GD_AFFIX" };
+/* 1042 */       String msg = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_READ_TABLE_BY_ID", args);
 /*      */       
-/* 1025 */       GDMsgLogger.addError(msg);
-/* 1026 */       GDMsgLogger.addError(ex);
+/* 1044 */       GDMsgLogger.addError(msg);
+/* 1045 */       GDMsgLogger.addError(ex);
 /*      */     } 
 /*      */     
-/* 1029 */     return list;
+/* 1048 */     return list;
 /*      */   }
 /*      */   
 /*      */   private void createBonusRaceStats(DBStat stat) {
-/* 1033 */     if (stat == null)
-/* 1034 */       return;  if (this.statBonusRaces == null)
-/* 1035 */       return;  if (this.statBonusRaces.isEmpty())
+/* 1052 */     if (stat == null)
+/* 1053 */       return;  if (this.statBonusRaces == null)
+/* 1054 */       return;  if (this.statBonusRaces.isEmpty())
 /*      */       return; 
-/* 1037 */     this.stats.remove(stat);
+/* 1056 */     this.stats.remove(stat);
 /*      */     
-/* 1039 */     List<DBStat> list = DBStat.createStatsFromRaceBonusList(stat, this.statBonusRaces);
-/* 1040 */     this.stats.addAll(list);
+/* 1058 */     List<DBStat> list = DBStat.createStatsFromRaceBonusList(stat, this.statBonusRaces);
+/* 1059 */     this.stats.addAll(list);
 /*      */   }
 /*      */   
 /*      */   private static List<DBAffix> wrap(ResultSet rs) throws SQLException {
-/* 1044 */     List<DBAffix> list = new LinkedList<>();
+/* 1063 */     List<DBAffix> list = new LinkedList<>();
 /*      */     
-/* 1046 */     while (rs.next()) {
-/* 1047 */       DBAffix affix = new DBAffix();
+/* 1065 */     while (rs.next()) {
+/* 1066 */       DBAffix affix = new DBAffix();
 /*      */       
-/* 1049 */       affix.affixID = rs.getString(1);
+/* 1068 */       affix.affixID = rs.getString(1);
 /*      */       
-/* 1051 */       DBAffix buff = hashBuffer.get(affix.affixID);
-/* 1052 */       if (buff != null) {
-/* 1053 */         list.add(buff);
+/* 1070 */       DBAffix buff = hashBuffer.get(affix.affixID);
+/* 1071 */       if (buff != null) {
+/* 1072 */         list.add(buff);
 /*      */         
 /*      */         continue;
 /*      */       } 
 /*      */       
-/* 1058 */       affix.rarity = rs.getString(2);
-/* 1059 */       affix.nameMS = rs.getString(3);
-/* 1060 */       affix.nameFS = rs.getString(4);
-/* 1061 */       affix.nameNS = rs.getString(5);
-/* 1062 */       affix.nameMP = rs.getString(6);
-/* 1063 */       affix.nameFP = rs.getString(7);
-/* 1064 */       affix.nameNP = rs.getString(8);
-/* 1065 */       affix.reqLevel = rs.getInt(9);
-/* 1066 */       affix.type = rs.getInt(10);
-/* 1067 */       affix.convertIn = rs.getString(11);
-/* 1068 */       affix.convertOut = rs.getString(12);
-/* 1069 */       affix.convertIn2 = rs.getString(13);
-/* 1070 */       affix.convertOut2 = rs.getString(14);
-/* 1071 */       affix.offensiveChance = rs.getInt(15);
-/* 1072 */       affix.retaliationChance = rs.getInt(16);
-/* 1073 */       affix.lootRandomCost = rs.getInt(17);
-/* 1074 */       affix.petAffixID = rs.getString(18);
-/* 1075 */       affix.itemSkillID = rs.getString(19);
-/* 1076 */       affix.itemSkillLevel = rs.getInt(20);
-/* 1077 */       affix.controllerID = rs.getString(21);
-/* 1078 */       affix.jitterPercent = rs.getInt(22);
+/* 1077 */       affix.rarity = rs.getString(2);
+/* 1078 */       affix.nameMS = rs.getString(3);
+/* 1079 */       affix.nameFS = rs.getString(4);
+/* 1080 */       affix.nameNS = rs.getString(5);
+/* 1081 */       affix.nameMP = rs.getString(6);
+/* 1082 */       affix.nameFP = rs.getString(7);
+/* 1083 */       affix.nameNP = rs.getString(8);
+/* 1084 */       affix.reqLevel = rs.getInt(9);
+/* 1085 */       affix.type = rs.getInt(10);
+/* 1086 */       affix.convertIn = rs.getString(11);
+/* 1087 */       affix.convertOut = rs.getString(12);
+/* 1088 */       affix.convertIn2 = rs.getString(13);
+/* 1089 */       affix.convertOut2 = rs.getString(14);
+/* 1090 */       affix.offensiveChance = rs.getInt(15);
+/* 1091 */       affix.retaliationChance = rs.getInt(16);
+/* 1092 */       affix.lootRandomCost = rs.getInt(17);
+/* 1093 */       affix.petAffixID = rs.getString(18);
+/* 1094 */       affix.itemSkillID = rs.getString(19);
+/* 1095 */       affix.itemSkillLevel = rs.getInt(20);
+/* 1096 */       affix.controllerID = rs.getString(21);
+/* 1097 */       affix.jitterPercent = rs.getInt(22);
 /*      */       
-/* 1080 */       affix.stats = DBStat.getAffix(affix.affixID);
-/* 1081 */       Collections.sort(affix.stats);
+/* 1099 */       affix.stats = DBStat.getAffix(affix.affixID);
+/* 1100 */       Collections.sort(affix.stats);
 /*      */       
-/* 1083 */       DBStat stat = DBStat.getByType(affix.stats, "racialBonusPercentDamage", 1);
-/* 1084 */       if (stat != null) {
-/* 1085 */         affix.statBonusRaces = DBStatBonusRace.getAffix(affix.affixID);
-/* 1086 */         affix.createBonusRaceStats(stat);
+/* 1102 */       DBStat stat = DBStat.getByType(affix.stats, "racialBonusPercentDamage", 1);
+/* 1103 */       if (stat != null) {
+/* 1104 */         affix.statBonusRaces = DBStatBonusRace.getAffix(affix.affixID);
+/* 1105 */         affix.createBonusRaceStats(stat);
 /*      */       } 
 /*      */       
-/* 1089 */       affix.bonuses = DBSkillBonus.getAffix(affix.affixID);
-/* 1090 */       affix.skillModifiers = DBSkillModifier.getAffix(affix.affixID);
+/* 1108 */       affix.bonuses = DBSkillBonus.getAffix(affix.affixID);
+/* 1109 */       affix.skillModifiers = DBSkillModifier.getAffix(affix.affixID);
 /*      */       
-/* 1092 */       if (affix.petAffixID != null) {
+/* 1111 */       if (affix.petAffixID != null) {
 /*      */         
-/* 1094 */         affix.dbPetAffix = get(affix.petAffixID);
-/* 1095 */         affix.dbPetSkill = DBSkill.get(affix.petAffixID);
+/* 1113 */         affix.dbPetAffix = get(affix.petAffixID);
+/* 1114 */         affix.dbPetSkill = DBSkill.get(affix.petAffixID);
 /*      */       } 
-/* 1097 */       if (affix.itemSkillID != null) affix.dbItemSkill = DBSkill.get(affix.itemSkillID);
+/* 1116 */       if (affix.itemSkillID != null) affix.dbItemSkill = DBSkill.get(affix.itemSkillID);
 /*      */       
-/* 1099 */       if (affix.controllerID != null) {
-/* 1100 */         affix.dbController = DBController.get(affix.controllerID);
+/* 1118 */       if (affix.controllerID != null) {
+/* 1119 */         affix.dbController = DBController.get(affix.controllerID);
 /*      */       }
 /*      */       
-/* 1103 */       list.add(affix);
-/* 1104 */       hashBuffer.put(affix.affixID, affix);
+/* 1122 */       list.add(affix);
+/* 1123 */       hashBuffer.put(affix.affixID, affix);
 /*      */     } 
 /*      */     
-/* 1107 */     return list;
+/* 1126 */     return list;
 /*      */   }
 /*      */   
 /*      */   public static void fillBuffer() {
-/* 1111 */     if (bufferComplete)
+/* 1130 */     if (bufferComplete)
 /*      */       return; 
-/* 1113 */     if (!GDStashFrame.dbConfig.configInit || !GDStashFrame.dbConfig.gddbInit) {
+/* 1132 */     if (!GDStashFrame.dbConfig.configInit || !GDStashFrame.dbConfig.gddbInit) {
 /*      */       
-/* 1115 */       listBuffer = new LinkedList<>();
-/* 1116 */       listPrefix = new LinkedList<>();
-/* 1117 */       listSuffix = new LinkedList<>();
+/* 1134 */       listBuffer = new LinkedList<>();
+/* 1135 */       listPrefix = new LinkedList<>();
+/* 1136 */       listSuffix = new LinkedList<>();
 /*      */       
 /*      */       return;
 /*      */     } 
 /*      */     
-/* 1122 */     listBuffer = getAll();
-/* 1123 */     listPrefix = new LinkedList<>();
-/* 1124 */     listSuffix = new LinkedList<>();
+/* 1141 */     listBuffer = getAll();
+/* 1142 */     listPrefix = new LinkedList<>();
+/* 1143 */     listSuffix = new LinkedList<>();
 /*      */     
-/* 1126 */     for (DBAffix affix : listBuffer) {
-/* 1127 */       if (affix.getAffixType() == 1) {
-/* 1128 */         listPrefix.add(affix);
+/* 1145 */     for (DBAffix affix : listBuffer) {
+/* 1146 */       if (affix.getAffixType() == 1) {
+/* 1147 */         listPrefix.add(affix);
 /*      */       }
-/* 1130 */       if (affix.getAffixType() == 2) {
-/* 1131 */         listSuffix.add(affix);
+/* 1149 */       if (affix.getAffixType() == 2) {
+/* 1150 */         listSuffix.add(affix);
 /*      */       }
 /*      */     } 
 /*      */     
-/* 1135 */     Collections.sort(listPrefix, new AffixComparator());
-/* 1136 */     Collections.sort(listSuffix, new AffixComparator());
+/* 1154 */     Collections.sort(listPrefix, new AffixComparator());
+/* 1155 */     Collections.sort(listSuffix, new AffixComparator());
 /*      */     
-/* 1138 */     bufferComplete = true;
+/* 1157 */     bufferComplete = true;
 /*      */   }
 /*      */   
 /*      */   public static List<DBAffix> getFullAffixList() {
-/* 1142 */     fillBuffer();
+/* 1161 */     fillBuffer();
 /*      */     
-/* 1144 */     return listBuffer;
+/* 1163 */     return listBuffer;
 /*      */   }
 /*      */   
 /*      */   public static List<DBAffix> getPrefixList() {
-/* 1148 */     fillBuffer();
+/* 1167 */     fillBuffer();
 /*      */     
-/* 1150 */     return listPrefix;
+/* 1169 */     return listPrefix;
 /*      */   }
 /*      */   
 /*      */   public static List<DBAffix> getSuffixList() {
-/* 1154 */     fillBuffer();
+/* 1173 */     fillBuffer();
 /*      */     
-/* 1156 */     return listSuffix;
+/* 1175 */     return listSuffix;
 /*      */   }
 /*      */ 
 /*      */ 
@@ -1175,57 +1180,57 @@ import org.gdstash.util.GDMsgLogger;
 /*      */ 
 /*      */   
 /*      */   public DetailComposer getBonusComposer(String prefix) {
-/* 1164 */     DetailComposer composer = new DetailComposer();
+/* 1183 */     DetailComposer composer = new DetailComposer();
 /*      */     
-/* 1166 */     if (this.stats != null && !this.stats.isEmpty()) {
-/* 1167 */       for (DBStat stat : this.stats) {
-/* 1168 */         BonusDetail bonus = stat.getBonusDetail(null, 1, prefix);
-/* 1169 */         composer.add(bonus);
+/* 1185 */     if (this.stats != null && !this.stats.isEmpty()) {
+/* 1186 */       for (DBStat stat : this.stats) {
+/* 1187 */         BonusDetail bonus = stat.getBonusDetail(null, 1, prefix);
+/* 1188 */         composer.add(bonus);
 /*      */       } 
 /*      */     }
 /*      */ 
 /*      */     
-/* 1174 */     if (this.bonuses != null && 
-/* 1175 */       !this.bonuses.isEmpty()) {
-/* 1176 */       for (DBSkillBonus skillBonus : this.bonuses) {
-/* 1177 */         BonusDetail bonus = skillBonus.getBonusDetail();
-/* 1178 */         composer.add(bonus);
+/* 1193 */     if (this.bonuses != null && 
+/* 1194 */       !this.bonuses.isEmpty()) {
+/* 1195 */       for (DBSkillBonus skillBonus : this.bonuses) {
+/* 1196 */         BonusDetail bonus = skillBonus.getBonusDetail();
+/* 1197 */         composer.add(bonus);
 /*      */       } 
 /*      */     }
 /*      */     
-/* 1182 */     if (this.dbPetAffix != null) {
-/* 1183 */       String pref = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "TXT_PREFIX_PET");
+/* 1201 */     if (this.dbPetAffix != null) {
+/* 1202 */       String pref = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "TXT_PREFIX_PET");
 /*      */       
-/* 1185 */       DetailComposer comp = this.dbPetAffix.getBonusComposer(pref);
-/* 1186 */       composer.add(comp);
+/* 1204 */       DetailComposer comp = this.dbPetAffix.getBonusComposer(pref);
+/* 1205 */       composer.add(comp);
 /*      */     } 
 /*      */     
-/* 1189 */     if (this.dbPetSkill != null) {
-/* 1190 */       String pref = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "TXT_PREFIX_PET");
+/* 1208 */     if (this.dbPetSkill != null) {
+/* 1209 */       String pref = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "TXT_PREFIX_PET");
 /*      */       
-/* 1192 */       List<DBStat> stats = DBStat.getByLevel(this.dbPetSkill.getStatList(), 1);
+/* 1211 */       List<DBStat> stats = DBStat.getByLevel(this.dbPetSkill.getStatList(), 1);
 /*      */       
-/* 1194 */       if (stats != null && !stats.isEmpty()) {
-/* 1195 */         for (DBStat stat : stats) {
-/* 1196 */           BonusDetail bonus = stat.getBonusDetail(null, 1, pref);
-/* 1197 */           composer.add(bonus);
+/* 1213 */       if (stats != null && !stats.isEmpty()) {
+/* 1214 */         for (DBStat stat : stats) {
+/* 1215 */           BonusDetail bonus = stat.getBonusDetail(null, 1, pref);
+/* 1216 */           composer.add(bonus);
 /*      */         } 
 /*      */       }
 /*      */     } 
 /*      */     
-/* 1202 */     if (this.dbItemSkill != null) {
-/* 1203 */       BonusDetail bonus = this.dbItemSkill.getBonusDetail();
-/* 1204 */       composer.add(bonus);
+/* 1221 */     if (this.dbItemSkill != null) {
+/* 1222 */       BonusDetail bonus = this.dbItemSkill.getBonusDetail();
+/* 1223 */       composer.add(bonus);
 /*      */     } 
 /*      */     
-/* 1207 */     if (this.skillModifiers != null) {
-/* 1208 */       for (DBSkillModifier sm : this.skillModifiers) {
-/* 1209 */         BonusDetail bonus = sm.getBonusDetail(null, 1, prefix);
-/* 1210 */         composer.add(bonus);
+/* 1226 */     if (this.skillModifiers != null) {
+/* 1227 */       for (DBSkillModifier sm : this.skillModifiers) {
+/* 1228 */         BonusDetail bonus = sm.getBonusDetail(null, 1, prefix);
+/* 1229 */         composer.add(bonus);
 /*      */       } 
 /*      */     }
 /*      */     
-/* 1214 */     return composer;
+/* 1233 */     return composer;
 /*      */   }
 /*      */ 
 /*      */ 
@@ -1233,18 +1238,18 @@ import org.gdstash.util.GDMsgLogger;
 /*      */ 
 /*      */   
 /*      */   private String getString(String prefix) {
-/* 1222 */     DetailComposer composer = getBonusComposer(null);
+/* 1241 */     DetailComposer composer = getBonusComposer(null);
 /*      */     
-/* 1224 */     if (this.nameMS != null) {
-/* 1225 */       composer.preText = this.nameMS;
+/* 1243 */     if (this.nameMS != null) {
+/* 1244 */       composer.preText = this.nameMS;
 /*      */     } else {
-/* 1227 */       boolean found = false;
-/* 1228 */       String search = null;
+/* 1246 */       boolean found = false;
+/* 1247 */       String search = null;
 /*      */ 
 /*      */       
-/* 1231 */       if (!found) {
-/* 1232 */         search = "records/items/lootaffixes/crafting/";
-/* 1233 */         found = this.affixID.startsWith(search);
+/* 1250 */       if (!found) {
+/* 1251 */         search = "records/items/lootaffixes/crafting/";
+/* 1252 */         found = this.affixID.startsWith(search);
 /*      */       } 
 /*      */ 
 /*      */ 
@@ -1260,175 +1265,175 @@ import org.gdstash.util.GDMsgLogger;
 /*      */ 
 /*      */ 
 /*      */       
-/* 1249 */       composer.preText = null;
+/* 1268 */       composer.preText = null;
 /*      */       
-/* 1251 */       if (found) {
+/* 1270 */       if (found) {
 /*      */         
-/* 1253 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad05_pierceresist.dbr") || this.affixID
-/* 1254 */           .equals("records/items/lootaffixes/crafting/ad06_protection.dbr") || this.affixID
-/* 1255 */           .equals("records/items/lootaffixes/crafting/ac05_physique.dbr") || this.affixID
-/* 1256 */           .equals("records/items/lootaffixes/crafting/ao01_physicaldmg.dbr")) {
-/* 1257 */           if (composer.preText != null) {
-/* 1258 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_ANGRIM");
+/* 1272 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad05_pierceresist.dbr") || this.affixID
+/* 1273 */           .equals("records/items/lootaffixes/crafting/ad06_protection.dbr") || this.affixID
+/* 1274 */           .equals("records/items/lootaffixes/crafting/ac05_physique.dbr") || this.affixID
+/* 1275 */           .equals("records/items/lootaffixes/crafting/ao01_physicaldmg.dbr")) {
+/* 1276 */           if (composer.preText != null) {
+/* 1277 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_ANGRIM");
 /*      */           } else {
-/* 1260 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_ANGRIM");
+/* 1279 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_ANGRIM");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1264 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ac04_energyregen.dbr") || this.affixID
-/* 1265 */           .equals("records/items/lootaffixes/crafting/ad08_da.dbr") || this.affixID
-/* 1266 */           .equals("records/items/lootaffixes/crafting/ac05_physique.dbr") || this.affixID
-/* 1267 */           .equals("records/items/lootaffixes/crafting/ad08_elementalresist.dbr") || this.affixID
-/* 1268 */           .equals("records/items/lootaffixes/crafting/ao05_elementaldmg.dbr")) {
-/* 1269 */           if (composer.preText != null) {
-/* 1270 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DUNCAN");
+/* 1283 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ac04_energyregen.dbr") || this.affixID
+/* 1284 */           .equals("records/items/lootaffixes/crafting/ad08_da.dbr") || this.affixID
+/* 1285 */           .equals("records/items/lootaffixes/crafting/ac05_physique.dbr") || this.affixID
+/* 1286 */           .equals("records/items/lootaffixes/crafting/ad08_elementalresist.dbr") || this.affixID
+/* 1287 */           .equals("records/items/lootaffixes/crafting/ao05_elementaldmg.dbr")) {
+/* 1288 */           if (composer.preText != null) {
+/* 1289 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DUNCAN");
 /*      */           } else {
-/* 1272 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DUNCAN");
+/* 1291 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DUNCAN");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1276 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad09_aetherresist.dbr") || this.affixID
-/* 1277 */           .equals("records/items/lootaffixes/crafting/ad10_chaosresist.dbr") || this.affixID
-/* 1278 */           .equals("records/items/lootaffixes/crafting/ac01_health.dbr")) {
-/* 1279 */           if (composer.preText != null) {
-/* 1280 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_BLACK_LEGION");
+/* 1295 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad09_aetherresist.dbr") || this.affixID
+/* 1296 */           .equals("records/items/lootaffixes/crafting/ad10_chaosresist.dbr") || this.affixID
+/* 1297 */           .equals("records/items/lootaffixes/crafting/ac01_health.dbr")) {
+/* 1298 */           if (composer.preText != null) {
+/* 1299 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_BLACK_LEGION");
 /*      */           } else {
-/* 1282 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_BLACK_LEGION");
+/* 1301 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_BLACK_LEGION");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1286 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad01_fireresist.dbr") || this.affixID
-/* 1287 */           .equals("records/items/lootaffixes/crafting/ao11_firedmg.dbr") || this.affixID
-/* 1288 */           .equals("records/items/lootaffixes/crafting/ao13_lightningdmg.dbr")) {
-/* 1289 */           if (composer.preText != null) {
-/* 1290 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_KYMONS_CHOSEN");
+/* 1305 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad01_fireresist.dbr") || this.affixID
+/* 1306 */           .equals("records/items/lootaffixes/crafting/ao11_firedmg.dbr") || this.affixID
+/* 1307 */           .equals("records/items/lootaffixes/crafting/ao13_lightningdmg.dbr")) {
+/* 1308 */           if (composer.preText != null) {
+/* 1309 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_KYMONS_CHOSEN");
 /*      */           } else {
-/* 1292 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_KYMONS_CHOSEN");
+/* 1311 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_KYMONS_CHOSEN");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1296 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad02_coldresist.dbr") || this.affixID
-/* 1297 */           .equals("records/items/lootaffixes/crafting/ao12_colddmg.dbr") || this.affixID
-/* 1298 */           .equals("records/items/lootaffixes/crafting/ao07_vitalitydmg.dbr")) {
-/* 1299 */           if (composer.preText != null) {
-/* 1300 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DEATHS_VIGIL");
+/* 1315 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad02_coldresist.dbr") || this.affixID
+/* 1316 */           .equals("records/items/lootaffixes/crafting/ao12_colddmg.dbr") || this.affixID
+/* 1317 */           .equals("records/items/lootaffixes/crafting/ao07_vitalitydmg.dbr")) {
+/* 1318 */           if (composer.preText != null) {
+/* 1319 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DEATHS_VIGIL");
 /*      */           } else {
-/* 1302 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DEATHS_VIGIL");
+/* 1321 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DEATHS_VIGIL");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1306 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ac04_energyregen.dbr") || this.affixID
-/* 1307 */           .equals("records/items/lootaffixes/crafting/ad07_bleedresist.dbr") || this.affixID
-/* 1308 */           .equals("records/items/lootaffixes/crafting/ad12_vitalityresist.dbr")) {
-/* 1309 */           if (composer.preText != null) {
-/* 1310 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_NECROPOLIS");
+/* 1325 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ac04_energyregen.dbr") || this.affixID
+/* 1326 */           .equals("records/items/lootaffixes/crafting/ad07_bleedresist.dbr") || this.affixID
+/* 1327 */           .equals("records/items/lootaffixes/crafting/ad12_vitalityresist.dbr")) {
+/* 1328 */           if (composer.preText != null) {
+/* 1329 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_NECROPOLIS");
 /*      */           } else {
-/* 1312 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_NECROPOLIS");
+/* 1331 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_NECROPOLIS");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1316 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad102_stunresist.dbr") || this.affixID
-/* 1317 */           .equals("records/items/lootaffixes/crafting/ad103_freezeresist.dbr") || this.affixID
-/* 1318 */           .equals("records/items/lootaffixes/crafting/ad101_blockdamage.dbr")) {
-/* 1319 */           if (composer.preText != null) {
-/* 1320 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_MALMOUTH_STEELCAP");
+/* 1335 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad102_stunresist.dbr") || this.affixID
+/* 1336 */           .equals("records/items/lootaffixes/crafting/ad103_freezeresist.dbr") || this.affixID
+/* 1337 */           .equals("records/items/lootaffixes/crafting/ad101_blockdamage.dbr")) {
+/* 1338 */           if (composer.preText != null) {
+/* 1339 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_MALMOUTH_STEELCAP");
 /*      */           } else {
-/* 1322 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_MALMOUTH_STEELCAP");
+/* 1341 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_MALMOUTH_STEELCAP");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1326 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad104_poisonresist.dbr") || this.affixID
-/* 1327 */           .equals("records/items/lootaffixes/crafting/ac04_energyregen.dbr") || this.affixID
-/* 1328 */           .equals("records/items/lootaffixes/crafting/ao101_crit.dbr") || this.affixID
-/* 1329 */           .equals("records/items/lootaffixes/crafting/ao102_energyregen.dbr")) {
-/* 1330 */           if (composer.preText != null) {
-/* 1331 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_MALMOUTH_OUTSKIRTS");
+/* 1345 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad104_poisonresist.dbr") || this.affixID
+/* 1346 */           .equals("records/items/lootaffixes/crafting/ac04_energyregen.dbr") || this.affixID
+/* 1347 */           .equals("records/items/lootaffixes/crafting/ao101_crit.dbr") || this.affixID
+/* 1348 */           .equals("records/items/lootaffixes/crafting/ao102_energyregen.dbr")) {
+/* 1349 */           if (composer.preText != null) {
+/* 1350 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_MALMOUTH_OUTSKIRTS");
 /*      */           } else {
-/* 1333 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_MALMOUTH_OUTSKIRTS");
+/* 1352 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_MALMOUTH_OUTSKIRTS");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1337 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ac02_healthregen.dbr") || this.affixID
-/* 1338 */           .equals("records/items/lootaffixes/crafting/ad08_da.dbr") || this.affixID
-/* 1339 */           .equals("records/items/lootaffixes/crafting/ao14_oa.dbr")) {
-/* 1340 */           if (composer.preText != null) {
-/* 1341 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_TYRANTS_HOLD");
+/* 1356 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ac02_healthregen.dbr") || this.affixID
+/* 1357 */           .equals("records/items/lootaffixes/crafting/ad08_da.dbr") || this.affixID
+/* 1358 */           .equals("records/items/lootaffixes/crafting/ao14_oa.dbr")) {
+/* 1359 */           if (composer.preText != null) {
+/* 1360 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_TYRANTS_HOLD");
 /*      */           } else {
-/* 1343 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_TYRANTS_HOLD");
+/* 1362 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_TYRANTS_HOLD");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1347 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ac201_retal.dbr") || this.affixID
-/* 1348 */           .equals("records/items/lootaffixes/crafting/ac01_health.dbr") || this.affixID
-/* 1349 */           .equals("records/items/lootaffixes/crafting/ac203_healing.dbr")) {
-/* 1350 */           if (composer.preText != null) {
-/* 1351 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_WITCHGODS");
+/* 1366 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ac201_retal.dbr") || this.affixID
+/* 1367 */           .equals("records/items/lootaffixes/crafting/ac01_health.dbr") || this.affixID
+/* 1368 */           .equals("records/items/lootaffixes/crafting/ac203_healing.dbr")) {
+/* 1369 */           if (composer.preText != null) {
+/* 1370 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_WITCHGODS");
 /*      */           } else {
-/* 1353 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_WITCHGODS");
+/* 1372 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_WITCHGODS");
 /*      */           } 
 /*      */         }
 /*      */         
-/* 1357 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad201_slowresist.dbr") || this.affixID
-/* 1358 */           .equals("records/items/lootaffixes/crafting/ac204_runspeed.dbr") || this.affixID
-/* 1359 */           .equals("records/items/lootaffixes/crafting/ad202_reflectresist.dbr")) {
-/* 1360 */           if (composer.preText != null) {
-/* 1361 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DESERT");
+/* 1376 */         if (this.affixID.equals("records/items/lootaffixes/crafting/ad201_slowresist.dbr") || this.affixID
+/* 1377 */           .equals("records/items/lootaffixes/crafting/ac204_runspeed.dbr") || this.affixID
+/* 1378 */           .equals("records/items/lootaffixes/crafting/ad202_reflectresist.dbr")) {
+/* 1379 */           if (composer.preText != null) {
+/* 1380 */             composer.preText += ", " + GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DESERT");
 /*      */           } else {
-/* 1363 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DESERT");
+/* 1382 */             composer.preText = GDMsgFormatter.getString(GDMsgFormatter.rbGD, "SMITH_DESERT");
 /*      */           } 
 /*      */         }
 /*      */       } 
 /*      */     } 
 /*      */ 
 /*      */     
-/* 1370 */     Object[] args = { String.format("%03d", new Object[] { Integer.valueOf(this.reqLevel) }) };
-/* 1371 */     String msg = GDMsgFormatter.format(GDMsgFormatter.rbGD, "TXT_LEVEL_NUM", args);
-/* 1372 */     if (composer.preText == null) {
-/* 1373 */       composer.preText = "[" + msg;
+/* 1389 */     Object[] args = { String.format("%03d", new Object[] { Integer.valueOf(this.reqLevel) }) };
+/* 1390 */     String msg = GDMsgFormatter.format(GDMsgFormatter.rbGD, "TXT_LEVEL_NUM", args);
+/* 1391 */     if (composer.preText == null) {
+/* 1392 */       composer.preText = "[" + msg;
 /*      */     } else {
-/* 1375 */       composer.preText += " [" + msg;
+/* 1394 */       composer.preText += " [" + msg;
 /*      */     } 
 /*      */     
-/* 1378 */     String s = composer.getAffixText();
+/* 1397 */     String s = composer.getAffixText();
 /*      */     
-/* 1380 */     if (this.rarity != null && (
-/* 1381 */       this.type == 1 || this.type == 2)) {
-/* 1382 */       if (this.rarity.equals("Magical")) {
-/* 1383 */         s = "<html>" + GDColor.HTML_COLOR_MAGIC + s + "</font>" + "</html>";
+/* 1399 */     if (this.rarity != null && (
+/* 1400 */       this.type == 1 || this.type == 2)) {
+/* 1401 */       if (this.rarity.equals("Magical")) {
+/* 1402 */         s = "<html>" + GDColor.HTML_COLOR_MAGIC + s + "</font>" + "</html>";
 /*      */       }
 /*      */       
-/* 1386 */       if (this.rarity.equals("Rare")) {
-/* 1387 */         s = "<html>" + GDColor.HTML_COLOR_RARE + s + "</font>" + "</html>";
+/* 1405 */       if (this.rarity.equals("Rare")) {
+/* 1406 */         s = "<html>" + GDColor.HTML_COLOR_RARE + s + "</font>" + "</html>";
 /*      */       }
 /*      */       
-/* 1390 */       if (this.rarity.equals("Epic")) {
-/* 1391 */         s = "<html>" + GDColor.HTML_COLOR_EPIC + s + "</font>" + "</html>";
+/* 1409 */       if (this.rarity.equals("Epic")) {
+/* 1410 */         s = "<html>" + GDColor.HTML_COLOR_EPIC + s + "</font>" + "</html>";
 /*      */       }
 /*      */       
-/* 1394 */       if (this.rarity.equals("Legendary")) {
-/* 1395 */         s = "<html>" + GDColor.HTML_COLOR_LEGENDARY + s + "</font>" + "</html>";
+/* 1413 */       if (this.rarity.equals("Legendary")) {
+/* 1414 */         s = "<html>" + GDColor.HTML_COLOR_LEGENDARY + s + "</font>" + "</html>";
 /*      */       }
 /*      */     } 
 /*      */ 
 /*      */     
-/* 1400 */     return s;
+/* 1419 */     return s;
 /*      */   }
 /*      */   
 /*      */   public void resetDescription() {
-/* 1404 */     this.strDescription = null;
+/* 1423 */     this.strDescription = null;
 /*      */   }
 /*      */   
 /*      */   public String toString() {
-/* 1408 */     if (this.strDescription == null) {
-/* 1409 */       this.strDescription = getString(null);
+/* 1427 */     if (this.strDescription == null) {
+/* 1428 */       this.strDescription = getString(null);
 /*      */     }
 /*      */     
-/* 1412 */     return this.strDescription;
+/* 1431 */     return this.strDescription;
 /*      */   }
 /*      */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\db\DBAffix.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\db\DBAffix.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

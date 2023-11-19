@@ -28,120 +28,126 @@
 /*     */ 
 /*     */ 
 /*     */ 
+/*     */ 
 /*     */ public class GDCharUISettings
 /*     */ {
-/*  33 */   private GDCharUISlot[] slots = null;
-/*  34 */   private String[] unknown4 = new String[5];
-/*  35 */   private String[] unknown5 = new String[5];
-/*  36 */   private byte[] unknown6 = new byte[5];
+/*  34 */   private GDCharUISlot[] slots = null;
+/*  35 */   private String[] unknown4 = new String[5];
+/*  36 */   private String[] unknown5 = new String[5];
+/*  37 */   private byte[] unknown6 = new byte[5];
 /*     */   
 /*     */   private static final int VERSION_4 = 4;
 /*     */   private static final int VERSION_5 = 5;
+/*     */   private static final int VERSION_6 = 6;
 /*     */   private static final int BLOCK = 14;
-/*     */   private int version;
 /*     */   
 /*     */   public void read() throws IOException {
-/*  44 */     int val = 0;
+/*  45 */     int val = 0;
 /*     */     
-/*  46 */     GDReader.Block block = new GDReader.Block();
+/*  47 */     GDReader.Block block = new GDReader.Block();
 /*     */     
-/*  48 */     val = GDReader.readBlockStart(block);
-/*  49 */     if (val != 14) throw new FileVersionException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
+/*  49 */     val = GDReader.readBlockStart(block);
+/*  50 */     if (val != 14) throw new FileVersionException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
 /*     */     
-/*  51 */     this.version = GDReader.readEncInt(true);
-/*  52 */     if (this.version != 4 && this.version != 5)
+/*  52 */     this.version = GDReader.readEncInt(true);
+/*  53 */     if (this.version != 4 && this.version != 5 && this.version != 6)
 /*     */     {
-/*  54 */       throw new FileVersionException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
-/*     */     }
-/*     */     
-/*  57 */     this.unknown1 = GDReader.readEncByte();
-/*  58 */     this.unknown2 = GDReader.readEncInt(true);
-/*  59 */     this.unknown3 = GDReader.readEncByte();
-/*     */     int i;
-/*  61 */     for (i = 0; i < this.unknown4.length; i++) {
-/*  62 */       this.unknown4[i] = GDReader.readEncString();
-/*  63 */       this.unknown5[i] = GDReader.readEncString();
-/*  64 */       this.unknown6[i] = GDReader.readEncByte();
-/*     */     } 
-/*     */     
-/*  67 */     if (this.version >= 5) {
-/*  68 */       this.slots = new GDCharUISlot[46];
-/*     */     } else {
-/*  70 */       this.slots = new GDCharUISlot[36];
-/*     */     } 
-/*     */     
-/*  73 */     for (i = 0; i < this.slots.length; i++) {
-/*  74 */       GDCharUISlot slot = new GDCharUISlot();
-/*  75 */       slot.read();
 /*     */       
-/*  77 */       this.slots[i] = slot;
-/*     */     } 
-/*     */     
-/*  80 */     this.cameraDistance = GDReader.readEncFloat(true);
-/*     */ 
-/*     */     
-/*  83 */     GDReader.readBlockEnd(block);
-/*     */   }
-/*     */   private byte unknown1; private int unknown2; private byte unknown3; private float cameraDistance;
-/*     */   public void write() throws IOException {
-/*  87 */     GDReader.Block block = new GDReader.Block();
-/*  88 */     GDWriter.writeBlockStart(block, 14);
-/*     */     
-/*  90 */     GDWriter.writeInt(this.version);
-/*     */     
-/*  92 */     GDWriter.writeByte(this.unknown1);
-/*  93 */     GDWriter.writeInt(this.unknown2);
-/*  94 */     GDWriter.writeByte(this.unknown3);
-/*     */     int i;
-/*  96 */     for (i = 0; i < this.unknown4.length; i++) {
-/*  97 */       GDWriter.writeString(this.unknown4[i]);
-/*  98 */       GDWriter.writeString(this.unknown5[i]);
-/*  99 */       GDWriter.writeByte(this.unknown6[i]);
-/*     */     } 
-/*     */     
-/* 102 */     for (i = 0; i < this.slots.length; i++) {
-/* 103 */       this.slots[i].write();
+/*  56 */       throw new FileVersionException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
 /*     */     }
 /*     */     
-/* 106 */     GDWriter.writeFloat(this.cameraDistance);
+/*  59 */     this.unknown1 = GDReader.readEncByte();
+/*  60 */     this.unknown2 = GDReader.readEncInt(true);
+/*  61 */     this.unknown3 = GDReader.readEncByte();
+/*     */     int i;
+/*  63 */     for (i = 0; i < this.unknown4.length; i++) {
+/*  64 */       this.unknown4[i] = GDReader.readEncString();
+/*  65 */       this.unknown5[i] = GDReader.readEncString();
+/*  66 */       this.unknown6[i] = GDReader.readEncByte();
+/*     */     } 
+/*     */     
+/*  69 */     if (this.version >= 6) {
+/*  70 */       this.slots = new GDCharUISlot[47];
+/*     */     }
+/*  72 */     else if (this.version >= 5) {
+/*  73 */       this.slots = new GDCharUISlot[46];
+/*     */     } else {
+/*  75 */       this.slots = new GDCharUISlot[36];
+/*     */     } 
 /*     */ 
 /*     */     
-/* 109 */     GDWriter.writeBlockEnd(block);
+/*  79 */     for (i = 0; i < this.slots.length; i++) {
+/*  80 */       GDCharUISlot slot = new GDCharUISlot();
+/*  81 */       slot.read();
+/*     */       
+/*  83 */       this.slots[i] = slot;
+/*     */     } 
+/*     */     
+/*  86 */     this.cameraDistance = GDReader.readEncFloat(true);
+/*     */ 
+/*     */     
+/*  89 */     GDReader.readBlockEnd(block);
+/*     */   }
+/*     */   private int version; private byte unknown1; private int unknown2; private byte unknown3; private float cameraDistance;
+/*     */   public void write() throws IOException {
+/*  93 */     GDReader.Block block = new GDReader.Block();
+/*  94 */     GDWriter.writeBlockStart(block, 14);
+/*     */     
+/*  96 */     GDWriter.writeInt(this.version);
+/*     */     
+/*  98 */     GDWriter.writeByte(this.unknown1);
+/*  99 */     GDWriter.writeInt(this.unknown2);
+/* 100 */     GDWriter.writeByte(this.unknown3);
+/*     */     int i;
+/* 102 */     for (i = 0; i < this.unknown4.length; i++) {
+/* 103 */       GDWriter.writeString(this.unknown4[i]);
+/* 104 */       GDWriter.writeString(this.unknown5[i]);
+/* 105 */       GDWriter.writeByte(this.unknown6[i]);
+/*     */     } 
+/*     */     
+/* 108 */     for (i = 0; i < this.slots.length; i++) {
+/* 109 */       this.slots[i].write();
+/*     */     }
+/*     */     
+/* 112 */     GDWriter.writeFloat(this.cameraDistance);
+/*     */ 
+/*     */     
+/* 115 */     GDWriter.writeBlockEnd(block);
 /*     */   }
 /*     */   
 /*     */   public int getByteSize() {
-/* 113 */     int size = 0;
+/* 119 */     int size = 0;
 /*     */     
-/* 115 */     size += 4;
-/* 116 */     size += 4;
-/* 117 */     size += 4;
-/* 118 */     size++;
-/* 119 */     size += 4;
-/* 120 */     size++;
+/* 121 */     size += 4;
+/* 122 */     size += 4;
+/* 123 */     size += 4;
+/* 124 */     size++;
+/* 125 */     size += 4;
+/* 126 */     size++;
 /*     */     int i;
-/* 122 */     for (i = 0; i < this.unknown4.length; i++) {
-/* 123 */       size += 4;
-/* 124 */       if (this.unknown4[i] != null) size += this.unknown4[4].length();
+/* 128 */     for (i = 0; i < this.unknown4.length; i++) {
+/* 129 */       size += 4;
+/* 130 */       if (this.unknown4[i] != null) size += this.unknown4[4].length();
 /*     */       
-/* 126 */       size += 4;
-/* 127 */       if (this.unknown5[i] != null) size += this.unknown5[4].length();
+/* 132 */       size += 4;
+/* 133 */       if (this.unknown5[i] != null) size += this.unknown5[4].length();
 /*     */       
-/* 129 */       size++;
+/* 135 */       size++;
 /*     */     } 
 /*     */     
-/* 132 */     for (i = 0; i < this.slots.length; i++) {
-/* 133 */       size += this.slots[i].getByteSize();
+/* 138 */     for (i = 0; i < this.slots.length; i++) {
+/* 139 */       size += this.slots[i].getByteSize();
 /*     */     }
 /*     */     
-/* 136 */     size += 4;
-/* 137 */     size += 4;
+/* 142 */     size += 4;
+/* 143 */     size += 4;
 /*     */     
-/* 139 */     return size;
+/* 145 */     return size;
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\character\GDCharUISettings.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\character\GDCharUISettings.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

@@ -1043,65 +1043,65 @@
 /* 1043 */     if (getMaxPhysique() != -1) command = command + " AND I.REQ_STR <= ?"; 
 /* 1044 */     if (getMaxSpirit() != -1) command = command + " AND I.REQ_INT <= ?"; 
 /* 1045 */     if (usesPetBonus()) command = command + " AND I.PET_BONUS_SKILL_ID IS NOT NULL"; 
-/* 1046 */     if (usesConversionFrom()) command = command + " AND I.CONVERT_IN = ?"; 
-/* 1047 */     if (usesConversionTo()) command = command + " AND I.CONVERT_OUT = ?"; 
-/* 1048 */     if (isNoEnemyOnly()) command = command + " AND I.ENEMY_ONLY = ?";
+/* 1046 */     if (usesConversionFrom()) {
+/* 1047 */       if (usesConversionTo()) {
+/* 1048 */         command = command + " AND (( I.CONVERT_IN = ? AND I.CONVERT_OUT = ? ) OR ( I.CONVERT_IN_2 = ? AND I.CONVERT_OUT_2 = ? ))";
+/*      */       } else {
+/* 1050 */         command = command + " AND (( I.CONVERT_IN = ? ) OR ( I.CONVERT_IN_2 = ? ))";
+/*      */       }
 /*      */     
-/* 1050 */     command = command + determineSlotConditions("I.");
+/* 1053 */     } else if (usesConversionTo()) {
+/* 1054 */       command = command + " AND (( I.CONVERT_OUT = ? ) OR ( I.CONVERT_OUT_2 = ? ))";
+/*      */     } 
+/*      */ 
+/*      */ 
 /*      */     
-/* 1052 */     return command;
+/* 1059 */     if (isNoEnemyOnly()) command = command + " AND I.ENEMY_ONLY = ?";
+/*      */     
+/* 1061 */     command = command + determineSlotConditions("I.");
+/*      */     
+/* 1063 */     return command;
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public List<CriteriaCombination> createLevel1Combinations(CriteriaCombination cc) {
-/* 1057 */     CriteriaCombination combo = cc.clone();
+/* 1068 */     CriteriaCombination combo = cc.clone();
 /*      */     
-/* 1059 */     List<CriteriaCombination> list = new LinkedList<>();
+/* 1070 */     List<CriteriaCombination> list = new LinkedList<>();
 /*      */     
-/* 1061 */     for (String itemClass : (getCriteria()).itemClass) {
-/* 1062 */       combo.setItemClass(itemClass);
+/* 1072 */     for (String itemClass : (getCriteria()).itemClass) {
+/* 1073 */       combo.setItemClass(itemClass);
 /*      */       
-/* 1064 */       boolean found = false;
+/* 1075 */       boolean found = false;
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */       
-/* 1070 */       if (combo.usesItemRarity()) {
-/* 1071 */         for (String itemRarity : getItemRarities()) {
-/* 1072 */           combo.setItemRarity(itemRarity);
+/* 1081 */       if (combo.usesItemRarity()) {
+/* 1082 */         for (String itemRarity : getItemRarities()) {
+/* 1083 */           combo.setItemRarity(itemRarity);
 /*      */           
-/* 1074 */           if (combo.usesArmorClass()) {
-/* 1075 */             for (String armorClass : getArmorClasses()) {
-/* 1076 */               combo.setArmorClass(armorClass);
+/* 1085 */           if (combo.usesArmorClass()) {
+/* 1086 */             for (String armorClass : getArmorClasses()) {
+/* 1087 */               combo.setArmorClass(armorClass);
 /*      */ 
 /*      */               
-/* 1079 */               list.add(combo.clone());
+/* 1090 */               list.add(combo.clone());
 /*      */             } 
 /*      */             
-/* 1082 */             found = true;
+/* 1093 */             found = true;
 /*      */           } 
 /*      */           
-/* 1085 */           if (!found)
+/* 1096 */           if (!found)
 /*      */           {
-/* 1087 */             list.add(combo.clone()); } 
+/* 1098 */             list.add(combo.clone()); } 
 /*      */         } 
 /*      */         continue;
 /*      */       } 
-/* 1091 */       if (combo.usesArmorClass()) {
-/* 1092 */         for (String armorClass : getArmorClasses()) {
-/* 1093 */           combo.setArmorClass(armorClass);
-/*      */ 
-/*      */           
-/* 1096 */           list.add(combo.clone());
-/*      */         } 
-/*      */         
-/* 1099 */         found = true;
-/*      */       } 
-/*      */       
-/* 1102 */       if (combo.usesArtifactClass()) {
-/* 1103 */         for (String artifactClass : getArtifactClasses()) {
-/* 1104 */           combo.setArtifactClass(artifactClass);
+/* 1102 */       if (combo.usesArmorClass()) {
+/* 1103 */         for (String armorClass : getArmorClasses()) {
+/* 1104 */           combo.setArmorClass(armorClass);
 /*      */ 
 /*      */           
 /* 1107 */           list.add(combo.clone());
@@ -1110,240 +1110,239 @@
 /* 1110 */         found = true;
 /*      */       } 
 /*      */       
-/* 1113 */       if (!found)
+/* 1113 */       if (combo.usesArtifactClass()) {
+/* 1114 */         for (String artifactClass : getArtifactClasses()) {
+/* 1115 */           combo.setArtifactClass(artifactClass);
+/*      */ 
+/*      */           
+/* 1118 */           list.add(combo.clone());
+/*      */         } 
+/*      */         
+/* 1121 */         found = true;
+/*      */       } 
+/*      */       
+/* 1124 */       if (!found)
 /*      */       {
-/* 1115 */         list.add(combo.clone());
+/* 1126 */         list.add(combo.clone());
 /*      */       }
 /*      */     } 
 /*      */ 
 /*      */     
-/* 1120 */     return list;
+/* 1131 */     return list;
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public int fillLevel1Statement(PreparedStatement ps) throws SQLException {
-/* 1125 */     ps.clearParameters();
+/* 1136 */     ps.clearParameters();
 /*      */     
-/* 1127 */     int nextPos = 1;
+/* 1138 */     int nextPos = 1;
 /*      */     
-/* 1129 */     ps.setString(nextPos, getItemClass());
+/* 1140 */     ps.setString(nextPos, getItemClass());
 /*      */     
-/* 1131 */     nextPos++;
+/* 1142 */     nextPos++;
 /*      */     
-/* 1133 */     if (usesItemRarity()) {
-/* 1134 */       ps.setString(nextPos, getItemRarity());
+/* 1144 */     if (usesItemRarity()) {
+/* 1145 */       ps.setString(nextPos, getItemRarity());
 /*      */       
-/* 1136 */       nextPos++;
+/* 1147 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1139 */     if (usesArmorClass()) {
-/* 1140 */       ps.setString(nextPos, getArmorClass());
+/* 1150 */     if (usesArmorClass()) {
+/* 1151 */       ps.setString(nextPos, getArmorClass());
 /*      */       
-/* 1142 */       nextPos++;
+/* 1153 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1145 */     if (usesArtifactClass()) {
-/* 1146 */       ps.setString(nextPos, getArtifactClass());
+/* 1156 */     if (usesArtifactClass()) {
+/* 1157 */       ps.setString(nextPos, getArtifactClass());
 /*      */       
-/* 1148 */       nextPos++;
+/* 1159 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1151 */     if (usesItemName()) {
-/* 1152 */       ps.setString(nextPos, getItemName().toUpperCase(GDMsgFormatter.locale));
+/* 1162 */     if (usesItemName()) {
+/* 1163 */       ps.setString(nextPos, getItemName().toUpperCase(GDMsgFormatter.locale));
 /*      */       
-/* 1154 */       nextPos++;
+/* 1165 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1157 */     if (usesBonusSkill()) {
-/* 1158 */       ps.setString(nextPos, getBonusSkillID());
+/* 1168 */     if (usesBonusSkill()) {
+/* 1169 */       ps.setString(nextPos, getBonusSkillID());
 /*      */       
-/* 1160 */       nextPos++;
+/* 1171 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1163 */     if (usesMasteryBonusSkills()) {
-/* 1164 */       ps.setString(nextPos, getBonusSkillID());
+/* 1174 */     if (usesMasteryBonusSkills()) {
+/* 1175 */       ps.setString(nextPos, getBonusSkillID());
 /*      */       
-/* 1166 */       nextPos++;
+/* 1177 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1169 */     if (usesSkillModifier()) {
-/* 1170 */       ps.setString(nextPos, getModifiedSkillID());
+/* 1180 */     if (usesSkillModifier()) {
+/* 1181 */       ps.setString(nextPos, getModifiedSkillID());
 /*      */       
-/* 1172 */       nextPos++;
+/* 1183 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1175 */     if (usesMasteryModifySkills()) {
-/* 1176 */       ps.setString(nextPos, getModifiedSkillID());
+/* 1186 */     if (usesMasteryModifySkills()) {
+/* 1187 */       ps.setString(nextPos, getModifiedSkillID());
 /*      */       
-/* 1178 */       nextPos++;
+/* 1189 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1181 */     if (usesItemSkill()) {
-/* 1182 */       ps.setString(nextPos, getItemSkillID());
+/* 1192 */     if (usesItemSkill()) {
+/* 1193 */       ps.setString(nextPos, getItemSkillID());
 /*      */       
-/* 1184 */       nextPos++;
+/* 1195 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1187 */     if (getMinLevel() != -1) {
-/* 1188 */       ps.setInt(nextPos, getMinLevel());
+/* 1198 */     if (getMinLevel() != -1) {
+/* 1199 */       ps.setInt(nextPos, getMinLevel());
 /*      */       
-/* 1190 */       nextPos++;
+/* 1201 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1193 */     if (getMaxLevel() != -1) {
-/* 1194 */       ps.setInt(nextPos, getMaxLevel());
+/* 1204 */     if (getMaxLevel() != -1) {
+/* 1205 */       ps.setInt(nextPos, getMaxLevel());
 /*      */       
-/* 1196 */       nextPos++;
+/* 1207 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1199 */     if (getMaxCunning() != -1) {
-/* 1200 */       ps.setInt(nextPos, getMaxCunning());
+/* 1210 */     if (getMaxCunning() != -1) {
+/* 1211 */       ps.setInt(nextPos, getMaxCunning());
 /*      */       
-/* 1202 */       nextPos++;
+/* 1213 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1205 */     if (getMaxPhysique() != -1) {
-/* 1206 */       ps.setInt(nextPos, getMaxPhysique());
+/* 1216 */     if (getMaxPhysique() != -1) {
+/* 1217 */       ps.setInt(nextPos, getMaxPhysique());
 /*      */       
-/* 1208 */       nextPos++;
+/* 1219 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1211 */     if (getMaxSpirit() != -1) {
-/* 1212 */       ps.setInt(nextPos, getMaxSpirit());
+/* 1222 */     if (getMaxSpirit() != -1) {
+/* 1223 */       ps.setInt(nextPos, getMaxSpirit());
 /*      */       
-/* 1214 */       nextPos++;
+/* 1225 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1217 */     if (usesConversionFrom()) {
-/* 1218 */       if (usesConversionTo()) {
-/* 1219 */         ps.setString(nextPos, getDamageConvertedFrom());
-/* 1220 */         nextPos++;
+/* 1228 */     if (usesConversionFrom()) {
+/* 1229 */       if (usesConversionTo()) {
+/* 1230 */         ps.setString(nextPos, getDamageConvertedFrom());
+/* 1231 */         nextPos++;
 /*      */         
-/* 1222 */         ps.setString(nextPos, getDamageConvertedTo());
-/* 1223 */         nextPos++;
+/* 1233 */         ps.setString(nextPos, getDamageConvertedTo());
+/* 1234 */         nextPos++;
 /*      */         
-/* 1225 */         ps.setString(nextPos, getDamageConvertedFrom());
-/* 1226 */         nextPos++;
+/* 1236 */         ps.setString(nextPos, getDamageConvertedFrom());
+/* 1237 */         nextPos++;
 /*      */         
-/* 1228 */         ps.setString(nextPos, getDamageConvertedTo());
-/* 1229 */         nextPos++;
+/* 1239 */         ps.setString(nextPos, getDamageConvertedTo());
+/* 1240 */         nextPos++;
 /*      */       } else {
-/* 1231 */         ps.setString(nextPos, getDamageConvertedFrom());
-/* 1232 */         nextPos++;
+/* 1242 */         ps.setString(nextPos, getDamageConvertedFrom());
+/* 1243 */         nextPos++;
 /*      */         
-/* 1234 */         ps.setString(nextPos, getDamageConvertedFrom());
-/* 1235 */         nextPos++;
+/* 1245 */         ps.setString(nextPos, getDamageConvertedFrom());
+/* 1246 */         nextPos++;
 /*      */       }
 /*      */     
-/* 1238 */     } else if (usesConversionTo()) {
-/* 1239 */       ps.setString(nextPos, getDamageConvertedTo());
-/* 1240 */       nextPos++;
+/* 1249 */     } else if (usesConversionTo()) {
+/* 1250 */       ps.setString(nextPos, getDamageConvertedTo());
+/* 1251 */       nextPos++;
 /*      */       
-/* 1242 */       ps.setString(nextPos, getDamageConvertedTo());
-/* 1243 */       nextPos++;
+/* 1253 */       ps.setString(nextPos, getDamageConvertedTo());
+/* 1254 */       nextPos++;
 /*      */     } 
 /*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
 /*      */     
-/* 1259 */     if (isNoEnemyOnly()) {
-/* 1260 */       ps.setBoolean(nextPos, false);
+/* 1258 */     if (isNoEnemyOnly()) {
+/* 1259 */       ps.setBoolean(nextPos, false);
 /*      */       
-/* 1262 */       nextPos++;
+/* 1261 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1265 */     return nextPos;
+/* 1264 */     return nextPos;
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public String determineLevel1Parameters() {
-/* 1270 */     String param = getItemClass();
+/* 1269 */     String param = getItemClass();
 /*      */     
-/* 1272 */     if (usesItemRarity()) param = param + ", " + getItemRarity(); 
-/* 1273 */     if (usesArmorClass()) param = param + ", " + getArmorClass(); 
-/* 1274 */     if (usesArtifactClass()) param = param + ", " + getArtifactClass();
+/* 1271 */     if (usesItemRarity()) param = param + ", " + getItemRarity(); 
+/* 1272 */     if (usesArmorClass()) param = param + ", " + getArmorClass(); 
+/* 1273 */     if (usesArtifactClass()) param = param + ", " + getArtifactClass();
 /*      */     
-/* 1276 */     if (usesItemName()) param = param + ", " + getItemName(); 
-/* 1277 */     if (usesBonusSkill()) param = param + ", " + getBonusSkillID(); 
-/* 1278 */     if (usesSkillModifier()) param = param + ", " + getModifiedSkillID(); 
-/* 1279 */     if (usesItemSkill()) param = param + ", " + getItemSkillID(); 
-/* 1280 */     if (getMinLevel() != -1) param = param + ", " + Integer.toString(getMinLevel()); 
-/* 1281 */     if (getMaxLevel() != -1) param = param + ", " + Integer.toString(getMaxLevel()); 
-/* 1282 */     if (getMaxCunning() != -1) param = param + ", " + Integer.toString(getMaxCunning()); 
-/* 1283 */     if (getMaxPhysique() != -1) param = param + ", " + Integer.toString(getMaxPhysique()); 
-/* 1284 */     if (getMaxSpirit() != -1) param = param + ", " + Integer.toString(getMaxSpirit()); 
-/* 1285 */     if (isNoEnemyOnly()) param = param + "false";
+/* 1275 */     if (usesItemName()) param = param + ", " + getItemName(); 
+/* 1276 */     if (usesBonusSkill()) param = param + ", " + getBonusSkillID(); 
+/* 1277 */     if (usesSkillModifier()) param = param + ", " + getModifiedSkillID(); 
+/* 1278 */     if (usesItemSkill()) param = param + ", " + getItemSkillID(); 
+/* 1279 */     if (getMinLevel() != -1) param = param + ", " + Integer.toString(getMinLevel()); 
+/* 1280 */     if (getMaxLevel() != -1) param = param + ", " + Integer.toString(getMaxLevel()); 
+/* 1281 */     if (getMaxCunning() != -1) param = param + ", " + Integer.toString(getMaxCunning()); 
+/* 1282 */     if (getMaxPhysique() != -1) param = param + ", " + Integer.toString(getMaxPhysique()); 
+/* 1283 */     if (getMaxSpirit() != -1) param = param + ", " + Integer.toString(getMaxSpirit()); 
+/* 1284 */     if (isNoEnemyOnly()) param = param + "false";
 /*      */     
-/* 1287 */     return param;
+/* 1286 */     return param;
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public String determineLevel2Statement(String level1command, SelectionCriteria.StatInfo info) {
-/* 1292 */     String level2command = level1command;
+/* 1291 */     String level2command = level1command;
 /*      */     
-/* 1294 */     if (info != null) {
-/* 1295 */       level2command = level2command + " AND (IST.STAT_TYPE = ?";
-/* 1296 */       if (info.flat == info.percentage) {
-/* 1297 */         if (info.maxResist) {
-/* 1298 */           if (info.flat) {
-/* 1299 */             level2command = level2command + " AND ((IST.STAT_MIN > 0) OR (IST.MODIFIER > 0) OR (IST.MAX_RESIST > 0))";
+/* 1293 */     if (info != null) {
+/* 1294 */       level2command = level2command + " AND (IST.STAT_TYPE = ?";
+/* 1295 */       if (info.flat == info.percentage) {
+/* 1296 */         if (info.maxResist) {
+/* 1297 */           if (info.flat) {
+/* 1298 */             level2command = level2command + " AND ((IST.STAT_MIN > 0) OR (IST.MODIFIER > 0) OR (IST.MAX_RESIST > 0))";
 /*      */           } else {
-/* 1301 */             level2command = level2command + " AND (IST.MAX_RESIST > 0)";
+/* 1300 */             level2command = level2command + " AND (IST.MAX_RESIST > 0)";
 /*      */           } 
 /*      */         } else {
-/* 1304 */           level2command = level2command + " AND ((IST.STAT_MIN > 0) OR (IST.MODIFIER > 0))";
+/* 1303 */           level2command = level2command + " AND ((IST.STAT_MIN > 0) OR (IST.MODIFIER > 0))";
 /*      */         } 
 /*      */       } else {
-/* 1307 */         if (info.flat) {
-/* 1308 */           level2command = level2command + " AND ((IST.STAT_MIN > 0)";
+/* 1306 */         if (info.flat) {
+/* 1307 */           level2command = level2command + " AND ((IST.STAT_MIN > 0)";
 /*      */         }
 /*      */         
-/* 1311 */         if (info.percentage) {
-/* 1312 */           level2command = level2command + " AND ((IST.MODIFIER > 0)";
+/* 1310 */         if (info.percentage) {
+/* 1311 */           level2command = level2command + " AND ((IST.MODIFIER > 0)";
 /*      */         }
 /*      */         
-/* 1315 */         if (info.maxResist) {
-/* 1316 */           level2command = level2command + " OR (IST.MAX_RESIST > 0))";
+/* 1314 */         if (info.maxResist) {
+/* 1315 */           level2command = level2command + " OR (IST.MAX_RESIST > 0))";
 /*      */         } else {
-/* 1318 */           level2command = level2command + ")";
+/* 1317 */           level2command = level2command + ")";
 /*      */         } 
 /*      */       } 
 /*      */       
-/* 1322 */       level2command = level2command + ")";
+/* 1321 */       level2command = level2command + ")";
 /*      */     } 
 /*      */     
-/* 1325 */     return level2command;
+/* 1324 */     return level2command;
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public int fillLevel2Statement(PreparedStatement ps, String statType, int nextPos) throws SQLException {
-/* 1330 */     if (statType != null) {
-/* 1331 */       ps.setString(nextPos, statType);
+/* 1329 */     if (statType != null) {
+/* 1330 */       ps.setString(nextPos, statType);
 /*      */       
-/* 1333 */       nextPos++;
+/* 1332 */       nextPos++;
 /*      */     } 
 /*      */     
-/* 1336 */     return nextPos;
+/* 1335 */     return nextPos;
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public void addSingleIntCombo(List<Integer> listAll, PreparedStatement ps, String command, String statType) throws SQLException, UnsupportedOperationException {
-/* 1341 */     throw new UnsupportedOperationException();
+/* 1340 */     throw new UnsupportedOperationException();
 /*      */   }
 /*      */ 
 /*      */   
 /*      */   public void addSingleStringCombo(List<String> listAll, PreparedStatement ps, String command, String statType) throws SQLException, UnsupportedOperationException {
-/* 1346 */     throw new UnsupportedOperationException();
+/* 1345 */     throw new UnsupportedOperationException();
 /*      */   }
 /*      */ 
 /*      */ 
@@ -1351,20 +1350,20 @@
 /*      */ 
 /*      */   
 /*      */   public static void mergeIntList(List<Integer> listAll, List<Integer> list) {
-/* 1354 */     for (Integer i : list) {
-/* 1355 */       if (!listAll.contains(i)) listAll.add(i); 
+/* 1353 */     for (Integer i : list) {
+/* 1354 */       if (!listAll.contains(i)) listAll.add(i); 
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   public static void mergeStringList(List<String> listAll, List<String> list) {
-/* 1360 */     for (String s : list) {
-/* 1361 */       if (!listAll.contains(s)) listAll.add(s); 
+/* 1359 */     for (String s : list) {
+/* 1360 */       if (!listAll.contains(s)) listAll.add(s); 
 /*      */     } 
 /*      */   }
 /*      */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\db\criteria\AbstractItemCombination.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\db\criteria\AbstractItemCombination.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

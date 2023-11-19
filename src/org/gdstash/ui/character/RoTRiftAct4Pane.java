@@ -119,7 +119,7 @@
 /* 119 */     Border lowered = BorderFactory.createEtchedBorder(1);
 /* 120 */     Border raised = BorderFactory.createEtchedBorder(0);
 /* 121 */     Border compound = BorderFactory.createCompoundBorder(raised, lowered);
-/* 122 */     TitledBorder text = BorderFactory.createTitledBorder(compound, GDMsgFormatter.getString(GDMsgFormatter.rbGD, "TXT_RIFT_ACT1"));
+/* 122 */     TitledBorder text = BorderFactory.createTitledBorder(compound, GDMsgFormatter.getString(GDMsgFormatter.rbGD, "TXT_RIFT_ACT4"));
 /* 123 */     text.setTitleFont(fntBorder);
 /*     */     
 /* 125 */     setBorder(text);
@@ -206,7 +206,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\character\RoTRiftAct4Pane.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\character\RoTRiftAct4Pane.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

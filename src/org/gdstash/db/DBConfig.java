@@ -60,7 +60,7 @@
 /*     */   private static DBConfig singleton;
 /*  61 */   public String configVer = "1.0.8";
 /*     */   public boolean configInit = false;
-/*  63 */   public String gddbVer = "1.6.0g";
+/*  63 */   public String gddbVer = "1.7.4";
 /*     */   public boolean gddbInit = false;
 /*  65 */   public String gdLocal = "";
 /*     */   public boolean modStandalone = false;
@@ -842,7 +842,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\db\DBConfig.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\db\DBConfig.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

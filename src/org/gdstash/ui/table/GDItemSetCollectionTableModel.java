@@ -172,179 +172,192 @@
 /*     */   
 /*     */   public Object getValueAt(int row, int column) {
 /* 174 */     if (this.rows == null) return null; 
-/* 175 */     if (this.rows[row] == null) return null;
+/* 175 */     if (row < 0) return null; 
+/* 176 */     if (row >= this.rows.length) return null; 
+/* 177 */     if (this.rows[row] == null) return null;
 /*     */     
-/* 177 */     if (column == 0) return (this.rows[row]).setName.text; 
-/* 178 */     if (column == 1) return (this.rows[row]).setLevel.text; 
-/* 179 */     if (column == 2) return (this.rows[row]).setRarity.text; 
-/* 180 */     if (column == 3) return (this.rows[row]).iconItem1; 
-/* 181 */     if (column == 4) return (this.rows[row]).iconItem2; 
-/* 182 */     if (column == 5) return (this.rows[row]).iconItem3; 
-/* 183 */     if (column == 6) return (this.rows[row]).iconItem4; 
-/* 184 */     if (column == 7) return (this.rows[row]).iconItem5; 
-/* 185 */     if (column == 8) return (this.rows[row]).iconItem6;
+/* 179 */     if (column == 0) return (this.rows[row]).setName.text; 
+/* 180 */     if (column == 1) return (this.rows[row]).setLevel.text; 
+/* 181 */     if (column == 2) return (this.rows[row]).setRarity.text; 
+/* 182 */     if (column == 3) return (this.rows[row]).iconItem1; 
+/* 183 */     if (column == 4) return (this.rows[row]).iconItem2; 
+/* 184 */     if (column == 5) return (this.rows[row]).iconItem3; 
+/* 185 */     if (column == 6) return (this.rows[row]).iconItem4; 
+/* 186 */     if (column == 7) return (this.rows[row]).iconItem5; 
+/* 187 */     if (column == 8) return (this.rows[row]).iconItem6;
 /*     */     
-/* 187 */     return null;
+/* 189 */     return null;
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public boolean isCellEditable(int row, int column) {
-/* 192 */     return false;
+/* 194 */     return false;
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public void setValueAt(Object value, int row, int column) {
-/* 197 */     if (!isCellEditable(row, column))
+/* 199 */     if (!isCellEditable(row, column))
 /*     */       return; 
-/* 199 */     if (column == 0) (this.rows[row]).setName.text = (String)value; 
-/* 200 */     if (column == 1) (this.rows[row]).setLevel.text = (String)value; 
-/* 201 */     if (column == 2) (this.rows[row]).setRarity.text = (String)value; 
-/* 202 */     if (column == 3) (this.rows[row]).iconItem1 = (ImageIcon)value; 
-/* 203 */     if (column == 4) (this.rows[row]).iconItem2 = (ImageIcon)value; 
-/* 204 */     if (column == 5) (this.rows[row]).iconItem3 = (ImageIcon)value; 
-/* 205 */     if (column == 6) (this.rows[row]).iconItem4 = (ImageIcon)value; 
-/* 206 */     if (column == 7) (this.rows[row]).iconItem5 = (ImageIcon)value; 
-/* 207 */     if (column == 8) (this.rows[row]).iconItem6 = (ImageIcon)value;
+/* 201 */     if (this.rows == null)
+/* 202 */       return;  if (row < 0)
+/* 203 */       return;  if (row >= this.rows.length)
+/* 204 */       return;  if (this.rows[row] == null)
+/*     */       return; 
+/* 206 */     if (column == 0) (this.rows[row]).setName.text = (String)value; 
+/* 207 */     if (column == 1) (this.rows[row]).setLevel.text = (String)value; 
+/* 208 */     if (column == 2) (this.rows[row]).setRarity.text = (String)value; 
+/* 209 */     if (column == 3) (this.rows[row]).iconItem1 = (ImageIcon)value; 
+/* 210 */     if (column == 4) (this.rows[row]).iconItem2 = (ImageIcon)value; 
+/* 211 */     if (column == 5) (this.rows[row]).iconItem3 = (ImageIcon)value; 
+/* 212 */     if (column == 6) (this.rows[row]).iconItem4 = (ImageIcon)value; 
+/* 213 */     if (column == 7) (this.rows[row]).iconItem5 = (ImageIcon)value; 
+/* 214 */     if (column == 8) (this.rows[row]).iconItem6 = (ImageIcon)value;
 /*     */   
 /*     */   }
 /*     */   
 /*     */   public Class getColumnClass(int column) {
-/* 212 */     return GDItemSetCollectionRow.COLUMN_CLASSES[column];
+/* 219 */     return GDItemSetCollectionRow.COLUMN_CLASSES[column];
 /*     */   }
 /*     */   
 /*     */   public String getCellText(int row, int column) {
-/* 216 */     if (this.rows == null) return null; 
-/* 217 */     if (this.rows[row] == null) return null;
+/* 223 */     if (this.rows == null) return ""; 
+/* 224 */     if (row < 0) return ""; 
+/* 225 */     if (row >= this.rows.length) return ""; 
+/* 226 */     if (this.rows[row] == null) return "";
 /*     */     
-/* 219 */     if (column == 0) return (this.rows[row]).setName.text; 
-/* 220 */     if (column == 1) return (this.rows[row]).setLevel.text; 
-/* 221 */     if (column == 2) return (this.rows[row]).setRarity.text;
+/* 228 */     if (column == 0) return (this.rows[row]).setName.text; 
+/* 229 */     if (column == 1) return (this.rows[row]).setLevel.text; 
+/* 230 */     if (column == 2) return (this.rows[row]).setRarity.text;
 /*     */     
-/* 223 */     return "";
+/* 232 */     return "";
 /*     */   }
 /*     */   
 /*     */   public Color getCellTextColor(int row, int column) {
-/* 227 */     if (this.rows == null) return null; 
-/* 228 */     if (this.rows[row] == null) return null;
+/* 236 */     if (this.rows == null) return Color.BLACK; 
+/* 237 */     if (row < 0) return Color.BLACK; 
+/* 238 */     if (row >= this.rows.length) return Color.BLACK; 
+/* 239 */     if (this.rows[row] == null) return Color.BLACK;
 /*     */     
-/* 230 */     if (column == 0) return (this.rows[row]).setName.foreground; 
-/* 231 */     if (column == 1) return (this.rows[row]).setLevel.foreground; 
-/* 232 */     if (column == 2) return (this.rows[row]).setRarity.foreground;
+/* 241 */     if (column == 0) return (this.rows[row]).setName.foreground; 
+/* 242 */     if (column == 1) return (this.rows[row]).setLevel.foreground; 
+/* 243 */     if (column == 2) return (this.rows[row]).setRarity.foreground;
 /*     */     
-/* 234 */     return Color.BLACK;
+/* 245 */     return Color.BLACK;
 /*     */   }
 /*     */   
 /*     */   public Color getCellBackgroundColor(int row, int column) {
-/* 238 */     if (this.rows == null) return null; 
-/* 239 */     if (this.rows[row] == null) return null;
+/* 249 */     if (this.rows == null) return Color.WHITE; 
+/* 250 */     if (row < 0) return Color.WHITE; 
+/* 251 */     if (row >= this.rows.length) return Color.WHITE; 
+/* 252 */     if (this.rows[row] == null) return Color.WHITE;
 /*     */     
-/* 241 */     if (column == 0) return (this.rows[row]).setName.background; 
-/* 242 */     if (column == 1) return (this.rows[row]).setLevel.background; 
-/* 243 */     if (column == 2) return (this.rows[row]).setRarity.background; 
-/* 244 */     if (column == 3) {
-/* 245 */       if ((this.rows[row]).scItem1 > 0 || (this.rows[row]).hcItem1 > 0) {
-/* 246 */         return GDItemInfo.COLOR_GREEN;
+/* 254 */     if (column == 0) return (this.rows[row]).setName.background; 
+/* 255 */     if (column == 1) return (this.rows[row]).setLevel.background; 
+/* 256 */     if (column == 2) return (this.rows[row]).setRarity.background; 
+/* 257 */     if (column == 3) {
+/* 258 */       if ((this.rows[row]).scItem1 > 0 || (this.rows[row]).hcItem1 > 0) {
+/* 259 */         return GDItemInfo.COLOR_GREEN;
 /*     */       }
-/* 248 */       if ((this.rows[row]).scItem1 == -1) {
-/* 249 */         return UIManager.getColor("Table.background");
+/* 261 */       if ((this.rows[row]).scItem1 == -1) {
+/* 262 */         return UIManager.getColor("Table.background");
 /*     */       }
-/* 251 */       if ((this.rows[row]).blueprint1) {
-/* 252 */         return GDItemInfo.COLOR_YELLOW;
+/* 264 */       if ((this.rows[row]).blueprint1) {
+/* 265 */         return GDItemInfo.COLOR_YELLOW;
 /*     */       }
-/* 254 */       return GDItemInfo.COLOR_RED;
+/* 267 */       return GDItemInfo.COLOR_RED;
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 259 */     if (column == 4) {
-/* 260 */       if ((this.rows[row]).scItem2 > 0 || (this.rows[row]).hcItem2 > 0) {
-/* 261 */         return GDItemInfo.COLOR_GREEN;
+/* 272 */     if (column == 4) {
+/* 273 */       if ((this.rows[row]).scItem2 > 0 || (this.rows[row]).hcItem2 > 0) {
+/* 274 */         return GDItemInfo.COLOR_GREEN;
 /*     */       }
-/* 263 */       if ((this.rows[row]).scItem2 == -1) {
-/* 264 */         return UIManager.getColor("Table.background");
+/* 276 */       if ((this.rows[row]).scItem2 == -1) {
+/* 277 */         return UIManager.getColor("Table.background");
 /*     */       }
-/* 266 */       if ((this.rows[row]).blueprint2) {
-/* 267 */         return GDItemInfo.COLOR_YELLOW;
+/* 279 */       if ((this.rows[row]).blueprint2) {
+/* 280 */         return GDItemInfo.COLOR_YELLOW;
 /*     */       }
-/* 269 */       return GDItemInfo.COLOR_RED;
+/* 282 */       return GDItemInfo.COLOR_RED;
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 274 */     if (column == 5) {
-/* 275 */       if ((this.rows[row]).scItem3 > 0 || (this.rows[row]).hcItem3 > 0) {
-/* 276 */         return GDItemInfo.COLOR_GREEN;
+/* 287 */     if (column == 5) {
+/* 288 */       if ((this.rows[row]).scItem3 > 0 || (this.rows[row]).hcItem3 > 0) {
+/* 289 */         return GDItemInfo.COLOR_GREEN;
 /*     */       }
-/* 278 */       if ((this.rows[row]).scItem3 == -1) {
-/* 279 */         return UIManager.getColor("Table.background");
+/* 291 */       if ((this.rows[row]).scItem3 == -1) {
+/* 292 */         return UIManager.getColor("Table.background");
 /*     */       }
-/* 281 */       if ((this.rows[row]).blueprint3) {
-/* 282 */         return GDItemInfo.COLOR_YELLOW;
+/* 294 */       if ((this.rows[row]).blueprint3) {
+/* 295 */         return GDItemInfo.COLOR_YELLOW;
 /*     */       }
-/* 284 */       return GDItemInfo.COLOR_RED;
+/* 297 */       return GDItemInfo.COLOR_RED;
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 289 */     if (column == 6) {
-/* 290 */       if ((this.rows[row]).scItem4 > 0 || (this.rows[row]).hcItem4 > 0) {
-/* 291 */         return GDItemInfo.COLOR_GREEN;
+/* 302 */     if (column == 6) {
+/* 303 */       if ((this.rows[row]).scItem4 > 0 || (this.rows[row]).hcItem4 > 0) {
+/* 304 */         return GDItemInfo.COLOR_GREEN;
 /*     */       }
-/* 293 */       if ((this.rows[row]).scItem4 == -1) {
-/* 294 */         return UIManager.getColor("Table.background");
+/* 306 */       if ((this.rows[row]).scItem4 == -1) {
+/* 307 */         return UIManager.getColor("Table.background");
 /*     */       }
-/* 296 */       if ((this.rows[row]).blueprint4) {
-/* 297 */         return GDItemInfo.COLOR_YELLOW;
+/* 309 */       if ((this.rows[row]).blueprint4) {
+/* 310 */         return GDItemInfo.COLOR_YELLOW;
 /*     */       }
-/* 299 */       return GDItemInfo.COLOR_RED;
+/* 312 */       return GDItemInfo.COLOR_RED;
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 304 */     if (column == 7) {
-/* 305 */       if ((this.rows[row]).scItem5 > 0 || (this.rows[row]).hcItem5 > 0) {
-/* 306 */         return GDItemInfo.COLOR_GREEN;
+/* 317 */     if (column == 7) {
+/* 318 */       if ((this.rows[row]).scItem5 > 0 || (this.rows[row]).hcItem5 > 0) {
+/* 319 */         return GDItemInfo.COLOR_GREEN;
 /*     */       }
-/* 308 */       if ((this.rows[row]).scItem5 == -1) {
-/* 309 */         return UIManager.getColor("Table.background");
+/* 321 */       if ((this.rows[row]).scItem5 == -1) {
+/* 322 */         return UIManager.getColor("Table.background");
 /*     */       }
-/* 311 */       if ((this.rows[row]).blueprint5) {
-/* 312 */         return GDItemInfo.COLOR_YELLOW;
+/* 324 */       if ((this.rows[row]).blueprint5) {
+/* 325 */         return GDItemInfo.COLOR_YELLOW;
 /*     */       }
-/* 314 */       return GDItemInfo.COLOR_RED;
+/* 327 */       return GDItemInfo.COLOR_RED;
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 319 */     if (column == 8) {
-/* 320 */       if ((this.rows[row]).scItem6 > 0 || (this.rows[row]).hcItem6 > 0) {
-/* 321 */         return GDItemInfo.COLOR_GREEN;
+/* 332 */     if (column == 8) {
+/* 333 */       if ((this.rows[row]).scItem6 > 0 || (this.rows[row]).hcItem6 > 0) {
+/* 334 */         return GDItemInfo.COLOR_GREEN;
 /*     */       }
-/* 323 */       if ((this.rows[row]).scItem6 == -1) {
-/* 324 */         return UIManager.getColor("Table.background");
+/* 336 */       if ((this.rows[row]).scItem6 == -1) {
+/* 337 */         return UIManager.getColor("Table.background");
 /*     */       }
-/* 326 */       if ((this.rows[row]).blueprint6) {
-/* 327 */         return GDItemInfo.COLOR_YELLOW;
+/* 339 */       if ((this.rows[row]).blueprint6) {
+/* 340 */         return GDItemInfo.COLOR_YELLOW;
 /*     */       }
-/* 329 */       return GDItemInfo.COLOR_RED;
+/* 342 */       return GDItemInfo.COLOR_RED;
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */     
-/* 335 */     return Color.WHITE;
+/* 348 */     return Color.WHITE;
 /*     */   }
 /*     */   
 /*     */   public void sort(Comparator<GDItemSetCollectionRow> comp) {
-/* 339 */     if (comp == null)
-/* 340 */       return;  if (this.rows == null)
+/* 352 */     if (comp == null)
+/* 353 */       return;  if (this.rows == null)
 /*     */       return; 
-/* 342 */     Arrays.sort(this.rows, comp);
+/* 355 */     Arrays.sort(this.rows, comp);
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\table\GDItemSetCollectionTableModel.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\table\GDItemSetCollectionTableModel.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

@@ -1,23 +1,4 @@
-/*      */ package org.gdstash.db;
-
-import org.gdstash.description.BonusDetail;
-import org.gdstash.description.DetailComposer;
-import org.gdstash.file.ARZRecord;
-import org.gdstash.file.DDSLoader;
-import org.gdstash.file.GDParseException;
-import org.gdstash.util.GDMsgFormatter;
-import org.gdstash.util.GDMsgLogger;
-
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.sql.*;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-
-public class DBSkill { public static final String TABLE_NAME = "GD_SKILL"; public static final String FIELD_ID = "SKILL_ID"; public static final String TEMPLATE_MASTERY = "database/templates/skill_mastery.tpl"; private static final int ROW_SKILL_ID = 1;
+/*      */ package org.gdstash.db;public class DBSkill { public static final String TABLE_NAME = "GD_SKILL"; public static final String FIELD_ID = "SKILL_ID"; public static final String TEMPLATE_MASTERY = "database/templates/skill_mastery.tpl"; private static final int ROW_SKILL_ID = 1;
 /*      */   private static final int ROW_REC_CLASS = 2;
 /*      */   private static final int ROW_NAME = 3;
 /*      */   private static final int ROW_DESCRIPTION = 4;
@@ -1520,7 +1501,7 @@ public class DBSkill { public static final String TABLE_NAME = "GD_SKILL"; publi
 /*      */   } }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\db\DBSkill.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\db\DBSkill.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

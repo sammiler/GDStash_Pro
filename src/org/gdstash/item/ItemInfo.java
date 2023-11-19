@@ -1,9 +1,8 @@
 /*     */ package org.gdstash.item;
 /*     */ import java.util.LinkedList;
 /*     */ import java.util.List;
-/*     */ import org.gdstash.db.*;
-
-/*     */
+/*     */ import org.gdstash.db.DBStat;
+/*     */ 
 /*     */ public class ItemInfo {
 /*     */   public List<DBStat> itemStats;
 /*     */   public List<DBStat> petStats;
@@ -104,7 +103,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\item\ItemInfo.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\item\ItemInfo.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

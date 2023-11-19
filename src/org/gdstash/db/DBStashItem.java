@@ -1,23 +1,4 @@
-/*      */ package org.gdstash.db;
-
-import org.gdstash.db.criteria.*;
-import org.gdstash.file.GDReader;
-import org.gdstash.file.GDWriter;
-import org.gdstash.item.GDItem;
-import org.gdstash.ui.GDStashFrame;
-import org.gdstash.util.FileVersionException;
-import org.gdstash.util.GDLog;
-import org.gdstash.util.GDMsgFormatter;
-import org.gdstash.util.GDMsgLogger;
-
-import java.io.*;
-import java.nio.charset.Charset;
-import java.sql.*;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
-public class DBStashItem implements Cloneable, ParameterSet { public static final String TABLE_NAME = "STASH_ITEM_V8"; public static final String TABLE_NAME_V1 = "STASH_ITEM"; public static final String TABLE_NAME_V2 = "STASH_ITEM_V2"; public static final String TABLE_NAME_V3 = "STASH_ITEM_V3"; public static final String TABLE_NAME_V4 = "STASH_ITEM_V4"; public static final String TABLE_NAME_V5 = "STASH_ITEM_V5"; public static final String TABLE_NAME_V6 = "STASH_ITEM_V6"; public static final String TABLE_NAME_V7 = "STASH_ITEM_V7"; public static final String TABLE_NAME_V8 = "STASH_ITEM_V8"; public static final int VERSION_STASH_FILE = 1; private static final int ROW_STASH_ID = 1; private static final int ROW_ITEM_ID = 2; private static final int ROW_PREFIX_ID = 3; private static final int ROW_SUFFIX_ID = 4; private static final int ROW_MODIFIER_ID = 5; private static final int ROW_TRANSMUTE_ID = 6; private static final int ROW_ITEM_SEED = 7; private static final int ROW_RELIC_ID = 8; private static final int ROW_RELICBONUS_ID = 9; private static final int ROW_RELIC_SEED = 10; private static final int ROW_ENCHANTMENT_ID = 11; private static final int ROW_UNKNOWN = 12; private static final int ROW_ENCHANTMENT_SEED = 13; private static final int ROW_ITEM_VAR1 = 14; private static final int ROW_STACKCOUNT = 15; private static final int ROW_HARDCORE = 16; private static final int ROW_CHARNAME = 17; private static final int ROW_SOULBOUND = 18; private static final int ROW_RARITY = 19; private static final int ROW_REQ_LEVEL = 20; private static final int ROW_REQ_DEX = 21; private static final int ROW_REQ_INT = 22; private static final int ROW_REQ_STR = 23; private static final int ROW_ITEM_CLASS = 24; private static final int ROW_ARMOR_CLASS = 25; private static final int ROW_ARTIFACT_CLASS = 26; private static final int ROW_ITEM_LEVEL = 27; private static final int ROW_SET_ID = 28; private static final int ROW_ITEM_NAME = 29; private static final int ROW_PET_BONUS_SKILL_ID = 30; private static final int ROW_PLUS_ALLSKILLS = 31; private static final int ROW_ITEM_SKILL_ID = 32; private static final int ROW_CONVERT_IN = 33; private static final int ROW_CONVERT_OUT = 34; private static final int ROW_CONVERT_IN_2 = 35; private static final int ROW_CONVERT_OUT_2 = 36; private static final int ROW_ENEMY_ONLY = 37; private static final int ROW_SLOT_AXE_1H = 38; private static final int ROW_SLOT_AXE_2H = 39; private static final int ROW_SLOT_DAGGER_1H = 40; private static final int ROW_SLOT_MACE_1H = 41; private static final int ROW_SLOT_MACE_2H = 42; private static final int ROW_SLOT_SCEPTER_1H = 43; private static final int ROW_SLOT_SPEAR_2H = 44; private static final int ROW_SLOT_STAFF_2H = 45; private static final int ROW_SLOT_SWORD_1H = 46; private static final int ROW_SLOT_SWORD_2H = 47; private static final int ROW_SLOT_RANGED_1H = 48; private static final int ROW_SLOT_RANGED_2H = 49; private static final int ROW_SLOT_SHIELD = 50; private static final int ROW_SLOT_OFFHAND = 51; private static final int ROW_SLOT_AMULET = 52; private static final int ROW_SLOT_BELT = 53; private static final int ROW_SLOT_MEDAL = 54; private static final int ROW_SLOT_RING = 55; private static final int ROW_SLOT_HEAD = 56; private static final int ROW_SLOT_SHOULDERS = 57;
+/*      */ package org.gdstash.db;public class DBStashItem implements Cloneable, ParameterSet { public static final String TABLE_NAME = "STASH_ITEM_V8"; public static final String TABLE_NAME_V1 = "STASH_ITEM"; public static final String TABLE_NAME_V2 = "STASH_ITEM_V2"; public static final String TABLE_NAME_V3 = "STASH_ITEM_V3"; public static final String TABLE_NAME_V4 = "STASH_ITEM_V4"; public static final String TABLE_NAME_V5 = "STASH_ITEM_V5"; public static final String TABLE_NAME_V6 = "STASH_ITEM_V6"; public static final String TABLE_NAME_V7 = "STASH_ITEM_V7"; public static final String TABLE_NAME_V8 = "STASH_ITEM_V8"; public static final int VERSION_STASH_FILE = 1; private static final int ROW_STASH_ID = 1; private static final int ROW_ITEM_ID = 2; private static final int ROW_PREFIX_ID = 3; private static final int ROW_SUFFIX_ID = 4; private static final int ROW_MODIFIER_ID = 5; private static final int ROW_TRANSMUTE_ID = 6; private static final int ROW_ITEM_SEED = 7; private static final int ROW_RELIC_ID = 8; private static final int ROW_RELICBONUS_ID = 9; private static final int ROW_RELIC_SEED = 10; private static final int ROW_ENCHANTMENT_ID = 11; private static final int ROW_UNKNOWN = 12; private static final int ROW_ENCHANTMENT_SEED = 13; private static final int ROW_ITEM_VAR1 = 14; private static final int ROW_STACKCOUNT = 15; private static final int ROW_HARDCORE = 16; private static final int ROW_CHARNAME = 17; private static final int ROW_SOULBOUND = 18; private static final int ROW_RARITY = 19; private static final int ROW_REQ_LEVEL = 20; private static final int ROW_REQ_DEX = 21; private static final int ROW_REQ_INT = 22; private static final int ROW_REQ_STR = 23; private static final int ROW_ITEM_CLASS = 24; private static final int ROW_ARMOR_CLASS = 25; private static final int ROW_ARTIFACT_CLASS = 26; private static final int ROW_ITEM_LEVEL = 27; private static final int ROW_SET_ID = 28; private static final int ROW_ITEM_NAME = 29; private static final int ROW_PET_BONUS_SKILL_ID = 30; private static final int ROW_PLUS_ALLSKILLS = 31; private static final int ROW_ITEM_SKILL_ID = 32; private static final int ROW_CONVERT_IN = 33; private static final int ROW_CONVERT_OUT = 34; private static final int ROW_CONVERT_IN_2 = 35; private static final int ROW_CONVERT_OUT_2 = 36; private static final int ROW_ENEMY_ONLY = 37; private static final int ROW_SLOT_AXE_1H = 38; private static final int ROW_SLOT_AXE_2H = 39; private static final int ROW_SLOT_DAGGER_1H = 40; private static final int ROW_SLOT_MACE_1H = 41; private static final int ROW_SLOT_MACE_2H = 42; private static final int ROW_SLOT_SCEPTER_1H = 43; private static final int ROW_SLOT_SPEAR_2H = 44; private static final int ROW_SLOT_STAFF_2H = 45; private static final int ROW_SLOT_SWORD_1H = 46; private static final int ROW_SLOT_SWORD_2H = 47; private static final int ROW_SLOT_RANGED_1H = 48; private static final int ROW_SLOT_RANGED_2H = 49; private static final int ROW_SLOT_SHIELD = 50; private static final int ROW_SLOT_OFFHAND = 51; private static final int ROW_SLOT_AMULET = 52; private static final int ROW_SLOT_BELT = 53; private static final int ROW_SLOT_MEDAL = 54; private static final int ROW_SLOT_RING = 55; private static final int ROW_SLOT_HEAD = 56; private static final int ROW_SLOT_SHOULDERS = 57;
 /*      */   private static final int ROW_SLOT_CHEST = 58;
 /*      */   private static final int ROW_SLOT_HANDS = 59;
 /*      */   private static final int ROW_SLOT_LEGS = 60;
@@ -3394,75 +3375,81 @@ public class DBStashItem implements Cloneable, ParameterSet { public static fina
 /* 3375 */         String azurePartition = GDReader.readStringUByte(reader);
 /* 3376 */         String str1 = GDReader.readStringUByte(reader);
 /*      */       } 
-/* 3378 */       if (version == 3) {
+/* 3378 */       if (version >= 3) {
 /* 3379 */         byte b = GDReader.readByte(reader);
 /*      */       }
 /*      */       
-/* 3382 */       success = true;
+/* 3382 */       if (version >= 5) {
+/* 3383 */         GDReader.readStringUByte(reader);
+/* 3384 */         GDReader.readStringUByte(reader);
+/* 3385 */         GDReader.readByte(reader);
+/*      */       } 
+/*      */       
+/* 3388 */       success = true;
 /*      */     }
-/* 3384 */     catch (IOException ex) {
-/* 3385 */       Object[] args = { filename };
-/* 3386 */       String s = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_READ_FILE", args);
+/* 3390 */     catch (IOException ex) {
+/* 3391 */       Object[] args = { filename };
+/* 3392 */       String s = GDMsgFormatter.format(GDMsgFormatter.rbMsg, "ERR_READ_FILE", args);
 /*      */       
-/* 3388 */       GDMsgLogger.addError(s);
-/* 3389 */       GDMsgLogger.addError(ex);
+/* 3394 */       GDMsgLogger.addError(s);
+/* 3395 */       GDMsgLogger.addError(ex);
 /*      */       
-/* 3391 */       success = false;
+/* 3397 */       success = false;
 /*      */     } 
 /*      */     
-/* 3394 */     if (success) {
-/* 3395 */       fillDependentStats(null);
+/* 3400 */     if (success) {
+/* 3401 */       fillDependentStats(null);
 /*      */       
-/* 3397 */       if (GDMsgLogger.errorsInLog()) success = false;
+/* 3403 */       if (GDMsgLogger.errorsInLog()) success = false;
 /*      */     
 /*      */     } 
-/* 3400 */     return success;
+/* 3406 */     return success;
 /*      */   }
 /*      */ 
 /*      */ 
 /*      */   
 /*      */   public static List<GDItem> loadIAS(File file) {
-/* 3406 */     List<GDItem> items = new LinkedList<>();
+/* 3412 */     List<GDItem> items = new LinkedList<>();
 /*      */     
-/* 3408 */     String filename = null;
+/* 3414 */     String filename = null;
 /*      */     try {
-/* 3410 */       filename = file.getCanonicalPath();
+/* 3416 */       filename = file.getCanonicalPath();
 /*      */     }
-/* 3412 */     catch (IOException ex) {
-/* 3413 */       filename = null;
+/* 3418 */     catch (IOException ex) {
+/* 3419 */       filename = null;
 /*      */     } 
 /*      */     
-/* 3416 */     try (InputStream reader = new BufferedInputStream(new FileInputStream(file))) {
-/* 3417 */       int version = GDReader.readShort(reader);
+/* 3422 */     try (InputStream reader = new BufferedInputStream(new FileInputStream(file))) {
+/* 3423 */       int version = GDReader.readShort(reader);
 /*      */       
-/* 3419 */       if (version < 1 || version > 3) throw new FileVersionException();
+/* 3425 */       if (version < 1 || version > 4) throw new FileVersionException();
 /*      */       
-/* 3421 */       int size = GDReader.readInt(reader);
+/* 3427 */       int size = GDReader.readInt(reader);
 /*      */       int i;
-/* 3423 */       for (i = 0; i < size; i++) {
-/* 3424 */         DBStashItem si = new DBStashItem();
-/* 3425 */         boolean read = si.readIAS(reader, version, filename);
+/* 3429 */       for (i = 0; i < size; i++) {
+/* 3430 */         DBStashItem si = new DBStashItem();
+/* 3431 */         boolean read = si.readIAS(reader, version, filename);
 /*      */         
-/* 3427 */         if (read) {
-/* 3428 */           GDItem item = new GDItem(si, filename);
-/* 3429 */           items.add(item);
+/* 3433 */         if (read) {
+/* 3434 */           GDItem item = new GDItem(si, filename);
+/* 3435 */           items.add(item);
 /*      */         }
 /*      */       
 /*      */       } 
-/* 3433 */     } catch (FileVersionException ex) {
-/* 3434 */       GDMsgLogger.addError(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
-/* 3435 */       GDMsgLogger.addError((Throwable)ex);
-/*      */       
-/* 3437 */       items = null;
-/*      */     }
-/* 3439 */     catch (IOException ex) {
-/* 3440 */       GDMsgLogger.addError(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_LOAD_FILE"));
-/* 3441 */       GDMsgLogger.addError(ex);
+/* 3439 */     } catch (FileVersionException ex) {
+/* 3440 */       GDMsgLogger.addError(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
+/* 3441 */       GDMsgLogger.addError((Throwable)ex);
 /*      */       
 /* 3443 */       items = null;
+/*      */     }
+/* 3445 */     catch (IOException ex) {
+/* 3446 */       GDMsgLogger.addError(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_LOAD_FILE"));
+/* 3447 */       GDMsgLogger.addError(ex);
+/*      */       
+/* 3449 */       items = null;
 /*      */     } 
 /*      */     
-/* 3446 */     return items;
+/* 3452 */     return items;
 /*      */   }
 /*      */ 
 /*      */ 
@@ -3470,183 +3457,183 @@ public class DBStashItem implements Cloneable, ParameterSet { public static fina
 /*      */ 
 /*      */   
 /*      */   public void readNewFormat(int version) throws IOException {
-/* 3454 */     switch (version) {
+/* 3460 */     switch (version) {
 /*      */       case 3:
-/* 3456 */         readNewFormat_V3();
+/* 3462 */         readNewFormat_V3();
 /*      */         break;
 /*      */       
 /*      */       case 4:
-/* 3460 */         readNewFormat_V4();
+/* 3466 */         readNewFormat_V4();
 /*      */         break;
 /*      */       
 /*      */       default:
-/* 3464 */         throw new IOException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
+/* 3470 */         throw new IOException(GDMsgFormatter.getString(GDMsgFormatter.rbMsg, "ERR_UNSUPPORTED_VERSION"));
 /*      */     } 
 /*      */     
-/* 3467 */     fillDependentStats(null);
+/* 3473 */     fillDependentStats(null);
 /*      */   }
 /*      */   
 /*      */   private void readNewFormat_V3() throws IOException {
-/* 3471 */     String s = null;
-/* 3472 */     int i = 0;
+/* 3477 */     String s = null;
+/* 3478 */     int i = 0;
 /*      */     
-/* 3474 */     i = GDReader.readEncInt(true);
-/* 3475 */     setStackCount(i);
-/*      */     
-/* 3477 */     s = GDReader.readEncString();
-/* 3478 */     setItemID(s);
-/*      */     
-/* 3480 */     s = GDReader.readEncString();
-/* 3481 */     setPrefixID(s);
+/* 3480 */     i = GDReader.readEncInt(true);
+/* 3481 */     setStackCount(i);
 /*      */     
 /* 3483 */     s = GDReader.readEncString();
-/* 3484 */     setSuffixID(s);
+/* 3484 */     setItemID(s);
 /*      */     
 /* 3486 */     s = GDReader.readEncString();
-/* 3487 */     setModifierID(s);
+/* 3487 */     setPrefixID(s);
 /*      */     
 /* 3489 */     s = GDReader.readEncString();
-/* 3490 */     setTransmuteID(s);
+/* 3490 */     setSuffixID(s);
 /*      */     
-/* 3492 */     i = GDReader.readEncInt(true);
-/* 3493 */     setItemSeed(i);
+/* 3492 */     s = GDReader.readEncString();
+/* 3493 */     setModifierID(s);
 /*      */     
 /* 3495 */     s = GDReader.readEncString();
-/* 3496 */     setComponentID(s);
+/* 3496 */     setTransmuteID(s);
 /*      */     
-/* 3498 */     s = GDReader.readEncString();
-/* 3499 */     setCompletionBonusID(s);
+/* 3498 */     i = GDReader.readEncInt(true);
+/* 3499 */     setItemSeed(i);
 /*      */     
-/* 3501 */     i = GDReader.readEncInt(true);
-/* 3502 */     setComponentSeed(i);
+/* 3501 */     s = GDReader.readEncString();
+/* 3502 */     setComponentID(s);
 /*      */     
 /* 3504 */     s = GDReader.readEncString();
-/* 3505 */     setAugmentID(s);
+/* 3505 */     setCompletionBonusID(s);
 /*      */     
 /* 3507 */     i = GDReader.readEncInt(true);
-/* 3508 */     setUnknown(i);
+/* 3508 */     setComponentSeed(i);
 /*      */     
-/* 3510 */     i = GDReader.readEncInt(true);
-/* 3511 */     setAugmentSeed(i);
+/* 3510 */     s = GDReader.readEncString();
+/* 3511 */     setAugmentID(s);
 /*      */     
 /* 3513 */     i = GDReader.readEncInt(true);
-/* 3514 */     setVar1(i);
+/* 3514 */     setUnknown(i);
+/*      */     
+/* 3516 */     i = GDReader.readEncInt(true);
+/* 3517 */     setAugmentSeed(i);
+/*      */     
+/* 3519 */     i = GDReader.readEncInt(true);
+/* 3520 */     setVar1(i);
 /*      */   }
 /*      */   
 /*      */   private void readNewFormat_V4() throws IOException {
-/* 3518 */     String s = null;
-/* 3519 */     int i = 0;
-/*      */     
-/* 3521 */     s = GDReader.readEncString();
-/* 3522 */     setItemID(s);
-/*      */     
-/* 3524 */     s = GDReader.readEncString();
-/* 3525 */     setPrefixID(s);
+/* 3524 */     String s = null;
+/* 3525 */     int i = 0;
 /*      */     
 /* 3527 */     s = GDReader.readEncString();
-/* 3528 */     setSuffixID(s);
+/* 3528 */     setItemID(s);
 /*      */     
 /* 3530 */     s = GDReader.readEncString();
-/* 3531 */     setModifierID(s);
+/* 3531 */     setPrefixID(s);
 /*      */     
 /* 3533 */     s = GDReader.readEncString();
-/* 3534 */     setTransmuteID(s);
+/* 3534 */     setSuffixID(s);
 /*      */     
-/* 3536 */     i = GDReader.readEncInt(true);
-/* 3537 */     setItemSeed(i);
+/* 3536 */     s = GDReader.readEncString();
+/* 3537 */     setModifierID(s);
 /*      */     
 /* 3539 */     s = GDReader.readEncString();
-/* 3540 */     setComponentID(s);
+/* 3540 */     setTransmuteID(s);
 /*      */     
-/* 3542 */     s = GDReader.readEncString();
-/* 3543 */     setCompletionBonusID(s);
+/* 3542 */     i = GDReader.readEncInt(true);
+/* 3543 */     setItemSeed(i);
 /*      */     
-/* 3545 */     i = GDReader.readEncInt(true);
-/* 3546 */     setComponentSeed(i);
+/* 3545 */     s = GDReader.readEncString();
+/* 3546 */     setComponentID(s);
 /*      */     
 /* 3548 */     s = GDReader.readEncString();
-/* 3549 */     setAugmentID(s);
+/* 3549 */     setCompletionBonusID(s);
 /*      */     
 /* 3551 */     i = GDReader.readEncInt(true);
-/* 3552 */     setUnknown(i);
+/* 3552 */     setComponentSeed(i);
 /*      */     
-/* 3554 */     i = GDReader.readEncInt(true);
-/* 3555 */     setAugmentSeed(i);
+/* 3554 */     s = GDReader.readEncString();
+/* 3555 */     setAugmentID(s);
 /*      */     
 /* 3557 */     i = GDReader.readEncInt(true);
-/* 3558 */     setVar1(i);
+/* 3558 */     setUnknown(i);
 /*      */     
 /* 3560 */     i = GDReader.readEncInt(true);
-/* 3561 */     setStackCount(i);
+/* 3561 */     setAugmentSeed(i);
+/*      */     
+/* 3563 */     i = GDReader.readEncInt(true);
+/* 3564 */     setVar1(i);
+/*      */     
+/* 3566 */     i = GDReader.readEncInt(true);
+/* 3567 */     setStackCount(i);
 /*      */   }
 /*      */   
 /*      */   public int getByteSize() {
-/* 3565 */     int size = 0;
-/* 3566 */     String s = null;
+/* 3571 */     int size = 0;
+/* 3572 */     String s = null;
 /*      */     
-/* 3568 */     size += 4;
-/* 3569 */     s = getItemID();
-/* 3570 */     if (s != null) size += s.length();
+/* 3574 */     size += 4;
+/* 3575 */     s = getItemID();
+/* 3576 */     if (s != null) size += s.length();
 /*      */     
-/* 3572 */     size += 4;
-/* 3573 */     s = getPrefixID();
-/* 3574 */     if (s != null) size += s.length();
+/* 3578 */     size += 4;
+/* 3579 */     s = getPrefixID();
+/* 3580 */     if (s != null) size += s.length();
 /*      */     
-/* 3576 */     size += 4;
-/* 3577 */     s = getSuffixID();
-/* 3578 */     if (s != null) size += s.length();
+/* 3582 */     size += 4;
+/* 3583 */     s = getSuffixID();
+/* 3584 */     if (s != null) size += s.length();
 /*      */     
-/* 3580 */     size += 4;
-/* 3581 */     s = getModifierID();
-/* 3582 */     if (s != null) size += s.length();
-/*      */     
-/* 3584 */     size += 4;
-/* 3585 */     s = getTransmuteID();
-/* 3586 */     if (s != null) size += s.length();
-/*      */     
-/* 3588 */     size += 4;
+/* 3586 */     size += 4;
+/* 3587 */     s = getModifierID();
+/* 3588 */     if (s != null) size += s.length();
 /*      */     
 /* 3590 */     size += 4;
-/* 3591 */     s = getComponentID();
+/* 3591 */     s = getTransmuteID();
 /* 3592 */     if (s != null) size += s.length();
 /*      */     
 /* 3594 */     size += 4;
-/* 3595 */     s = getCompletionBonusID();
-/* 3596 */     if (s != null) size += s.length();
 /*      */     
-/* 3598 */     size += 4;
+/* 3596 */     size += 4;
+/* 3597 */     s = getComponentID();
+/* 3598 */     if (s != null) size += s.length();
 /*      */     
 /* 3600 */     size += 4;
-/* 3601 */     s = getAugmentID();
+/* 3601 */     s = getCompletionBonusID();
 /* 3602 */     if (s != null) size += s.length();
 /*      */     
 /* 3604 */     size += 4;
-/* 3605 */     size += 4;
-/* 3606 */     size += 4;
-/* 3607 */     size += 4;
 /*      */     
-/* 3609 */     return size;
+/* 3606 */     size += 4;
+/* 3607 */     s = getAugmentID();
+/* 3608 */     if (s != null) size += s.length();
+/*      */     
+/* 3610 */     size += 4;
+/* 3611 */     size += 4;
+/* 3612 */     size += 4;
+/* 3613 */     size += 4;
+/*      */     
+/* 3615 */     return size;
 /*      */   }
 /*      */   
 /*      */   public void write() throws IOException {
-/* 3613 */     GDWriter.writeString(getItemID());
-/* 3614 */     GDWriter.writeString(getPrefixID());
-/* 3615 */     GDWriter.writeString(getSuffixID());
-/* 3616 */     GDWriter.writeString(getModifierID());
-/* 3617 */     GDWriter.writeString(getTransmuteID());
-/* 3618 */     GDWriter.writeInt(getItemSeed());
-/* 3619 */     GDWriter.writeString(getComponentID());
-/* 3620 */     GDWriter.writeString(getCompletionBonusID());
-/* 3621 */     GDWriter.writeInt(getComponentSeed());
-/* 3622 */     GDWriter.writeString(getAugmentID());
-/* 3623 */     GDWriter.writeInt(getUnknown());
-/* 3624 */     GDWriter.writeInt(getAugmentSeed());
-/* 3625 */     GDWriter.writeInt(getVar1());
-/* 3626 */     GDWriter.writeInt(getStackCount());
+/* 3619 */     GDWriter.writeString(getItemID());
+/* 3620 */     GDWriter.writeString(getPrefixID());
+/* 3621 */     GDWriter.writeString(getSuffixID());
+/* 3622 */     GDWriter.writeString(getModifierID());
+/* 3623 */     GDWriter.writeString(getTransmuteID());
+/* 3624 */     GDWriter.writeInt(getItemSeed());
+/* 3625 */     GDWriter.writeString(getComponentID());
+/* 3626 */     GDWriter.writeString(getCompletionBonusID());
+/* 3627 */     GDWriter.writeInt(getComponentSeed());
+/* 3628 */     GDWriter.writeString(getAugmentID());
+/* 3629 */     GDWriter.writeInt(getUnknown());
+/* 3630 */     GDWriter.writeInt(getAugmentSeed());
+/* 3631 */     GDWriter.writeInt(getVar1());
+/* 3632 */     GDWriter.writeInt(getStackCount());
 /*      */   } }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\db\DBStashItem.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\db\DBStashItem.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

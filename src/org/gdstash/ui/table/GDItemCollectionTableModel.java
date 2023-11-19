@@ -135,164 +135,176 @@
 /*     */   
 /*     */   public Object getValueAt(int row, int column) {
 /* 137 */     if (this.rows == null) return null; 
-/* 138 */     if (this.rows[row] == null) return null;
+/* 138 */     if (row < 0) return null; 
+/* 139 */     if (row >= this.rows.length) return null; 
+/* 140 */     if (this.rows[row] == null) return null;
 /*     */     
-/* 140 */     if (column == 0) return (this.rows[row]).icon; 
-/* 141 */     if (column == 1) return (this.rows[row]).name.text; 
-/* 142 */     if (column == 2) return (this.rows[row]).level.text; 
-/* 143 */     if (column == 3) return (this.rows[row]).scIcon; 
-/* 144 */     if (column == 4) return (this.rows[row]).hcIcon;
+/* 142 */     if (column == 0) return (this.rows[row]).icon; 
+/* 143 */     if (column == 1) return (this.rows[row]).name.text; 
+/* 144 */     if (column == 2) return (this.rows[row]).level.text; 
+/* 145 */     if (column == 3) return (this.rows[row]).scIcon; 
+/* 146 */     if (column == 4) return (this.rows[row]).hcIcon;
 /*     */     
-/* 146 */     return null;
+/* 148 */     return null;
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public boolean isCellEditable(int row, int column) {
-/* 151 */     return false;
+/* 153 */     return false;
 /*     */   }
 /*     */ 
 /*     */   
 /*     */   public void setValueAt(Object value, int row, int column) {
-/* 156 */     if (!isCellEditable(row, column))
+/* 158 */     if (!isCellEditable(row, column))
 /*     */       return; 
-/* 158 */     if (column == 0) (this.rows[row]).icon = (ImageIcon)value; 
-/* 159 */     if (column == 1) (this.rows[row]).name.text = (String)value; 
-/* 160 */     if (column == 2) (this.rows[row]).level.text = (String)value; 
-/* 161 */     if (column == 3) (this.rows[row]).scIcon = (ImageIcon)value; 
-/* 162 */     if (column == 4) (this.rows[row]).hcIcon = (ImageIcon)value;
+/* 160 */     if (this.rows == null)
+/* 161 */       return;  if (row < 0)
+/* 162 */       return;  if (row >= this.rows.length)
+/* 163 */       return;  if (this.rows[row] == null)
+/*     */       return; 
+/* 165 */     if (column == 0) (this.rows[row]).icon = (ImageIcon)value; 
+/* 166 */     if (column == 1) (this.rows[row]).name.text = (String)value; 
+/* 167 */     if (column == 2) (this.rows[row]).level.text = (String)value; 
+/* 168 */     if (column == 3) (this.rows[row]).scIcon = (ImageIcon)value; 
+/* 169 */     if (column == 4) (this.rows[row]).hcIcon = (ImageIcon)value;
 /*     */   
 /*     */   }
 /*     */   
 /*     */   public Class getColumnClass(int column) {
-/* 167 */     return GDItemCollectionRow.COLUMN_CLASSES[column];
+/* 174 */     return GDItemCollectionRow.COLUMN_CLASSES[column];
 /*     */   }
 /*     */   
 /*     */   public String getCellText(int row, int column) {
-/* 171 */     if (this.rows == null) return null; 
-/* 172 */     if (this.rows[row] == null) return null;
+/* 178 */     if (this.rows == null) return ""; 
+/* 179 */     if (row < 0) return ""; 
+/* 180 */     if (row >= this.rows.length) return ""; 
+/* 181 */     if (this.rows[row] == null) return "";
 /*     */     
-/* 174 */     if (column == 1) return (this.rows[row]).name.text; 
-/* 175 */     if (column == 2) return (this.rows[row]).level.text;
+/* 183 */     if (column == 1) return (this.rows[row]).name.text; 
+/* 184 */     if (column == 2) return (this.rows[row]).level.text;
 /*     */     
-/* 177 */     return "";
+/* 186 */     return "";
 /*     */   }
 /*     */   
 /*     */   public Color getCellTextColor(int row, int column) {
-/* 181 */     if (this.rows == null) return null; 
-/* 182 */     if (this.rows[row] == null) return null;
+/* 190 */     if (this.rows == null) return Color.BLACK; 
+/* 191 */     if (row < 0) return Color.BLACK; 
+/* 192 */     if (row >= this.rows.length) return Color.BLACK; 
+/* 193 */     if (this.rows[row] == null) return Color.BLACK;
 /*     */     
-/* 184 */     if (column == 1) return (this.rows[row]).name.foreground; 
-/* 185 */     if (column == 2) return (this.rows[row]).level.foreground;
+/* 195 */     if (column == 1) return (this.rows[row]).name.foreground; 
+/* 196 */     if (column == 2) return (this.rows[row]).level.foreground;
 /*     */     
-/* 187 */     return Color.BLACK;
+/* 198 */     return Color.BLACK;
 /*     */   }
 /*     */   
 /*     */   public Color getCellBackgroundColor(int row, int column) {
-/* 191 */     if (this.rows == null) return null; 
-/* 192 */     if (this.rows[row] == null) return null;
+/* 202 */     if (this.rows == null) return Color.WHITE; 
+/* 203 */     if (row < 0) return Color.WHITE; 
+/* 204 */     if (row >= this.rows.length) return Color.WHITE; 
+/* 205 */     if (this.rows[row] == null) return Color.WHITE;
 /*     */     
-/* 194 */     if (column == 1 || column == 2) {
+/* 207 */     if (column == 1 || column == 2) {
 /*     */       
-/* 196 */       if ((this.rows[row]).item.scCount > 0) return GREEN_BG; 
-/* 197 */       if ((this.rows[row]).item.hcCount > 0) return GREEN_BG;
+/* 209 */       if ((this.rows[row]).item.scCount > 0) return GREEN_BG; 
+/* 210 */       if ((this.rows[row]).item.hcCount > 0) return GREEN_BG;
 /*     */       
-/* 199 */       return RED_BG;
+/* 212 */       return RED_BG;
 /*     */     } 
 /*     */     
-/* 202 */     return Color.WHITE;
+/* 215 */     return Color.WHITE;
 /*     */   }
 /*     */   
 /*     */   public GDItemInfo getItem(int row) {
-/* 206 */     if (row < 0) return null; 
-/* 207 */     if (row > this.rows.length) return null;
+/* 219 */     if (this.rows == null) return null; 
+/* 220 */     if (row < 0) return null; 
+/* 221 */     if (row >= this.rows.length) return null; 
+/* 222 */     if (this.rows[row] == null) return null;
 /*     */     
-/* 209 */     if (this.rows == null) return null; 
-/* 210 */     if (this.rows[row] == null) return null;
-/*     */     
-/* 212 */     return (this.rows[row]).item;
+/* 224 */     return (this.rows[row]).item;
 /*     */   }
 /*     */   
 /*     */   public void filter(int filter) {
-/* 216 */     if (this.rowsAll == null)
+/* 228 */     if (this.rowsAll == null)
 /*     */       return; 
-/* 218 */     GDItem.LabelInfo li = null;
-/* 219 */     GDItem.LabelInfo liEmpty = new GDItem.LabelInfo();
-/* 220 */     liEmpty.text = "";
+/* 230 */     GDItem.LabelInfo li = null;
+/* 231 */     GDItem.LabelInfo liEmpty = new GDItem.LabelInfo();
+/* 232 */     liEmpty.text = "";
 /*     */     
-/* 222 */     int size = 0; int i;
-/* 223 */     for (i = 0; i < this.rowsAll.length; i++) {
-/* 224 */       switch (filter) {
+/* 234 */     int size = 0; int i;
+/* 235 */     for (i = 0; i < this.rowsAll.length; i++) {
+/* 236 */       switch (filter) {
 /*     */         case 1:
-/* 226 */           size++;
+/* 238 */           size++;
 /*     */           break;
 /*     */         
 /*     */         case 2:
-/* 230 */           if ((this.rowsAll[i]).item.scCount > 0 || (this.rowsAll[i]).item.hcCount > 0)
+/* 242 */           if ((this.rowsAll[i]).item.scCount > 0 || (this.rowsAll[i]).item.hcCount > 0)
 /*     */           {
-/* 232 */             size++;
+/* 244 */             size++;
 /*     */           }
 /*     */           break;
 /*     */         
 /*     */         case 3:
-/* 237 */           if ((this.rowsAll[i]).item.scCount == 0 && (this.rowsAll[i]).item.hcCount == 0)
+/* 249 */           if ((this.rowsAll[i]).item.scCount == 0 && (this.rowsAll[i]).item.hcCount == 0)
 /*     */           {
-/* 239 */             size++;
+/* 251 */             size++;
 /*     */           }
 /*     */           break;
 /*     */       } 
 /*     */     
 /*     */     } 
-/* 245 */     if (size == 0) {
-/* 246 */       this.rows = null;
+/* 257 */     if (size == 0) {
+/* 258 */       this.rows = null;
 /*     */     } else {
-/* 248 */       this.rows = new GDItemCollectionRow[size];
+/* 260 */       this.rows = new GDItemCollectionRow[size];
 /*     */       
-/* 250 */       int pos = 0; int j;
-/* 251 */       for (j = 0; j < this.rowsAll.length; j++) {
-/* 252 */         boolean addItem = false;
-/* 253 */         switch (filter) {
+/* 262 */       int pos = 0; int j;
+/* 263 */       for (j = 0; j < this.rowsAll.length; j++) {
+/* 264 */         boolean addItem = false;
+/* 265 */         switch (filter) {
 /*     */           case 1:
-/* 255 */             addItem = true;
+/* 267 */             addItem = true;
 /*     */             break;
 /*     */           
 /*     */           case 2:
-/* 259 */             if ((this.rowsAll[j]).item.scCount > 0 || (this.rowsAll[j]).item.hcCount > 0)
+/* 271 */             if ((this.rowsAll[j]).item.scCount > 0 || (this.rowsAll[j]).item.hcCount > 0)
 /*     */             {
-/* 261 */               addItem = true;
+/* 273 */               addItem = true;
 /*     */             }
 /*     */             break;
 /*     */ 
 /*     */           
 /*     */           case 3:
-/* 267 */             if ((this.rowsAll[j]).item.scCount == 0 && (this.rowsAll[j]).item.hcCount == 0)
+/* 279 */             if ((this.rowsAll[j]).item.scCount == 0 && (this.rowsAll[j]).item.hcCount == 0)
 /*     */             {
-/* 269 */               addItem = true;
+/* 281 */               addItem = true;
 /*     */             }
 /*     */             break;
 /*     */         } 
 /*     */ 
 /*     */         
-/* 275 */         if (addItem) {
-/* 276 */           this.rows[pos] = this.rowsAll[j];
+/* 287 */         if (addItem) {
+/* 288 */           this.rows[pos] = this.rowsAll[j];
 /*     */           
-/* 278 */           pos++;
+/* 290 */           pos++;
 /*     */         } 
 /*     */       } 
 /*     */     } 
 /*     */     
-/* 283 */     fireTableDataChanged();
+/* 295 */     fireTableDataChanged();
 /*     */   }
 /*     */   
 /*     */   public void sort(Comparator<GDItemCollectionRow> comp) {
-/* 287 */     if (comp == null)
-/* 288 */       return;  if (this.rows == null)
+/* 299 */     if (comp == null)
+/* 300 */       return;  if (this.rows == null)
 /*     */       return; 
-/* 290 */     Arrays.sort(this.rows, comp);
+/* 302 */     Arrays.sort(this.rows, comp);
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\table\GDItemCollectionTableModel.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\table\GDItemCollectionTableModel.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

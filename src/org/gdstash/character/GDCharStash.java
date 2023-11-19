@@ -43,21 +43,21 @@
 /*     */ 
 /*     */   
 /*     */   public int getHeight() {
-/*  46 */     if (this.pages == null) return 0;
+/*  46 */     if (this.pages == null) return 18;
 /*     */     
 /*  48 */     GDAbstractContainer page = this.pages.get(0);
 /*     */     
-/*  50 */     if (page == null) return 0;
+/*  50 */     if (page == null) return 18;
 /*     */     
 /*  52 */     return page.getContainerHeight();
 /*     */   }
 /*     */   
 /*     */   public int getWidth() {
-/*  56 */     if (this.pages == null) return 0;
+/*  56 */     if (this.pages == null) return 10;
 /*     */     
 /*  58 */     GDAbstractContainer page = this.pages.get(0);
 /*     */     
-/*  60 */     if (page == null) return 0;
+/*  60 */     if (page == null) return 10;
 /*     */     
 /*  62 */     return page.getContainerWidth();
 /*     */   }
@@ -274,7 +274,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\character\GDCharStash.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\character\GDCharStash.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

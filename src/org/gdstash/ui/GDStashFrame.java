@@ -1,14 +1,14 @@
 /*      */ package org.gdstash.ui;
-/*      */ import java.awt.*;
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
+/*      */ import java.awt.Component;
+/*      */ import java.awt.Container;
+/*      */ import java.awt.Font;
+/*      */ import java.awt.Frame;
+/*      */ import java.awt.Image;
+/*      */ import java.awt.MenuItem;
+/*      */ import java.awt.PopupMenu;
+/*      */ import java.awt.SystemTray;
+/*      */ import java.awt.TrayIcon;
+/*      */ import java.awt.Window;
 /*      */ import java.awt.event.ActionEvent;
 /*      */ import java.awt.event.ActionListener;
 /*      */ import java.awt.event.ComponentAdapter;
@@ -19,19 +19,18 @@
 /*      */ import java.io.BufferedReader;
 /*      */ import java.io.File;
 /*      */ import java.io.IOException;
-/*      */ import java.io.InputStreamReader;
-import java.sql.SQLException;
+/*      */ import java.sql.SQLException;
 /*      */ import java.util.Collections;
 /*      */ import java.util.Comparator;
 /*      */ import java.util.Enumeration;
 /*      */ import java.util.LinkedList;
 /*      */ import java.util.List;
-/*      */ import javax.swing.*;
-/*      */
-/*      */
-/*      */
-/*      */
-/*      */
+/*      */ import javax.swing.AbstractButton;
+/*      */ import javax.swing.DefaultComboBoxModel;
+/*      */ import javax.swing.JButton;
+/*      */ import javax.swing.JFrame;
+/*      */ import javax.swing.JOptionPane;
+/*      */ import javax.swing.UIManager;
 /*      */ import org.gdstash.db.DBAffix;
 /*      */ import org.gdstash.db.DBAffixSet;
 /*      */ import org.gdstash.db.DBConfig;
@@ -41,8 +40,7 @@ import java.sql.SQLException;
 /*      */ import org.gdstash.db.DBEngineSkillMaster;
 /*      */ import org.gdstash.db.GDDBData;
 /*      */ import org.gdstash.db.GDDBUtil;
-/*      */ import org.gdstash.file.ARCList;
-import org.gdstash.file.ARZDecompress;
+/*      */ import org.gdstash.file.ARZDecompress;
 /*      */ import org.gdstash.file.IniConfig;
 /*      */ import org.gdstash.ui.character.GDCharEditPane;
 /*      */ import org.gdstash.ui.character.GDCharInventoryPane;
@@ -50,13 +48,12 @@ import org.gdstash.file.ARZDecompress;
 /*      */ import org.gdstash.ui.character.GDCharMasteryPane;
 /*      */ import org.gdstash.ui.util.GDCharInfoList;
 /*      */ import org.gdstash.ui.util.GDStashInfoList;
-/*      */ import org.gdstash.util.*;
-/*      */
-/*      */
-/*      */
-/*      */
-
-/*      */
+/*      */ import org.gdstash.util.GDConstants;
+/*      */ import org.gdstash.util.GDImagePool;
+/*      */ import org.gdstash.util.GDLog;
+/*      */ import org.gdstash.util.GDMsgFormatter;
+/*      */ import org.gdstash.util.GDMsgLogger;
+/*      */ 
 /*      */ public class GDStashFrame extends JFrame {
 /*      */   public static final boolean canSave = true;
 /*      */   public static final boolean showRNGNumbers = false;
@@ -69,9 +66,9 @@ import org.gdstash.file.ARZDecompress;
 /*      */   private static final boolean logInfo = false;
 /*      */   public static final boolean logDetail = false;
 /*      */   private static List<String> logList;
-/*      */   public static final String PROGRAM_VERSION = "v1.6.0k";
+/*      */   public static final String PROGRAM_VERSION = "v1.7.4";
 /*      */   public static final String CONFIG_VERSION = "1.0.8";
-/*      */   public static final String GDDB_VERSION = "1.6.0g";
+/*      */   public static final String GDDB_VERSION = "1.7.4";
 /*      */   
 /*      */   private static class Starter extends Thread {
 /*      */     public void run() {
@@ -518,12 +515,12 @@ import org.gdstash.file.ARZDecompress;
 /*      */       
 /*  516 */       if (exists) {
 /*  517 */         List<DBAffixSet> craftSets = DBAffixSet.getCraftingAffixes();
-/*  518 */         List<DBAffix> craftAffixes = GDItemCraftPane.extractAffixes(null, craftSets);
+/*  518 */         List<DBAffix> craftAffixes = GDItemCraftPane.extractAffixes(null, craftSets, 3);
 /*  519 */         if (craftAffixes == null) craftAffixes = new LinkedList<>(); 
 /*  520 */         Collections.sort(craftAffixes, (Comparator<? super DBAffix>)new DBAffix.AffixComparator());
 /*      */         
 /*  522 */         List<DBAffixSet> compSets = DBAffixSet.getCompletionAffixes();
-/*  523 */         List<DBAffix> compAffixes = GDItemCraftPane.extractAffixes(null, compSets);
+/*  523 */         List<DBAffix> compAffixes = GDItemCraftPane.extractAffixes(null, compSets, 4);
 /*  524 */         if (compAffixes == null) compAffixes = new LinkedList<>(); 
 /*  525 */         Collections.sort(compAffixes, (Comparator<? super DBAffix>)new DBAffix.AffixComparator());
 /*      */         
@@ -609,9 +606,9 @@ import org.gdstash.file.ARZDecompress;
 /*  606 */         dbConfig.configVer = "1.0.8";
 /*      */       } 
 /*      */       
-/*  609 */       if (!"1.6.0g".equals(config.gddbVer)) {
+/*  609 */       if (!"1.7.4".equals(config.gddbVer)) {
 /*  610 */         dbConfig.gddbInit = false;
-/*  611 */         dbConfig.gddbVer = "1.6.0g";
+/*  611 */         dbConfig.gddbVer = "1.7.4";
 /*      */       } 
 /*      */     } 
 /*      */     
@@ -949,7 +946,7 @@ import org.gdstash.file.ARZDecompress;
 /*      */ 
 /*      */   
 /*      */   public GDStashFrame() {
-/*  949 */     super("Grim Dawn Stash v1.6.0k - " + System.getProperty("java.vm.name") + " " + System.getProperty("java.version"));
+/*  949 */     super("Grim Dawn Stash v1.7.4 - " + System.getProperty("java.vm.name") + " " + System.getProperty("java.version"));
 /*      */     
 /*  951 */     this.pnlTransfer = new GDTransferPane(GDStashInfoList.defaultStash, this);
 /*  952 */     this.pnlCharInventory = new GDCharInventoryPane(this);
@@ -1255,7 +1252,7 @@ import org.gdstash.file.ARZDecompress;
 /*      */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\GDStashFrame.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\GDStashFrame.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

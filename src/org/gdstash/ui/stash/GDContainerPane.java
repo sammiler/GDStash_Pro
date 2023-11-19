@@ -448,95 +448,100 @@
 /*     */     } 
 /*     */   }
 /*     */ 
+/*     */   
+/*     */   public void updateConfig() {
+/* 453 */     layoutPage();
+/*     */   }
+/*     */ 
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */   
 /*     */   public Dimension getPreferredSize() {
-/* 456 */     BufferedImage image = getBackgroundImage();
+/* 461 */     BufferedImage image = getBackgroundImage();
 /*     */     
-/* 458 */     int w = image.getWidth() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
-/* 459 */     int h = image.getHeight() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
+/* 463 */     int w = image.getWidth() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
+/* 464 */     int h = image.getHeight() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
 /*     */     
-/* 461 */     return new Dimension(w, h);
+/* 466 */     return new Dimension(w, h);
 /*     */   }
 /*     */   
 /*     */   public Dimension getMaximumSize() {
-/* 465 */     return getPreferredSize();
+/* 470 */     return getPreferredSize();
 /*     */   }
 /*     */   
 /*     */   public Dimension getMinimumSize() {
-/* 469 */     return getPreferredSize();
+/* 474 */     return getPreferredSize();
 /*     */   }
 /*     */   
 /*     */   public int getPreferredWidth() {
-/* 473 */     return (int)getPreferredSize().getWidth();
+/* 478 */     return (int)getPreferredSize().getWidth();
 /*     */   }
 /*     */   
 /*     */   public int getPreferredHeight() {
-/* 477 */     return (int)getPreferredSize().getHeight();
+/* 482 */     return (int)getPreferredSize().getHeight();
 /*     */   }
 /*     */   
 /*     */   public void layoutPage() {
-/* 481 */     if (this.uiTransfer == null) {
-/* 482 */       this.mouseRect = null;
+/* 486 */     if (this.uiTransfer == null) {
+/* 487 */       this.mouseRect = null;
 /*     */     }
-/* 484 */     else if (this.uiTransfer.getSelectedItem() == null) {
-/* 485 */       this.mouseRect = null;
+/* 489 */     else if (this.uiTransfer.getSelectedItem() == null) {
+/* 490 */       this.mouseRect = null;
 /*     */     } 
 /*     */ 
 /*     */     
-/* 489 */     BufferedImage image = drawGraphics();
+/* 494 */     BufferedImage image = drawGraphics();
 /*     */     
-/* 491 */     if (GDStashFrame.iniConfig.sectUI.graphicScale != 100) {
-/* 492 */       int w = image.getWidth() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
-/* 493 */       int h = image.getHeight() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
-/* 494 */       image = DDSLoader.getScaledImage(image, w, h);
+/* 496 */     if (GDStashFrame.iniConfig.sectUI.graphicScale != 100) {
+/* 497 */       int w = image.getWidth() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
+/* 498 */       int h = image.getHeight() * GDStashFrame.iniConfig.sectUI.graphicScale / 100;
+/* 499 */       image = DDSLoader.getScaledImage(image, w, h);
 /*     */     } 
 /*     */     
-/* 497 */     setIcon(new ImageIcon(image));
+/* 502 */     setIcon(new ImageIcon(image));
 /*     */   }
 /*     */   
 /*     */   private boolean isBlocked() {
-/* 501 */     if (this.mouseRect == null) return true; 
-/* 502 */     if (this.container == null) return true;
+/* 506 */     if (this.mouseRect == null) return true; 
+/* 507 */     if (this.container == null) return true;
 /*     */     
-/* 504 */     int xr = (int)this.mouseRect.getX();
-/* 505 */     int yr = (int)this.mouseRect.getY();
-/* 506 */     int wr = (int)this.mouseRect.getWidth();
-/* 507 */     int hr = (int)this.mouseRect.getHeight();
+/* 509 */     int xr = (int)this.mouseRect.getX();
+/* 510 */     int yr = (int)this.mouseRect.getY();
+/* 511 */     int wr = (int)this.mouseRect.getWidth();
+/* 512 */     int hr = (int)this.mouseRect.getHeight();
 /*     */     
-/* 509 */     int wp = getPreferredWidth();
-/* 510 */     int hp = getPreferredHeight();
+/* 514 */     int wp = getPreferredWidth();
+/* 515 */     int hp = getPreferredHeight();
 /*     */     
-/* 512 */     if (GDStashFrame.iniConfig.sectUI.graphicScale != 100) {
-/* 513 */       wp = wp * 100 / GDStashFrame.iniConfig.sectUI.graphicScale;
-/* 514 */       hp = hp * 100 / GDStashFrame.iniConfig.sectUI.graphicScale;
+/* 517 */     if (GDStashFrame.iniConfig.sectUI.graphicScale != 100) {
+/* 518 */       wp = wp * 100 / GDStashFrame.iniConfig.sectUI.graphicScale;
+/* 519 */       hp = hp * 100 / GDStashFrame.iniConfig.sectUI.graphicScale;
 /*     */     } 
 /*     */ 
 /*     */     
-/* 518 */     if (xr + wr >= wp) {
-/* 519 */       return true;
+/* 523 */     if (xr + wr >= wp) {
+/* 524 */       return true;
 /*     */     }
 /*     */     
-/* 522 */     if (yr + hr >= hp) {
-/* 523 */       return true;
+/* 527 */     if (yr + hr >= hp) {
+/* 528 */       return true;
 /*     */     }
 /*     */     
-/* 526 */     if (this.container != null) {
-/* 527 */       GDItem selItem = this.uiInventory.getSelectedItem();
+/* 531 */     if (this.container != null) {
+/* 532 */       GDItem selItem = this.uiInventory.getSelectedItem();
 /*     */       
-/* 529 */       for (GDItem item : this.container.getItemList()) {
+/* 534 */       for (GDItem item : this.container.getItemList()) {
 /*     */         
-/* 531 */         if (item == selItem)
+/* 536 */         if (item == selItem)
 /*     */           continue; 
-/* 533 */         BufferedImage img = item.getImage();
+/* 538 */         BufferedImage img = item.getImage();
 /*     */         
-/* 535 */         if (img != null) {
-/* 536 */           int xi = item.getX() * 32 + GDImagePool.getSharedStashXOffset();
-/* 537 */           int yi = item.getY() * 32 + GDImagePool.getSharedStashYOffset();
-/* 538 */           int wi = img.getWidth();
-/* 539 */           int hi = img.getHeight();
+/* 540 */         if (img != null) {
+/* 541 */           int xi = item.getX() * 32 + GDImagePool.getSharedStashXOffset();
+/* 542 */           int yi = item.getY() * 32 + GDImagePool.getSharedStashYOffset();
+/* 543 */           int wi = img.getWidth();
+/* 544 */           int hi = img.getHeight();
 /*     */ 
 /*     */ 
 /*     */ 
@@ -546,35 +551,35 @@
 /*     */ 
 /*     */ 
 /*     */           
-/* 549 */           if (xr >= xi && xr <= xi + wi) {
-/* 550 */             if (yr >= yi && yr <= yi + hi) {
-/* 551 */               return true;
+/* 554 */           if (xr >= xi && xr <= xi + wi) {
+/* 555 */             if (yr >= yi && yr <= yi + hi) {
+/* 556 */               return true;
 /*     */             }
 /*     */             
-/* 554 */             if (yr + hr >= yi && yr + hr <= yi + hi) {
-/* 555 */               return true;
+/* 559 */             if (yr + hr >= yi && yr + hr <= yi + hi) {
+/* 560 */               return true;
 /*     */             }
 /*     */           } 
 /*     */           
-/* 559 */           if (xr + wr >= xi && xr + wr <= xi + wi) {
-/* 560 */             if (yr >= yi && yr <= yi + hi) {
-/* 561 */               return true;
+/* 564 */           if (xr + wr >= xi && xr + wr <= xi + wi) {
+/* 565 */             if (yr >= yi && yr <= yi + hi) {
+/* 566 */               return true;
 /*     */             }
 /*     */             
-/* 564 */             if (yr + hr >= yi && yr + hr <= yi + hi) {
-/* 565 */               return true;
+/* 569 */             if (yr + hr >= yi && yr + hr <= yi + hi) {
+/* 570 */               return true;
 /*     */             }
 /*     */           } 
 /*     */         } 
 /*     */       } 
 /*     */     } 
 /*     */     
-/* 572 */     return false;
+/* 577 */     return false;
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\stash\GDContainerPane.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\stash\GDContainerPane.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

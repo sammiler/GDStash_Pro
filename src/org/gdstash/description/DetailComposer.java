@@ -517,7 +517,7 @@
 /*  517 */             skillName = skillName + " (" + modifiedSkill.getMasteryName() + ")";
 /*      */           }
 /*      */           
-/*  520 */           Object[] args2 = { s, skillName };
+/*  520 */           Object[] args2 = { part, skillName };
 /*  521 */           part = GDMsgFormatter.format(GDMsgFormatter.rbGD, "TXT_MODIFIER_TO_SKILL", args2);
 /*      */         } 
 /*      */         
@@ -1097,7 +1097,7 @@
 /*      */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\description\DetailComposer.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\description\DetailComposer.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

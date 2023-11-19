@@ -6,11 +6,11 @@
 /*     */ import java.util.Iterator;
 /*     */ import java.util.LinkedList;
 /*     */ import java.util.List;
-/*     */ import org.gdstash.db.*;
-/*     */
-/*     */
-/*     */
-/*     */
+/*     */ import org.gdstash.db.DBItemCraft;
+/*     */ import org.gdstash.db.DBItemSet;
+/*     */ import org.gdstash.db.DBItemSetAlloc;
+/*     */ import org.gdstash.db.DBStashItem;
+/*     */ import org.gdstash.db.ItemClass;
 /*     */ import org.gdstash.item.GDItem;
 /*     */ import org.gdstash.util.GDMsgFormatter;
 /*     */ 
@@ -260,7 +260,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstas\\ui\table\GDItemSetInfo.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\table\GDItemSetInfo.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

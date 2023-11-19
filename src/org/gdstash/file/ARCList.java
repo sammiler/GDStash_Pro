@@ -61,8 +61,8 @@
 /*  61 */             String s = files[i].getCanonicalPath();
 /*  62 */             String t = s.toUpperCase(GDConstants.LOCALE_US);
 /*     */             
-/*  64 */             if (t.endsWith(".ZIP") || t
-/*  65 */               .endsWith("TEXT_EN.ARC")) {
+/*  64 */             if (t.endsWith(".ZIP") || (t
+/*  65 */               .contains("TEXT_") && t.endsWith(".ARC"))) {
 /*  66 */               if (this.listType != ListType.Image) {
 /*  67 */                 ARCDecompress arc = new ARCDecompress(ARCDecompress.FileModule.Mod, s);
 /*     */                 
@@ -91,8 +91,8 @@
 /*     */           continue; 
 /*  92 */         String t = arcFile.filename.toUpperCase(GDConstants.LOCALE_US);
 /*     */         
-/*  94 */         if (t.endsWith(".ZIP") || t
-/*  95 */           .endsWith("TEXT_EN.ARC")) {
+/*  94 */         if (t.endsWith(".ZIP") || (t
+/*  95 */           .contains("TEXT_") && t.endsWith(".ARC"))) {
 /*  96 */           if (this.listType != ListType.Image) {
 /*  97 */             ARCDecompress arc = new ARCDecompress(arcFile.module, arcFile.filename);
 /*     */             
@@ -195,7 +195,7 @@
 /*     */ }
 
 
-/* Location:              C:\game\Grim Dawn\GDStash.jar!\org\gdstash\file\ARCList.class
+/* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstash\file\ARCList.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */
