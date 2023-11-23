@@ -315,6 +315,16 @@
 /*     */     
 /* 316 */     return image;
 /*     */   }
+
+
+            public List<GDUIContainer> getGDUIContainers()
+            {
+                return containers;
+            }
+            public  void refreshPage()
+            {
+                GDContainerMapPane.this.layoutContainers();
+            }
 /*     */ }
 
 

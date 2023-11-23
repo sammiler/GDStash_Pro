@@ -36,6 +36,8 @@ import org.gdstash.ui.util.GDStashInfoList;
 /*     */   private JButton btnFilter;
 /*     */   private GDItemCraftPane pnlCraft;
 /*     */   private JButton btnReload;
+
+            private JButton btnAutoSave;
 /*     */   private JButton btnHelp;
 /*     */   private JButton btnFileSave;
 /*     */   private GDItemNameTablePane pnlTable;
@@ -336,7 +338,16 @@ import org.gdstash.ui.util.GDStashInfoList;
 /* 331 */     this.btnReload.setIcon(GDImagePool.iconBtnReload24);
 /* 332 */     this.btnReload.setFont(fntButton);
 /* 333 */     GDStashFrame.setMnemonic(this.btnReload, "MNC_RELOAD");
-/*     */     
+/*     */
+             if (this.btnAutoSave == null)
+             {
+                 this.btnAutoSave = new JButton();
+                 this.btnAutoSave.addActionListener(new GDAutoSaveActionListener(this));
+             }
+    /* 330 */     this.btnAutoSave.setText(GDMsgFormatter.getString(GDMsgFormatter.rbUI, "BTN_AUTOSAVE"));
+    /* 331 */     this.btnAutoSave.setIcon(GDImagePool.iconBtnSave24);
+    /* 332 */     this.btnAutoSave.setFont(fntButton);
+
 /* 335 */     if (this.btnHelp == null) {
 /* 336 */       this.btnHelp = new JButton();
 /*     */       
@@ -549,11 +560,11 @@ import org.gdstash.ui.util.GDStashInfoList;
 /* 544 */     JPanel panel = new JPanel();
 /*     */     
 /* 546 */     panel.setLayout(layout);
-/*     */     
+
 /* 548 */     panel.add(this.btnFileSave, "Center");
 /* 549 */     panel.add(this.btnReload, "West");
 /* 550 */     panel.add(this.btnHelp, "East");
-/*     */     
+/*     */     panel.add(this.btnAutoSave,"South");
 /* 552 */     int size = 12;
 /* 553 */     if (GDStashFrame.iniConfig != null) size = GDStashFrame.iniConfig.sectUI.fontSize; 
 /* 554 */     Dimension dimPref = new Dimension(30 * size, 2 * size);
@@ -843,8 +854,15 @@ import org.gdstash.ui.util.GDStashInfoList;
 /* 838 */     this.pnlCraft.setFilteredPrefixes(filterPrefixes);
 /* 839 */     this.pnlCraft.setFilteredSuffixes(filterSuffixes);
 /*     */   }
+            public  GDSharedStashPane getsharedStashPane()
+            {
+                return pnlStash;
+            }
+            public GDItemCraftPane getGDItemCraftPane()
+            {
+                return  pnlCraft;
+            }
 /*     */ }
-
 
 /* Location:              C:\Users\sammiler\Downloads\GDStash_v174\GDStash.jar!\org\gdstas\\ui\GDCraftPane.class
  * Java compiler version: 8 (52.0)

@@ -576,6 +576,15 @@
 /*     */     
 /* 577 */     return false;
 /*     */   }
+            public GDItemContainer getGDItemContainer()
+            {
+                return container;
+            }
+
+            public void refreshPage()
+            {
+                GDContainerPane.this.layoutPage();
+            }
 /*     */ }
 
 
