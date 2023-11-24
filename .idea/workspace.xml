@@ -10,54 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6f45bd-70de-4453-ab0c-3d3d23cc19b8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/character/GDChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/character/GDChar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBAffix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBAffix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBSkill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/DBStashItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/DBStashItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/SelectionCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/SelectionCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/db/criteria/CriteriaCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/db/criteria/CriteriaCombination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/file/GDByteBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/file/GDByteBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/GDTransmute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/GDTransmute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/item/ItemInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/item/ItemInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCollectionPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDCraftPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDCraftPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemCraftPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDItemCraftPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDMassImportPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDMassImportPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDStashFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDStashFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDTabbedSearchDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDTabbedSearchDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/GDTransferPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/GDTransferPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharAttributePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharAttributePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDataPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharDataPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharInventoryPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharInventoryPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharPointPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharPointPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct1Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct1Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct3Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct3Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct5Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct5Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct6Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharRiftAct6Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct1Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct1Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct3Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct3Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct4Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct4Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct5Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct5Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct6Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharShrineAct6Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharStatAchievementPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/GDCharStatAchievementPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct1Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct1Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct2Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct2Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct3Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct3Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct5Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct5Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct6Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/character/RoTRiftAct6Pane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemTypePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/select/ItemTypePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDCharStashPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDCharStashPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDSharedStashPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/stash/GDSharedStashPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/gdstash/ui/table/GDItemSetInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Chinese.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_Chinese.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_English.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_English.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_French.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_French.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_German.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_German.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Polski.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_Polski.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI_Russian.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UI_Russian.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -142,23 +113,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/sammiler/Downloads/GDStash_Pro",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sammiler/Downloads/GDStash_Pro&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
@@ -202,6 +173,15 @@
       <workItem from="1629520014450" duration="291000" />
       <workItem from="1700363320958" duration="208000" />
       <workItem from="1700403745626" duration="3233000" />
+      <workItem from="1700448633984" duration="7627000" />
+      <workItem from="1700535549768" duration="1188000" />
+      <workItem from="1700563551709" duration="10000" />
+      <workItem from="1700629487196" duration="3260000" />
+      <workItem from="1700634812023" duration="2863000" />
+      <workItem from="1700643611114" duration="2287000" />
+      <workItem from="1700649849850" duration="1936000" />
+      <workItem from="1700715918929" duration="12035000" />
+      <workItem from="1700811617571" duration="777000" />
     </task>
     <servers />
   </component>
@@ -223,47 +203,42 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
-          <line>879</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDCraftPane.java</url>
+          <line>712</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
-          <line>218</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/stash/GDContainerMapPane.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
-          <line>2478</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/GDConfigPane.java</url>
-          <line>301</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java</url>
-          <line>888</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/gdstash/file/ARCDecompress.java</url>
-          <line>765</line>
-          <option name="timeStamp" value="63" />
+          <url>file://$PROJECT_DIR$/src/org/gdstash/ui/stash/GDContainerMapPane.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.gdstash.file.ARCDecompress" memberName="strings" />
+        <PinnedItemInfo parentTag="java.util.PropertyResourceBundle" memberName="lookup" />
+        <PinnedItemInfo parentTag="org.gdstash.db.DBStashItem" memberName="slots" />
+        <PinnedItemInfo parentTag="org.gdstash.db.DBStashItem" memberName="dbItem" />
+        <PinnedItemInfo parentTag="org.gdstash.ui.util.GDStashInfoList$GDStashFileInfo" memberName="gdStash" />
         <PinnedItemInfo parentTag="org.gdstash.file.GDRandomAccessBuffer" memberName="file" />
+        <PinnedItemInfo parentTag="org.gdstash.item.GDItem" memberName="dbSuffix" />
+        <PinnedItemInfo parentTag="org.gdstash.db.DBAffix" memberName="strDescription" />
+        <PinnedItemInfo parentTag="org.gdstash.ui.stash.GDContainerMapPane" memberName="bgImage" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="list.list" />
-        <watch expression="((GDRandomAccessBuffer)buffer).file" custom="org.gdstash.file.GDRandomAccessBuffer" />
+        <watch expression="item.dbItem.image" />
+        <watch expression="clone" />
+        <watch expression="((GDStashPage)((GDContainerPane)container).container).width" custom="org.gdstash.ui.stash.GDContainerPane,org.gdstash.item.GDStashPage" />
+        <watch expression="container" />
+        <watch expression="this" />
       </configuration>
     </watches-manager>
   </component>
